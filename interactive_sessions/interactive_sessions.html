@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Python Library Show-and-Tell</title>
+<title>EDS 217: Python for Environmental Data Science – interactive_sessions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,15 +104,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#find-a-library" id="toc-find-a-library" class="nav-link active" data-scroll-target="#find-a-library">Find a Library</a></li>
-  <li><a href="#create-a-notebook-about-the-library." id="toc-create-a-notebook-about-the-library." class="nav-link" data-scroll-target="#create-a-notebook-about-the-library.">Create a notebook about the library.</a></li>
-  <li><a href="#library-show-and-tell" id="toc-library-show-and-tell" class="nav-link" data-scroll-target="#library-show-and-tell">Library Show-and-Tell</a></li>
-  </ul>
-</nav>
+    
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -90,73 +116,16 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored"> <a href="../">Return to Course Home Page</a></h4>
 <hr>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Python Library Show-and-Tell</h1>
+
+
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive Sessions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>&nbsp;# 📣 Data Science Library Show-and-Tell</p>
-<ol type="1">
-<li>Form groups of 4-5 Students</li>
-<li>Find a Library</li>
-<li>Working collaboratively use a github repo to create a notebook about the library</li>
-<li>Present notebook to class (10-15 min)</li>
-</ol>
-<section id="find-a-library" class="level3">
-<h3 class="anchored" data-anchor-id="find-a-library">Find a Library</h3>
-<ul>
-<li><a href="https://pypi.org">PyPi</a> <code>pypi.org</code></li>
-<li><a href="https://towardsdatascience.com">Towards Data Science</a> <code>towardsdatascience.com</code></li>
-<li>Podcasts: <a href="https://talkpython.fm/episodes/all">Talk Python to Me</a>, <a href="https://lineardigressions.com">Linear Digressions</a>, <a href="https://pythonbytes.fm">Python Bytes</a></li>
-<li>Domain-specific searches “python oceanography”, “python climate science”, etc…</li>
-</ul>
-<p>Good candidates for a Show-and-Tell are libraries that are relevant and popular.</p>
-<p>Popularity can measured with GitHub stars, or PyPi downloads. Or if folks in the data science community are talking about it.</p>
-</section>
-<section id="create-a-notebook-about-the-library." class="level3">
-<h3 class="anchored" data-anchor-id="create-a-notebook-about-the-library.">Create a notebook about the library.</h3>
-<ul>
-<li>Brief Description
-<ul>
-<li>What is it?</li>
-<li>Where is it? Link to project webpage, github</li>
-<li>Who developed?</li>
-<li>Why was it created?</li>
-</ul></li>
-<li>Potential Use in Environmental Data Science</li>
-<li>Quick tutorial/example, using Env. Data Sci example if possible!
-<ul>
-<li>Okay to incorporate examples found elsewhere (provide link and acknowledgement!)</li>
-</ul></li>
-</ul>
-</section>
-<section id="library-show-and-tell" class="level3">
-<h3 class="anchored" data-anchor-id="library-show-and-tell">Library Show-and-Tell</h3>
-<ul>
-<li>Present your notebook to the class!</li>
-<li>10-15 minute presentation.</li>
-<li>Q&amp;A.</li>
-<li>We will have our presentations in the afternoon on the last day of class (Friday, Sept.&nbsp;15)</li>
-<li>All presentations will be pooled and hosted on our course github so everyone can learn from each other.</li>
-</ul>
-<section id="by-tomorrow-afternoon-select-your-library-plus-two-alternates-in-case-of-duplicates" class="level4">
-<h4 class="anchored" data-anchor-id="by-tomorrow-afternoon-select-your-library-plus-two-alternates-in-case-of-duplicates">BY TOMORROW AFTERNOON: SELECT YOUR LIBRARY, PLUS TWO ALTERNATES (IN CASE OF DUPLICATES)</h4>
-
-
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

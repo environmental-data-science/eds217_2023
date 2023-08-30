@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Setting up your local Python</title>
+<title>EDS 217: Python for Environmental Data Science - EDS 217 Lectures</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,10 +74,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#general-plan" id="toc-general-plan" class="nav-link active" data-scroll-target="#general-plan">General Plan</a></li>
-  <li><a href="#managing-computing-environments" id="toc-managing-computing-environments" class="nav-link" data-scroll-target="#managing-computing-environments">1. Managing Computing Environments</a></li>
-  <li><a href="#managing-python-packages" id="toc-managing-python-packages" class="nav-link" data-scroll-target="#managing-python-packages">2. Managing Python Packages</a></li>
-  <li><a href="#managing-code-and-execution-ides" id="toc-managing-code-and-execution-ides" class="nav-link" data-scroll-target="#managing-code-and-execution-ides">3. Managing code and execution (IDEs)</a></li>
+  <li><a href="#lecture-0-introduction-to-python-data-science" id="toc-lecture-0-introduction-to-python-data-science" class="nav-link active" data-scroll-target="#lecture-0-introduction-to-python-data-science">Lecture 0: Introduction to Python Data Science</a></li>
+  <li><a href="#lecture-1-the-zen-of-python" id="toc-lecture-1-the-zen-of-python" class="nav-link" data-scroll-target="#lecture-1-the-zen-of-python">Lecture 1: The Zen of Python</a></li>
+  <li><a href="#lecture-2-getting-help" id="toc-lecture-2-getting-help" class="nav-link" data-scroll-target="#lecture-2-getting-help">Lecture 2: Getting Help</a></li>
+  <li><a href="#lecture-3-dry-vs.-wet-code" id="toc-lecture-3-dry-vs.-wet-code" class="nav-link" data-scroll-target="#lecture-3-dry-vs.-wet-code">Lecture 3: Dry vs.&nbsp;Wet code</a></li>
   </ul>
 </nav>
 </nav>
@@ -93,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setting up your local Python</h1>
+<h1 class="title">EDS 217 Lectures</h1>
 </div>
 
 
@@ -108,52 +108,18 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="general-plan" class="level2">
-<h2 class="anchored" data-anchor-id="general-plan">General Plan</h2>
-<p>There are many ways to set up your local machine to run maintanable python data science code. In addition to the usual need to build your code within a repository, any strategy for local computation depends on three critical components that must work well together: Computational isolation, Functional consistency, Developer efficiency.</p>
-<p>In practice, these three components necessitate three fundamental and inter-related progamming tools:</p>
-<ol type="1">
-<li>A tool for <em>managing computing environments</em></li>
-<li>A tool for <em>managing python packages</em></li>
-<li>An tool for <em>managing python code</em>, which is usually an integrated development environment (IDE) in which editing and running code occur interactively.</li>
-</ol>
-<p>We are about to install tools that will meet these three needs on your computer and ensure a successful start on your python journey. I’ve included details about some of the tools we will not use, and you’ll see them mentioned (and discussed) across the Pythonverse. Don’t be afraid to try new tools!</p>
+<p>This page contains links to lecture materials for EDS 217.</p>
+<section id="lecture-0-introduction-to-python-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-0-introduction-to-python-data-science"><a href="../lectures/00_Intro_to_Python_Slides.html">Lecture 0: Introduction to Python Data Science</a></h3>
 </section>
-<section id="managing-computing-environments" class="level2">
-<h2 class="anchored" data-anchor-id="managing-computing-environments">1. Managing Computing Environments</h2>
-<p>There are many options for managing computing environments.</p>
-<p>These days, a common method is to use <code>containers</code>, in which an entire computational system (including processes, memory, disk space) is spun up as an isolated service on your local (or remote). Systems such as <a href="https://www.docker.com">docker</a> or python-specific <a href="https://shiv.readthedocs.io/en/latest/">shiv</a> allow for isolated packaging and execution of python programs.</p>
-<p>A more common approach on local machines is to use the <a href="https://docs.conda.io/en/latest/"><code>conda</code></a>environment management system. Conda is developed by <a href="https://anaconda.org">Anaconda</a>, and is the most widely used environment management system in python data science. Other local solutions include <a href="https://docs.python.org/3/tutorial/venv.html"><code>venv</code></a>, which is part of the main python distribution.</p>
-<p>In this course, <strong>we will use <code>conda</code> for our environment management</strong>. We will be able to access <code>conda</code> through the terminal/command line, within a terminal inside our IDE, or even inside our notebooks themselves.</p>
+<section id="lecture-1-the-zen-of-python" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-1-the-zen-of-python"><a href="../lectures/01_The_Zen_of_Python.html">Lecture 1: The Zen of Python</a></h3>
 </section>
-<section id="managing-python-packages" class="level2">
-<h2 class="anchored" data-anchor-id="managing-python-packages">2. Managing Python Packages</h2>
-<p>Once a computing environment is created in <code>conda</code>, there is a need to manage the individual packages within the environment. Once again, there are many ways to accomplish this task in python.</p>
-<p>Firstly, <code>conda</code> itself is a sophisticated package management system! The <code>conda</code> progra, is able to download and install almost any python package and often it is possible to install binaries of packages directly without the need for local compilation. <code>conda</code> also manages package dependencies, ensuring libraries are inter-operable.</p>
-<p>In addition to <code>conda</code>, there is the Package Installer for Python <a href="https://pip.pypa.io"><code>pip</code></a>. <code>pip</code> can install any package hosted on the <a href="https://pypi.org">Python Package Index (PyPI)</a>, as well as packages hosted on github and even packages you’ve made on your local machine.</p>
-<p>Recently, a new entry to package management, <a href="https://python-poetry.org"><code>poetry</code></a> has started to become popular. <code>poetry</code> focuses on making package management - and especially dependency management between and amongst packages - much easier. It also simplifies building and packaging your own code for distribution.</p>
-<p>In this class, <strong>we will use <code>conda</code> for our package management</strong>. Because conda also <em>includes</em> <code>pip</code>, we get all the advantages of conda (faster installs, easy integration with IDEs) without losing the broad capabilities of <code>pip</code>. In a few years, we might be using <code>poetry</code>, but for now, <code>conda</code> is still the most common tool you will see in professional python development shops, so it’s the one you should know best.</p>
-<p>Conda can create new environments using a markup language specification called <code>yaml</code>. We will use an environment file created for our course to create an <code>eds217_2023</code> environment on your local machine.</p>
+<section id="lecture-2-getting-help" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-2-getting-help"><a href="../lectures/02_HelpGPT.html">Lecture 2: Getting Help</a></h3>
 </section>
-<section id="managing-code-and-execution-ides" class="level2">
-<h2 class="anchored" data-anchor-id="managing-code-and-execution-ides">3. Managing code and execution (IDEs)</h2>
-<p>Finally, we come to the tool you will use most when coding on your local computer – the Integrated Development Environment, or IDE. The possibilities for IDEs is even more expansive than for either of the other tools. Common python IDEs include:</p>
-<ul>
-<li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
-<li><a href="https://jupyter.org">Jupyter Notebooks</a></li>
-<li><a href="https://jupyter.org">Jupyter Labs</a></li>
-<li><a href="https://www.spyder-ide.org">Spyder</a></li>
-<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a></li>
-<li><a href="https://www.jetbrains.com/dataspell/">Data Spell</a></li>
-<li><a href="https://atom.io">Atom</a></li>
-<li><a href="https://www.rstudio.com">RStudio</a></li>
-</ul>
-<p>Any of these <em>could</em> work well for a python data science workflow, but definitely some have more features focused on data science than others. For example, PyCharm is more focused on software engineering, but a new IDE called Data Spell, by the same company (Jet Brains), is squarely centered on data science workflows. That tool is too new (and niche) to spend a lot of time on in this course.</p>
-<p>The best IDE is usually the one you are most familiar with. For that reason, RStudio isn’t a <em>terrible</em> choice for an IDE. Although you will only be able to write code in quarto (<code>.qmd</code>) files, RStudio could be sufficient for many of your python needs.</p>
-<p>However, if you’re going to develop python code professionally, you’re not going to see many teams using RStudio. The reason is because most python data science is developed in native python formats (<code>.py</code> files) or in Jupyter Notebook formats (<code>.ipynb</code>). RStudio can’t edit either of these formats. So it’s best to use an IDE that is designed to efficiently parse these files and allow you to execute code directly.</p>
-<p>We will use both <code>.py</code> files and <code>.ipybd</code> files in this class. For notebooks, you could always edit them in a browser running Jupyter or JupyterLab However, it’s probably best to learn to use a non-browser IDE if possible, because that will provide more opportunities for customization and removes a layer of complication required when executing your code.</p>
-<p><strong>Today we will look at both RStudio (for <code>.qmd</code> files) and Visual Studio Code (VSCode).</strong></p>
-<p>Having covered all the bases, we need to go ahead and get to work. Here are the steps for getting our class environment working on your machine, and within your IDE.</p>
+<section id="lecture-3-dry-vs.-wet-code" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-3-dry-vs.-wet-code"><a href="../lectures/03_Dry_vs_Wet.html">Lecture 3: Dry vs.&nbsp;Wet code</a></h3>
 
 
 </section>

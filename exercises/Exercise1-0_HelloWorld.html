@@ -148,13 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../index.html">🏠 Index</a> | <a href="../exercises/Exercise1-1_Variables.html">➡️ Next Exercise</a> |</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Exercise1-0_HelloWorld_files/figure-html/0b767adb-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
+<p><img src="Exercise1-0_HelloWorld_files/figure-html/15a17d00-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Hello_mac-2.jpg</figcaption>
 </figure>
 </div>
 <p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn. Most updates to the Python API are robust to compatibility issues, there are two main versions of the language with significant differences: Python 2 and 3. In this course, we will be using Python 3.</p>
-<p>Running Python programs requires the Python interpreter, which is preinstalled on Mac and Linux systems, but must be downloaded on Windows machines. Python code can be generated in any text editor and executed in the terminal. Additionally, many programmers use interactive development environments or IDEs. An IDE is a graphical editor where code can be written and executed.</p>
-<p>In addition to Python scripts (.py files), many data scientists use Jupyter Notebooks (.ipynb files) for experimentation and visualization. While Notebooks are limited in their capabilities, they allow for external code execution, running on the Jupyter Server. For this reason, these exercises have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
+<p>In addition to Python scripts (.py files), many data scientists use Jupyter Notebooks (.ipynb files) for experimentation and visualization. While Notebooks are limited in their capabilities, they allow for rapid code evaluation and ease of use. For this reason, these exercises have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
 <p>This first tutorial will briefly introduce a few basic Python features.</p>
 <p style="height:1pt">
 </p>
@@ -208,20 +207,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="run">
 <pre><code>▶️ Run the cell below.</code></pre>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is a print statement.</code></pre>
+</div>
 </div>
 <div class="practice">
 <p>📚 Practice 1. In the following cell, use the <code>print()</code> command to print the line “Hello, World!”)</p>
-</div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
@@ -232,16 +228,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="example">
 <p>✏️ Try it. Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="11">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">'Me'</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#name = input( 'What is your first name? ' )</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'My name is '</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">'.'</span> )</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print(name)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"You"</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>( <span class="st">'What is your first name? '</span> )</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
 </div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
@@ -255,64 +250,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 In Python, there are two ways of writing comments. For in-line comments and most short comments, the &lt;span style="font-weight:bold"&gt; # &lt;/span&gt; character is used. For large block comments, such as those at the beginning of a file or function, three quotations &lt;span style="font-weight:bold"&gt;  '''  &lt;/span&gt; are used to enclose comments. Both single and double quotations are interpreted the same, as long as they are not used together.</code></pre>
 </div>
 <p>The following example is a function (a type of Python object we will cover later on) that uses both methods of commenting. As you can see, without the comments, it would be difficult to understand what the function does, what parameters it takes, and what the intermediate steps are to reach the end.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> homo_affine_matrix(p, p_prime):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds the unique homogeneous affine transformation that transforms a set of 3 points </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    from one coordinate system to that of a second set of points in 3-D space</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">    p : array</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">        original set of points as a row vector: ((p1, p2, p3))</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">    p_prime : array</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">        Transformed points as a row vector: ((p1_prime, p2_prime, p3_prime))</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">    array</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">        4 x 3 affine transformation matrix.</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">    Source: Adapted by B. Morgan from https://math.stackexchange.com/a/222170 (robjohn)</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct intermediate matrix</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    Q       <span class="op">=</span> p[<span class="dv">1</span>:]       <span class="op">-</span> p[<span class="dv">0</span>]</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    Q_prime <span class="op">=</span> p_prime[<span class="dv">1</span>:] <span class="op">-</span> p_prime[<span class="dv">0</span>]</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate rotation matrix</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> np.dot(np.linalg.inv(np.row_stack((Q, np.cross(<span class="op">*</span>Q)))),</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>               np.row_stack((Q_prime, np.cross(<span class="op">*</span>Q_prime))))</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate translation vector</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> p_prime[<span class="dv">0</span>] <span class="op">-</span> np.dot(p[<span class="dv">0</span>], R)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate affine transformation matrix</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.column_stack((np.row_stack((R, t)),</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> homo_affine_matrix(p, p_prime):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds the unique homogeneous affine transformation that </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    transforms a set of 3 points from one coordinate system </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    to that of a second set of points in 3-D space</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p : array</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        original set of points as a row vector: ((p1, p2, p3))</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    p_prime : array</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Transformed points as a row vector: ((p1_prime, p2_prime, p3_prime))</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    array</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">        4 x 3 affine transformation matrix.</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Source: Adapted by B. Morgan from https://math.stackexchange.com/a/222170 (robjohn)</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct intermediate matrix</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    Q       <span class="op">=</span> p[<span class="dv">1</span>:]       <span class="op">-</span> p[<span class="dv">0</span>]</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    Q_prime <span class="op">=</span> p_prime[<span class="dv">1</span>:] <span class="op">-</span> p_prime[<span class="dv">0</span>]</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate rotation matrix</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> np.dot(np.linalg.inv(np.row_stack((Q, np.cross(<span class="op">*</span>Q)))),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>               np.row_stack((Q_prime, np.cross(<span class="op">*</span>Q_prime))))</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate translation vector</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> p_prime[<span class="dv">0</span>] <span class="op">-</span> np.dot(p[<span class="dv">0</span>], R)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate affine transformation matrix</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.column_stack((np.row_stack((R, t)),</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br> <br></p>
 <div class="run">
 <pre><code>▶️ Run the cell below.</code></pre>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="12">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>4</code></pre>
+</div>
 </div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IGNORE THIS CELL</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
 </section>

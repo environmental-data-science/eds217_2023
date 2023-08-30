@@ -93,22 +93,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles/activities.css">
 </head>
@@ -126,6 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
   <li><a href="#conditionals" id="toc-conditionals" class="nav-link" data-scroll-target="#conditionals">Conditionals</a></li>
+  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a></li>
+  <li><a href="#try-it.-1" id="toc-try-it.-1" class="nav-link" data-scroll-target="#try-it.-1">✏️ Try it.</a></li>
+  <li><a href="#try-it.-2" id="toc-try-it.-2" class="nav-link" data-scroll-target="#try-it.-2">✏️ Try it.</a></li>
   <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a>
   <ul class="collapse">
   <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><code>for</code> loops</a></li>
@@ -166,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../exercises/Exercise1-2_Lists.html">⬅️ Previous Exercise</a> | <a href="../index.html">🏠 Index</a> | <a href="../exercises/Exercise1-4_Structured-Data.html">➡️ Next Exercise</a> |</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Exercise1-3_ControlFlowStatements_files/figure-html/78f62f4a-1-control.jpeg" class="img-fluid figure-img"></p>
+<p><img src="Exercise1-3_ControlFlowStatements_files/figure-html/b37c0886-1-control.jpeg" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">control.jpeg</figcaption>
 </figure>
 </div>
@@ -246,9 +233,6 @@ Nested <code>for</code> loops
 <p style="color:#008C96; font-weight: bold">
 ✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
 </p>
-<p style="color:#008C96; font-weight: bold">
-📚 &nbsp; &nbsp; This symbol designates a practice question.
-</p>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 </section>
@@ -263,9 +247,10 @@ Nested <code>for</code> loops
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> x is a positive number.
 </p>
-<div class="example">
-<p>✏️ Try it. Run the following cell, changing the value of x to be negative or positive to demonstrate how the <code>if</code> statement works.</p>
-</div>
+</section>
+<section id="try-it." class="level2">
+<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
+<p>Run the following cell, changing the value of x to be negative or positive to demonstrate how the <code>if</code> statement works.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -296,10 +281,16 @@ Nested <code>for</code> loops
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> y is a negative number.
 </p>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 1. &lt;/b&gt; 
-In programs, &lt;code&gt;if&lt;/code&gt; statements are useful for catching errors due to user input. Define two new variables based on user input: the first prompting for a temperature value and the second prompting for the units as "F" or "C". Using the equation below, write an &lt;code&gt;if&lt;/code&gt; statement that converts the temperature input to °C if it was given in °F or to °F if given in °C. Recall that all variables assigned based on user input are strings. Be sure to comment your code.</code></pre>
-<p>Formula for conversion between °F and °C: <span class="math display">T_{^{\circ} C} = (T_{^{\circ} F} - 32) * \frac{5}{9}</span></p>
+</section>
+<section id="try-it.-1" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-1">✏️ Try it.</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment with if, elif, and else statements.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
 <span style="color:black"> Operators </span>
@@ -349,16 +340,18 @@ In programs, &lt;code&gt;if&lt;/code&gt; statements are useful for catching erro
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'valine'</span>, <span class="st">'methionine'</span>, <span class="st">'leucine'</span>, <span class="st">'phenylalanine'</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>aromatic <span class="op">=</span> [<span class="st">'phenylalanine'</span>, <span class="st">'tryptophan'</span>, <span class="st">'tyrosine'</span>]</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>aa <span class="op">=</span> <span class="st">'valine'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>aa <span class="op">=</span> <span class="st">'tyrosine'</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> aa <span class="kw">in</span> aromatic <span class="kw">and</span> aa <span class="kw">in</span> essential:</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is an essential, aromatic amino acid.'</span>)</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> essential:</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is an essential, non-aromatic amino acid.'</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aminoacids:</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">'is a non-essential amino acid.'</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aromatic:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a non-essential, aromatic amino acid.'</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">'is a non-essential amino acid.'</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The <code>or</code> operator is used to write an <code>if</code> statement where one of multiple conditions must be met.</p>
@@ -391,9 +384,15 @@ In programs, &lt;code&gt;if&lt;/code&gt; statements are useful for catching erro
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>While this is a trivial example, nested <code>if</code> statements can be quite useful when inside a program as they allow the program to skip to the end if the first condition is not satisfied.</p>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 2. &lt;/b&gt; 
-Using nested &lt;code&gt;if&lt;/code&gt; statements and your code from Practice question #1, convert the user input temperature to the opposite units (°F to °C or vice versa), print a statement to the user that reports the temperature in the converted units and indicates whether or not the temperature below freezing. Your print statement should look something like, &lt;code&gt;The temperature is __°C/F. It is (not) below freezing.&lt;/code&gt;</code></pre>
+</section>
+<section id="try-it.-2" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-2">✏️ Try it.</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment with nested if statements.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="loops" class="level2">
@@ -441,27 +440,15 @@ Using nested &lt;code&gt;if&lt;/code&gt; statements and your code from Practice 
 <span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    proline</span>
 <span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    serine</span>
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    tyrosine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 3. &lt;/b&gt; 
-Generate a list called &lt;code&gt;org_elements&lt;/code&gt; containing the names of the six most abundant elements comprising organic molecules. Sort the list in alphabetical order (in place) and write a &lt;code&gt;for&lt;/code&gt; loop that prints each element in &lt;code&gt;org_elements&lt;/code&gt;.</code></pre>
-</div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define org_elements</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print each element in org_elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 <h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
 <span style="color:black"> Built-in functions </span>
 </h4>
 <p>The <code>enumerate()</code> function can be used in a <code>for</code> loop to keep track of the index of the iterator. This can be useful for keeping track of the number of iterations completed, accessing other elements in the same list based on their relative index (e.g.&nbsp;the value immediately following the current iterator value), or accessing elements in another list based on the iterator’s index.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gases <span class="op">=</span> [<span class="st">'N2'</span>, <span class="st">'O2'</span>, <span class="st">'Ar'</span>, <span class="st">'H2O'</span>, <span class="st">'CO2'</span>]</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,gas <span class="kw">in</span> <span class="bu">enumerate</span>(gases):</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    rank <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The #</span><span class="sc">%d</span><span class="st"> most abundant gas in the atmosphere is </span><span class="sc">%s</span><span class="st">.'</span> <span class="op">%</span>(rank,gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gases <span class="op">=</span> [<span class="st">'N2'</span>, <span class="st">'O2'</span>, <span class="st">'Ar'</span>, <span class="st">'H2O'</span>, <span class="st">'CO2'</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,gas <span class="kw">in</span> <span class="bu">enumerate</span>(gases):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    rank <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The #</span><span class="sc">%d</span><span class="st"> most abundant gas in the atmosphere is </span><span class="sc">%s</span><span class="st">.'</span> <span class="op">%</span>(rank,gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: -1pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> The #1 most abundant gas in the atmosphere is N2.
 </p>
@@ -477,45 +464,39 @@ The #4 most abundant gas in the atmosphere is H2O.
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: 12pt">
 The #5 most abundant gas in the atmosphere is CO2.
 </p>
-<div class="example">
-<p>✏️ Try it. Given your sorted <code>org_elements</code> list and the corresponding list of atomic masses given in the cell below, use <code>enumerate()</code> in a <code>for</code> loop to print a formatted statement that expresses the atomic mass of of each element. Your formatted print statement should include the name of the element, the atomic mass rounded to 2 decimal places, and units.</p>
-</div>
-<div class="cell">
+<div class="cell" data-execution_count="16">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list of atomic masses of 6 most abundant elements</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>atomic_mass <span class="op">=</span> [<span class="fl">12.011</span>, <span class="fl">1.00784</span>, <span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">30.97376</span>, <span class="fl">32.065</span>]  <span class="co"># g/mol</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through org_elements + print the atomic mass of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list of atomic masses of 6 most abundant elements</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>atomic_mass <span class="op">=</span> [<span class="fl">12.011</span>, <span class="fl">1.00784</span>, <span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">30.97376</span>, <span class="fl">32.065</span>]  <span class="co"># g/mol</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through org_elements + print the atomic mass of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>To iterate through multiple lists at the same time without indexing, use the <code>zip()</code> function.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gas_frac <span class="op">=</span> [<span class="fl">0.78084</span>, <span class="fl">0.209476</span>, <span class="fl">0.00934</span>, <span class="fl">0.0025</span>, <span class="fl">0.000314</span>]</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>gas_molar_mass <span class="op">=</span> [<span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">39.948</span>, <span class="fl">18.01528</span>, <span class="fl">44.01</span>]</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>mass_atmosphere <span class="op">=</span> <span class="fl">5.148e21</span>   <span class="co"># grams</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>n_a <span class="op">=</span> <span class="fl">6.022e23</span>    <span class="co"># Avogadro's number</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> frac,mol_mass <span class="kw">in</span> <span class="bu">zip</span>(gas_frac,gas_molar_mass):</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(molecules)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">1.7282458205744395e+44</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0590156271366957e+43</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.248215956743767e+41</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.302078013774973e+41</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.211859664621677e+40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gas_frac <span class="op">=</span> [<span class="fl">0.78084</span>, <span class="fl">0.209476</span>, <span class="fl">0.00934</span>, <span class="fl">0.0025</span>, <span class="fl">0.000314</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>gas_molar_mass <span class="op">=</span> [<span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">39.948</span>, <span class="fl">18.01528</span>, <span class="fl">44.01</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>mass_atmosphere <span class="op">=</span> <span class="fl">5.148e21</span>   <span class="co"># grams</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>n_a <span class="op">=</span> <span class="fl">6.022e23</span>    <span class="co"># Avogadro's number</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> frac,mol_mass <span class="kw">in</span> <span class="bu">zip</span>(gas_frac,gas_molar_mass):</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(molecules)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">1.7282458205744395e+44</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0590156271366957e+43</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.248215956743767e+41</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.302078013774973e+41</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.211859664621677e+40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>zip()</code> function is nearly always used when each element of one list corresponds to an element in the same index position in another list. Therefore, it should mostly be used with two or more lists of the same length. If the lists do not have the same length, however, the number of iterations of the <code>for</code> loop will match the length of the shortest list.</p>
-<div class="example">
-<p>✏️ Try it. As in the previous example, print the atomic masses of each of the six most abundant elements in formatted print statements, this time using <code>zip()</code> to iterate through both <code>org_elements</code> and <code>atomic_mass</code> at the same time</p>
-</div>
 <p>The <code>enumerate()</code> and <code>zip()</code> functions can also be used together, if necessary, to keep track of the index position of iterators.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,(frac,mol_mass) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(gas_frac,gas_molar_mass)):</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    gas <span class="op">=</span> gases[i]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'There are '</span> <span class="op">+</span> <span class="st">'</span><span class="sc">{:.2e}</span><span class="st">'</span>.<span class="bu">format</span>(molecules) <span class="op">+</span> <span class="st">' molecules of </span><span class="sc">%s</span><span class="st"> in the atmosphere.'</span> <span class="op">%</span> (gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,(frac,mol_mass) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(gas_frac,gas_molar_mass)):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    gas <span class="op">=</span> gases[i]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'There are '</span> <span class="op">+</span> <span class="st">'</span><span class="sc">{:.2e}</span><span class="st">'</span>.<span class="bu">format</span>(molecules) <span class="op">+</span> <span class="st">' molecules of </span><span class="sc">%s</span><span class="st"> in the atmosphere.'</span> <span class="op">%</span> (gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: -1pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> There are 1.73e+44 molecules of N2 in the atmosphere.
 </p>
@@ -535,79 +516,47 @@ There are 2.21e+40 molecules of CO2 in the atmosphere.
 <span style="color:black"> Nested <code>for</code> loops </span>
 </h4>
 <p>Like <code>if</code> statements, <code>for</code> loops can be nested to perform an operation multiple times for each iterator in the overall loop.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> aa <span class="kw">in</span> aminoacids:</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    vowels <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> aa:</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> letter <span class="kw">in</span> [<span class="st">'a'</span>, <span class="st">'e'</span>, <span class="st">'i'</span>, <span class="st">'o'</span>, <span class="st">'u'</span>]:</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            vowels <span class="op">=</span> vowels <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' has '</span> <span class="op">+</span> <span class="bu">str</span>(vowels) <span class="op">+</span> <span class="st">' vowels.'</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> Histidine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    Isoleucine has <span class="dv">6</span> vowels.</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    Leucine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    Lysine has <span class="dv">2</span> vowels.</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    Methionine has <span class="dv">5</span> vowels.</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    Phenylalanine has <span class="dv">5</span> vowels.</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    Threonine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    Tryptophan has <span class="dv">2</span> vowels.</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    Valine has <span class="dv">3</span> vowels.</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    Alanine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    Arginine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    Asparagine has <span class="dv">5</span> vowels.</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    Aspartate has <span class="dv">4</span> vowels.</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    Cysteine has <span class="dv">3</span> vowels.</span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    Glutamate has <span class="dv">4</span> vowels.</span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    Glutamine has <span class="dv">4</span> vowels.</span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    Glycine has <span class="dv">2</span> vowels.</span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    Proline has <span class="dv">3</span> vowels.</span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    Serine has <span class="dv">3</span> vowels.</span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    Tyrosine has <span class="dv">3</span> vowels.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 4. &lt;/b&gt; 
-The cell below contains four lists containing monthly global land-ocean surface temperature in °F for 2015, 2016, 2017, and 2018. Using  &lt;code&gt;enumerate()&lt;/code&gt;, &lt;code&gt;zip()&lt;/code&gt;, a nested &lt;code&gt;for&lt;/code&gt; loop, or some combination of the three:</code></pre>
-<ol class="alpha">
-<li>
-Calculate the monthly global land-ocean surface temperature anomalies (deviation from the mean) in °C for 2015-2018. The mean global land-ocean surface temperature calculated over the 20th century was 15.6°C.
-</li>
-<li>
-Create a new list with the mean monthly global surface temperature anomalies in °C for 2015-2018 (i.e.&nbsp;calculate the mean temperature anomaly for each month and put these values in a list). Use the command <code>np.mean()</code> to calculate mean values.
-</li>
-<li>
-Print each monthly mean value with the name of the month and units.
-</li>
-</ol>
-</div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy for mean calculations</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists of monthly global surface temperature in °F</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>tempF_2015 <span class="op">=</span> [<span class="fl">61.538</span>, <span class="fl">61.646</span>, <span class="fl">61.7</span>, <span class="fl">61.43</span>, <span class="fl">61.43</span>, <span class="fl">61.502</span>, <span class="fl">61.358</span>, <span class="fl">61.502</span>, <span class="fl">61.556</span>, <span class="fl">62.006</span>, <span class="fl">61.934</span>, <span class="fl">62.06</span>]</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>tempF_2016 <span class="op">=</span> [<span class="fl">62.15</span>, <span class="fl">62.51</span>, <span class="fl">62.438</span>, <span class="fl">62.006</span>, <span class="fl">61.718</span>, <span class="fl">61.466</span>, <span class="fl">61.556</span>, <span class="fl">61.88</span>, <span class="fl">61.664</span>, <span class="fl">61.7</span>, <span class="fl">61.718</span>, <span class="fl">61.574</span>]</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>tempF_2017 <span class="op">=</span> [<span class="fl">61.844</span>, <span class="fl">62.114</span>, <span class="fl">62.114</span>, <span class="fl">61.736</span>, <span class="fl">61.682</span>, <span class="fl">61.34</span>, <span class="fl">61.556</span>, <span class="fl">61.646</span>, <span class="fl">61.448</span>, <span class="fl">61.664</span>, <span class="fl">61.628</span>, <span class="fl">61.682</span>]</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>tempF_2018 <span class="op">=</span> [<span class="fl">61.466</span>, <span class="fl">61.61</span>, <span class="fl">61.718</span>, <span class="fl">61.646</span>, <span class="fl">61.538</span>, <span class="fl">61.412</span>, <span class="fl">61.484</span>, <span class="fl">61.394</span>, <span class="fl">61.448</span>, <span class="fl">61.862</span>, <span class="fl">61.484</span>, <span class="fl">61.682</span>]</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># List of yearly lists (may or may not be useful)</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>tempC_list <span class="op">=</span> [tempC_2015, tempC_2016, tempC_2017, tempC_2018]</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    vowels <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> aa:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> letter <span class="kw">in</span> [<span class="st">'a'</span>, <span class="st">'e'</span>, <span class="st">'i'</span>, <span class="st">'o'</span>, <span class="st">'u'</span>]:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            vowels <span class="op">=</span> vowels <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' has '</span> <span class="op">+</span> <span class="bu">str</span>(vowels) <span class="op">+</span> <span class="st">' vowels.'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> Histidine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    Isoleucine has <span class="dv">6</span> vowels.</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    Leucine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    Lysine has <span class="dv">2</span> vowels.</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    Methionine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    Phenylalanine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    Threonine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    Tryptophan has <span class="dv">2</span> vowels.</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    Valine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    Alanine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    Arginine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    Asparagine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    Aspartate has <span class="dv">4</span> vowels.</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    Cysteine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    Glutamate has <span class="dv">4</span> vowels.</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    Glutamine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    Glycine has <span class="dv">2</span> vowels.</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    Proline has <span class="dv">3</span> vowels.</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    Serine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    Tyrosine has <span class="dv">3</span> vowels.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 </section>
 <section id="while-loops" class="level3">
 <h3 class="anchored" data-anchor-id="while-loops"><code>while</code> loops</h3>
 <p><code>while</code> loops are used to repeatedly execute a block of code while a given condition is satisfied. The indented code block will be contiuously executed until the condition becomes <code>False</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>while</code> loops are often used for user input, which allows the program to “stall,” repeatedly prompting the user until an acceptable answer is input.</p>
 <div class="example">
 <p>✏️ Try it. Run the following cell to see how a <code>while</code> loop works, inputing various answers that do not satisfy the condition before inputing the value that will end the loop.</p>
@@ -615,26 +564,26 @@ Print each monthly mean value with the name of the month and units.
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a blank string variable</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>user_txt <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Wait for a specific answer, repeatedly asking for input until the condition is satisfied.</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> user_txt <span class="op">!=</span> <span class="st">"42"</span>:</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    user_txt <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a blank string variable</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>user_txt <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Wait for a specific answer, repeatedly asking for input until the condition is satisfied.</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> user_txt <span class="op">!=</span> <span class="st">"42"</span>:</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    user_txt <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="python">
 <pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; &lt;code&gt;while&lt;/code&gt; loops can be infinite, so they should be used very judiciously. For example, imagine if instead of &lt;code&gt;x = x + 1&lt;/code&gt; in the previous example, the code block executed in the &lt;code&gt;while&lt;/code&gt; loop were &lt;code&gt;x = x - 1&lt;/code&gt;:</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">2</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">3</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">4</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">5</span></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">6</span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># and so on</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">3</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">4</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">5</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">6</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># and so on</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This loop would never stop executing because the condition can never be met.</p>
 </div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
@@ -656,17 +605,17 @@ Print each monthly mean value with the name of the month and units.
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    option <span class="op">=</span> <span class="bu">input</span>(<span class="st">"   Your answer: "</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> option.isdigit():</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">int</span>(option) <span class="op">==</span> <span class="dv">42</span>:</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">'You have solved the ultimate question.'</span>)</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    option <span class="op">=</span> <span class="bu">input</span>(<span class="st">"   Your answer: "</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> option.isdigit():</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">int</span>(option) <span class="op">==</span> <span class="dv">42</span>:</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">'You have solved the ultimate question.'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><code>continue</code> statements are used to skip the remainder of the loop for a given iteration.</p>
@@ -682,13 +631,13 @@ Print each monthly mean value with the name of the month and units.
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">47</span>, <span class="fl">22.5342</span>, <span class="st">'four hundred eighty-two'</span>, <span class="dv">0</span>, <span class="dv">72104</span>, <span class="op">-</span><span class="fl">932.14</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">23</span>, <span class="st">'eleven'</span>]:</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check to see if value is a string</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(x) <span class="op">==</span> <span class="bu">str</span>:</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If so, skip to next iteration</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, divide by 2 and print</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x<span class="op">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">47</span>, <span class="fl">22.5342</span>, <span class="st">'four hundred eighty-two'</span>, <span class="dv">0</span>, <span class="dv">72104</span>, <span class="op">-</span><span class="fl">932.14</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">23</span>, <span class="st">'eleven'</span>]:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check to see if value is a string</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(x) <span class="op">==</span> <span class="bu">str</span>:</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If so, skip to next iteration</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, divide by 2 and print</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x<span class="op">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
@@ -698,46 +647,44 @@ Print each monthly mean value with the name of the month and units.
 <h3 class="anchored" data-anchor-id="list-comprehensions">List comprehensions</h3>
 <p>A list comprehension is a quick, concise way to generate a list. They are generally used to condense the generation of a list from a simple expression into one line of code.</p>
 <p>For example, say you wanted a list of all the squares from 0 and 100. As we learned in Exercise 1.2, this could be accomplished as follows:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using a list comprehension, the same list could be generated in a single line of code as follows:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)]</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>List comprehensions are often combined with <code>if</code> statements. For example, the following line of code creates a list of all even numbers from 0 to 100.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>) <span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> evens <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">20</span>, </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">36</span>, <span class="dv">38</span>, <span class="dv">40</span>,</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">58</span>, <span class="dv">60</span>, </span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">62</span>, <span class="dv">64</span>, <span class="dv">66</span>, <span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">72</span>, <span class="dv">74</span>, <span class="dv">76</span>, <span class="dv">78</span>, <span class="dv">80</span>, </span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">82</span>, <span class="dv">84</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">94</span>, <span class="dv">96</span>, <span class="dv">98</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 5. &lt;/b&gt; 
-Use a list comprehension to generate a list of all even squares from 0 to 1000.</code></pre>
-</div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>) <span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> evens <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">20</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">36</span>, <span class="dv">38</span>, <span class="dv">40</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">58</span>, <span class="dv">60</span>, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">62</span>, <span class="dv">64</span>, <span class="dv">66</span>, <span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">72</span>, <span class="dv">74</span>, <span class="dv">76</span>, <span class="dv">78</span>, <span class="dv">80</span>, </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">82</span>, <span class="dv">84</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">94</span>, <span class="dv">96</span>, <span class="dv">98</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<p>✏️ Try it. Change the code above to create a list of all even squares from 0 to 100.</p>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
 
-</section>
+</div></section>
 </section>
 
 </main> <!-- /main -->

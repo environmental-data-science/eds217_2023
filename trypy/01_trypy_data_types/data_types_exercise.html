@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Create a repo on GitHub named <code>eds217-trypy-02</code></li>
 <li>Clone to create a version-controlled project</li>
 <li>Create some subfolder infrastructure (docs, data)</li>
-<li>Create a <del>new quarto in RStudio</del> new <code>.ipynb</code> file called <code>eds-217-trypy-02.ipynb</code> in VSCode. If working on your local machine, make sure to associate the notebook with the <code>eds-217</code> environment.</li>
+<li>Create a <del>new quarto in RStudio</del> new <code>.ipynb</code> file called <code>eds217-trypy-02.ipynb</code> in VSCode. If working on your local machine, make sure to associate the notebook with the <code>eds217_2023</code> environment.</li>
 </ul>
 </section>
 <section id="part-1.-checking-data-types" class="level2">
@@ -138,6 +138,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Access the 5th through 7th elements and store as <code>vec_1_e5to7</code></li>
 <li>Reassign each element in <code>vec_1</code> as a string and store the new list as <code>vec_1_char</code>. What does the output look like?</li>
 </ul>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;
+['2', '5', '9', '10', '8', '12', '1', '0']</code></pre>
+</div>
+</div>
 <ol start="2" type="1">
 <li>Create a dictionary called <code>dict_1</code></li>
 </ol>
@@ -157,6 +163,11 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Find the maximum value of the <code>count</code> column, store as <code>max_count</code></li>
 </ul>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>36</code></pre>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -165,8 +176,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="set-up" class="level4">
 <h4 class="anchored" data-anchor-id="set-up">Set-up</h4>
 <ul>
-<li><p>The <em>first CSV</em> listed (<code>AS00601.csv</code>) has been , and take a look at it (outside of R is fine as a first step, e.g.&nbsp;you can open the CSV in Excel)</p></li>
-<li><p>Save the <code>AS00601.csv</code> in the <code>data</code> folder of your <code>eds-217</code> repo.</p></li>
+<li><p>The <em>first CSV</em> listed (<code>AS00601.csv</code>) take a look at it (outside of python is fine as a first step, e.g.&nbsp;you can open the CSV in Excel.)</p></li>
+<li><p>Save the <code>AS00601.csv</code> in the <code>data</code> folder of your repo.</p></li>
 </ul>
 </section>
 <section id="read-in-the-data" class="level4">
@@ -192,15 +203,26 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Create a subset that only contains observations for Pacific Giant Salamanders (species <em>Dicamptodon tenebrosus</em>, stored in <code>SPECIES</code> as <code>DITE</code>). Store the subset as <code>mc_salamanders</code>.</li>
 </ul>
-<p><em>Hint:</em> use logical operator to filter for the rows you want.</p>
+<p><em>Hint:</em> use a logical operator to filter for the rows you want.</p>
 <p>For example, the following code block creates a new dataframe <code>df_new</code> containing only the rows in <code>df_old</code> where the value of column named <code>ID</code> is equal to <code>Batman</code>.</p>
 <pre class="{python}"><code>    df_new = df_old[df_old['ID'] == 'Batman']</code></pre>
 </section>
 <section id="make-a-scatterplot-of-salamander-length-x-weight" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-scatterplot-of-salamander-length-x-weight">Make a scatterplot of salamander length x weight</h4>
 <ul>
-<li><p>Create a scatterplot of LENGTH1 (snout-vent length in millimeters) versus WEIGHT (grams) for all salamanders in the subset you created above, <code>mc_salamanders</code>. Update axis labels, title, subtitle, and add a caption with the data source. Customize point color and size, possibly opacity, and theme.</p></li>
-<li><p>Export your scatterplot as <code>salamander_size.png</code> to your figs folder using the <code>fig.savefig()</code> command.</p></li>
+<li>Create a scatterplot of LENGTH1 (snout-vent length in millimeters) versus WEIGHT (grams) for all salamanders in the subset you created above, <code>mc_salamanders</code>. Update axis labels, title, subtitle, and add a caption with the data source. Customize point color and size, possibly opacity, and the style.</li>
+</ul>
+<div class="cell" data-execution_count="41">
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kellycaylor/mambaforge/envs/eds217_2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="data_types_exercise_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>Export your scatterplot as <code>salamander_size.png</code> to your figs folder using the <code>fig.savefig()</code> command.</li>
 </ul>
 </section>
 <section id="make-a-cutthroat-plot" class="level4">
@@ -208,14 +230,37 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Similar to above, make a subset called <code>mc_trout</code> that only contains observations for cutthroat trout (species “ONCL”)</li>
 </ul>
-<p><em>Note:</em> In the following, it is <em>way</em> easier to make use the <a href="https://seaborn.pydata.org/tutorial/relational.html#showing-multiple-relationships-with-facets">sns.relplot()</a> command in the <code>seaborn</code> library than matplotlib</p>
+<p><em>Note:</em> In the following, it is <em>way</em> easier to make use of the <a href="https://seaborn.pydata.org/tutorial/relational.html#showing-multiple-relationships-with-facets">sns.relplot()</a> command in the <code>seaborn</code> library than matplotlib</p>
 <ul>
 <li>Create a scatterplot of <code>"LENGHTH1"</code> by <code>"WEIGHT"</code> for all trout in the dataset</li>
-<li>Customize so that the point color depends on <em>reach</em></li>
-<li>Facet your plot by creek reach (<code>col="REACH"</code> in <code>sns.relplot()</code>)</li>
-<li>Update graph axis labels and title (<code>fig.set(xlabel="string",ylabel="string")</code>)</li>
+<li>Customize so that the point color depends on <em>reach</em>
+<ul>
+<li><code>hue="REACH"</code> in <code>sns.relplot()</code></li>
+</ul></li>
+<li>Facet your plot by creek reach
+<ul>
+<li><code>col="REACH"</code> in <code>sns.relplot()</code></li>
+</ul></li>
+<li>store the output of <code>sns.relplot()</code> as <code>ax</code></li>
+<li>Update facet plot axis labels and title
+<ul>
+<li><code>ax.set_axis_labels(xlabel,ylabel)</code></li>
+<li><code>ax.fig.suptitle(title)</code></li>
+</ul></li>
 <li>Export your graph as <code>cutthroat_size.png</code> to the <code>figs</code> folder (<code>fig.savefig()</code>)</li>
 </ul>
+<div class="cell" data-execution_count="37">
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kellycaylor/mambaforge/envs/eds217_2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="data_types_exercise_files/figure-html/cell-11-output-3.png" class="img-fluid"></p>
+</div>
+</div>
 
 
 </section>

@@ -92,6 +92,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -217,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="high-level-languages">High-level languages</h3>
 <p>(Python, C, C++, Java, Javascript, R, Pascal) - Take less time to write - Shorter and easier to read - Portable, meaning that they can run on different kinds of computers with few or no modifications.</p>
 <p>The engine that translates and runs Python is called the <em>Python Interpreter</em></p>
-<div class="cell" data-cell_style="split" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="4">
+<div class="cell" data-cell_style="split" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" </span></span>
@@ -233,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [from this notebook cell]</code></pre>
 </div>
 </div>
-<div class="cell" data-cell_style="split" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="5">
+<div class="cell" data-cell_style="split" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
@@ -296,12 +299,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In general, R is better for initial exploratory analyses, statistical analyses, and data visualization.</p>
 <p>In general, Python is better for working with APIs, writing maintainable, production-ready code, working with a diverse array of data, and building machine learning or AI workflows.</p>
 <p>Both languages can <em>do</em> anything. Most data science teams use both languages. (and others too.. Matlab, Javascript, Go, Fortran, etc…)</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.lib.display <span class="im">import</span> YouTubeVideo</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>YouTubeVideo(<span class="st">'MkNnAwkvvP8'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+        <iframe width="400" height="300" src="https://www.youtube.com/embed/MkNnAwkvvP8" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
 </div>
 <section id="language-usage-by-data-scientists" class="level3">
 <h3 class="anchored" data-anchor-id="language-usage-by-data-scientists">Language Usage by Data Scientists</h3>
@@ -313,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="what-about-2022-data">What about 2022 data?</h2>
 <p>The data are <a href="https://anaconda.cloud/sods-2022-data-download">available here</a>…</p>
 <p>Let’s do some python data science!</p>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, we need to gather our tools</span></span>
@@ -324,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io <span class="co"># This package is good at handling input/output streams</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here's the url for the 2022 data that we just looked at:</span></span>
@@ -337,21 +345,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A 200 response code means our request was successful:</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
-<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the response into a dataframe, using the io.StringIO function to feed the response.txt.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, skip the first three rows</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(response.text), skiprows<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Our very first dataframe!</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df.head()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Jupyter notebook cells only output the last value requested...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the response into a dataframe, using the io.StringIO function to feed the response.txt.</span></span>
@@ -361,142 +359,329 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Our very first dataframe!</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df.head()</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Jupyter notebook cells only output the last value... unless you use print commands!</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of survey responses: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of survey questions: </span><span class="sc">{</span><span class="bu">len</span>(df.columns)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Jupyter notebook cells only output the last value requested...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">In which country is your primary residence?</th>
+<th data-quarto-table-cell-role="th">Which of the following age groups best describes you?</th>
+<th data-quarto-table-cell-role="th">What is the highest level of education you've achieved?</th>
+<th data-quarto-table-cell-role="th">Gender: How do you identify? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">The organization I work for is best classified as a:</th>
+<th data-quarto-table-cell-role="th">What is your primary role? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">For how many years have you been in your current role?</th>
+<th data-quarto-table-cell-role="th">What position did you hold prior to this? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">How would you rate your job satisfaction in your current role?</th>
+<th data-quarto-table-cell-role="th">What would cause you to leave your current employer for a new job? Please select the top option besides pay/benefits. - Selected Choice</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">What should an AutoML tool do for data scientists? Please drag answers to rank from most important to least important. (1=most important) - Help choose the best model types to solve specific problems</th>
+<th data-quarto-table-cell-role="th">What should an AutoML tool do for data scientists? Please drag answers to rank from most important to least important. (1=most important) - Speed up the ML pipeline by automating certain workflows (data cleaning, etc.)</th>
+<th data-quarto-table-cell-role="th">What should an AutoML tool do for data scientists? Please drag answers to rank from most important to least important. (1=most important) - Tune the model once performance (such as accuracy, etc.) starts to degrade</th>
+<th data-quarto-table-cell-role="th">What should an AutoML tool do for data scientists? Please drag answers to rank from most important to least important. (1=most important) - Other (please indicate)</th>
+<th data-quarto-table-cell-role="th">What do you think is the biggest problem in the data science/AI/ML space today? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">What tools and resources do you feel are lacking for data scientists who want to learn and develop their skills? (Select all that apply). - Selected Choice</th>
+<th data-quarto-table-cell-role="th">How do you typically learn about new tools and topics relevant to your role? (Select all that apply). - Selected Choice</th>
+<th data-quarto-table-cell-role="th">What are you most hoping to see from the data science industry this year? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">What do you believe is the biggest challenge in the open-source community today? - Selected Choice</th>
+<th data-quarto-table-cell-role="th">Have supply chain disruption problems, such as the ongoing chip shortage, impacted your access to computing resources?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>United States</td>
+<td>26-41</td>
+<td>Doctoral degree</td>
+<td>Male</td>
+<td>Educational institution</td>
+<td>Data Scientist</td>
+<td>1-2 years</td>
+<td>Data Scientist</td>
+<td>Very satisfied</td>
+<td>More flexibility with my work hours</td>
+<td>...</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>6.0</td>
+<td>A reduction in job opportunities caused by aut...</td>
+<td>Hands-on projects,Mentorship opportunities</td>
+<td>Reading technical books, blogs, newsletters, a...</td>
+<td>Further innovation in the open-source data sci...</td>
+<td>Undermanagement</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>United States</td>
+<td>42-57</td>
+<td>Doctoral degree</td>
+<td>Male</td>
+<td>Commercial (for-profit) entity</td>
+<td>Product Manager</td>
+<td>5-6 years</td>
+<td>NaN</td>
+<td>Very satisfied</td>
+<td>More responsibility/opportunity for career adv...</td>
+<td>...</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>6.0</td>
+<td>Social impacts from bias in data and models</td>
+<td>Tailored learning paths</td>
+<td>Free video content (e.g. YouTube)</td>
+<td>More specialized data science hardware</td>
+<td>Public trust</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>India</td>
+<td>18-25</td>
+<td>Bachelor's degree</td>
+<td>Female</td>
+<td>Educational institution</td>
+<td>Data Scientist</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>6.0</td>
+<td>A reduction in job opportunities caused by aut...</td>
+<td>Hands-on projects,Mentorship opportunities</td>
+<td>Reading technical books, blogs, newsletters, a...</td>
+<td>Further innovation in the open-source data sci...</td>
+<td>Undermanagement</td>
+<td>I'm not sure</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>United States</td>
+<td>42-57</td>
+<td>Bachelor's degree</td>
+<td>Male</td>
+<td>Commercial (for-profit) entity</td>
+<td>Professor/Instructor/Researcher</td>
+<td>10+ years</td>
+<td>NaN</td>
+<td>Moderately satisfied</td>
+<td>More responsibility/opportunity for career adv...</td>
+<td>...</td>
+<td>1.0</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>6.0</td>
+<td>Social impacts from bias in data and models</td>
+<td>Hands-on projects</td>
+<td>Reading technical books, blogs, newsletters, a...</td>
+<td>New optimized models that allow for more compl...</td>
+<td>Talent shortage</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Singapore</td>
+<td>18-25</td>
+<td>High School or equivalent</td>
+<td>Male</td>
+<td>NaN</td>
+<td>Student</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>6.0</td>
+<td>Social impacts from bias in data and models</td>
+<td>Community engagement and learning platforms,Ta...</td>
+<td>Reading technical books, blogs, newsletters, a...</td>
+<td>Further innovation in the open-source data sci...</td>
+<td>Undermanagement</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 120 columns</p>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+</div>
+</div>
+<div class="cell" data-scrolled="true" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="7">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Filter the dataframe to only the questions about programming language usage, and </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'How often do you use the following languages?'</span>).copy() <span class="co"># Use copy to force python to make a new copy of the data, not just a reference to a subset.</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Rename the columns to just be the programming languages, without the question preamble</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>filtered_df.rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.split(<span class="st">'-'</span>)[<span class="op">-</span><span class="dv">1</span>].strip() <span class="cf">if</span> <span class="st">'-'</span> <span class="kw">in</span> x <span class="cf">else</span> x, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the response into a dataframe, using the io.StringIO function to feed the response.txt.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, skip the first three rows</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(response.text), skiprows<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Our very first dataframe!</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Jupyter notebook cells only output the last value... unless you use print commands!</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of survey responses: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of survey questions: </span><span class="sc">{</span><span class="bu">len</span>(df.columns)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of survey responses: 3493
+Number of survey questions: 120</code></pre>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="8">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of each response for each language</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>percentage_df <span class="op">=</span> filtered_df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.value_counts(normalize<span class="op">=</span><span class="va">True</span>).fillna(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span>).transpose()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the last row, which is the "Other" category</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>percentage_df <span class="op">=</span> percentage_df[:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the DataFrame based on the 'Always' responses</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>sorted_percentage_df <span class="op">=</span> percentage_df.sort_values(by<span class="op">=</span><span class="st">'Always'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's get ready to plot the 2022 data...</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Filter the dataframe to only the questions about programming language usage, and </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> df.<span class="bu">filter</span>(like<span class="op">=</span><span class="st">'How often do you use the following languages?'</span>).copy() <span class="co"># Use copy to force python to make a new copy of the data, not just a reference to a subset.</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We are going to use the display command to update our figure over multiple cells. </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This usually isn't necessary, but it's helpful here to see how each set of commands updates the figure</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the custom order for plotting</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> [<span class="st">'Always'</span>, <span class="st">'Frequently'</span>, <span class="st">'Sometimes'</span>, <span class="st">'Rarely'</span>, <span class="st">'Never'</span>]</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Always'</span>: (<span class="dv">8</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">40</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">81</span><span class="op">/</span><span class="dv">255</span>),       <span class="co"># Replace R1, G1, B1 with the RGB values for 'Dark Blue'</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Frequently'</span>: (<span class="dv">12</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">96</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">152</span><span class="op">/</span><span class="dv">255</span>),   <span class="co"># Replace R2, G2, B2 with the RGB values for 'Light Ocean Blue'</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sometimes'</span>: (<span class="dv">16</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">146</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">136</span><span class="op">/</span><span class="dv">255</span>),    <span class="co"># and so on...</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Rarely'</span>: (<span class="dv">11</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">88</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">73</span><span class="op">/</span><span class="dv">255</span>),</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Never'</span>: (<span class="dv">52</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">163</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">32</span><span class="op">/</span><span class="dv">255</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Rename the columns to just be the programming languages, without the question preamble</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>filtered_df.rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.split(<span class="st">'-'</span>)[<span class="op">-</span><span class="dv">1</span>].strip() <span class="cf">if</span> <span class="st">'-'</span> <span class="kw">in</span> x <span class="cf">else</span> x, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sorted_percentage_df[order].plot(kind<span class="op">=</span><span class="st">'barh'</span>, stacked<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax, color<span class="op">=</span>[colors[label] <span class="cf">for</span> label <span class="kw">in</span> order])</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Percentage'</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Frequency of Language Usage, 2022'</span>,y<span class="op">=</span><span class="fl">1.05</span>)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of each response for each language</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>percentage_df <span class="op">=</span> filtered_df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.value_counts(normalize<span class="op">=</span><span class="va">True</span>).fillna(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span>).transpose()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the last row, which is the "Other" category</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>percentage_df <span class="op">=</span> percentage_df[:<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># This command draws our figure. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the DataFrame based on the 'Always' responses</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>sorted_percentage_df <span class="op">=</span> percentage_df.sort_values(by<span class="op">=</span><span class="st">'Always'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="10">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels across the top, like in the original graph</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the patches for the top-most bar</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>num_languages <span class="op">=</span> <span class="bu">len</span>(sorted_percentage_df)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>patches <span class="op">=</span> ax.patches[num_languages<span class="op">-</span><span class="dv">1</span>::num_languages]</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the cumulative width of the patches for the top-most bar</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>cumulative_widths <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="bu">len</span>(order)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>widths <span class="op">=</span> [patch.get_width() <span class="cf">for</span> patch <span class="kw">in</span> patches]</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, width <span class="kw">in</span> <span class="bu">enumerate</span>(widths):</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    cumulative_widths[i] <span class="op">=</span> width <span class="op">+</span> (cumulative_widths[i<span class="op">-</span><span class="dv">1</span>] <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add text labels above the bars</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (width, label) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(cumulative_widths, order)):</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the color of the current bar segment</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the position for the text label</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    position <span class="op">=</span> width <span class="op">-</span> (patches[i].get_width() <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the text label to the plot</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adjust the y-coordinate for the text label</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    y_position <span class="op">=</span> <span class="bu">len</span>(sorted_percentage_df) <span class="op">-</span> <span class="fl">0.3</span>  <span class="co"># Adjust the 0.3 value as needed</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    ax.text(position, y_position, label, ha<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span>colors[label], fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the legend</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>ax.legend().set_visible(<span class="va">False</span>)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># This command shows our updated figure (we can't re-use "plt.show()")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's get ready to plot the 2022 data...</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We are going to use the display command to update our figure over multiple cells. </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This usually isn't necessary, but it's helpful here to see how each set of commands updates the figure</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the custom order for plotting</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> [<span class="st">'Always'</span>, <span class="st">'Frequently'</span>, <span class="st">'Sometimes'</span>, <span class="st">'Rarely'</span>, <span class="st">'Never'</span>]</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Always'</span>: (<span class="dv">8</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">40</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">81</span><span class="op">/</span><span class="dv">255</span>),       <span class="co"># Replace R1, G1, B1 with the RGB values for 'Dark Blue'</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Frequently'</span>: (<span class="dv">12</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">96</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">152</span><span class="op">/</span><span class="dv">255</span>),   <span class="co"># Replace R2, G2, B2 with the RGB values for 'Light Ocean Blue'</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sometimes'</span>: (<span class="dv">16</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">146</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">136</span><span class="op">/</span><span class="dv">255</span>),    <span class="co"># and so on...</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Rarely'</span>: (<span class="dv">11</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">88</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">73</span><span class="op">/</span><span class="dv">255</span>),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Never'</span>: (<span class="dv">52</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">163</span><span class="op">/</span><span class="dv">255</span>, <span class="dv">32</span><span class="op">/</span><span class="dv">255</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="11">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add percentage values inside each patch</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> patch <span class="kw">in</span> ax.patches:</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the width and height of the patch</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    width, height <span class="op">=</span> patch.get_width(), patch.get_height()</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the position for the text label</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> patch.get_x() <span class="op">+</span> width <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> patch.get_y() <span class="op">+</span> height <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the percentage value for the current patch</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    percentage <span class="op">=</span> <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">%"</span>.<span class="bu">format</span>(width)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the text label to the plot</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    ax.text(x, y, percentage, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># Let's see those nice text labels!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sorted_percentage_df[order].plot(kind<span class="op">=</span><span class="st">'barh'</span>, stacked<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax, color<span class="op">=</span>[colors[label] <span class="cf">for</span> label <span class="kw">in</span> order])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Percentage'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Frequency of Language Usage, 2022'</span>,y<span class="op">=</span><span class="fl">1.05</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># This command draws our figure. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<p><img src="00_Intro_to_Python_Slides_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}">
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up the figure to remove spines and unecessary labels/ticks, etc..</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels across the top, like in the original graph</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove x-axis label</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">''</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the patches for the top-most bar</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>num_languages <span class="op">=</span> <span class="bu">len</span>(sorted_percentage_df)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the spines</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'bottom'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the y-axis tick marks</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, which<span class="op">=</span><span class="st">'both'</span>, length<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the x-axis tick marks and labels</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, which<span class="op">=</span><span class="st">'both'</span>, bottom<span class="op">=</span><span class="va">False</span>, top<span class="op">=</span><span class="va">False</span>, labelbottom<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># Now 100% less visually cluttered!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>patches <span class="op">=</span> ax.patches[num_languages<span class="op">-</span><span class="dv">1</span>::num_languages]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the cumulative width of the patches for the top-most bar</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>cumulative_widths <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="bu">len</span>(order)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>widths <span class="op">=</span> [patch.get_width() <span class="cf">for</span> patch <span class="kw">in</span> patches]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, width <span class="kw">in</span> <span class="bu">enumerate</span>(widths):</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    cumulative_widths[i] <span class="op">=</span> width <span class="op">+</span> (cumulative_widths[i<span class="op">-</span><span class="dv">1</span>] <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add text labels above the bars</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (width, label) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(cumulative_widths, order)):</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the color of the current bar segment</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the position for the text label</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    position <span class="op">=</span> width <span class="op">-</span> (patches[i].get_width() <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the text label to the plot</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adjust the y-coordinate for the text label</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    y_position <span class="op">=</span> <span class="bu">len</span>(sorted_percentage_df) <span class="op">-</span> <span class="fl">0.3</span>  <span class="co"># Adjust the 0.3 value as needed</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    ax.text(position, y_position, label, ha<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span>colors[label], fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the legend</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>ax.legend().set_visible(<span class="va">False</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># This command shows our updated figure (we can't re-use "plt.show()")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<p><img src="00_Intro_to_Python_Slides_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add percentage values inside each patch</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> patch <span class="kw">in</span> ax.patches:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the width and height of the patch</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    width, height <span class="op">=</span> patch.get_width(), patch.get_height()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the position for the text label</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> patch.get_x() <span class="op">+</span> width <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> patch.get_y() <span class="op">+</span> height <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the percentage value for the current patch</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    percentage <span class="op">=</span> <span class="st">"</span><span class="sc">{:.0f}</span><span class="st">%"</span>.<span class="bu">format</span>(width)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the text label to the plot</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    ax.text(x, y, percentage, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># Let's see those nice text labels!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="00_Intro_to_Python_Slides_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="14">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean up the figure to remove spines and unecessary labels/ticks, etc..</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove x-axis label</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">''</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the spines</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'bottom'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the y-axis tick marks</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, which<span class="op">=</span><span class="st">'both'</span>, length<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the x-axis tick marks and labels</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, which<span class="op">=</span><span class="st">'both'</span>, bottom<span class="op">=</span><span class="va">False</span>, top<span class="op">=</span><span class="va">False</span>, labelbottom<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>display(fig) <span class="co"># Now 100% less visually cluttered!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="00_Intro_to_Python_Slides_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
 </section>

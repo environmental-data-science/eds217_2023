@@ -93,10 +93,18 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#python-for-environmental-data-science" id="toc-python-for-environmental-data-science" class="nav-link active" data-scroll-target="#python-for-environmental-data-science">Python for Environmental Data Science</a>
   <ul class="collapse">
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a></li>
+  </ul></li>
+  <li><a href="#course-activities" id="toc-course-activities" class="nav-link" data-scroll-target="#course-activities">Course Activities</a>
+  <ul class="collapse">
+  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures">Lectures</a></li>
+  <li><a href="#interactive-sessions" id="toc-interactive-sessions" class="nav-link" data-scroll-target="#interactive-sessions">Interactive Sessions</a></li>
+  <li><a href="#practice-sessions" id="toc-practice-sessions" class="nav-link" data-scroll-target="#practice-sessions">Practice Sessions</a></li>
+  <li><a href="#trypy-sessions" id="toc-trypy-sessions" class="nav-link" data-scroll-target="#trypy-sessions">TryPy Sessions</a></li>
+  <li><a href="#group-work" id="toc-group-work" class="nav-link" data-scroll-target="#group-work">Group Work</a></li>
   <li><a href="#course-outline" id="toc-course-outline" class="nav-link" data-scroll-target="#course-outline">Course Outline</a>
   <ul class="collapse">
-  <li><a href="#new-for-week-2-trypy" id="toc-new-for-week-2-trypy" class="nav-link" data-scroll-target="#new-for-week-2-trypy">New For Week 2: TryPy</a></li>
-  <li><a href="#day-1---introduction-to-python" id="toc-day-1---introduction-to-python" class="nav-link" data-scroll-target="#day-1---introduction-to-python">Day 1 - Introduction to Python</a></li>
+  <li><a href="#trypy" id="toc-trypy" class="nav-link" data-scroll-target="#trypy">TryPy</a></li>
+  <li><a href="#day-1---ready-set-python" id="toc-day-1---ready-set-python" class="nav-link" data-scroll-target="#day-1---ready-set-python">Day 1 - Ready, Set, Python</a></li>
   <li><a href="#day-2---introduction-to-python" id="toc-day-2---introduction-to-python" class="nav-link" data-scroll-target="#day-2---introduction-to-python">Day 2 - Introduction to Python</a></li>
   <li><a href="#day-3---introduction-to-python" id="toc-day-3---introduction-to-python" class="nav-link" data-scroll-target="#day-3---introduction-to-python">Day 3 - Introduction to Python</a></li>
   <li><a href="#day-4---numpy" id="toc-day-4---numpy" class="nav-link" data-scroll-target="#day-4---numpy">Day 4 - Numpy 🧮</a></li>
@@ -145,38 +153,76 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">code_screen.jpg</figcaption>
 </figure>
 </div>
-<p>These notebooks provide an introduction to the Python programming language, the major libraries associated with the python data science stack, and opportunities to explore applications of python to environmental data science via analysis of rainfall variability, the development of stochastic models for daily rainfall in tropical drylands, investigation of water balance, and landscape energy balance.</p>
-<p>The content in this module is more than possibly be done in a two-week course, but it is designed to allow students from any background to work through the material at their own pace.</p>
-<p>The module assumes no prior experience with python, pandas, or jupyter notebooks. Where relevant, links to external resources, course presentations, and relevant XKCD comics are provided.</p>
+<p>These class provides an introduction to the Python programming language, the major libraries associated with the python data science stack, and opportunities to explore applications of python to environmental data science via analysis of datasets.</p>
+<p>The module assumes no prior experience with python or jupyter notebooks.</p>
 <section id="learning-goals" class="level2">
 <h2 class="anchored" data-anchor-id="learning-goals">Learning Goals</h2>
-<p>(what you will be able to do) - Read and write basic-to-intermediate scripts and programs in the Python programming language - Conduct reproducible analyses within interactive jupyter notebook environments - Perform analyses on structured data using numpy - Load, aggregate, analyze, and display data using pandas - Learn basics of matplotlib for plotting data. - Use scipy functions to develop fits of distributions to empirical data - Apply all of these tools to analyze environmental datasets - Develop a short tutorial on how to use a python data science library for environmental analysis<span class="math inline">^*</span></p>
+<p>(what you will be able to do) - Setup a python environment for data science using <code>conda</code>. - Conduct reproducible analyses within interactive <code>jupyter</code> notebook environments - Use the <code>VSCode</code> IDE to write and execute python notebooks as well as scripts. - Read and write basic-to-intermediate scripts and programs in the Python programming language - Perform analyses on structured data using <code>numpy</code> - Load, explore, aggregate, analyze, and display data using <code>pandas</code>. - Learn to visualize data using <code>matplotlib</code> and friends. - Use <code>scipy</code> functions to develop fits of distributions to empirical data - Apply all of these tools to analyze environmental datasets - Develop a short tutorial on how to use a python data science library for environmental analysis <span class="math inline">^*</span></p>
 <p><span class="math inline">^*</span> Final group presentation</p>
+</section>
+</section>
+<section id="course-activities" class="level1">
+<h1>Course Activities</h1>
+<p>Our time together will be spent in a combination of lecture, interactive sessions, excercises, and group work.</p>
+<section id="lectures" class="level2">
+<h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
+<p><a href="./lectures/lectures.html">Lectures</a> will be used to introduce general concepts and principles of the python language. We won’t have too many of these, but they will be used to introduce new concepts and provide context for the interactive sessions.</p>
+</section>
+<section id="interactive-sessions" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-sessions">Interactive Sessions</h2>
+<p><a href="./interactive_sessions/interactive_sessions.html">Interactive sessions</a> will be used to demonstrate the use of python syntax, libraries, and other tools essential to the environmental data science workflow. These sessions will generally be conducted in jupyter notebooks, and will be available for you to download and use as a reference. We will also use these sessions to work through example code and computations related to the major course topics.</p>
+</section>
+<section id="practice-sessions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-sessions">Practice Sessions</h2>
+<p><a href="practice_sessions/practice_sessions.ipynb">Practice sessions</a> will be used to provide opportunities to using the concepts, tools, and libraries presented during interactive sessions to solve more open-ended programming problems. While the goal is to develop independent confidence in python programming, we will work through these problems in paired/collaborative coding. Example solutions to these practice problems will always be available.</p>
+</section>
+<section id="trypy-sessions" class="level2">
+<h2 class="anchored" data-anchor-id="trypy-sessions">TryPy Sessions</h2>
+<p><a href="./trypy/TryPy.html">TryPy sessions</a> are designed to allow you to develop your own reproducible workflows based on core data science principles. We will often structure these sessions in a similar way to prior activities from <code>EDS221</code>. This will allow you to get a better understanding of the differences between <code>python</code> and <code>R</code> as well as the strengths and weaknesses of each.</p>
+</section>
+<section id="group-work" class="level2">
+<h2 class="anchored" data-anchor-id="group-work">Group Work</h2>
+<p>Your <a href="group_project/Python Data Science Show-and-Tell.ipynb">group project</a> is a “Data Science Show-and-Tell” that will extend the skills you develop during the first week of the course through the creation of collaborative presentations focused on datasets and libraries of your choosing. Working in teams, you will develop a short, reproducible tutorial on how to use a python data science library with examples using datasets relevant to environmental analysis. These tutorials will be presented to the class during the final week of the course and shared with the class via a github repository.</p>
 </section>
 <section id="course-outline" class="level2">
 <h2 class="anchored" data-anchor-id="course-outline">Course Outline</h2>
-<section id="new-for-week-2-trypy" class="level3">
-<h3 class="anchored" data-anchor-id="new-for-week-2-trypy">New For Week 2: TryPy</h3>
+<section id="trypy" class="level3">
+<h3 class="anchored" data-anchor-id="trypy">TryPy</h3>
 <p>To create more open-ended opportunities for you to apply your python skills, We’ve ported over some exercises from EDS221. They are <em>essentially</em> the same, but now you will work on solving the problems using Python instead of R.</p>
 <section id="trypy-exercises" class="level4">
-<h4 class="anchored" data-anchor-id="trypy-exercises"><a href="TryPy/TryPy.html">TryPy Exercises</a></h4>
+<h4 class="anchored" data-anchor-id="trypy-exercises"><a href="./trypy/TryPy.html">TryPy Exercises</a></h4>
 </section>
 </section>
-<section id="day-1---introduction-to-python" class="level3">
-<h3 class="anchored" data-anchor-id="day-1---introduction-to-python">Day 1 - Introduction to Python</h3>
-<p>The materials for Day 1 are designed to introduce the basics of working with Python.</p>
+<section id="day-1---ready-set-python" class="level3">
+<h3 class="anchored" data-anchor-id="day-1---ready-set-python">Day 1 - Ready, Set, Python</h3>
+<p>The materials for Day 1 are designed to introduce the basics of working with Python and getting your local machines setup for the course.</p>
+<section id="morning-session" class="level4">
+<h4 class="anchored" data-anchor-id="morning-session">Morning Session</h4>
 <p><a href="./lectures/00_Intro_to_Python_Slides.html">Intro to Python Data Science</a></p>
-<p><a href="./lectures/01_The_Zen_of_Python.html">The Zen of Python</a></p>
+<p><a href="./interactive_sessions/00_ready_set_python.html">Interactive Session 00 - Ready, set, python</a></p>
+</section>
+<section id="afternoon-session" class="level4">
+<h4 class="anchored" data-anchor-id="afternoon-session">Afternoon Session</h4>
 <p><a href="./exercises/Exercise1-0_HelloWorld.html">Exercise 1-0 - Hello World</a></p>
-<p><a href="./exercises/Exercise1-1_Variables.html">Exercise 1-1 - Variables &amp; Operators</a></p>
+<p><a href="./interactive_sessions/01_hello_data_science.html">Interactive Session 01 - Hello, Python Data Science</a></p>
+</section>
 </section>
 <section id="day-2---introduction-to-python" class="level3">
 <h3 class="anchored" data-anchor-id="day-2---introduction-to-python">Day 2 - Introduction to Python</h3>
 <p>On Day 2, we will explore lists and learn the fundamentals of controlling the flow of programs.</p>
+<section id="morning-session-1" class="level4">
+<h4 class="anchored" data-anchor-id="morning-session-1">Morning Session</h4>
+<p><a href="./lectures/01_The_Zen_of_Python.html">The Zen of Python</a></p>
+<p><a href="./exercises/Exercise1-1_Variables.html">Exercise 1-1 - Variables &amp; Operators</a></p>
+<p><a href="./trypy/00_trypy_stl_blood/stl_blood_exercise.html">TryPy 00 - St.&nbsp;Louis Lead Data</a></p>
+</section>
+<section id="afternoon-session-1" class="level4">
+<h4 class="anchored" data-anchor-id="afternoon-session-1">Afternoon Session</h4>
 <p><a href="./lectures/02_HelpGPT.html">Getting Help</a></p>
 <p><a href="./exercises/Exercise1-2_Lists.html">Exercise 1-2 - Lists and Indexing</a></p>
 <p>(<a href="./interactive_sessions/enumerate_and_zip.html">Simple example of <code>enumerate</code> and <code>zip</code></a>)</p>
 <p><a href="./exercises/Exercise1-3_ControlFlowStatements.html">Exercise 1-3 - <code>If</code>s or <code>Else</code>s</a></p>
+</section>
 </section>
 <section id="day-3---introduction-to-python" class="level3">
 <h3 class="anchored" data-anchor-id="day-3---introduction-to-python">Day 3 - Introduction to Python</h3>

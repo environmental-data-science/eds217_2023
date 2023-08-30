@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - TryPy 1 - Exploring St.&nbsp;Louis Blood Toxicity Data</title>
+<title>EDS 217: Python for Environmental Data Science - TryPy 00 - Exploring St.&nbsp;Louis Blood Toxicity Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TryPy 1 - Exploring St.&nbsp;Louis Blood Toxicity Data</h1>
+<h1 class="title">TryPy 00 - Exploring St.&nbsp;Louis Blood Toxicity Data</h1>
 </div>
 
 
@@ -148,10 +148,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-0.-setup-steps" class="level2">
 <h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
 <ul>
-<li>Create a repo on GitHub named <code>eds217-trypy-01</code></li>
+<li>Create a repo on GitHub named <code>eds217-trypy-00</code></li>
 <li>Clone to create a version-controlled project</li>
-<li>Create some subfolder infrastructure (docs, data)</li>
-<li>Create a new <del>quarto in RStudio called</del> jupyter notebook <code>eds-217-trypy.ipynb</code>. If working on your local machine, make sure to associate the notebook with the <code>eds-217</code> environment.</li>
+<li>Create some subfolder infrastructure (nbs, data, figs)</li>
+<li>Create and save a new <del>quarto in RStudio called</del> jupyter notebook (<code>.ipynb</code> file) named <code>stl-lead-yourinitials.ipynb</code> in the <code>nbs</code> folder (for example, mine would be <code>stl-lead-kc.ipynb</code>).</li>
+<li>Make sure to associate the notebook with the <code>eds217_2023</code> environment.</li>
 </ul>
 <section id="part-1---get-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="part-1---get-the-data">Part 1 - Get the data</h3>
@@ -174,14 +175,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-2---explore-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="part-2---explore-the-data">Part 2 - Explore the data</h3>
-<p>Create a new notebook, or this notebook:</p>
+<p>In your <code>.ipynb</code> file:</p>
 <ul>
 <li>Create a code cell that imports the <code>numpy</code> and <code>pandas</code> packages and run the cell to import the packages.</li>
 <li>Use the code above to read the url for <code>stl_blood_lead.csv</code> into a pandas DataFrame called <code>stl_lead</code></li>
 <li>Do some basic exploration of the dataset using the DataFrame <code>info</code> and <code>describe</code> commands.</li>
 <li>In a new code chunk, from <code>stl_lead</code> create a new column called <code>prop_white</code> that contains the percent of each census tract identifying as white (variable <code>white</code> in the dataset divided by variable <code>totalPop</code>, times 100).</li>
 </ul>
-<p>Hint: <code>df['new_col'] = df['col_a'] / df['col_b']</code> will create a new column <code>new_col</code> that contains the value of <code>col_a / col_b</code></p>
+<p>Hint: <code>df['new_col'] = df['col_a'] / df['col_b']</code> will create a new column <code>new_col</code> in the dataframe <code>df</code> that contains the value of <code>col_a / col_b</code></p>
 </section>
 <section id="part-3---create-a-scatterplot" class="level3">
 <h3 class="anchored" data-anchor-id="part-3---create-a-scatterplot">Part 3 - Create a scatterplot</h3>
@@ -189,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Import matplotlib (<code>import matplotlib.pyplot as plt</code>)</li>
 <li>Create a scatterplot graph of the percentage of children in each census tract with elevated blood lead levels (<code>pctElevated</code>) versus the percent of each census tract identifying as white.</li>
 </ul>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true,&quot;source_hidden&quot;:true}" data-scrolled="true" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="stl_blood_exercise_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
