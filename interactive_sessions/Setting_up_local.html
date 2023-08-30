@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EDS 217: Python for Environmental Data Science - Setting up your local Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles/activities.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#general-plan" id="toc-general-plan" class="nav-link active" data-scroll-target="#general-plan">General Plan</a></li>
+  <li><a href="#managing-computing-environments" id="toc-managing-computing-environments" class="nav-link" data-scroll-target="#managing-computing-environments">1. Managing Computing Environments</a></li>
+  <li><a href="#managing-python-packages" id="toc-managing-python-packages" class="nav-link" data-scroll-target="#managing-python-packages">2. Managing Python Packages</a></li>
+  <li><a href="#managing-code-and-execution-ides" id="toc-managing-code-and-execution-ides" class="nav-link" data-scroll-target="#managing-code-and-execution-ides">3. Managing code and execution (IDEs)</a></li>
+  <li><a href="#installing-the-eds-217-python-environment." id="toc-installing-the-eds-217-python-environment." class="nav-link" data-scroll-target="#installing-the-eds-217-python-environment.">Installing the EDS-217 Python Environment.</a></li>
+  <li><a href="#using-the-eds-217-environment." id="toc-using-the-eds-217-environment." class="nav-link" data-scroll-target="#using-the-eds-217-environment.">Using the <code>eds-217</code> environment.</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<hr>
+<h4 class="anchored"> <a href="../">Return to Course Home Page</a></h4>
+<hr>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Setting up your local Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="general-plan" class="level2">
+<h2 class="anchored" data-anchor-id="general-plan">General Plan</h2>
+<p>There are many ways to set up your local machine to run maintanable python data science code. In addition to the usual need to build your code within a repository, any strategy for local computation requires three critical components:</p>
+<ol type="1">
+<li>A system for managing computing environments</li>
+<li>A system for managing python packages</li>
+<li>An system for managing python code, which is usually an integrated development environment (IDE) in which editing and running code occur interactively.</li>
+</ol>
+</section>
+<section id="managing-computing-environments" class="level2">
+<h2 class="anchored" data-anchor-id="managing-computing-environments">1. Managing Computing Environments</h2>
+<p>There are many options for managing computing environments.</p>
+<p>These days, a common method is to use <code>containers</code>, in which an entire computational system (including processes, memory, disk space) is spun up as an isolated service on your local (or remote). Systems such as <a href="https://www.docker.com">docker</a> or python-specific <a href="https://shiv.readthedocs.io/en/latest/">shiv</a> allow for isolated packaging and execution of python programs.</p>
+<p>A more common approach on local machines is to use the <a href="https://docs.conda.io/en/latest/"><code>conda</code></a>environment management system. Conda is developed by <a href="https://anaconda.org">Anaconda</a>, and is the most widely used environment management system in python data science. Other local solutions include <a href="https://docs.python.org/3/tutorial/venv.html"><code>venv</code></a>, which is part of the main python distribution.</p>
+<p>In this exercise, <strong>we will use <code>conda</code> for our environment management</strong>. We can access <code>conda</code> through the terminal/command line, within a terminal inside an IDE, or through the Anaconda Navigator app.</p>
+</section>
+<section id="managing-python-packages" class="level2">
+<h2 class="anchored" data-anchor-id="managing-python-packages">2. Managing Python Packages</h2>
+<p>Once a computing environment is created in <code>conda</code>, there is a need to manage the individual packages within the environment. Once again, there are many ways to accomplish this task in python.</p>
+<p>Firstly, <code>conda</code> itself is a sophisticated package management system too. <code>conda</code> is able to download and install almost any python package and often it is possible to install binaries of packages directly without the need for local compilation. <code>conda</code> also manages package dependencies, ensuring libraries are inter-operable.</p>
+<p>In addition to <code>conda</code>, there is the Package Installer for Python <a href="https://pip.pypa.io"><code>pip</code></a>. <code>pip</code> can install any package hosted on the <a href="https://pypi.org">Python Package Index (PyPI)</a>, as well as packages hosted on github and even packages you’ve made on your local machine.</p>
+<p>Recently, a new entry to package management, <a href="https://python-poetry.org"><code>poetry</code></a> has started to become popular. <code>poetry</code> focuses on making package management - and especially dependency management between and amongst packages - much easier. It also simplifies building and packaging your own code for distribution.</p>
+<p>In this class, <strong>we will use <code>conda</code> for our package management</strong>. Because conda also <em>includes</em> <code>pip</code>, we get all the advantages of conda (faster installs, easy integration with IDEs) without losing the broad capabilities of <code>pip</code>.</p>
+<p>Conda can create new environments using a markup language specification called <code>yaml</code>. We will use an environment file created for our course to create an <code>eds-217</code> environment on your local machine.</p>
+</section>
+<section id="managing-code-and-execution-ides" class="level2">
+<h2 class="anchored" data-anchor-id="managing-code-and-execution-ides">3. Managing code and execution (IDEs)</h2>
+<p>Finally, we come to the tool you will use most when coding on your local computer – the Integrated Development Environment, or IDE. The possibilities for IDEs is even more expansive than for either of the other tools. Common python IDEs include:</p>
+<ul>
+<li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+<li><a href="https://jupyter.org">Jupyter Notebooks</a></li>
+<li><a href="https://jupyter.org">Jupyter Labs</a></li>
+<li><a href="https://www.spyder-ide.org">Spyder</a></li>
+<li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a></li>
+<li><a href="https://www.jetbrains.com/dataspell/">Data Spell</a></li>
+<li><a href="https://atom.io">Atom</a></li>
+<li><a href="https://www.rstudio.com">RStudio</a></li>
+</ul>
+<p>Any of these would work well for a python data science workflow, but definitely some have more features focused on data science than others. For example, PyCharm is more focused on software engineering, but a new IDE called Data Spell, by the same company (Jet Brains), is squarely centered on data science workflows.</p>
+<p>The best IDE is usually the one you are most familiar with. For that reason, RStudio isn’t a bad choice for an IDE. Although you will only be able to write code in quarto (<code>.qmd</code>) files, RStudio will be sufficient for many of your python needs.</p>
+<p>However, if you need to edit <code>.ipynb</code> files natively (without conversion to <code>.py</code> or <code>.qmd</code>), you will probably want to use an IDE that is designed to efficiently parse these files and allow you to execute code directly.</p>
+<p>We’ve been using <code>Jupyter</code> (both notebooks and lab) this class, and you can continue to do so on your local machine. However, it’s probably best to use a non-browser IDE if possible, since that will provide more opportunities for customization and removes a layer of complication required when executing your code.</p>
+<p><strong>Today we will look at both RStudio (for <code>.qmd</code> files) and Visual Studio Code (VSCode).</strong></p>
+<p>Having covered all the bases, we need to go ahead and get to work. Here are the steps for getting our class environment working on your machine, and within your IDE.</p>
+</section>
+<section id="installing-the-eds-217-python-environment." class="level2">
+<h2 class="anchored" data-anchor-id="installing-the-eds-217-python-environment.">Installing the EDS-217 Python Environment.</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Using Anaconda Navigator</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Using conda at the command line</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ol type="1">
+<li>Save this <a href="environment.yml"><code>environment.yml</code></a> file to your local machine (right-click to Save As).</li>
+<li>Open Anaconda Navigator and click into the <code>Environments</code> pane on the left side of the Navigator window.</li>
+<li>In the <code>Environments</code> pane, click the <code>Import</code> button at the bottom of the environments list.</li>
+<li>Use the file chooser to select the <code>environment.yml</code> file that you just downloaded. Make sure to enter <code>eds-217</code> in the <code>"New environment name"</code> field of the <code>Import Environment</code> dialog panel.</li>
+<li>Once the environment is installed, you are all set! You can close out of the Anaconda Navigator.</li>
+</ol>
+<p><strong>Note:</strong> If you ever need to add libraries to this environment, you can use the same interface to install additional python modules.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li>Save this <a href="environment.yml"><code>environment.yml</code></a> file to your local machine (right-click to Save As).</li>
+<li>Open a terminal. This can be done either through RStudio, or using an installed terminal application in Mac OS or Windows.</li>
+<li>In the terminal, <code>cd</code> (change directory) to the folder containing the <code>environment.yml</code> file that you downloaded in step 1.</li>
+<li>use the <code>conda</code> command to create a new environment based on the specifications of the <code>environment.yml</code> file:</li>
+</ol>
+<pre><code>&gt; conda env create -f environment.yml</code></pre>
+<p><strong>Note:</strong> If you ever need to add libraries to this environment at the command line, you can use the <code>conda</code> command. First, make sure that you have activated the environment using:</p>
+<pre><code>&gt; conda activate eds-217</code></pre>
+<p>Then you can install additional libraries using:</p>
+<pre><code>&gt; conda install &lt;package_name&gt;</code></pre>
+<p>where <code>&lt;package_name&gt;</code> is the name of the library you want to install (it may not match the name of the import exactly, so be sure to search on Google for the correct import statement)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="using-the-eds-217-environment." class="level2">
+<h2 class="anchored" data-anchor-id="using-the-eds-217-environment.">Using the <code>eds-217</code> environment.</h2>
+<p>The <code>conda</code> manager tool will keep track of all the different environments you have created, and the packages installed in each of them. At any time, you can inspect all of your installed environments and their libraries using the Anaconda Navigator, or using the <code>conda env list</code> command.</p>
+<p>When you are using an IDE you will often be given the opportunity to connect an environment with your code. Before doing so, it is necessary to first activate the environment in a terminal (or PowerShell for Windows) and then execute a 1-time command to register the kernel.</p>
+<p>You can always activate an environment at a terminal prompt by using</p>
+<pre><code>&gt; conda activate &lt;environment_name&gt;</code></pre>
+<p>In the case of <code>eds-217</code>, you would use:</p>
+<pre><code>&gt; conda activate eds-217</code></pre>
+<p>To register your python environment with IDEs, you usually need to run the following command within the activated environment:</p>
+<pre><code>&gt; python -m ipykernel install --user --name=&lt;env_name&gt; --display-name "&lt;env_name"
+</code></pre>
+<p>This command will allow you to select the environment within Jupyter, as well as RStudio and Visual Studio Code.</p>
+<p>In RStudio, this happens when you create a new <code>.qmd</code> file and associate it with a <code>jupyter</code> installation.</p>
+<p>In Visual Studio Code, you can select an environment when you first execute a <code>.ipynb</code> file or when you initiate an <code>IPython</code> interactive terminal.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

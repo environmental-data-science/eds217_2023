@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EDS 217: Python for Environmental Data Science - Exercise 1.5: Functions &amp; Classes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<link rel="stylesheet" href="styles/activities.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#user-defined-functions-udfs" id="toc-user-defined-functions-udfs" class="nav-link" data-scroll-target="#user-defined-functions-udfs">User-defined Functions (UDFs)</a></li>
+  <li><a href="#function-arguments-parameters" id="toc-function-arguments-parameters" class="nav-link" data-scroll-target="#function-arguments-parameters">Function Arguments &amp; Parameters</a></li>
+  <li><a href="#documenting-functions" id="toc-documenting-functions" class="nav-link" data-scroll-target="#documenting-functions">Documenting Functions</a></li>
+  </ul></li>
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a>
+  <ul class="collapse">
+  <li><a href="#creating-an-instance-of-a-class" id="toc-creating-an-instance-of-a-class" class="nav-link" data-scroll-target="#creating-an-instance-of-a-class">Creating an Instance of a Class</a></li>
+  <li><a href="#accessing-class-data" id="toc-accessing-class-data" class="nav-link" data-scroll-target="#accessing-class-data">Accessing Class Data</a></li>
+  <li><a href="#class-initialization" id="toc-class-initialization" class="nav-link" data-scroll-target="#class-initialization">Class Initialization</a></li>
+  <li><a href="#init__-method" id="toc-init__-method" class="nav-link" data-scroll-target="#init__-method"><code>__init__()</code> method</a></li>
+  <li><a href="#why-self" id="toc-why-self" class="nav-link" data-scroll-target="#why-self">Why <code>self</code>?</a></li>
+  <li><a href="#user-defined-class-methods" id="toc-user-defined-class-methods" class="nav-link" data-scroll-target="#user-defined-class-methods">User Defined Class Methods</a></li>
+  <li><a href="#two-additional---and-very-useful---class-magic-methods" id="toc-two-additional---and-very-useful---class-magic-methods" class="nav-link" data-scroll-target="#two-additional---and-very-useful---class-magic-methods">Two additional - and very useful - <code>Class</code> “Magic” Methods</a></li>
+  <li><a href="#documenting-classes" id="toc-documenting-classes" class="nav-link" data-scroll-target="#documenting-classes">Documenting Classes</a></li>
+  </ul></li>
+  <li><a href="#loading-functions-and-classes" id="toc-loading-functions-and-classes" class="nav-link" data-scroll-target="#loading-functions-and-classes">Loading functions and classes</a></li>
+  <li><a href="#next-stop-data-science" id="toc-next-stop-data-science" class="nav-link" data-scroll-target="#next-stop-data-science">Next Stop: Data Science</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<hr>
+<h4 class="anchored"> <a href="../">Return to Course Home Page</a></h4>
+<hr>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercise 1.5: Functions &amp; Classes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="../exercises/Exercise1-4_Structured-Data.html">⬅️ Previous Exercise</a> | <a href="../index.html">🏠 Index</a> | <a href="../exercises/Exercise2-1_Numpy.html">➡️ Next Exercise</a> |</p>
+<p><img src="./assets/hello_world_py.png" alt="hello_world" width="600"></p>
+<p>In order to effecitvely use Python, we need to learn how to use functions and classes. <strong>Function</strong>s are a fundamental part of almost any programming language, and Python is no different. We have already been introduced to many of the excellent builtin functions that are part of the standard Python library. However, as you develop your own analyses, you will need to be able to author your own functions. These functions will allow you to create stand-alone pieces of code that perform consistent operations on input data. <strong>Classes</strong> are even more versatile than functions. They are present in almost all object-oriented programming languages and provide a means to bundle functions and data together. Defining a new <strong>class</strong> creates a new type of <strong>object</strong> (recall that objects are the fundamental building block of Python), allowing new instances of that object type to be made.</p>
+<div class="boxhead1">
+<pre><code>Readings</code></pre>
+</div>
+<div class="boxtext1">
+<pre><code>This notebook is designed to be run as a stand alone exercise. However, the material covered can be supplemented by the contents of &lt;i&gt;Learning Python, 5th Edition&lt;/i&gt; (LP5) </code></pre>
+</div>
+<p style="height:1pt">
+</p>
+<div class="boxhead1">
+<pre><code>Exercise 1.5 Topics</code></pre>
+</div>
+<div class="boxtext1">
+<ul class="a">
+<li>
+📌 Functions [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/16dot-function-basics/function_basics_html">LP5, Chapter 16</a>]
+</li>
+<ul class="b">
+<li>
+User-Defined Functions (UDFs)
+</li>
+<li>
+Function Arguments &amp; Parameters [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/18dot-arguments/arguments_html">LP5, Chapter 18</a>]
+</li>
+<li>
+Documenting Functions [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/15dot-the-documentation-interlude/the_documentation_interlude_html">LP5, Chapter 15</a>]
+</li>
+<li>
+Anonymous Functions [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/19dot-advanced-function-topics/anonymous_functions_colon_lambda_html">LP5, Chapter 19</a>]
+</li>
+</ul>
+<li>
+📌 Classes [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/26dot-oop-the-big-picture/oop_colon_the_big_picture_html">LP5, Chapter 26</a>; <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/27dot-class-coding-basics/class_coding_basics_html">LP5, Chapter 27</a> ]
+</li>
+<ul class="b">
+<li>
+<code><strong>init</strong>()</code>
+</li>
+<li>
+<code>self</code>
+</li>
+<li>
+User-defined Methods
+</li>
+<li>
+Other “Magic” Methods
+</li>
+<li>
+Instancing [Reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/28dot-a-more-realistic-example/step_1_colon_making_instances_html">LP5, Chapter 28</a>]
+</li>
+<li>
+Documenting
+</li>
+</ul>
+<li>
+📌 Importing Functions &amp; Classes
+</li>
+<ul class="b">
+<li>
+Creating .py files
+</li>
+<li>
+<code>import</code>
+</li>
+</ul>
+</ul>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
+
+<section id="instructions" class="level3">
+<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
+<p>Work through the exercise, writing code where indicated. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top. Note: Do not restart the kernel and clear all outputs. If this happens, run the last cell in the notebook before proceeding.</p>
+<p style="color:#408000; font-weight: bold">
+🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
+</p>
+<p style="color:#008C96; font-weight: bold">
+▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
+</p>
+<p style="color:#008C96; font-weight: bold">
+✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
+</p>
+<p style="color:#008C96; font-weight: bold">
+📚 &nbsp; &nbsp; This symbol designates a practice question.
+</p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>A function is simply a set of instructions that you wish to use repeatedly on varying data. Sometimes a function is used to group a complex set of instructions that allows you to compartmentalize your code in ways that improve its readability. There are three types of functions in Python: <strong>builtin</strong> functions, <strong>user-defined</strong> functions, and <strong>anonymous</strong> functions. We have already seen many <strong>builtin</strong> functions, and you will meet many more in the coming weeks. This exercise focuses on <strong>user-defined</strong> and <strong>anonymous</strong> functions, both of which are important for advanced data analysis.</p>
+<section id="user-defined-functions-udfs" class="level3">
+<h3 class="anchored" data-anchor-id="user-defined-functions-udfs">User-defined Functions (UDFs)</h3>
+<p>A UDF is created using some very specific syntax. First, a function is delcared using the <code>def</code> keyword. The name of the function - and any arguments it takes - follows the <code>def</code> keyword, followed by a <code>:</code>. The combination of <code>def</code> and <code>:</code> is a similar construction to other control statements in Python that you’ve already seen, such as <code>for</code> + <code>:</code>, and <code>if</code> + <code>:</code>. The code block below is the simplest possible function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function():</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <a href="https://docs.python.org/2.0/ref/pass.html"><code>pass</code></a> keyword means “do nothing”. Therefore, we have defined a function that: (1) does not take any arguments; (2) does nothing, and then (3) returns nothing.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Technically, a function that lacks a &lt;code&gt;return&lt;/code&gt; statement will still return a value. But the value it returns is &lt;a href="https://docs.python.org/3/c-api/none.html"&gt;&lt;code&gt;None&lt;/code&gt;&lt;/a&gt;, which is python-ese for nothing. Just like the concept of &lt;a href=https://www.amazon.com/Zero-Biography-Dangerous-Charles-Seife/dp/0140296476&gt;`0`&lt;/a&gt;, the concept of &lt;code&gt;None&lt;/code&gt; will turn out to be quite useful!</code></pre>
+</div>
+<p>The next function below still does not take any arguments and it still doesn’t do anything. It does, however, include a <a href="https://docs.python.org/2.0/ref/return.html"><code>return</code></a> statement. As the note above indicates, the <code>return</code> statement isn’t necessary in Python functions; they will just automatically return <code>None</code> if you don’t specify otherwise. However, using the <code>return</code> statement is required if you ever want to work with any output from your functions.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function():</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we can take a look at an example of a function that takes an argument (<code>a</code>) and returns a value (also <code>a</code>)… but it still doesn’t actually do anything!</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function(a):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Hopefully your functions will be more useful than the ones above that do nothing. However, we’ve introduced these three “do-nothing functions” in order to highlight three important aspects of all functions. The ability to (1) pass an <strong>argument</strong> into a function, (2) <strong>transform</strong> data within - or based on - the value of a function argument, and (3) <strong>return</strong> some new data or result based on those manipulations. These three factors combine to make functions extremely useful. Finally the code below provides an example of a function that has all three components and does something that should be quite familiar to you at this point.</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function(msg):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(msg)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>my_function(<span class="st">"Hello World"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a simple function</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_F_to_C(temp_F):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    temp_C <span class="op">=</span> (temp_F<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="fl">5.</span><span class="op">/</span><span class="fl">9.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temp_C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The function above takes a Temperature in Fahrenheit and converts it to Celsius. It then returns this new value.</p>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
+Call the &lt;code&gt;convert_F_to_C()&lt;/code&gt; function with the value 98.6 (°F). It should return 37.0.</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>convert_F_to_C(<span class="fl">98.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="function-arguments-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="function-arguments-parameters">Function Arguments &amp; Parameters</h3>
+<p>When we define a function, we specify the parameters the function requires. The definition of <code>convert_F_to_C</code> contains a single parameter, <code>temp_F</code>. When we <em>call</em> a function, we supply <strong>arguments</strong> to the function which are then mapped to the function <strong>parameters</strong>. Providing the argument <code>98.6</code> to the function maps this number to the <code>temp_F</code> parameter. So wherever <code>temp_F</code> appears in the function, <code>98.6</code> is used instead. What happens if we call a function without supplying arguments for the parameters?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>convert_F_to_C() <span class="co"># Uh-oh... we didn't provide an argument for the temp_F parameter.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>                                 Traceback (most recent call last)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">3</span><span class="op">-</span><span class="fl">60e83</span><span class="er">d2545ed</span><span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">----&gt;</span> <span class="dv">1</span> convert_F_to_C()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>: convert_F_to_C() missing <span class="dv">1</span> required positional argument: <span class="st">'temp_F'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the error above, we see that not providing a required argument raises a <code>TypeError</code>, and provides some additional detail regarding what went wrong. In this case, we are told that we are mssing one <code>required positional argument</code>, which needs to be assigned to the <code>temp_F</code> parameter.</p>
+<section id="specifying-default-parameters" class="level4">
+<h4 class="anchored" data-anchor-id="specifying-default-parameters">Specifying default parameters</h4>
+<p>When defining a function, it is possible to set a default value for any parameter. This is done by assigning the parameter the default value right inside the parameter list:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_F_to_C(temp_F<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    temp_C <span class="op">=</span> (temp_F<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="fl">5.</span><span class="op">/</span><span class="fl">9.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temp_C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Functions are no different than variables (or any other object in Python). Therefore, any function you create in a notebook can be re-defined by simply editing the function and re-running the cell! </code></pre>
+</div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
+Re-define the &lt;code&gt;convert_F_to_C()&lt;/code&gt; function so that the default value of &lt;code&gt;temp_F&lt;/code&gt; is 0. Test what happens if you call this re-defined function without an argument. </code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_F_to_C(temp_F):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    temp_C <span class="op">=</span> (temp_F<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="fl">5.</span><span class="op">/</span><span class="fl">9.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temp_C</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>convert_F_to_C()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="required-arguments" class="level4">
+<h4 class="anchored" data-anchor-id="required-arguments">Required arguments</h4>
+<p>Arguments that are included in the parameter list and do not have default values are called <strong>required arguments</strong>. In the <code>convert_temp_to_C</code> function below, both <code>temp</code> and <code>unit</code> are required parameters.</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_temp_to_C(temp, unit<span class="op">=</span><span class="st">'F'</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Converts a temperature to Celsius</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">        temp : float</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature value to convert</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">        unit : str</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">            temp units ('K' or 'F')</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">       </span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">        temp_C : float</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">            The value of temp converted to Celsius</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> unit.capitalize() <span class="op">==</span> <span class="st">'K'</span>:</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        temp_C <span class="op">=</span> temp <span class="op">-</span> <span class="fl">273.15</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> unit.capitalize() <span class="op">==</span> <span class="st">'F'</span>:</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        temp_C <span class="op">=</span> (temp<span class="op">-</span><span class="dv">32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> temp_C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>You can also see that we have added some comments to the function right below the definition. These commments are known as <strong>Docstrings</strong>, and they are critical to allow users to understand what your program is doing. The use of <code>"""</code> to begin and end the docstrings signifies we are writing a multi-line comment (as opposed to <code>#</code> which specifys a single line comment in Python). The first line of a function’s docstrings should always be a short description of what the function does. The rest of the docstrings should specify the required arguments that the function needs and what values it returns, if any.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;The ABC of Python:&lt;/b&gt; Always. Be. Commenting.</code></pre>
+</div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; You can see the function definition and &lt;b&gt;docstrings&lt;/b&gt; for any function (if they exist) by using the builtin &lt;code&gt;help()&lt;/code&gt; function.</code></pre>
+</div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
+Use the &lt;code&gt;help()&lt;/code&gt; function to see the function definition and docstrings for the &lt;code&gt;convert_temp_to_C&lt;/code&gt; function.</code></pre>
+</div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 1. &lt;/b&gt; 
+Create a new function, &lt;code&gt;convert_temp_to_K&lt;/code&gt; that converts a temperature to Kelvin from either Fahrenheit or Celsius, depending on user-supplied arguments. </code></pre>
+</div>
+</section>
+<section id="keyword-arguments" class="level4">
+<h4 class="anchored" data-anchor-id="keyword-arguments">Keyword arguments</h4>
+<p>In both <code>convert_temp_to_C</code> and <code>convert_temp_to_K</code>, the order of parameters is very important. If we tried calling the <code>convert_temp_to_C</code> function like this: <code>convert_temp_to_C('F', 212.0)</code> we would get an error! The reason we get an error is because the function definition assumes that the <em>first</em> argument should be mapped to the first parameter <code>temp</code> and the <em>second</em> argument should be mapped to the second parameter <code>unit</code>. That’s why the <code>TypeError</code> refered to <code>temp_F</code>as a <code>required positional argument</code> in the section above. This assumption that arguments be mapped to parameters in a specific order can make working with complicated functions that have many parameters almost impossible. For this reason, Python provides the ability to pass <strong>keyword arguments</strong> to functions.</p>
+<p>Rather than making assumptions about how arguments map to parameters based on their order, keyword arguments specify exactly how arguments are mapped to parameters within a function. This is done by assigning an argument to a specific parameter within the function call.</p>
+<p>For example, instead of writing <code>convert_temp_to_C('F', 212.0)</code>, we can instead call the same function using <code>convert_temp_to_C(unit='F', temp=212.0)</code>.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Python doesn't require you to change anything about a function's definition to take advantage of keyword arguments. For this reason, it's good practice to use keyword arguments whenever possible.</code></pre>
+</div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
+Call the &lt;code&gt;convert_temp_to_K&lt;/code&gt; function that you created using keyword arguments.</code></pre>
+</div>
+<p>An important consideration when using keyword arguments is that they must all follow any positional arguments that are passed to a function. In other words, if you are calling a function with a mix of positional arguments and keyword arguments, the positional arguments need to all be listed first. So, using our simple temperature conversion function as an example, <code>convert_temp_to_C(212.0, unit='F')</code> is valid, but <code>convert_temp_to_C(temp=212.0, 'F')</code> is not.</p>
+</section>
+<section id="anonymous-functions" class="level4">
+<h4 class="anchored" data-anchor-id="anonymous-functions">Anonymous functions</h4>
+<p>Sometimes we may just want to create a very simple function without having to go through all the trouble of using <code>def</code> to define the function, writing docstrings and adding a <code>return</code> statement. For these “one-liners” Python has the concept of <strong>anonymous</strong> functions. Instead of using <code>def</code>, these functions are declared using <code>lambda</code> notation, so they are often refered to as <strong>lambda functions</strong>. Because they are meant to be simple, a lambda function declaration is always contained in a single line:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> <span class="kw">lambda</span> T: <span class="fl">5.67e-8</span> <span class="op">*</span> T<span class="op">**</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The function above calculates the Energy Flux, Q [W/m<span class="math inline">^2</span>], for a blackbody object at a specified temperature, T [Kelvin], assuming an emissivity of 1:</p>
+<p><span class="math inline">Q = 5.67x10^{-8} \times T^4</span></p>
+<p>We can use this lambda function just like any other function:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Q(<span class="dv">50</span><span class="op">+</span><span class="fl">273.15</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">618.3006455416394</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 2. &lt;/b&gt; 
+Create a &lt;code&gt;lambda&lt;/code&gt; function in the cell below that converts a Celsius temperature to Kelvin.&lt;/div&gt;</code></pre>
+</div>
+</section>
+</section>
+<section id="documenting-functions" class="level3">
+<h3 class="anchored" data-anchor-id="documenting-functions">Documenting Functions</h3>
+<p>As we saw above, the use of <strong>docstrings</strong> can greatly improve your ability to understand what a program requires in terms of arguments and what the function returns. There is no <em>standard</em> for docstrings, but there are some best practices. A good docstring should contain:</p>
+<ol type="1">
+<li>A brief description of what the function does.</li>
+<li>A more detailed explanation of how the functions works, if necessary.</li>
+<li>Information on any arguments - both required and optional - that may be passed into the function.</li>
+<li>Information on any parameter default values.</li>
+<li>Information on any exceptions that the function raises.</li>
+<li>Any information about side effects the function may cause, or restrictions on when the function can be used.</li>
+</ol>
+<p>The last couple of items on the list above aren’t very common, but the first four are essential components of all function docstrings. While it is fine to develop your own docstring style, here’s another example of what a docstring should look like:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Q(T, epsilon<span class="op">=</span><span class="dv">1</span>, unit<span class="op">=</span><span class="st">'C'</span>):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Calculates energy emitted by an object with temperature T</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Uses the Stefan-Bolzmann Law to calculate total radiative </span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">    emmittance in W/m^2 based on temperature and emissivity:</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Q = epsilon * sigma * T**4</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">    where sigma is the Stefan-Boltzmann constant (5.67e-8 W/m^2/K^4),</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">    epsilon is the emissitivity (0-1), and T is temperature in Kelvin.</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">        T: float</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature of object</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co">        epsilon: float, optional</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co">            emissivity of object [0-1] (default is 1)</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co">        unit: str, optional</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co">            units of T, either 'F', 'C', or 'K' (default is 'C')</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co">        Q: float</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="co">            Energy emitted by object [W/m^2]</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set Stefan-Boltzmann constant:</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    SIGMA <span class="op">=</span> <span class="fl">5.67e-8</span> <span class="co"># W/m2/K^4                    </span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If T is in Fahrenheit, convert to C:</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> unit <span class="op">==</span> <span class="st">'F'</span>:</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>        T <span class="op">=</span> (T <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="fl">5.</span><span class="op">/</span><span class="fl">9.</span>)</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>        unit <span class="op">=</span> <span class="st">'C'</span> <span class="co"># Re-assign unit to C</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If T is in Celsius, convert to Kelvin</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> unit <span class="op">==</span> <span class="st">'C'</span>:</span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>        T <span class="op">=</span> T <span class="op">+</span> <span class="fl">273.15</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate Q and return the value</span></span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>    Q <span class="op">=</span> epsilon <span class="op">*</span> SIGMA <span class="op">*</span> T<span class="op">**</span><span class="dv">4</span></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 3. &lt;/b&gt; 
+Write a complete set of docstrings for your function a &lt;code&gt;convert_temp_to_K&lt;/code&gt;. Check to make sure they work using the &lt;code&gt;help()&lt;/code&gt; function.&lt;/div&gt;</code></pre>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+</section>
+<section id="classes" class="level2">
+<h2 class="anchored" data-anchor-id="classes">Classes</h2>
+<p>Classes are Python objects that contain both attributes (i.e.&nbsp;data) and methods (i.e.&nbsp;functions). Classes are the essence of any <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming</a> (OOP) language. A <strong>Class</strong> is created using the <code>class</code> keyword:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Temperature:</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> <span class="fl">74.0</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    unit <span class="op">=</span> <span class="st">'F'</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The above code defines a new class called <code>Temperature</code>. It then assigns two attributes to the class, <code>value</code> and <code>unit</code>. This simple class has no methods. We will get to those next!</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Temperature:</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> <span class="fl">74.0</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    unit <span class="op">=</span> <span class="st">'F'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="creating-an-instance-of-a-class" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-instance-of-a-class">Creating an Instance of a Class</h3>
+<p>We create an instance of the class by calling it (like we call a function) and assigning the output of the call to a new variable:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>my_temp <span class="op">=</span> Temperature()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="accessing-class-data" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-class-data">Accessing Class Data</h3>
+<p>Class objects are mutable, so it’s possible to change the data in a class. We can access – and alter – the attributes of a class using <code>.</code> notation:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_temp.value) <span class="co"># Use . notation to access attributes of a class.</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">74.0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>my_temp.value <span class="op">=</span> <span class="fl">83.2</span>  <span class="co"># Assign a new value to this instance of Temperature.</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_temp.value)  <span class="co"># Check to see if the value has been changed...</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">83.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 4. &lt;/b&gt; 
+Create an instance of the &lt;code&gt;Temperature&lt;/code&gt; class and print out the string: &lt;code&gt;"The temperature is 74 °F"&lt;/code&gt;.</code></pre>
+</div>
+</section>
+<section id="class-initialization" class="level3">
+<h3 class="anchored" data-anchor-id="class-initialization">Class Initialization</h3>
+<p>In the example above, we saw how to create an <strong>instance</strong> of a Temperature. But you probably noticed that <em>every</em> instance of our class will have the same temperature and unit: <code>74.0</code> degress <code>F</code>. While it’s possible to change these values later (in python parlance, we’d say “after the object is <em>instanced</em>”), it’d be better if we could <strong>initialize</strong> our class instances with the values we want. To do this, we will create our first class method, the <code>__init__</code> method.</p>
+</section>
+<section id="init__-method" class="level3">
+<h3 class="anchored" data-anchor-id="init__-method"><code>__init__()</code> method</h3>
+<p>The <code>__init__()</code> method is a special function that we create for classes that tells python how to create a new instance of the class. This function is included as part of a class’s definition, and usually should be the <strong>very first method</strong> that appears in the class.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Python uses the "double underscore + name + double underscore" syntax (&lt;code&gt;__&lt;/code&gt; + &lt;code&gt;init&lt;/code&gt; + &lt;code&gt;__&lt;/code&gt;) to define a suite of "magic" functions. The exact way to pronounce these strange functions isn't settled, but most people use "dunder" to refer to the double underscore, so &lt;code&gt;__init__()&lt;/code&gt; is referred to as the "dunder init dunder" function, or "dunder init" for short.</code></pre>
+</div>
+<p>The <code>__init__()</code> function is the <strong>initializer method</strong> for a <code>Class</code>. It gets passed whatever arguments are provided when a class is created. For example, if we called <code>T = Temperature(10, 'F')</code>, the <code>__init__()</code> method would automatically be passed these two arguments.</p>
+<p>We define the <code>__init__</code> method just like any other function, with one difference: It always includes <code>self</code> as its first argument:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Temperature:</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value<span class="op">=</span><span class="fl">74.0</span>, unit<span class="op">=</span><span class="st">'F'</span>):</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> value</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unit <span class="op">=</span> unit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="why-self" class="level3">
+<h3 class="anchored" data-anchor-id="why-self">Why <code>self</code>?</h3>
+<p>It’s not at all obvious why we need to add an extra parameter (which, by convention is always called <code>self</code> ) to the initializer method. Even weirder is the fact that we need to add this extra parameter, <code>self</code> to <em>every</em> class method! To beginning Pythonistas, the concept of <code>self</code> is deeply strange. However, there is a fairly straight-foward reason for its existence.</p>
+<p>Python functions – like functions in most programming languages – can only manipulate data that exist within the function itself. Speaking generally, Python functions aren’t supposed to manipulate data that they haven’t been passed via argument. The consequences of this “separation of namespaces” is that – paradoxically – a class method can’t operate on class data unless the class data <em>itself</em> is passed into the method!</p>
+<p>By convention, we use the <code>self</code> parameter to allow us to work with the properties of a class within our class methods. If we didn’t include this extra parameter, the functions that we write <em>inside</em> of a class wouldn’t even be able to access the attributes of the class that they were inside of!</p>
+<p>Essentially, you can think of <code>self</code> as a placeholder for a class instance. In fact, Python <strong>automatically passes a class instance</strong> into any class function whenever that class function is called. The class instance argument is inserted by Python before any other arguments. Therefore, we include the <code>self</code> parameter at the beginning of every class method (remember <em>methods</em> and <em>functions</em> are the same thing), knowing that Python will pass a class instance into our function first, and all of the attributes of that instance will get assigned to the <code>self</code> parameter.</p>
+<p>There are <a href="https://medium.com/quick-code/understanding-self-in-python-a3704319e5f0">many</a>, <a href="https://pythontips.com/2013/08/07/the-self-variable-in-python-explained/">many</a> other explanations out there about the need for the <code>self</code> parameter in class methods. Because the use of <code>self</code> in Python is such a confusing concept, there have also been <a href="https://www.artima.com/weblogs/viewpost.jsp?thread=239003">formal proposals</a> to get rid of <code>self</code> and <a href="https://www.youtube.com/watch?v=HdOhwPovkHI">warnings about its misuse</a> in popular culture. There is even a blog post about the necessity <code>self</code> from the creator of <code>self</code>… <a href="http://neopythonic.blogspot.com/2008/10/why-explicit-self-has-to-stay.html"><code>himself</code></a>.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Bottom Line.&lt;/b&gt; Whenever you write a class function, you will need to include &lt;code&gt;self&lt;/code&gt; as the first positional parameter in the function definition. In addition, whenever you want to access class attributes within a class method, you will need to use &lt;code&gt;self&lt;/code&gt; as the object that contains the data.</code></pre>
+</div>
+<section id="using-the-__init__-function" class="level4">
+<h4 class="anchored" data-anchor-id="using-the-__init__-function">Using the <code>__init__()</code> function</h4>
+<p>We almost never call the <code>__init__()</code> function directly. Instead, the <code>Class</code> constructor function calls it for us. We already saw that a class instance is created using the constructor function like <code>my_temp = Temperature()</code>. With our new <code>__init__()</code> function defined for the <code>Temperature</code> class, we can now create <code>Temperature</code> instances with any data we want:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> Temperature(<span class="fl">83.2</span>, <span class="st">'F'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(T.value)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">83.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt;  
+Copy the example code above to create an new &lt;code&gt;Temperature&lt;/code&gt; class that contains an &lt;code&gt;__init__&lt;/code&gt; method that sets the value and units. Create a few new &lt;code&gt;Temperature&lt;/code&gt; instances with different values and units.</code></pre>
+</div>
+</section>
+</section>
+<section id="user-defined-class-methods" class="level3">
+<h3 class="anchored" data-anchor-id="user-defined-class-methods">User Defined Class Methods</h3>
+<p>We often want to create our own methods that allow us to manipulate and work with class data. For example, now that we have a <code>Temperature</code> class, we might want to create a method that allows us to get the value of temperature in any unit. We can add this functionality by defining a class method. The class method is just the same as every other Python function, except, like <code>__init__()</code>, it has <code>self</code> as its first argument:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Temperature:</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value<span class="op">=</span><span class="fl">74.0</span>, unit<span class="op">=</span><span class="st">'F'</span>):</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> value</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unit <span class="op">=</span> unit</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.temp_K <span class="op">=</span> <span class="va">self</span>.get_K()</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_K(<span class="va">self</span>):</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        unit <span class="op">=</span> <span class="va">self</span>.unit</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>        T <span class="op">=</span> <span class="va">self</span>.value</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If T is in Fahrenheit, convert to C:</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> unit <span class="op">==</span> <span class="st">'F'</span>:</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>            T <span class="op">=</span> (T <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="fl">5.</span><span class="op">/</span><span class="fl">9.</span>)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>            unit <span class="op">=</span> <span class="st">'C'</span> <span class="co"># Re-assign unit to C</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If T is in Celsius, convert to Kelvin</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> unit <span class="op">==</span> <span class="st">'C'</span>:</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>            T <span class="op">=</span> T <span class="op">+</span> <span class="fl">273.15</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> T</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we’ve added a class function called <code>get_K</code> that always returns the <code>Temperature</code> object’s value in degrees Kelvin. You will notice that we can even use this function inside the <code>__init__()</code> function. This means that after creating an instance of an object, we will end up with the <code>temp_K</code> property of the object set for us automatically.</p>
+<p>We can also run any class methods by calling it directly. Just as we used <code>.</code> notation to access class data, we use <code>.</code> notation to access class methods:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>my_temp <span class="op">=</span> Temperature(<span class="dv">50</span>,<span class="st">'C'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>my_temp.get_K()</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">323.15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt;  
+Copy the example code above to create an new &lt;code&gt;Temperature&lt;/code&gt; class that contains the &lt;code&gt;get_K&lt;/code&gt; method, which is used to set the value of &lt;code&gt;temp_K&lt;/code&gt; during intialization. Create a few new &lt;code&gt;Temperature&lt;/code&gt; instances with different values and units and test to make sure &lt;code&gt;temp_K&lt;/code&gt; is being set correctly. </code></pre>
+</div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 4. &lt;/b&gt; 
+Use the cell below to create a new &lt;code&gt;Temperature&lt;/code&gt; class that contains a user-defined class function of your own design. This function can do anything you want. It doesn't need to be fancy or even useful, just make sure you test your function by creating an instance of &lt;code&gt;Temperature&lt;/code&gt; class and running the function.</code></pre>
+</div>
+</section>
+<section id="two-additional---and-very-useful---class-magic-methods" class="level3">
+<h3 class="anchored" data-anchor-id="two-additional---and-very-useful---class-magic-methods">Two additional - and very useful - <code>Class</code> “Magic” Methods</h3>
+<p>In addition to the <code>__init__()</code> function, there are some other useful “magic” class methods. The first, <code>__repr__</code> is a function that allows you to define how a Class object <em>represents</em> itself. For example, check out this example for a string (<code>str</code>) variable:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>SIGMA <span class="op">=</span> <span class="fl">5.67e-8</span> <span class="co"># Create a variable that contains the Stefan-Boltzmann constant</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>SIGMA               <span class="co"># What happens if you just execute a line that contains the variable? </span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">5.67e-08</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You see that when the variable <code>SIGMA</code> is invoked, the Python interpreter returns <code>5.67e-08</code>, which is not <em>exactly</em> what you wrote when you assigned <code>SIGMA</code>. That’s because what is happening “behind the scenes” is that Python is calling the <code>__repr__()</code> function for the object <code>SIGMA</code>:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>SIGMA.<span class="fu">__repr__</span>()</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">5.67e-08</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There is a similar magic function, <code>__str__()</code> that is called whenever <code>print()</code> is invoked on an object:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(SIGMA)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">5.67e-08</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>SIGMA.<span class="fu">__str__</span>()</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">5.67e-08</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the case of <code>float</code> variables (<code>type(SIGMA)</code> is <code>float</code>), <code>__repr__()</code> and <code>__str__()</code> return the same thing. But they don’t have to. Look at this example, using a <code>datetime</code> object, which is part of the standard Python library and the primary object for dealing with time/date information in Python:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>current_time <span class="op">=</span> datetime.now()</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>current_time</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> datetime.datetime(<span class="dv">2020</span>, <span class="dv">4</span>, <span class="dv">17</span>, <span class="dv">12</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">778357</span>) <span class="co"># Your time will be different!</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(current_time)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2020</span><span class="op">-</span><span class="dv">0</span><span class="er">4</span><span class="op">-</span><span class="dv">17</span> <span class="dv">12</span>:<span class="dv">51</span>:<span class="fl">38.750213</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We see that the representation of a <code>datetime</code> object (created by the class’s <code>__repr__()</code> function) is different than the class’s <code>__str__()</code> function.</p>
+<p>You can create these functions inside a class in the same way you created the <code>__init__()</code> function:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Temperature:</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value<span class="op">=</span><span class="fl">74.0</span>, unit<span class="op">=</span><span class="st">'F'</span>):</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> value</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unit <span class="op">=</span> unit</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Temperature(</span><span class="sc">{value}</span><span class="st">,°</span><span class="sc">{unit}</span><span class="st">)"</span>.<span class="bu">format</span>(value<span class="op">=</span><span class="va">self</span>.value,unit<span class="op">=</span><span class="va">self</span>.unit)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"The temperature is </span><span class="sc">{value}</span><span class="st"> °</span><span class="sc">{unit}</span><span class="st">"</span>.<span class="bu">format</span>(value<span class="op">=</span><span class="va">self</span>.value, unit<span class="op">=</span><span class="va">self</span>.unit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt;  
+Use the example above to define a new &lt;code&gt;Temperature&lt;/code&gt; class that adds &lt;code&gt;__repr__&lt;/code&gt; and &lt;code&gt;__str__&lt;/code&gt; methods. Test out the &lt;code&gt;__str__()&lt;/code&gt; method by creating an instance and using the &lt;code&gt;print()&lt;/code&gt; command. </code></pre>
+</div>
+</section>
+<section id="documenting-classes" class="level3">
+<h3 class="anchored" data-anchor-id="documenting-classes">Documenting Classes</h3>
+<p>Just like functions, classes should contain <strong>docstring</strong>s. The format and content of docstrings is similar to a function, but there is a need for even more description. This is because the docstrings should include information about all of the attributes of the class as well as any class methods that are defined. So for a simple <code>Weather</code> class we might have something like this:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Weather:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">    A class used to represent the weather</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Attributes</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">    temperature : float</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co">        air temperature, in deg-C</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co">    relative_humidity : float</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co">        relative humidity, in %</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="co">    pressure : float</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="co">        air pressure, in kPa</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Methods</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="co">    sat_vap_pressure()</span></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="co">        returns the saturation vapor pressure for the current weather condition</span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, temp, RH, P):</span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">""" </span></span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a><span class="co">        temp : float</span></span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a><span class="co">            air temperature, in °C</span></span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a><span class="co">        RH : float</span></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a><span class="co">            relative humidity, in %</span></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a><span class="co">        P : float</span></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a><span class="co">            pressure, in kPa</span></span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.temperature <span class="op">=</span> temp</span>
+<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.relative_humidity <span class="op">=</span> RH</span>
+<span id="cb52-41"><a href="#cb52-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pressure <span class="op">=</span> P </span>
+<span id="cb52-42"><a href="#cb52-42" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb52-43"><a href="#cb52-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sat_vap_pressure(<span class="va">self</span>):</span>
+<span id="cb52-44"><a href="#cb52-44" aria-hidden="true" tabindex="-1"></a>        <span class="co">""" Determines Saturation Vapor Pressure</span></span>
+<span id="cb52-45"><a href="#cb52-45" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-46"><a href="#cb52-46" aria-hidden="true" tabindex="-1"></a><span class="co">        Uses the Tetens equation to estimate saturation vapor pressure (svp) given air Temp.</span></span>
+<span id="cb52-47"><a href="#cb52-47" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-48"><a href="#cb52-48" aria-hidden="true" tabindex="-1"></a><span class="co">        P = 0.61078 * exp((17.27 * T)/(T + 237.3))</span></span>
+<span id="cb52-49"><a href="#cb52-49" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-50"><a href="#cb52-50" aria-hidden="true" tabindex="-1"></a><span class="co">        where P is svp in kPa and T is air temperature in °C.</span></span>
+<span id="cb52-51"><a href="#cb52-51" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-52"><a href="#cb52-52" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-53"><a href="#cb52-53" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb52-54"><a href="#cb52-54" aria-hidden="true" tabindex="-1"></a><span class="co">        --------</span></span>
+<span id="cb52-55"><a href="#cb52-55" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-56"><a href="#cb52-56" aria-hidden="true" tabindex="-1"></a><span class="co">        P, saturation vapor pressure, in kPa</span></span>
+<span id="cb52-57"><a href="#cb52-57" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb52-58"><a href="#cb52-58" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb52-59"><a href="#cb52-59" aria-hidden="true" tabindex="-1"></a>        <span class="im">from</span> math <span class="im">import</span> exp</span>
+<span id="cb52-60"><a href="#cb52-60" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb52-61"><a href="#cb52-61" aria-hidden="true" tabindex="-1"></a>        P <span class="op">=</span> <span class="fl">0.61078</span> <span class="op">*</span> exp(<span class="fl">17.27</span><span class="op">*</span><span class="va">self</span>.C)<span class="op">/</span>(<span class="va">self</span>.T <span class="op">+</span> <span class="fl">237.3</span>)</span>
+<span id="cb52-62"><a href="#cb52-62" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb52-63"><a href="#cb52-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;ABC!&lt;/b&gt; Notice how there are more docstrings in this definition than there is code! This is because the concept of abstraction – creating classes and functions that represent general concepts and methods – requires a high degree of documentation in order for the abstractions to be used correctly. The same code written in a notebook cell (without abstraction) would be easier to read and require much less documentation.</code></pre>
+</div>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 5. &lt;/b&gt; 
+Use the cell below to create a final version of your &lt;code&gt;Temperature&lt;/code&gt; class that includes docstrings. Check to see if your docstrings are working using the &lt;code&gt;help()&lt;/code&gt; function.</code></pre>
+</div>
+</section>
+</section>
+<section id="loading-functions-and-classes" class="level2">
+<h2 class="anchored" data-anchor-id="loading-functions-and-classes">Loading functions and classes</h2>
+<p>In the last practice cell, you probably noticed that your class definition is getting pretty large. While it’s nice to be able to edit this code easily in your notebook, once you have settled on a function or class definition, it is often helpful to move the definitions out of your notebook and just load them when you need them. Python uses the <code>import</code> function to load objects from external libraries and files.</p>
+<section id="moving-your-class-definition-to-a-new-file" class="level4">
+<h4 class="anchored" data-anchor-id="moving-your-class-definition-to-a-new-file">Moving your class definition to a new file</h4>
+<div class="practice">
+<pre><code>📚  &lt;b&gt; Practice 6. &lt;/b&gt; 
+Follow the directions below to save your final &lt;code&gt;Temperature&lt;/code&gt; class definition into a new file called &lt;code&gt;temperature.py&lt;/code&gt;</code></pre>
+</div>
+<ol type="1">
+<li>Go to the JupyterLab <code>File</code> menu and click <code>New -&gt; Text File</code></li>
+</ol>
+<p><img src="./assets/new_text_file.png" alt="new_text_file" width="600"></p>
+<ol start="2" type="1">
+<li><p>Copy the entire <code>Temperature</code> class definition you created during <strong>Practice 5</strong> and paste it into the text file.</p></li>
+<li><p>Rename the text file <code>temperature.py</code>. You can do this easily by right-clicking on the filename in the file’s tab (see the image below)</p></li>
+</ol>
+<p><img src="./assets/rename_file.png" alt="rename_file" width="600"></p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note:&lt;/b&gt;Make sure you save your file with the &lt;code&gt;.py&lt;/code&gt; extension and not &lt;code&gt;.txt&lt;/code&gt;. You will know if you saved it correctly if the file appears with python code formating as in the image below:</code></pre>
+</div>
+<p><img src="./assets/py_formatting.png" alt="format_file" width="600"></p>
+<ol start="4" type="1">
+<li>Save the new file. This will create a file called <code>temperature.py</code> in your current directory.</li>
+</ol>
+</section>
+<section id="importing-your-class-from-the-temperature.py-file." class="level4">
+<h4 class="anchored" data-anchor-id="importing-your-class-from-the-temperature.py-file.">Importing your class from the temperature.py file.</h4>
+<p>Assuming you were able to save your file correctly, and that your <code>Temperature</code> class definition doesn’t have any errors in it, you can import the <code>Temperature</code> class into your notebook like this:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> temperature <span class="im">import</span> Temperature</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> Temperature(<span class="fl">98.6</span>, unit<span class="op">=</span><span class="st">'F'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt;  
+Load your &lt;code&gt;Temperature&lt;/code&gt; class from the &lt;code&gt;temperature.py&lt;/code&gt; file using the &lt;code&gt;import&lt;/code&gt; command. Make some new Temperature instances to ensure that your class loaded correctly and works okay.</code></pre>
+</div>
+</section>
+</section>
+<section id="next-stop-data-science" class="level1">
+<h1>Next Stop: Data Science</h1>
+<p><strong>Congratulations!</strong> You’ve reached the end of the first set of exercises, which were focused on fundamentals of Python programming, syntax, and objects. For our next set of exercises, we will be starting to work with the core set of python data science libraries: <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code>. Be sure to come back to these notebooks for refreshers whenever necessary. And of course, don’t forget to explore all of these topics in <em>Learning Python</em>.</p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+<div class="cell" data-cell.metadata.hide_input="True">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"../styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
