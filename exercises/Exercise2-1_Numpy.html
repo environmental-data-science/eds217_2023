@@ -340,51 +340,55 @@ As we saw in Exercise 1.5, modules and packages can be loaded into a script usin
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">7</span>],</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 1. &lt;/b&gt; 
-Create the following arrays and assign the corresponding variable names:</code></pre>
-<ol class="alpha">
-<li>
-<code>a</code>
-</li>
-<pre><code>$ \begin{matrix}
-        4 &amp;   5 &amp;   0 &amp; 12 &amp; -1 \\
-        8 &amp; -21 &amp;  -4 &amp;  6 &amp;  3 \\
-       17 &amp;   1 &amp; -13 &amp;  7 &amp;  0
-      \end{matrix}$
-&lt;li&gt; &lt;code&gt;b&lt;/code&gt; &lt;/li&gt; 
-    $ \begin{matrix}
-        1.0 &amp; 2.7 &amp; 0 &amp; 0.188 &amp; 4.07 &amp; 0.24
-      \end{matrix}$
-&lt;li&gt; &lt;code&gt;c&lt;/code&gt; &lt;/li&gt; 
-    $ \begin{matrix}
-        0.4 \\
-        0.8 \\
-        1.2 \\
-        1.6 \\
-        2.0 \\
-        2.4
-      \end{matrix}$</code></pre>
+<p>📚 <strong>Practice 1.</strong><br>
+Create the following arrays and assign the corresponding variable names:</p>
+<ol type="1">
+<li><p><code>a</code><br>
+<span class="math display">
+\begin{bmatrix}
+     4 &amp; 5 &amp; 0 &amp; 12 &amp; -1 \\
+     8 &amp; -21 &amp; -4 &amp; 6 &amp; 3 \\
+     17 &amp; 1 &amp; -13 &amp; 7 &amp; 0
+\end{bmatrix}
+</span></p></li>
+<li><p><code>b</code><br>
+<span class="math display">
+\begin{bmatrix}
+     1.0 &amp; 2.7 &amp; 0 &amp; 0.188 &amp; 4.07 &amp; 0.24
+\end{bmatrix}
+</span></p></li>
+<li><p><code>c</code><br>
+<span class="math display">
+\begin{bmatrix}
+     0.4 \\
+     0.8 \\
+     1.2 \\
+     1.6 \\
+     2.0 \\
+     2.4
+\end{bmatrix}
+</span></p></li>
 </ol>
 </div>
 <h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
 <span style="color:black"> Constructing arrays using functions </span>
 </h4>
 <p>Oftentimes, it will be more efficient to construct arrays from scratch using NumPy functions. The <code>np.arange()</code> function is used to generate an array with evenly spaced values within a given interval. <code>np.arange()</code> can be used with one, two, or three parameters to specify the <em>start</em>, <em>stop</em>, and <em>step</em> values. If only one value is passed to the function, it will be interpreted as the <em>stop</em> value:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of the first seven integers </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">7</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of floats from 1 to 12</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="fl">1.</span>,<span class="fl">13.</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>, <span class="fl">11.</span>, <span class="fl">12.</span>])</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of values between 0 and 20, stepping by 2</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="dv">0</span>,  <span class="dv">2</span>,  <span class="dv">4</span>,  <span class="dv">6</span>,  <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of the first seven integers </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">7</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of floats from 1 to 12</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="fl">1.</span>,<span class="fl">13.</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>, <span class="fl">11.</span>, <span class="fl">12.</span>])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of values between 0 and 20, stepping by 2</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">2</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="dv">0</span>,  <span class="dv">2</span>,  <span class="dv">4</span>,  <span class="dv">6</span>,  <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Similarly, the <code>np.linspace()</code> function is used to construct an array with evenly spaced numbers over a given interval. However, instead of the <em>step</em> parameter, <code>np.linspace()</code> takes a <em>num</em> parameter to specify the number of samples within the given interval:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of 5 evenly spaced values between 0 and 1</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">5</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">0.</span>  , <span class="fl">0.25</span>, <span class="fl">0.5</span> , <span class="fl">0.75</span>, <span class="fl">1.</span>  ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array of 5 evenly spaced values between 0 and 1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">0.</span>  , <span class="fl">0.25</span>, <span class="fl">0.5</span> , <span class="fl">0.75</span>, <span class="fl">1.</span>  ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that unlike <code>np.arange()</code>, <code>np.linspace()</code> includes the <em>stop</em> value by default (this can be changed by passing <em><code>endpoint=True</code></em>). Finally, it should be noted that while we could have used <code>np.arange()</code> to generate the same array in the above example, it is recommended to use <code>np.linspace()</code> when a non-integer step (e.g.&nbsp;0.25) is desired.</p>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 2. &lt;/b&gt; </code></pre>
@@ -401,46 +405,46 @@ Re-create array <code>c</code> from Practice 1c using a function. Assign this to
 </ol>
 </div>
 <p>There are several functions that take a <em>shape</em> argument to generate single-value arrays with specified dimensions passed as a tuple (<em>rows,columns</em>):</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1D array of zeros of length 4</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">4</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with zeros</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">4</span>,<span class="dv">3</span>))</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>]])</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with ones</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>np.ones((<span class="dv">4</span>,<span class="dv">3</span>))</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>]])</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with 3.14</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>np.full((<span class="dv">4</span>,<span class="dv">3</span>),<span class="fl">9.87</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1D array of zeros of length 4</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">4</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with zeros</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>]])</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with ones</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>np.ones((<span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>],</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">1.</span>]])</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array filled with 3.14</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>np.full((<span class="dv">4</span>,<span class="dv">3</span>),<span class="fl">9.87</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>],</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">9.87</span>, <span class="fl">9.87</span>, <span class="fl">9.87</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>np.random.rand()</code> function is used to generate <em>n</em>-dimensional arrays filled with random numbers between 0 and 1:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array of uniformly distributed random values</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">4</span>,<span class="dv">3</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">0.17461878</span>, <span class="fl">0.74586348</span>, <span class="fl">0.9770975</span> ],</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.77861373</span>, <span class="fl">0.28807114</span>, <span class="fl">0.10639001</span>],</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.09845499</span>, <span class="fl">0.36038089</span>, <span class="fl">0.58533369</span>],</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.30983962</span>, <span class="fl">0.74786381</span>, <span class="fl">0.27765305</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 3 array of uniformly distributed random values</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">0.17461878</span>, <span class="fl">0.74586348</span>, <span class="fl">0.9770975</span> ],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.77861373</span>, <span class="fl">0.28807114</span>, <span class="fl">0.10639001</span>],</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.09845499</span>, <span class="fl">0.36038089</span>, <span class="fl">0.58533369</span>],</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.30983962</span>, <span class="fl">0.74786381</span>, <span class="fl">0.27765305</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As we will see, the <code>np.random.rand()</code> function is very useful for sampling and modeling.</p>
 <p>The last array-construction function we will consider (but by no means the last in the <a href="https://docs.scipy.org/doc/numpy/reference/routines.array-creation.html">NumPy API</a>!) is the <code>np.eye()</code> function, which is used to generate the two-dimensional identity matrix:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 4 identity matrix</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>np.eye(<span class="dv">4</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>],</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4 x 4 identity matrix</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>np.eye(<span class="dv">4</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>],</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">0.</span>],</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">0.</span>, <span class="fl">1.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Lastly, it’s worth noting that nearly all of these functions contain an optional <em>dtype</em> parameter, which can be used to specify the data-type of the resulting array (e.g.&nbsp;<code>np.ones((4,3),dtype=int)</code> would return a 4 x 3 array of ones as integers, rather than the default floats).</p>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 3. &lt;/b&gt; Assign the following to variables:
@@ -492,24 +496,24 @@ Re-create array <code>c</code> from Practice 1c using a function. Assign this to
 </tbody>
 </table>
 <p>For example, let’s create a random two-dimensional array and explore its attributes using the above methods.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize array</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.random.rand(<span class="dv">4</span>,<span class="dv">7</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array dimensions</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>a.ndim</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array shame</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>a.shape</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> (<span class="dv">4</span>, <span class="dv">7</span>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array size</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>a.size</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">28</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine data-type</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>a.dtype</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dtype(<span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize array</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.random.rand(<span class="dv">4</span>,<span class="dv">7</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array dimensions</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>a.ndim</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array shame</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>a.shape</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> (<span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine array size</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>a.size</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">28</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine data-type</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>a.dtype</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dtype(<span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="example">
 <pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
 Construct two array vectors, a column vector and a row vector, from the list &lt;code&gt;[8,0,9,1,4]&lt;/code&gt;, as in the first example. Using the &lt;code&gt;ndarray.ndim&lt;/code&gt; and &lt;code&gt;ndarray.shape&lt;/code&gt; methods, show the difference between constructing an array with single vs. double brackets.</code></pre>
@@ -521,44 +525,44 @@ Construct two array vectors, a column vector and a row vector, from the list &lt
 <span style="color:black"> Indexing + slicing </span>
 </h4>
 <p>Indexing arrays is analogous to indexing lists:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a one-dimensional array</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">4</span>])</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the value in position 1</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>x1[<span class="dv">1</span>]</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a one-dimensional array</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">4</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the value in position 1</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>x1[<span class="dv">1</span>]</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>With multidimensional arrays, a tuple of indices can be passed to access the rows and columns of an array: <code>ndarray[row,column]</code>. If a single index is passed, the corresponding row element will be returned:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a two-dimensional array</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>],</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">6</span>]])</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the value of the element in the 2nd row, 3rd column</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">8</span> </span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the entire second row</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">1</span>]</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a two-dimensional array</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>],</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">6</span>]])</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the value of the element in the 2nd row, 3rd column</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">8</span> </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the entire second row</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>x2[<span class="dv">1</span>]</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Slicing of arrays allows you to access parts of arrays or <em>subarrays</em>. Just like with lists, slicing follows the syntax <code>ndarray[start:stop:step]</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the elements in positions 1-4</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x1[<span class="dv">1</span>:]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the elements in positions 1-4</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>x1[<span class="dv">1</span>:]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For multidimensional arrays, a tuple of slices is used: <code>ndarray[row_start:row_end:row_step, col_start:col_end:col_step]</code>.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the entire third column</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x2[:,<span class="dv">2</span>]</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">1</span>])</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the first two rows and two columns</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>x2[:<span class="dv">2</span>,:<span class="dv">2</span>]</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">3</span>, <span class="dv">2</span>],</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">1</span>]])</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Return all rows and every other column</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>x2[:,::<span class="dv">2</span>]</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">8</span>],</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the entire third column</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x2[:,<span class="dv">2</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">1</span>])</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the first two rows and two columns</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>x2[:<span class="dv">2</span>,:<span class="dv">2</span>]</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">1</span>]])</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Return all rows and every other column</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>x2[:,::<span class="dv">2</span>]</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">8</span>],</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 5. &lt;/b&gt; Using the array you created in Practice 3d,
 &lt;ol class="alpha"&gt;
@@ -575,37 +579,37 @@ Construct two array vectors, a column vector and a row vector, from the list &lt
 <span style="color:black"> Array reduction </span>
 </h4>
 <p><strong>Array reduction</strong> refers to the computation of summary statistics on an array – i.e.&nbsp;<em>reducing</em> an array to a single aggregate value, such as the mean, minimum, maximum, etc. These array reduction methods are similar to those used for lists:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>],</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">6</span>]])</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of all values in array</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">sum</span>()</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">42</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value of the array</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">max</span>()</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">9</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum value of the array</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">min</span>()</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">0</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean value of the array</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>x2.mean()</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">3.5</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation of the array</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>x2.std()</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">3.095695936834452</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">7</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>               [<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">6</span>]])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of all values in array</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">sum</span>()</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">42</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value of the array</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">max</span>()</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">9</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum value of the array</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">min</span>()</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">0</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean value of the array</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>x2.mean()</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">3.5</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation of the array</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>x2.std()</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">3.095695936834452</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All of these methods can be passed with an <em><code>axis</code></em> argument, which allows for aggregation across the rows or columns of the array. In NumPy – as well as the many libraries built on NumPy, axis <code>0</code> always refers to the <em>rows</em> of an array, while axis <code>1</code> refers to the <em>columns</em>:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean of each row (calculated across columns)</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>x2.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">1.5</span> , <span class="fl">6.25</span>, <span class="fl">2.75</span>])</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value of each column (calculated across rows)</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean of each row (calculated across columns)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x2.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="fl">1.5</span> , <span class="fl">6.25</span>, <span class="fl">2.75</span>])</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value of each column (calculated across rows)</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>x2.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="python">
 <pre><code>🐍 &lt;b&gt;Functions vs. Methods.&lt;/b&gt; 
 Recall from Exercise 1.5 that &lt;i&gt;functions&lt;/i&gt; and &lt;i&gt;methods&lt;/i&gt; in Python are essentially the same thing. The key difference, however, is that functions can be called generically, while methods are always attached to and called on objects. It is also worth noting that while a method may alter the object itself, a function &lt;i&gt;usually&lt;/i&gt; simply operates on an object without changing it, and then prints something or returns a value.</code></pre>
@@ -616,113 +620,113 @@ Recall from Exercise 1.5 that &lt;i&gt;functions&lt;/i&gt; and &lt;i&gt;methods&
 <span style="color:black"> Reshaping, resizing, + rearranging arrays </span>
 </h4>
 <p>Other useful array operations include <strong>reshaping</strong>, <strong>resizing</strong>, and <strong>rearranging</strong> arrays. The <code>ndarray.reshape()</code> method is used to change the shape of an array:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a one-dimensional array with 16 elements</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="fl">1.0</span>,<span class="fl">17.0</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>, <span class="fl">11.</span>, <span class="fl">12.</span>, <span class="fl">13.</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>       <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>])</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape array a into a 4x4 array</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [[ <span class="fl">1.</span>  <span class="fl">2.</span>  <span class="fl">3.</span>  <span class="fl">4.</span>]</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>     [ <span class="fl">5.</span>  <span class="fl">6.</span>  <span class="fl">7.</span>  <span class="fl">8.</span>]</span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>     [ <span class="fl">9.</span> <span class="fl">10.</span> <span class="fl">11.</span> <span class="fl">12.</span>]</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>     [<span class="fl">13.</span> <span class="fl">14.</span> <span class="fl">15.</span> <span class="fl">16.</span>]]</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a one-dimensional array with 16 elements</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="fl">1.0</span>,<span class="fl">17.0</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>, <span class="fl">11.</span>, <span class="fl">12.</span>, <span class="fl">13.</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>       <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>])</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape array a into a 4x4 array</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [[ <span class="fl">1.</span>  <span class="fl">2.</span>  <span class="fl">3.</span>  <span class="fl">4.</span>]</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>     [ <span class="fl">5.</span>  <span class="fl">6.</span>  <span class="fl">7.</span>  <span class="fl">8.</span>]</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>     [ <span class="fl">9.</span> <span class="fl">10.</span> <span class="fl">11.</span> <span class="fl">12.</span>]</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>     [<span class="fl">13.</span> <span class="fl">14.</span> <span class="fl">15.</span> <span class="fl">16.</span>]]</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There are a few important things to note about the <code>ndarray.reshape()</code> method. First and unsurprisingly, the <em>size</em> of array must be preserved (i.e.&nbsp;the size of the reshaped array must match that of the original array). Secondly, and perhaps more importantly, the <code>ndarray.reshape()</code> method creates a <strong>view</strong> of the original array <code>a</code>, rather than a <strong>copy</strong>, which would allow the two variables to exist independently. Because <code>b</code> is a <em>view</em> of <code>a</code>, any changes made to <code>b</code> will also be applied to <code>a</code>:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset the value in the third row, third column (11.0)</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>],</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>],</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">9.</span>, <span class="fl">10.</span>,  <span class="fl">0.</span>, <span class="fl">12.</span>],</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">13.</span>, <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>]])</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>,  <span class="fl">0.</span>, <span class="fl">12.</span>, <span class="fl">13.</span>, </span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>           <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset the value in the third row, third column (11.0)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>],</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>],</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">9.</span>, <span class="fl">10.</span>,  <span class="fl">0.</span>, <span class="fl">12.</span>],</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">13.</span>, <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>]])</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([ <span class="fl">1.</span>,  <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>,  <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>,  <span class="fl">0.</span>, <span class="fl">12.</span>, <span class="fl">13.</span>, </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>           <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Unlike <code>ndarray.reshape()</code>, the <code>ndarray.resize()</code> method operates <em>in-place</em> on the original array. The <code>ndarray.resize()</code> method is used to add or delete rows and/or columns:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 2 x 3 array</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the original array</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>smaller <span class="op">=</span> a.copy()</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use ndarray.resize() to reshape to a 2x2 array and delete the last two elements</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>smaller.resize(<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>smaller</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the original array</span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>bigger <span class="op">=</span> a.copy()</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use ndarray.resize() to reshape to a 6x6 array by adding zeros</span></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>bigger.resize(<span class="dv">6</span>,<span class="dv">6</span>)</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>bigger</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 2 x 3 array</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the original array</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>smaller <span class="op">=</span> a.copy()</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use ndarray.resize() to reshape to a 2x2 array and delete the last two elements</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>smaller.resize(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>smaller</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy the original array</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>bigger <span class="op">=</span> a.copy()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use ndarray.resize() to reshape to a 6x6 array by adding zeros</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>bigger.resize(<span class="dv">6</span>,<span class="dv">6</span>)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>bigger</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="python">
 <pre><code>🐍 &lt;b&gt;Copies vs. Views&lt;/b&gt; 
 This is just one example of many occasions when it is advisable to create a &lt;b&gt;copy&lt;/b&gt; of the original object before manipulating it. Had we not copied &lt;code&gt;a&lt;/code&gt; before resizing it to a 2x2 array, the last two elements would have been permanently deleted, as &lt;code&gt;a&lt;/code&gt; itself would have been resized. A good rule of thumb is to &lt;b&gt;always create a copy&lt;/b&gt; before changing or deleting any data.</code></pre>
 </div>
 <p>Often it is useful to <strong>rearrange</strong> the elements in an array. The <code>ndarray.transpose()</code> method –&nbsp;or simply <code>ndarray.T</code>, transposes the array, switching the rows and columns, while the <code>np.flip()</code>, <code>np.flipud()</code>, and <code>np.fliplr()</code> functions reverse the order of elements in the array along a given axis:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a new 4x5 array</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>],</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>]])</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose rows + columns</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>x.T</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">3</span>],</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>],</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>],</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">4</span>]])</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array (reverse the order of all elements)</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>np.flip(x)</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>],</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]])</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array up/down (reverse the order of the rows)</span></span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>np.flipud(x)</span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>],</span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>]])</span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array left/right (reverse the order of the columns)</span></span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>np.fliplr(x)</span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a new 4x5 array</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>],</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>]])</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose rows + columns</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>x.T</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">3</span>],</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">2</span>],</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>],</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">4</span>]])</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array (reverse the order of all elements)</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>np.flip(x)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>],</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]])</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array up/down (reverse the order of the rows)</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>np.flipud(x)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>],</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>]])</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array left/right (reverse the order of the columns)</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>np.fliplr(x)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When passed with the <em><code>axis</code></em> argument, <code>np.flip()</code> mimics the <code>np.flipud()</code> and <code>np.fliplr()</code> functions:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array over the row axis (same as np.flipud(x))</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>np.flip(x, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>],</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>]])</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array over the column axis (same as np.fliplr(x))</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>np.flip(x, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array over the row axis (same as np.flipud(x))</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>np.flip(x, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">4</span>],</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>],</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>]])</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip the array over the column axis (same as np.fliplr(x))</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>np.flip(x, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>],</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">6</span>],</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 7. &lt;/b&gt;
 &lt;ol class="alpha"&gt;
@@ -735,84 +739,84 @@ This is just one example of many occasions when it is advisable to create a &lt;
 </h4>
 <p>So far, we have considered array manipulation routines that operatee on a single array. We will encounter many scenarios in which it is necessary to combine multiple arrays into one or, conversely, to split a single array into two or more separate objects.</p>
 <p><strong>Concatenation</strong> in computer programming refers to the process of joining multiple objects end-to-end. The most common way of concatenating arrays in NumPy is with the <code>np.concatenate()</code> function, which takes a tuple of arrays:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 3x3 array</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>],</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">1</span>],</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">8</span>]])</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 1x3 array</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">6</span>]])</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate x and y</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y))</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 3x3 array</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>],</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">1</span>],</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">8</span>]])</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 1x3 array</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">6</span>]])</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate x and y</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y))</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that, by default, <code>np.concatenate()</code> operates along the <em>row</em> axis (<code>0</code>). To concatenate along the column axis, we must specify <code>axis=1</code> as an argument:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate x and y along the column axis</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">---------------------------------------------------------------------------</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">ValueError</span>                                Traceback (most recent call last)</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">65</span><span class="op">-</span><span class="dv">6</span><span class="er">c2205ef28d2</span><span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">5</span> y <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">0</span>]])</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">6</span> </span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">----&gt;</span> <span class="dv">7</span> np.concatenate((x,y),axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>__array_function__ internals<span class="op">&gt;</span> <span class="kw">in</span> concatenate(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">ValueError</span>: <span class="bu">all</span> the <span class="bu">input</span> array dimensions <span class="cf">for</span> the concatenation axis must match exactly, but along </span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    dimension <span class="dv">0</span>, the array at index <span class="dv">0</span> has size <span class="dv">3</span> <span class="kw">and</span> the array at index <span class="dv">1</span> has size <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate x and y along the column axis</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">ValueError</span>                                Traceback (most recent call last)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">65</span><span class="op">-</span><span class="dv">6</span><span class="er">c2205ef28d2</span><span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">5</span> y <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">0</span>]])</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">6</span> </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">----&gt;</span> <span class="dv">7</span> np.concatenate((x,y),axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>__array_function__ internals<span class="op">&gt;</span> <span class="kw">in</span> concatenate(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">ValueError</span>: <span class="bu">all</span> the <span class="bu">input</span> array dimensions <span class="cf">for</span> the concatenation axis must match exactly, but along </span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    dimension <span class="dv">0</span>, the array at index <span class="dv">0</span> has size <span class="dv">3</span> <span class="kw">and</span> the array at index <span class="dv">1</span> has size <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Uh-oh! Unsurprisingly, when we tried to concatenate an array with 1 row to an array with 3 rows, we got a <code>ValueError</code>. For <code>np.concatenate()</code> to work, the dimensions must match. Thus, we must first transpose <code>y</code> before adding it to <code>x</code> as a column:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose y and concatenate x and y along the column axis</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y.T),axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>],</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">8</span>],</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose y and concatenate x and y along the column axis</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>np.concatenate((x,y.T),axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>],</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">8</span>],</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Equivalently, we could use the <code>np.vstack()</code> or <code>np.hstack()</code> function to concatenate directly along the row or column axis, respectively:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack rows of x and y (same as np.concatenate((x,y), axis=0)</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>np.vstack((x,y))</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack columns of x and y (same as np.concatenate((x,y), axis=1)</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>np.hstack((x,y.T))</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>],</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">8</span>],</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack rows of x and y (same as np.concatenate((x,y), axis=0)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>np.vstack((x,y))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack columns of x and y (same as np.concatenate((x,y), axis=1)</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>np.hstack((x,y.T))</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>],</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">8</span>],</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>           [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 8. &lt;/b&gt; Create two random 1-D arrays of length 10. Merge them into a 2x10 array and then a 10x2 array.</code></pre>
 </div>
 <p>Conversely, <strong>splitting</strong> allows you to breakdown a single array into multiple arrays. Splitting is implemented with the <code>np.split()</code>, <code>np.vsplit()</code>, and <code>np.hsplit()</code> functions.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 4x3 array</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Split z into two arrays at row 1</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>np.split(z,[<span class="dv">1</span>])</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>]]), array([[<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])]</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>np.vsplit(z,[<span class="dv">1</span>])</span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>]]), array([[<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])]</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Split z into two arrays at column 1</span></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>np.hsplit(z,[<span class="dv">1</span>])</span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>],</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">9</span>],</span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">6</span>],</span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">2</span>]]), </span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>     array([[<span class="dv">2</span>, <span class="dv">0</span>],</span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">1</span>],</span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">0</span>, <span class="dv">8</span>],</span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">8</span>, <span class="dv">6</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a 4x3 array</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>],</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Split z into two arrays at row 1</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>np.split(z,[<span class="dv">1</span>])</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>]]), array([[<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])]</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>np.vsplit(z,[<span class="dv">1</span>])</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>]]), array([[<span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>                                [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">6</span>]])]</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Split z into two arrays at column 1</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>np.hsplit(z,[<span class="dv">1</span>])</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> [array([[<span class="dv">4</span>],</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">9</span>],</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">6</span>],</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">2</span>]]), </span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>     array([[<span class="dv">2</span>, <span class="dv">0</span>],</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">0</span>, <span class="dv">8</span>],</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>            [<span class="dv">8</span>, <span class="dv">6</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Multiple indices can be passed to the <code>np.split()</code> and related functions, with <em>n</em> indices (split points) resulting in <em>n + 1</em> subarrays.</p>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 9. &lt;/b&gt;
@@ -827,19 +831,19 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>One of the key advantages of NumPy is its ability to perform <em>vectorized</em> operations using <strong>universal functions</strong> (ufuncs), which perform element-wise operations on arrays very quickly. For example, say we had a very large list of data, and we wanted to perform some mathematical operation on all of the data elements. We could store this data as a <code>list</code> or an <code>ndarray</code>:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of the first 10,000 integers</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000</span>))</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a one-dimensional array of the first 10,000 integers</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.arange(<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of the first 10,000 integers</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000</span>))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a one-dimensional array of the first 10,000 integers</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.arange(<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, let’s multiply each element in our dataset by 2. We can accomplish this by using a <code>for</code> loop for the list <code>a</code> and a <strong>ufunc</strong> for array <code>b</code>. (The <code>%timeit</code> module is a built-in Python function used to calculate the time it takes to execute short code snippets.)</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to multiply every element in a by 2</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit [i<span class="op">*</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> a]</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a ufunc to multiply every element in b by 2</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit b <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">388</span> µs ± <span class="fl">30.6</span> µs per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000</span> loops each)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.58</span> µs ± <span class="fl">41.1</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">100000</span> loops each)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to multiply every element in a by 2</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit [i<span class="op">*</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> a]</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a ufunc to multiply every element in b by 2</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit b <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">388</span> µs ± <span class="fl">30.6</span> µs per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">1000</span> loops each)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.58</span> µs ± <span class="fl">41.1</span> ns per loop (mean ± std. dev. of <span class="dv">7</span> runs, <span class="dv">100000</span> loops each)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>%timeit</code> module is a built-in Python function used to calculate the time it takes to execute short code snippets.</p>
 <div class="run">
 <pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
@@ -847,15 +851,15 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of the first 10,000 integers</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>list10 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000</span>))</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to multiply every element in a by 2</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit [i<span class="op">*</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> list10]</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a one-dimensional array of the first 10,000 integers</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>array10 <span class="op">=</span> np.arange(<span class="dv">10000</span>)</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a ufunc to multiply every element in b by 2</span></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit array10 <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of the first 10,000 integers</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>list10 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000</span>))</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to multiply every element in a by 2</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit [i<span class="op">*</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> list10]</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a one-dimensional array of the first 10,000 integers</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>array10 <span class="op">=</span> np.arange(<span class="dv">10000</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a ufunc to multiply every element in b by 2</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit array10 <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>As you can see, the <code>for</code> loop took about 100 times longer than the exact same element-wise array operation!</p>
@@ -863,38 +867,38 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <span style="color:black"> Computation on single arrays using ufuncs </span>
 </h4>
 <p>Ufuncs are fairly straightforward to use, as they rely on Python’s native operators (e.g.&nbsp;<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>):</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 2x4 array of floats</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>x  <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>               [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Do some math</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">12</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">13.</span>, <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>],</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">17.</span>, <span class="fl">18.</span>, <span class="fl">19.</span>, <span class="fl">20.</span>]])</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">-</span> <span class="dv">400</span></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="op">-</span><span class="fl">399.</span>, <span class="op">-</span><span class="fl">398.</span>, <span class="op">-</span><span class="fl">397.</span>, <span class="op">-</span><span class="fl">396.</span>],</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>           [<span class="op">-</span><span class="fl">395.</span>, <span class="op">-</span><span class="fl">394.</span>, <span class="op">-</span><span class="fl">393.</span>, <span class="op">-</span><span class="fl">392.</span>]])</span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponentiation</span></span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">1.</span>,  <span class="fl">4.</span>,  <span class="fl">9.</span>, <span class="fl">16.</span>],</span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">25.</span>, <span class="fl">36.</span>, <span class="fl">49.</span>, <span class="fl">64.</span>]])</span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine operations</span></span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">**</span> (x<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">3.16227766e+00</span>, <span class="fl">1.00000000e+01</span>, <span class="fl">3.16227766e+01</span>, <span class="fl">1.00000000e+02</span>],</span>
-<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">3.16227766e+02</span>, <span class="fl">1.00000000e+03</span>, <span class="fl">3.16227766e+03</span>, <span class="fl">1.00000000e+04</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 2x4 array of floats</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>x  <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>               [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Do some math</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">12</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">13.</span>, <span class="fl">14.</span>, <span class="fl">15.</span>, <span class="fl">16.</span>],</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">17.</span>, <span class="fl">18.</span>, <span class="fl">19.</span>, <span class="fl">20.</span>]])</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">-</span> <span class="dv">400</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="op">-</span><span class="fl">399.</span>, <span class="op">-</span><span class="fl">398.</span>, <span class="op">-</span><span class="fl">397.</span>, <span class="op">-</span><span class="fl">396.</span>],</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>           [<span class="op">-</span><span class="fl">395.</span>, <span class="op">-</span><span class="fl">394.</span>, <span class="op">-</span><span class="fl">393.</span>, <span class="op">-</span><span class="fl">392.</span>]])</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponentiation</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">1.</span>,  <span class="fl">4.</span>,  <span class="fl">9.</span>, <span class="fl">16.</span>],</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">25.</span>, <span class="fl">36.</span>, <span class="fl">49.</span>, <span class="fl">64.</span>]])</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine operations</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">**</span> (x<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">3.16227766e+00</span>, <span class="fl">1.00000000e+01</span>, <span class="fl">3.16227766e+01</span>, <span class="fl">1.00000000e+02</span>],</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">3.16227766e+02</span>, <span class="fl">1.00000000e+03</span>, <span class="fl">3.16227766e+03</span>, <span class="fl">1.00000000e+04</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These arithmetic operators act as <em>wrappers</em> (effectively shortcuts) around specific built-in NumPy functions; for example, the <code>+</code> operator is a convenient shortcut for the <code>np.add()</code> function:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">2</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>],</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>]])</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>np.add(x,<span class="dv">2</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>],</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>],</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>]])</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>np.add(x,<span class="dv">2</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>,  <span class="fl">6.</span>],</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">7.</span>,  <span class="fl">8.</span>,  <span class="fl">9.</span>, <span class="fl">10.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The following table contains a list of arithmetic operators implemented by NumPy. Note that these functions work on <em>all</em> numerical objects, not just arrays.</p>
 <p style="height:12pt">
 </p>
@@ -1066,45 +1070,45 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <span style="color:black"> Array-to-array math </span>
 </h4>
 <p>So far, we have only considered operations between a single array and an integer, but often it is necessary to perform mathematical operations on multiple arrays. Much like NumPy handles single array operations, array-to-array math in NumPy uses ufuncs to perform element-wise calculations. For arrays of the same dimensions, this is straight forward:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x  <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>               [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="fl">9.</span>,<span class="fl">87.</span>,<span class="fl">3.</span>,<span class="fl">5.6</span>],</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>              [<span class="op">-</span><span class="fl">1.</span>,<span class="fl">4.</span>,<span class="fl">7.1</span>,<span class="fl">8.</span>]])</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">10.</span> , <span class="fl">89.</span> ,  <span class="fl">6.</span> ,  <span class="fl">9.6</span>],</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">4.</span> , <span class="fl">10.</span> , <span class="fl">14.1</span>, <span class="fl">16.</span> ]])</span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">/</span> y</span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">0.11111111</span>,  <span class="fl">0.02298851</span>,  <span class="fl">1.</span>        ,  <span class="fl">0.71428571</span>],</span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>           [<span class="op">-</span><span class="fl">5.</span>        ,  <span class="fl">1.5</span>       ,  <span class="fl">0.98591549</span>,  <span class="fl">1.</span>        ]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x  <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>               [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="fl">9.</span>,<span class="fl">87.</span>,<span class="fl">3.</span>,<span class="fl">5.6</span>],</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>              [<span class="op">-</span><span class="fl">1.</span>,<span class="fl">4.</span>,<span class="fl">7.1</span>,<span class="fl">8.</span>]])</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">10.</span> , <span class="fl">89.</span> ,  <span class="fl">6.</span> ,  <span class="fl">9.6</span>],</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>           [ <span class="fl">4.</span> , <span class="fl">10.</span> , <span class="fl">14.1</span>, <span class="fl">16.</span> ]])</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Division</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">/</span> y</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">0.11111111</span>,  <span class="fl">0.02298851</span>,  <span class="fl">1.</span>        ,  <span class="fl">0.71428571</span>],</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>           [<span class="op">-</span><span class="fl">5.</span>        ,  <span class="fl">1.5</span>       ,  <span class="fl">0.98591549</span>,  <span class="fl">1.</span>        ]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For arrays whose dimensions do not match, NumPy does something called <strong>broadcasting</strong>. So long as one dimension of each array matches and one array has a dimension of 1 in one direction, the smaller array is “broadcast” to the dimensions of the larger array. In this process, the row or column is replicated to match the dimensions of the larger array. This is best illustrated in the following diagram:</p>
 <p><img src="./assets/broadcasting.png" alt="broadcasting" width="600"></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>             [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>])</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> np.array([[<span class="fl">1.</span>],</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>             [<span class="fl">20.</span>]])</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Row-wise</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">11.</span>, <span class="fl">13.</span>, <span class="fl">15.</span>, <span class="fl">17.</span>],</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">15.</span>, <span class="fl">17.</span>, <span class="fl">19.</span>, <span class="fl">21.</span>]])</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Column-wise</span></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> c</span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>],</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">25.</span>, <span class="fl">26.</span>, <span class="fl">27.</span>, <span class="fl">28.</span>]])</span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple operations</span></span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> c<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[  <span class="fl">2.</span>,   <span class="fl">3.</span>,   <span class="fl">4.</span>,   <span class="fl">5.</span>],</span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">405.</span>, <span class="fl">406.</span>, <span class="fl">407.</span>, <span class="fl">408.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">4.</span>],</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>             [<span class="fl">5.</span>,<span class="fl">6.</span>,<span class="fl">7.</span>,<span class="fl">8.</span>]])</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>])</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> np.array([[<span class="fl">1.</span>],</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>             [<span class="fl">20.</span>]])</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Row-wise</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[<span class="fl">11.</span>, <span class="fl">13.</span>, <span class="fl">15.</span>, <span class="fl">17.</span>],</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">15.</span>, <span class="fl">17.</span>, <span class="fl">19.</span>, <span class="fl">21.</span>]])</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Column-wise</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> c</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[ <span class="fl">2.</span>,  <span class="fl">3.</span>,  <span class="fl">4.</span>,  <span class="fl">5.</span>],</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">25.</span>, <span class="fl">26.</span>, <span class="fl">27.</span>, <span class="fl">28.</span>]])</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple operations</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> c<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> array([[  <span class="fl">2.</span>,   <span class="fl">3.</span>,   <span class="fl">4.</span>,   <span class="fl">5.</span>],</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>           [<span class="fl">405.</span>, <span class="fl">406.</span>, <span class="fl">407.</span>, <span class="fl">408.</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="practice">
 <pre><code>📚  &lt;b&gt; Practice 10. &lt;/b&gt;
 &lt;ol class="alpha"&gt;
@@ -1120,15 +1124,15 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <p>Most real-world datasets –&nbsp;environmental or otherwise –&nbsp;have data gaps. Data can be missing for any number of reasons, including observations not being recorded or data corruption. While a cell corresponding to a data gap may just be left blank in a spreadsheet, when imported into Python, there must be some way to handle “blank” or missing values.</p>
 <p>Missing data should not be replaced with zeros, as 0 can be a valid value for many datasets, (e.g.&nbsp;temperature, precipitation, etc.). Instead, the convention is to fill all missing data with the constant <strong>NaN</strong>. NaN stands for “Not a Number” and is implemented in NumPy as <code>np.nan</code>.</p>
 <p>NaNs are handled differently by different packages. In NumPy, all computations involving NaN values will return <code>nan</code>:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="fl">2.</span>,<span class="fl">2.7</span>.,<span class="fl">1.89</span>.],</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>                 [<span class="fl">1.1</span>, <span class="fl">0.0</span>, np.nan],</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                 [<span class="fl">3.2</span>, <span class="fl">0.74</span>, <span class="fl">2.1</span>]])</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>data.mean()</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> nan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="fl">2.</span>,<span class="fl">2.7</span>.,<span class="fl">1.89</span>.],</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>                 [<span class="fl">1.1</span>, <span class="fl">0.0</span>, np.nan],</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                 [<span class="fl">3.2</span>, <span class="fl">0.74</span>, <span class="fl">2.1</span>]])</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>data.mean()</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> nan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case, we’d want to use the alternative <code>np.nanmean()</code> function, which ignores NaNs:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data.nanmean()</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">1.71625</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>data.nanmean()</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">1.71625</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>NumPy has several other functions – including <code>np.nanmin()</code>, <code>np.nanmax()</code>, <code>np.nansum()</code> – that are analogous to the regular ufuncs covered above, but allow for computation of arrays containing NaN values.</p>
 <hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
 
@@ -1142,12 +1146,12 @@ This is just one example of many occasions when it is advisable to create a &lt;
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IGNORE THIS CELL</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IGNORE THIS CELL</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
