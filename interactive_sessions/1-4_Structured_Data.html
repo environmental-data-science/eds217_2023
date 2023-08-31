@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EDS 217: Python for Environmental Data Science - Session 1-4: Structured Data in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<link rel="stylesheet" href="styles/activities.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#collection-summary" id="toc-collection-summary" class="nav-link" data-scroll-target="#collection-summary">Collection Summary</a>
+  <ul class="collapse">
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">1. Dictionaries </a><a id="dictionaries" class="nav-link" data-scroll-target="undefined"></a>
+  <ul class="collapse">
+  <li><a href="#accessing-elements-in-dictionaries" id="toc-accessing-elements-in-dictionaries" class="nav-link" data-scroll-target="#accessing-elements-in-dictionaries">Accessing elements in Dictionaries </a><a id="accessing elements" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ <b> Try it. </b></a></li>
+  <li><a href="#try-it.-1" id="toc-try-it.-1" class="nav-link" data-scroll-target="#try-it.-1">✏️ Try it.</a>
+  <ul class="collapse">
+  <li><a href="#accessing-dictionary-keys-and-values" id="toc-accessing-dictionary-keys-and-values" class="nav-link" data-scroll-target="#accessing-dictionary-keys-and-values">Accessing dictionary keys and values </a><a id="keys_and_values" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#looping-through-dictionaries" id="toc-looping-through-dictionaries" class="nav-link" data-scroll-target="#looping-through-dictionaries">Looping through Dictionaries </a><a id="looping" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it.-2" id="toc-try-it.-2" class="nav-link" data-scroll-target="#try-it.-2">✏️ Try it.</a>
+  <ul class="collapse">
+  <li><a href="#accessing-un-assigned-elements-in-dictionaries" id="toc-accessing-un-assigned-elements-in-dictionaries" class="nav-link" data-scroll-target="#accessing-un-assigned-elements-in-dictionaries">Accessing un-assigned elements in Dictionaries </a><a id="accessing_unassigned" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it.-3" id="toc-try-it.-3" class="nav-link" data-scroll-target="#try-it.-3">✏️ Try it.</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets">2. Sets </a><a id="tuples" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#try-it.-4" id="toc-try-it.-4" class="nav-link" data-scroll-target="#try-it.-4">✏️ <b> Try it. </b></a>
+  <ul class="collapse">
+  <li><a href="#mutability" id="toc-mutability" class="nav-link" data-scroll-target="#mutability">Mutability </a><a id="mutability" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it.-5" id="toc-try-it.-5" class="nav-link" data-scroll-target="#try-it.-5">✏️ <b> Try it. </b></a></li>
+  <li><a href="#try-it.-6" id="toc-try-it.-6" class="nav-link" data-scroll-target="#try-it.-6">✏️ <b> Try it. </b></a>
+  <ul class="collapse">
+  <li><a href="#mixed-data-types-in-collections-and-sequences" id="toc-mixed-data-types-in-collections-and-sequences" class="nav-link" data-scroll-target="#mixed-data-types-in-collections-and-sequences">Mixed Data Types in Collections and Sequences </a><a id="mixed_types" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#set-methods" id="toc-set-methods" class="nav-link" data-scroll-target="#set-methods">Set Methods </a><a id="set_methods" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it.-7" id="toc-try-it.-7" class="nav-link" data-scroll-target="#try-it.-7">✏️ <b> Try it. </b></a></li>
+  <li><a href="#try-it.-8" id="toc-try-it.-8" class="nav-link" data-scroll-target="#try-it.-8">✏️ <b> Try it. </b></a></li>
+  <li><a href="#try-it.-9" id="toc-try-it.-9" class="nav-link" data-scroll-target="#try-it.-9">✏️ <b> Try it. </b></a>
+  <ul class="collapse">
+  <li><a href="#additional-set-methods-isdisjoint-issubset-issuperset" id="toc-additional-set-methods-isdisjoint-issubset-issuperset" class="nav-link" data-scroll-target="#additional-set-methods-isdisjoint-issubset-issuperset">Additional Set Methods: isdisjoint(), issubset(), issuperset()</a></li>
+  </ul></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples">3. Tuples </a><a id="tuples" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#try-it.-10" id="toc-try-it.-10" class="nav-link" data-scroll-target="#try-it.-10">✏️ <b> Try it. </b></a>
+  <ul class="collapse">
+  <li><a href="#other-ways-to-create-tuples" id="toc-other-ways-to-create-tuples" class="nav-link" data-scroll-target="#other-ways-to-create-tuples">Other ways to create tuples</a></li>
+  </ul></li>
+  <li><a href="#try-it.-11" id="toc-try-it.-11" class="nav-link" data-scroll-target="#try-it.-11">✏️ Try it.</a>
+  <ul class="collapse">
+  <li><a href="#indexing" id="toc-indexing" class="nav-link" data-scroll-target="#indexing">Indexing </a><a id="tuple_indexing" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  <li><a href="#try-it.-12" id="toc-try-it.-12" class="nav-link" data-scroll-target="#try-it.-12">✏️ <b> Try it. </b></a>
+  <ul class="collapse">
+  <li><a href="#immutability" id="toc-immutability" class="nav-link" data-scroll-target="#immutability">Immutability </a><a id="tuple_immutability" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#tuple-operations" id="toc-tuple-operations" class="nav-link" data-scroll-target="#tuple-operations">Tuple Operations </a><a id="tuple_operations" class="nav-link" data-scroll-target="undefined"></a></li>
+  <li><a href="#diving-deeper-named-tuples" id="toc-diving-deeper-named-tuples" class="nav-link" data-scroll-target="#diving-deeper-named-tuples">DIVING DEEPER: Named Tuples </a><a id="named_tuples" class="nav-link" data-scroll-target="undefined"></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<hr>
+<h4 class="anchored"> <a href="../">Return to Course Home Page</a></h4>
+<hr>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Session 1-4: Structured Data in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="../interactive_sessions/1-3_ControlFlowStatements.html">⬅️ Previous Session</a> | <a href="../index.html">🏠 Index</a> | <a href="../interactive_sessions/1-5_FunctionsObjectsClasses.html">➡️ Next Session</a> |</p>
+<p>Probably the easiest mental model for thinking about structured data is a spreadsheet. You are all familiar with Excel spreadsheets, with their numbered rows and lettered columns. In the spreadsheet, data is often “structured” so that each row is an entry, and each column is perhaps a variable recorded for that entry.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/structured-data.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">structured-data</figcaption>
+</figure>
+</div>
+<p>Environmental data map really well to this model, especially data collected over time. A spreadsheet of weather observations would have a new row for each observation period, and then the columns would be the meteorological data that was collected at that time. As we move into our data science tools, we will see that a major aspect of these tools is creating efficient ways of working with structured data. That being said, Python has a number of built-in data types that can be used to organize data in a structured manner. These basic data types containing structured data are all lumped into a single broad category called <code>collections</code>. Within these <code>collection</code> data types, some of the data types are <code>sequences</code>, which means that the items in the <code>collection</code> have a deterministic ordering. You’ve already used the two most common <code>sequence</code> data types: the <strong>string</strong> and the <strong>list</strong>. A <strong>string</strong> is simply an ordered collection of characters, while a <strong>list</strong> data type structures a collection of anything into an ordered series of elements that can be referenced by their position in the <strong>list</strong>.</p>
+<p>In this lesson, we are going to learn about an additional <code>sequence</code>, called a <strong>tuple</strong>, as well as two <code>collection</code> data types called sets (<strong>set</strong>) and dictionaries (<strong>dict</strong>).</p>
+<p style="height:1pt">
+</p>
+<div class="boxhead1">
+<pre><code>Session Topics</code></pre>
+</div>
+<div class="boxtext1">
+<ul class="a">
+<li>
+📌 <a href="#dictionaries">Dictionaries</a>
+</li>
+<ul class="b">
+<li>
+<a href="#accessing_elements">Accessing elements</a>
+</li>
+<li>
+<a href="#keys_and_values"><code>keys()</code> and <code>values()</code> </a>
+</li>
+<li>
+<a href="#looping">Looping through dictionaries</a> using <code>values()</code>
+</li>
+<li>
+<a href="#accessing_unassigned">Accessing un-assigned elements in Dictionaries</a>
+</li>
+</ul>
+<li>
+📌 <a href="#sets">Sets</a>
+</li>
+<ul class="b">
+<li>
+<a href="#mutability"> Mutability</a>
+</li>
+<li>
+<a href="#mixed_ypes">Mixed Data Types in Sets </a>
+</li>
+<li>
+<a href="#set_methods">Set Methods</a>
+</li>
+</ul>
+<li>
+📌 <a href="#tuples">Tuples</a>
+</li>
+<ul class="b">
+<li>
+<a href="#tuple_indexing">Indexing</a>
+</li>
+<li>
+<a href="#tuple_immutability">Immutability</a>
+</li>
+<li>
+<a href="#named_tuples">Named tuples</a>
+</li>
+</ul>
+</ul>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
+
+<section id="instructions" class="level3">
+<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
+<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
+<p style="color:#408000; font-weight: bold">
+🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
+</p>
+<p style="color:#008C96; font-weight: bold">
+▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
+</p>
+<p style="color:#008C96; font-weight: bold">
+✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
+</p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+</section>
+<section id="collection-summary" class="level1">
+<h1>Collection Summary</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/collections.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">collections.jpg</figcaption>
+</figure>
+</div>
+<p><strong>Note</strong>: Applying the <code>sorted()</code> function to any of these collections will produce a sorted <code>list</code>.</p>
+<section id="dictionaries" class="level2">
+<h2 class="anchored" data-anchor-id="dictionaries">1. Dictionaries <a id="dictionaries"></a></h2>
+<blockquote class="blockquote">
+<p><strong>TLDR</strong>: Dictionaries are a very common collection type that allows data to be organized using a <code>key:value</code> framework. Because of the similarity between <code>key:value</code> pairs and many data structures (e.g.&nbsp;“lookup tables”), you will see Dictionaries quite a bit when working in python</p>
+</blockquote>
+<p>The first collection we will look at today is the dictionary, or <strong>dict</strong>. This is one of the most powerful data structures in python. It is a <code>mutable</code>, <code>unordered</code> collection, which means that it can be altered, but elements within the structure cannot be referenced by their position and they cannot be sorted.</p>
+<p>You can create a dictionary using the <code>{}</code>, providing both a <code>key</code> and a <code>value</code>, which are separated by a <code>:</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines <span class="op">=</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ecology'</span>:<span class="st">'The relationships between organisms and their environments.'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'hydrology'</span>:<span class="st">'The properties, distribution &amp; effects of water on the surface, subsurface, &amp; atmosphere.'</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'geology'</span>:<span class="st">'The origin, history, and structure of the earth.'</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'meteorology'</span>:<span class="st">'The phenomena of the atmosphere, especially weather and weather conditions.'</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; The use of whitespace and indentation is important in python. In the example above, the dictionary entries are indented relative to the brackets &lt;code&gt;{&lt;/code&gt; and &lt;code&gt;}&lt;/code&gt;. In addition, there is no space between the &lt;code&gt;'key'&lt;/code&gt;, the &lt;code&gt;:&lt;/code&gt;, and the &lt;code&gt;'value'&lt;/code&gt; for each entry. Finally, notice that there is a &lt;code&gt;,&lt;/code&gt; following each dictionary entry. This pattern is the same as all of the other &lt;i&gt;collection&lt;/i&gt; data types we've seen so far, including &lt;b&gt;list&lt;/b&gt;, &lt;b&gt;set&lt;/b&gt;, and &lt;b&gt;tuple&lt;/b&gt;.</code></pre>
+</div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ecology'</span>:<span class="st">'The relationships between organisms and their environments.'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'hydrology'</span>:<span class="st">'The properties, distribution &amp; effects of water on the surface, subsurface, &amp; atmosphere.'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'geology'</span>:<span class="st">'The origin, history, and structure of the earth.'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'meteorology'</span>:<span class="st">'The phenomena of the atmosphere, especially weather and weather conditions.'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="accessing-elements-in-dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-elements-in-dictionaries">Accessing elements in Dictionaries <a id="accessing elements"></a></h3>
+<p>Access an element in a dictionary is easy if you know what you are looking for. For example, if I want to know the definition of <code>ecology</code>, I can simply retireve the value of this defition using the key as my index into the dictionary:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines[<span class="st">'ecology'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'The relationships between organisms and their environments.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it." class="level2">
+<h2 class="anchored" data-anchor-id="try-it.">✏️ <b> Try it. </b></h2>
+<p>Try accessing the some of the definitions in the <code>environmental_disciplines</code> dictionary.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines[<span class="st">'ecology'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'The relationships between organisms and their environments.'</code></pre>
+</div>
+</div>
+<p>Because dictionaries are <em>mutable</em>, it is easy to add additional entries. This is done using the following notation:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    environmental_discplines[<span class="st">'geomorphology'</span>] <span class="op">=</span>  <span class="st">'The evolution and configuration of landforms.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-it.-1" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-1">✏️ Try it.</h2>
+<p><b>Biogeochemistry</b> is defined as <b>“the chemical, physical, geological, and biological processes and reactions that govern the composition of the natural environment.”</b> Add this discpline to the dictionary <code>environmental_disciplines</code>.</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines[<span class="st">'biogeochemistry'</span>] <span class="op">=</span> <span class="st">'the chemical, physical, geological, and biological processes and reactions that govern the composition of the natural environment.'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(environmental_disciplines[<span class="st">'biogeochemistry'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>the chemical, physical, geological, and biological processes and reactions that govern the composition of the natural environment.</code></pre>
+</div>
+</div>
+<section id="accessing-dictionary-keys-and-values" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-dictionary-keys-and-values">Accessing dictionary keys and values <a id="keys_and_values"></a></h3>
+<p>Every dictionary has builtin methods to retrieve its <code>keys</code> and <code>values</code>. These functions are called, appropriately, <code>keys()</code> and <code>values()</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>disciplines <span class="op">=</span> environmental_disciplines.keys()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(disciplines)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dict_keys([<span class="st">'ecology'</span>, <span class="st">'hydrology'</span>, <span class="st">'geology'</span>, <span class="st">'meteorology'</span>, <span class="st">'biogeochemistry'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>definitions <span class="op">=</span> environmental_disciplines.values()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(definitions)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dict_values(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'The relationships between organisms and their environments.'</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="st">'The properties, distribution &amp; effects of water on the surface, subsurface, &amp; atmosphere.'</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">'The origin, history, and structure of the earth.'</span>, </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="st">'The phenomena of the atmosphere, especially weather and weather conditions.'</span>, </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">'The chemical, physical, geological, and biological processes and reactions that govern the composition of the natural environment.'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<p>🐍 <b>Note.</b> The <code>keys()</code> and <code>values()</code> functions return a <code>dict_key</code> object and <code>dict_values</code> object, respectively. Each of these objects contains a <b>list</b> of either the keys or values. You can force the result of the <code>keys()</code> or <code>values()</code> function into a <b>list</b> by wrapping either one in a <code>list()</code> command.</p>
+<p>For example: <code>key_list = list(environmental_disciplines.keys())</code> will return a <b>list</b> of the keys in <code>environmental_disciplines</code></p>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> environmental_disciplines.items():</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, value)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    environmental_disciplines[key] <span class="op">=</span> value.capitalize()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>ecology The relationships between organisms and their environments.
+hydrology The properties, distribution &amp; effects of water on the surface, subsurface, &amp; atmosphere.
+geology The origin, history, and structure of the earth.
+meteorology The phenomena of the atmosphere, especially weather and weather conditions.
+biogeochemistry the chemical, physical, geological, and biological processes and reactions that govern the composition of the natural environment.</code></pre>
+</div>
+</div>
+</section>
+<section id="looping-through-dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="looping-through-dictionaries">Looping through Dictionaries <a id="looping"></a></h3>
+<p>Python has an efficient way to loop through all the keys and values of a dictionary at the same time. The <code>items()</code> method returns a <strong>tuple</strong> containing a <code>(key, value)</code> for each element in a dictionary. In practice this means that we can loop through a dictionary in the following way:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_dict <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Homer Simpson'</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">'occupation'</span>: <span class="st">'Nuclear Engineer'</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">'address'</span>: <span class="st">'742 Evergreen Terrace'</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">'city'</span>: <span class="st">'Springfield'</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">'state'</span>: <span class="st">' ? '</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> my_dict.items():</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> Name: Homer Simpson.</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    Occupation: Nuclear Engineer.</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    Address: <span class="dv">742</span> Evergreen Terrace.</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    City: Springfield.</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    State:  ? .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-2" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-2">✏️ Try it.</h2>
+<p>Loop through the <code>environmental_disciplines</code> dictionary and print out a sentence providing the definition of each subject (e.g.&nbsp;“Ecology is the study of….”).</p>
+<section id="accessing-un-assigned-elements-in-dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-un-assigned-elements-in-dictionaries">Accessing un-assigned elements in Dictionaries <a id="accessing_unassigned"></a></h3>
+<p>Attempting to retrieve an element of a dictionary that doesn’t exist is the same as requesting an index of a <strong>list</strong> that doesn’t exist - Python will raise an Exception. For example, if I attempt to retrieve the definition of a field that hasn’t been defined, then I get an error.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines[<span class="st">'xenohydrology'</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="pp">KeyError</span>                                  Traceback (most recent call last)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">46</span><span class="op">-</span>d4d91bf18209<span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="op">----&gt;</span> <span class="dv">1</span> environmental_disciplines[<span class="st">'xenohydrology'</span>]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="pp">KeyError</span>: <span class="st">'xenohydrology'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While it’s easy to determine what indicies are in a <strong>list</strong> using the <code>len()</code> command, it’s sometimes hard to know what elements are in a <strong>dict</strong> (but we’ll learn how soon!). Regardless, to avoid getting an error when requesting an element from a <strong>dict</strong>, you can use the <code>get()</code> function. The <code>get()</code> function will return <code>None</code> if the element doesn’t exist:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>unknown_definition <span class="op">=</span> environmental_disciplines.get(<span class="st">'xenohydrology'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unknown_definition)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>get()</code> function will also allow you to pass an additional argument. This additional argument specifies a “default” value which will be returned for any undefined elements:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>environmental_disciplines.get(<span class="st">'xenohydrology'</span>, <span class="st">'Discipline not defined.'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'Discipline not defined.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>list_of_disciplines <span class="op">=</span> [<span class="st">'climatology'</span>, <span class="st">'ecology'</span>, <span class="st">'meteorology'</span>, <span class="st">'geology'</span>, <span class="st">'biogeochemistry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-3" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-3">✏️ Try it.</h2>
+<p>Using the list of discplines given above, write a <code>for</code> loop that either prints the definition of the discipline, or prints ‘Discipline not defined.’</p>
+</section>
+<section id="sets" class="level2">
+<h2 class="anchored" data-anchor-id="sets">2. Sets <a id="tuples"></a></h2>
+<blockquote class="blockquote">
+<p><strong>TLDR</strong>: Sets are useful for comparing groups of items to determine their overlap or their differences. Sometimes used in data science, but rarely when working with large datasets.</p>
+</blockquote>
+<p>As opposed to a <strong>list</strong> or <strong>tuple</strong>, a <strong>set</strong> is not a <em>sequence</em>. Although a set is <em>iterable</em> (like the <em>sequences</em> you’ve already met), a <strong>set</strong> is an <em>unordered</em> collection data type, which means it is not a <em>sequence</em>. However, a set is mutable, which means - like a <strong>list</strong> - it can be modified after being created. Finally - and most uniquely - a <strong>set</strong> has no duplicate elements. In this sense, a <strong>set</strong> in python is very much like a mathematical set.</p>
+<p>We’ve seen that a <strong>list</strong> is implemented using <code>[]</code>, while a <strong>tuple</strong> is implemented using <code>()</code>.</p>
+<p>A set is implemented using <code>{}</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>num_set <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">28</span>}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>str_set <span class="op">=</span> {<span class="st">'hydrology'</span>, <span class="st">'ecology'</span>, <span class="st">'geology'</span>, <span class="st">'climatology'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define set variables</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>num_set <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">28</span>}</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>str_set <span class="op">=</span> {<span class="st">'hydrology'</span>, <span class="st">'ecology'</span>, <span class="st">'geology'</span>, <span class="st">'climatology'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>As with all other collections, you can also create a <strong>set</strong> using the <code>set()</code> function:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>num_set <span class="op">=</span> <span class="bu">set</span>([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">21</span>, <span class="dv">28</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>, <span class="dv">45</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-it.-4" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-4">✏️ <b> Try it. </b></h2>
+<p>Use the <code>set()</code> function to create a set containing the first four prime numbers.</p>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>num_set <span class="op">=</span> <span class="bu">set</span>([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">28</span>])</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(num_set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 3, 6, 10, 15, 21, 28}</code></pre>
+</div>
+</div>
+<section id="mutability" class="level3">
+<h3 class="anchored" data-anchor-id="mutability">Mutability <a id="mutability"></a></h3>
+<p>Sets are <code>mutable</code>.</p>
+<p>To remove an element from a set, use the <code>discard()</code> method:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>str_set.discard(<span class="st">'ecology'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To add an element from to set, use the <code>add()</code> method:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>str_set.add(<span class="st">'oceanography'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To add multiple elements to a set at the same time, use the <code>update()</code> method. The items to add should be contained in a <strong>list</strong>.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>str_set.update([<span class="st">'oceanography'</span>, <span class="st">'microbiology'</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-5" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-5">✏️ <b> Try it. </b></h2>
+<p>Add <code>‘biogeochemistry’</code> and <code>‘meteorology’</code> to <code>str_set</code> and then remove <code>‘ecology’</code>.</p>
+<p>Many of the same functions that worked on <strong>list</strong> and <strong>tuple</strong> also work for a <strong>set</strong>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(str_set)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>min()</code> and <code>max()</code> commands can also be used to find the minimum and maximum values in a tuple. For a tuple of strings, this corresponds to the alphabetically first and last elements.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(str_set)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'climatology'</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(str_tuple)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'oceanography'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-it.-6" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-6">✏️ <b> Try it. </b></h2>
+<p>Use the <code>len()</code>, <code>min()</code>, and <code>max()</code> commands to find the length, minimum, and maximum of <code>num_set</code>.</p>
+<section id="mixed-data-types-in-collections-and-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-data-types-in-collections-and-sequences">Mixed Data Types in Collections and Sequences <a id="mixed_types"></a></h3>
+<p>As a reminder, it’s usually a good idea to make sure your sets are all of the same basic data type. The reason is because Python doesn’t know how to compare the magnitude of different data types.</p>
+<p>Which is larger: <code>ecology</code>, or the number <code>3</code>? Python doesn’t know the answer, and neither do I. If you try to use functions like <code>max</code> or <code>min</code> on a mixed data type <strong>set</strong> you will get a <code>TypeError</code> exception.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>mixed_set <span class="op">=</span> {<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'ecology'</span>, <span class="st">'biology'</span>}</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(mixed_set)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>                                 Traceback (most recent call last)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">49</span><span class="op">-</span>a4da84ba3cd4<span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span> mixed_set <span class="op">=</span> {<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'ecology'</span>, <span class="st">'biology'</span>}</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">----&gt;</span> <span class="dv">2</span> <span class="bu">max</span>(mixed_set)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>: <span class="st">'&gt;'</span> <span class="kw">not</span> supported between instances of <span class="st">'int'</span> <span class="kw">and</span> <span class="st">'str'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-methods" class="level3">
+<h3 class="anchored" data-anchor-id="set-methods">Set Methods <a id="set_methods"></a></h3>
+<p>Given their similarity to mathematical sets, there are some specific functions that allow us to compare and combine the contents of different sets.</p>
+<section id="union" class="level4">
+<h4 class="anchored" data-anchor-id="union">Union</h4>
+<p>A union of sets contains all the items that are in any of the sets.</p>
+<p>The union of sets <span class="math inline">A</span> and <span class="math inline">B</span> is defined as $ A B $.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/union.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>odds <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">15</span>}</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> {<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>}</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>integers <span class="op">=</span> odds.union(evens)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(integers)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>knows_python <span class="op">=</span> {<span class="st">'Bart'</span>, <span class="st">'Maggie'</span>, <span class="st">'Homer'</span>, <span class="st">'Lisa'</span>, <span class="st">'Professor Frink'</span>, <span class="st">'Nelson'</span>}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>knows_R <span class="op">=</span> {<span class="st">'Homer'</span>, <span class="st">'Nelson'</span>, <span class="st">'Lisa'</span>, <span class="st">'Marge'</span>, <span class="st">'Ralph'</span>, <span class="st">'Milhouse'</span>, <span class="st">'Ms. Krabappel'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="intersection" class="level4">
+<h4 class="anchored" data-anchor-id="intersection">Intersection</h4>
+<p>An intersection of sets contains all the items that are found in all of the sets.</p>
+<p>The intersection of sets <span class="math inline">A</span> and <span class="math inline">B</span> is defined as $ A B $.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/intersection.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>}</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>multiples_of_nine <span class="op">=</span> {<span class="dv">9</span>, <span class="dv">18</span>, <span class="dv">27</span>, <span class="dv">36</span>, <span class="dv">45</span>}</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>squares_divisible_by_nine <span class="op">=</span> squares.intersection(multiples_of_nine)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares_divisible_by_nine)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> {<span class="dv">9</span>, <span class="dv">36</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="try-it.-7" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-7">✏️ <b> Try it. </b></h2>
+<p>Use the <code>intersection()</code> method to determine who knows both <code>python</code> and <code>R</code>.</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knows_both = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="difference" class="level4">
+<h4 class="anchored" data-anchor-id="difference">Difference</h4>
+<p>An difference of two sets contains all the items that are in A but not in B.</p>
+<p>The difference (or relative complement) of set <span class="math inline">A</span> and <span class="math inline">B</span> is defined as $ A B $.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/difference.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>}</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>multiples_of_nine <span class="op">=</span> {<span class="dv">9</span>, <span class="dv">18</span>, <span class="dv">27</span>, <span class="dv">36</span>, <span class="dv">45</span>}</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>squares_not_divisible_by_nine <span class="op">=</span> squares.difference(multiples_of_nine)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares_not_divisible_by_nine)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> {<span class="dv">16</span>, <span class="dv">49</span>, <span class="dv">4</span>, <span class="dv">25</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Because a &lt;b&gt;set&lt;/b&gt; is an &lt;i&gt;unordered&lt;/i&gt; collection, the result of a set function will return elements in an unpredictable order. In the example above, the intersection returned `{16, 49, 4, 25}` rather than `{4, 16, 25, 49}`, which you may have expected.</code></pre>
+</div>
+</section>
+</section>
+<section id="try-it.-8" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-8">✏️ <b> Try it. </b></h2>
+<p>Use the <code>difference()</code> method to determine who knows <b>R</b>, but does not know <b>Python</b>.</p>
+<section id="symmetric-difference" class="level4">
+<h4 class="anchored" data-anchor-id="symmetric-difference">Symmetric Difference</h4>
+<p>This method returns all the items that are <em>unique</em> to each set.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Symmetric_difference">symmetric difference</a> (or disjunctive union) of sets <span class="math inline">A</span> and <span class="math inline">B</span> is <span class="math inline">A \triangle B</span> (also sometimes written as <span class="math inline">A \oplus B</span>)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/symmetric-difference.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> {<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>}</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>multiples_of_nine <span class="op">=</span> {<span class="dv">9</span>, <span class="dv">18</span>, <span class="dv">27</span>, <span class="dv">36</span>, <span class="dv">45</span>}</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>squares_not_divisible_by_nine <span class="op">=</span> squares.symmetric_difference(multiples_of_nine)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares_not_divisible_by_nine)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> {<span class="dv">16</span>, <span class="dv">49</span>, <span class="dv">18</span>, <span class="dv">4</span>, <span class="dv">25</span>, <span class="dv">27</span>, <span class="dv">45</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-9" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-9">✏️ <b> Try it. </b></h2>
+<p>Use the <code>symmetric_difference()</code> method to determine who only knows <i>either</i> R or Python.</p>
+<section id="additional-set-methods-isdisjoint-issubset-issuperset" class="level3">
+<h3 class="anchored" data-anchor-id="additional-set-methods-isdisjoint-issubset-issuperset">Additional Set Methods: isdisjoint(), issubset(), issuperset()</h3>
+<p>There are three additional set functions that allow you to determine the relationships between two sets. Each of these functions returns either <code>True</code> or <code>False</code>, which means they are <code>Boolean</code> operators.</p>
+<p><strong>isdisjoint()</strong> determines if two sets are <a href="https://en.wikipedia.org/wiki/Disjoint_sets">disjoint</a>. It returns <code>True</code> if the contents of two sets are completely distinct, and <code>False</code> if they have any overlap</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>odds.isdisjoint(evens)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Set &lt;i&gt;A&lt;/i&gt; is &lt;b&gt;disjoint&lt;/b&gt; from set &lt;i&gt;B&lt;/i&gt; if, and only if, the &lt;b&gt;intersection&lt;/b&gt; of &lt;i&gt;A&lt;/i&gt; and &lt;i&gt;B&lt;/i&gt; is &lt;code&gt;None&lt;/code&gt;.</code></pre>
+</div>
+<p><strong>issubset()</strong> returns <code>True</code> if the content of set A is a <a href="https://en.wikipedia.org/wiki/Subset">subset</a> of set B, and <code>False</code> if it is not a subset.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>primes <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>}</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>primes.issubset(odds)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Set &lt;i&gt;A&lt;/i&gt; is a &lt;b&gt;subset&lt;/b&gt; of set &lt;i&gt;B&lt;/i&gt; if, and only if, the &lt;b&gt;intersection&lt;/b&gt; of &lt;i&gt;A&lt;/i&gt; and &lt;i&gt;B&lt;/i&gt; is &lt;i&gt;A&lt;/i&gt;.</code></pre>
+</div>
+<p><strong>issupserset()</strong> returns <code>True</code> if the content of set A is a superset of set B, and <code>False</code> if it is not a superset.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>odds.issuperset(primes)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; Set &lt;i&gt;A&lt;/i&gt; is a &lt;b&gt;superset&lt;/b&gt; of set &lt;i&gt;B&lt;/i&gt; if, and only if, set &lt;i&gt;B&lt;/i&gt; is a subset of &lt;i&gt;A&lt;/i&gt;.</code></pre>
+</div>
+<p>There is a lot more to learn about dictionaries, including methods for deleting elements, merging dictionaries, and learning about additional <em>collection</em> types like <strong>OrderedDict</strong> that allow you to preserve the arrangement of dictionary elements (essentially making them <em>sequences</em>). We will keep coming back to them throughout the class. If you want to learn more, check out the great material in our reading: <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781449355722/4dot-introducing-python-object-types/dictionaries_html">Dictionaries</a></p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+</section>
+</section>
+<section id="tuples" class="level2">
+<h2 class="anchored" data-anchor-id="tuples">3. Tuples <a id="tuples"></a></h2>
+<blockquote class="blockquote">
+<p><strong>TLDR:</strong> Tuples are a kind of list that can’t be altered. They are not very common in data science applications, but you might run across them from time to time. “<a href="#named_tuples">Named Tuples</a>” allow for the creation of simple structured data “objects” that don’t require much coding overhead.</p>
+</blockquote>
+<p>Tuples are a type of <em>sequence</em>, similar to <strong>list</strong>, which you’ve already seen. They primary difference between a <strong>tuple</strong> and a <strong>list</strong> is that a tuple is <code>immutable</code>, which means that it’s value cannot be changed once it is defined. A tuple is implemented using <code>()</code>:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>num_tuple <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">23</span>, <span class="dv">654</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">12</span>, <span class="dv">4391</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>str_tuple <span class="op">=</span> (<span class="st">'energy'</span>, <span class="st">'water'</span>, <span class="st">'carbon'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define tuple variables</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>num_tuple <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">23</span>, <span class="dv">654</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">12</span>, <span class="dv">4391</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>str_tuple <span class="op">=</span> (<span class="st">'energy'</span>, <span class="st">'water'</span>, <span class="st">'carbon'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>As with a <strong>list</strong>, a <strong>tuple</strong> may contain mixed data types, but this is not usually recommended.</p>
+<p>Because they are both <a href="https://docs.python.org/3/library/stdtypes.html#typesseq"><em>sequences</em></a>, tuples and lists share many of the same methods. For example, just like lists, the <code>len()</code> command returns the length of the tuple.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(str_tuple)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>min()</code> and <code>max()</code> commands can also be used to find the minimum and maximum values in a tuple. For a tuple of strings, this corresponds to the alphabetically first and last elements.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(str_tuple)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'carbon'</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(str_tuple)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'water'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-it.-10" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-10">✏️ <b> Try it. </b></h2>
+<p>Use the <code>len()</code>, <code>min()</code>, and <code>max()</code> commands to find the length, minimum, and maximum of <code>num_tuple</code>.</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the length of num_tuple</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum value of num_tuple</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum value of num_tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+<section id="other-ways-to-create-tuples" class="level3">
+<h3 class="anchored" data-anchor-id="other-ways-to-create-tuples">Other ways to create tuples</h3>
+Tuples can also be constructed by:
+<ul>
+<li>
+Using a pair of parentheses to indicate an empty tuple: <code>()</code>
+</li><li>
+Using a trailing comma for a tuple with a single element: <code>a,</code> or <code>(a,)</code>
+</li><li>
+Separating items with commas: <code>a, b, c</code> or <code>(a, b, c)</code>
+</li><li>
+using the <code>tuple()</code> built-in function: <code>tuple(iterable)</code>.
+</li></ul>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; An &lt;i&gt;iterable&lt;/i&gt; is any object that is capable of returning its contents one at a time. Strings are iterable objects, so &lt;code&gt;tuple('abc')&lt;/code&gt; returns &lt;code&gt;('a', 'b', 'c')&lt;/code&gt;.</code></pre>
+</div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">tuple</span>(<span class="st">'earth'</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> (<span class="st">'e'</span>, <span class="st">'a'</span>, <span class="st">'r'</span>, <span class="st">'t'</span>, <span class="st">'h'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-11" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-11">✏️ Try it.</h2>
+<p>Create three separate <b>tuples</b> containing the latitude and longitudes of the following cities:</p>
+<ol type="1">
+<li>Los Angeles, CA (34.05, -118.25)</li>
+<li>Johannesburg, South Africa (-26.20, 28.05)</li>
+<li>Cairo, Egypt (30.03, 31.23)</li>
+<li>Create a fourth tuple that is made up of the three tuples (i.e.&nbsp;a “tuple of tuples”).</li>
+</ol>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a three new tuples, one for each city.</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># los_angeles = </span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># johannesburg = </span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># singapore = </span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new tuple that is a tuple made up of the three city location tuples:</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tuple_of_tuples = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="indexing" class="level3">
+<h3 class="anchored" data-anchor-id="indexing">Indexing <a id="tuple_indexing"></a></h3>
+<p>As you learned with lists, any element of a <em>sequence</em> data type can be referenced by its position within the sequence. To access an element in a sequence by its index, use square brackets <code>[]</code>.</p>
+<p>Individual elements of tuples are accessed in the exact same manner as lists:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>num_tuple[<span class="dv">0</span>]</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>num_tuple[<span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">-</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>word_tuple <span class="op">=</span> <span class="bu">tuple</span>(<span class="st">'antidisestablishmentarianism'</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>word_tuple[<span class="dv">14</span>]</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'s'</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>word_tuple[::<span class="dv">3</span>]</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="st">'aistlhnrnm'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="try-it.-12" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-12">✏️ <b> Try it. </b></h2>
+<p>Use indexing to create a new tuple from the 2nd element in <code>str_tuple</code>. Find the 3rd element of this new tuple.</p>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new_tuple = </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3rd element of new_tuple:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+<section id="immutability" class="level3">
+<h3 class="anchored" data-anchor-id="immutability">Immutability <a id="tuple_immutability"></a></h3>
+<p>All objects in python are either <code>mutable</code> or <code>immutable</code>. A <code>mutable</code> object is one whose value can change. In contrast, an <code>immutable</code> object has a fixed value. You’ve already been introduced to a few <em>immutable</em> objects including numbers, strings and now, tuples. These objects cannot be altered once created.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt;  If you attempt to modify the value of an existing tuple, you will get a &lt;code&gt;TypeError&lt;/code&gt; exception from the Python interpreter.</code></pre>
+</div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>num_tuple[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>                                 Traceback (most recent call last)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="op">----&gt;</span> <span class="dv">1</span> num_tuple[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="pp">TypeError</span>: <span class="st">'tuple'</span> <span class="bu">object</span> does <span class="kw">not</span> support item assignment</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+<section id="tuple-operations" class="level3">
+<h3 class="anchored" data-anchor-id="tuple-operations">Tuple Operations <a id="tuple_operations"></a></h3>
+<p>Because they are <code>immutable</code>, tuples do not have the same robust set of functions that lists have. Attempting to change a tuple (for example, by trying to <code>append</code> elements) will raise an <code>AttributeError</code>, because the <code>append</code> method isn’t available to tuple objects.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>tuple_of_colors <span class="op">=</span> (<span class="st">'red'</span>, <span class="st">'blue'</span>, <span class="st">'green'</span>, <span class="st">'black'</span>, <span class="st">'white'</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>tuple_of_colors.append(<span class="st">'pink'</span>) <span class="co"># &lt;- UH-OH!</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="op">---------------------------------------------------------------------------</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="pp">AttributeError</span>                            Traceback (most recent call last)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>ipython<span class="op">-</span><span class="bu">input</span><span class="op">-</span><span class="dv">8</span><span class="op">-</span><span class="dv">857308</span><span class="er">f688f6</span><span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="op">----&gt;</span> <span class="dv">1</span> tuple_of_colors.append(<span class="st">'pink'</span>)</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="pp">AttributeError</span>: <span class="st">'tuple'</span> <span class="bu">object</span> has no attribute <span class="st">'append'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Instead of appending data to an existing tuple, when you want to change the contents of a tuple, you need to either create a new one, or modify the variable by re-defining it.</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>tuple_of_colors <span class="op">=</span> (<span class="st">'red'</span>, <span class="st">'blue'</span>, <span class="st">'green'</span>, <span class="st">'black'</span>, <span class="st">'white'</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>tuple_of_colors <span class="op">=</span> tuple_of_colors <span class="op">+</span> (<span class="st">'pink'</span>,)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tuple_of_colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>('red', 'blue', 'green', 'black', 'white', 'pink')</code></pre>
+</div>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+<section id="diving-deeper-named-tuples" class="level3">
+<h3 class="anchored" data-anchor-id="diving-deeper-named-tuples">DIVING DEEPER: Named Tuples <a id="named_tuples"></a></h3>
+<p>Tuples are convenient for storing information that you do not want to change. However, remembering which index should be used for each value can lead to errors, especially if the tuple has a lot of fields and is constructed far from where it is used.</p>
+<p>As an example, we created the coordinate location of Cairo, Egypt as:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>cairo_location <span class="op">=</span> (<span class="fl">30.03</span>, <span class="fl">31.23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But wait… Are those coordinates stored <code>(latitude, longitude)</code> or <code>(longitude, latitude)</code>? You might think it is easy to sort this out for most cities, but for Cairo it’s really difficult!</p>
+<p>Python has an additional immutable collection data type called a <strong>namedtuple</strong> which assigns names, as well as the numerical index, to each member. The <strong>namedtuple</strong> is part of the standard python library but it is not immediately available. In order to use the <strong>namedtuple</strong> data type, you first need to <code>import</code> it to your working environment. We will be using the <code>import</code> command quite a bit in order to extend what python can do and take advantage of all the tools that people have developed for environmental data science. For now, we need to <code>import</code> <strong>namedtuple</strong> <code>from</code> the <strong>collections</strong> library within python. The code for that looks like this:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> namedtuple</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once we import the <strong>namedtuple</strong>, we can create a new kind of custom data type that we can use to store our locations:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>Location <span class="op">=</span> namedtuple(<span class="st">'Location'</span>, [<span class="st">'latitude'</span>, <span class="st">'longitude'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the code above, the first argument to the <code>namedtuple</code> function is the name of the new tuple object type you want to create. We called this new object type a <code>Location</code>. The second argument is a list of the field names that the <code>Location</code> objects will have. In general, <code>Location</code> objects on Earth are defined by two pieces of information: the <code>latitude</code> and the <code>longitude</code>.</p>
+<p>Now that we’ve defined this new <code>Location</code> object type, we can create a new Location object using this code:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>cairo_location <span class="op">=</span> Location(latitude<span class="op">=</span><span class="fl">30.03</span>, longitude<span class="op">=</span><span class="fl">31.23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that this code isn’t that different than the code we used to make a <strong>tuple</strong>:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>cairo_location <span class="op">=</span> <span class="bu">tuple</span>(<span class="fl">30.03</span>, <span class="fl">31.23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The difference is that we are using our custom <strong>namedtuple</strong> type called <code>Location</code>, and we are able to specify exactly which values correspond to the latitude and longitude fields. We can retrieve any field in our <code>Location</code> tuple by specifying the field:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>cairo_location.latitude</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">30.03</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell" data-execution_count="14">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> namedtuple</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>Location <span class="op">=</span> namedtuple(<span class="st">'Location'</span>, [<span class="st">'latitude'</span>, <span class="st">'longitude'</span>])</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>cairo_location <span class="op">=</span> Location(latitude<span class="op">=</span><span class="fl">30.03</span>, longitude<span class="op">=</span><span class="fl">31.23</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>cairo_location.latitude, cairo_location.longitude</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>(30.03, 31.23)</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

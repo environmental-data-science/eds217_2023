@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Exercise 1.0: Hello, World!</title>
+<title>EDS 217: Python for Environmental Data Science - Interactive Session 0-2: Hello, World!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,6 +113,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#print-statements" id="toc-print-statements" class="nav-link" data-scroll-target="#print-statements">Print statements</a></li>
   <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input">User input</a></li>
+  </ul></li>
+  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a>
+  <ul class="collapse">
   <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
   </ul></li>
   </ul>
@@ -130,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise 1.0: Hello, World!</h1>
+<h1 class="title">Interactive Session 0-2: Hello, World!</h1>
 </div>
 
 
@@ -145,20 +148,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="../index.html">🏠 Index</a> | <a href="../exercises/Exercise1-1_Variables.html">➡️ Next Exercise</a> |</p>
+<p><a href="../interactive_sessions/0-1_ready_set_python.html">⬅️ Previous Session</a> | <a href="../index.html">🏠 Home</a> | <a href="../interactive_sessions/0-3_hello_data_science.html">➡️ Next Session</a> |</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Exercise1-0_HelloWorld_files/figure-html/9006fcaa-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
+<p><img src="0-2_HelloWorld_files/figure-html/74bf9a8e-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Hello_mac-2.jpg</figcaption>
 </figure>
 </div>
-<p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn. Most updates to the Python API are robust to compatibility issues, there are two main versions of the language with significant differences: Python 2 and 3. In this course, we will be using Python 3.</p>
-<p>In addition to Python scripts (.py files), many data scientists use Jupyter Notebooks (.ipynb files) for experimentation and visualization. While Notebooks are limited in their capabilities, they allow for rapid code evaluation and ease of use. For this reason, these exercises have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
-<p>This first tutorial will briefly introduce a few basic Python features.</p>
+<p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn.</p>
+<p>In addition to Python scripts (<code>.py</code> files), many data scientists use Jupyter Notebooks (<code>.ipynb</code> files) for experimentation and visualization.</p>
+<p>Notebooks allow for rapid code evaluation and ease of use. For this reason, sessions have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
+<p>This first session will briefly introduce a few basic Python features.</p>
 <p style="height:1pt">
 </p>
 <div class="boxhead1">
-<pre><code>Exercise 1.0 Topics</code></pre>
+<pre><code>Session Topics</code></pre>
 </div>
 <div class="boxtext1">
 <ul class="a">
@@ -177,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="instructions" class="level3">
 <h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
-<p>Work through the exercise, writing code where indicated. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top. Note: Do not restart the kernel and clear all outputs. If this happens, run the last cell in the notebook before proceeding.</p>
+<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
 <p style="color:#408000; font-weight: bold">
 🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
 </p>
@@ -186,9 +190,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 <p style="color:#008C96; font-weight: bold">
 ✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
-</p>
-<p style="color:#008C96; font-weight: bold">
-📚 &nbsp; &nbsp; This symbol designates a practice question.
 </p>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
@@ -207,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="run">
 <pre><code>▶️ Run the cell below.</code></pre>
 </div>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -225,10 +226,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="user-input" class="level3">
 <h3 class="anchored" data-anchor-id="user-input">User input</h3>
 <p>The <code>input()</code> command is an important Python function that can be used in a program to prompt for user input.</p>
-<div class="example">
-<p>✏️ Try it. Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
-</div>
-<div class="cell" data-execution_count="11">
+</section>
+</section>
+<section id="try-it." class="level2">
+<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
+<p>Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>( <span class="st">'What is your first name? '</span> )</span>
@@ -240,7 +243,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
-</section>
 <section id="comments" class="level3">
 <h3 class="anchored" data-anchor-id="comments">Comments</h3>
 <p>In programming, a <strong>comment</strong> is a piece of text that the computer ignores when running the program. Comments are usually used at the top of a program to provide a description of the program, name and information of the author, dependencies, etc., as well as throughout the script to explain lines of code. Commenting is a critical element of proper coding etiquette.</p>
@@ -289,13 +291,13 @@ In Python, there are two ways of writing comments. For in-line comments and most
 <div class="run">
 <pre><code>▶️ Run the cell below.</code></pre>
 </div>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>4</code></pre>
 </div>
 </div>
