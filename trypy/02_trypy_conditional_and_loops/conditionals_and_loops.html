@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - TryPy 3 - For Loops and Conditionals</title>
+<title>EDS 217: Python for Environmental Data Science - TryPy 2 - For Loops and Conditionals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,22 +59,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles/activities.css">
 </head>
@@ -91,12 +75,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
-  <li><a href="#part-1.-conditional-statements-for-loops" id="toc-part-1.-conditional-statements-for-loops" class="nav-link" data-scroll-target="#part-1.-conditional-statements-for-loops">Part 1. Conditional statements &amp; for loops</a>
-  <ul class="collapse">
-  <li><a href="#conditional-statements" id="toc-conditional-statements" class="nav-link" data-scroll-target="#conditional-statements">Conditional statements</a></li>
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops">For loops</a></li>
-  </ul></li>
-  <li><a href="#part-2.-real-data" id="toc-part-2.-real-data" class="nav-link" data-scroll-target="#part-2.-real-data">Part 2. Real data</a>
+  <li><a href="#part-1.-real-data" id="toc-part-1.-real-data" class="nav-link" data-scroll-target="#part-1.-real-data">Part 1. Real data</a>
   <ul class="collapse">
   <li><a href="#save-stage-commit-pull-push" id="toc-save-stage-commit-pull-push" class="nav-link" data-scroll-target="#save-stage-commit-pull-push">Save, stage, commit, pull, push!</a></li>
   </ul></li>
@@ -116,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TryPy 3 - For Loops and Conditionals</h1>
+<h1 class="title">TryPy 2 - For Loops and Conditionals</h1>
 </div>
 
 
@@ -134,66 +113,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="part-0.-setup-steps" class="level2">
 <h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
 <ul>
-<li>Create a repo on GitHub named <code>eds217-trypy-03</code></li>
+<li>Create a repo on GitHub named <code>eds217-trypy-02</code></li>
 <li>Clone to create a version-controlled project</li>
 <li>Create some subfolder infrastructure (docs, data)</li>
 <li>Create a new python notebook.</li>
-<li>Complete all tasks for Part 1 in this .ipynb*</li>
 </ul>
 </section>
-<section id="part-1.-conditional-statements-for-loops" class="level2">
-<h2 class="anchored" data-anchor-id="part-1.-conditional-statements-for-loops">Part 1. Conditional statements &amp; for loops</h2>
-<p><em>Complete each of the following in a separate code chunk.</em></p>
-<section id="conditional-statements" class="level3">
-<h3 class="anchored" data-anchor-id="conditional-statements">Conditional statements</h3>
-<section id="task-1" class="level4">
-<h4 class="anchored" data-anchor-id="task-1">Task 1</h4>
-<p>Create an object called <code>pm2_5</code> with a value of 48 (representing Particulate Matter 2.5, an indicator for air quality, in <span class="math inline">\frac{\mu g}{m^3}</span> (see more about PM2.5 <a href="https://www3.epa.gov/region1/airquality/pm-aq-standards.html">here</a>).</p>
-<p>Write an <code>if - else if - else</code> statement that returns “Low to moderate risk” if <code>pm2_5</code> (for Particulate Matter 2.5) is less than 100, “Unhealthy for sensitive groups” if PM 2.5 is 100 &lt;= pm2_5 &lt; 150, and “Health risk present” if PM 2.5 is &gt;= 150.</p>
-<p>Test by changing the value of your pm2_5 object and re-running your statement to check.</p>
-</section>
-<section id="task-2" class="level4">
-<h4 class="anchored" data-anchor-id="task-2">Task 2</h4>
-<p>Store the string “blue whale” as an object called <code>species</code>.</p>
-<p>Write an if statement that returns “You found a whale!” if the string “whale” is detected in species, otherwise return nothing.</p>
-<p>Test by changing the species string &amp; re-running to see output.</p>
-</section>
-<section id="task-3" class="level4">
-<h4 class="anchored" data-anchor-id="task-3">Task 3</h4>
-<p>Create a vector stored as <code>max_airtemp_c</code> with a value of 24.1.</p>
-<p>Write an <code>if else</code> statement that will print “Temperature too high” if <code>max_airtemp_c</code> is greater than 27, or “Temperature OK” if temperature is less than or equal to 27.</p>
-</section>
-<section id="task-4" class="level4">
-<h4 class="anchored" data-anchor-id="task-4">Task 4</h4>
-<p>Store the base price of a burrito as <code>base_burrito</code> with a value of 6.50. Store <code>main_ingredent</code> with a starting string of “veggie.”</p>
-<p>Write a statement that will return the price of a burrito based on what a user specifies as “main_ingredient” (either “veggie”, “chicken” or “steak”) given the following:</p>
-<ul>
-<li>A veggie burrito is the cost of a base burrito</li>
-<li>A chicken burrito costs 3.00 more than a base burrito</li>
-<li>A steak burrito costs 3.25 more than a base burrito</li>
-</ul>
-</section>
-</section>
-<section id="for-loops" class="level3">
-<h3 class="anchored" data-anchor-id="for-loops">For loops</h3>
-<p><em>Complete each of the following in a separate code chunk.</em></p>
-<section id="task-5" class="level4">
-<h4 class="anchored" data-anchor-id="task-5">Task 5</h4>
-<p>Create a new vector called <code>fish</code> that contains the values <code>8, 10, 12, 23</code> representing counts of different fish types in a fish tank (goldfish, tetras, guppies, and mollies, respectively).</p>
-<p>Write a for loop that iterates through <code>fish</code>, and returns what proportion of total fish in the tank are that species.</p>
-<p>Assume that these counts represent all fish in the tank.</p>
-</section>
-<section id="task-6" class="level4">
-<h4 class="anchored" data-anchor-id="task-6">Task 6</h4>
-<p>Python has a list of month names stored in the <code>calendar</code> library (part of the standard library in Python). You can load this list using <code>from calendar import month_name</code>. These items are stored so that “January” is in <code>month_name[1]</code>, meaning this is one of the rare arrays in python that is not zero-indexed.</p>
-<p><strong>Write a for loop</strong> that iterates over all months in <code>month_name</code> and prints “January is month 1,” “February is month 2”, etc.</p>
-<p><strong>Hint:</strong> you can index values in the <code>month_name</code> vector just like you would any other vector (e.g., try running <code>month_name[5]</code>).</p>
-</section>
-</section>
-</section>
-<section id="part-2.-real-data" class="level2">
-<h2 class="anchored" data-anchor-id="part-2.-real-data">Part 2. Real data</h2>
-<p><em>You will complete Part 3 in a separate notebook</em></p>
+<section id="part-1.-real-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-real-data">Part 1. Real data</h2>
 <p>Explore this <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.10341.5">data package</a> from EDI, which contains a “Data file describing the biogeochemistry of samples collected at various sites near Toolik Lake, North Slope of Alaska”. Familiarize yourself with the metadata (particularly, View full metadata &gt; expand ‘Data entities’ to learn more about the variables in the dataset).</p>
 <p><strong>Citation:</strong> Kling, G. 2016. Biogeochemistry data set for soil waters, streams, and lakes near Toolik on the North Slope of Alaska, 2011. ver 5. Environmental Data Initiative. https://doi.org/10.6073/pasta/362c8eeac5cad9a45288cf1b0d617ba7</p>
 <ol type="1">
