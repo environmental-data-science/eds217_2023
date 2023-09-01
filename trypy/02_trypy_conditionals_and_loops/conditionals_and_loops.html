@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - TryPy 00 - Exploring St.&nbsp;Louis Blood Toxicity Data</title>
+<title>EDS 217: Python for Environmental Data Science - TryPy 2 - For Loops and Conditionals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -108,13 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a>
+  <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
+  <li><a href="#part-1.-real-data" id="toc-part-1.-real-data" class="nav-link" data-scroll-target="#part-1.-real-data">Part 1. Real data</a>
   <ul class="collapse">
-  <li><a href="#part-1---get-the-data" id="toc-part-1---get-the-data" class="nav-link" data-scroll-target="#part-1---get-the-data">Part 1 - Get the data</a></li>
-  <li><a href="#part-2---explore-the-data" id="toc-part-2---explore-the-data" class="nav-link" data-scroll-target="#part-2---explore-the-data">Part 2 - Explore the data</a></li>
-  <li><a href="#part-3---create-a-scatterplot" id="toc-part-3---create-a-scatterplot" class="nav-link" data-scroll-target="#part-3---create-a-scatterplot">Part 3 - Create a scatterplot</a></li>
-  <li><a href="#part-4---create-a-histogram" id="toc-part-4---create-a-histogram" class="nav-link" data-scroll-target="#part-4---create-a-histogram">Part 4 - Create a histogram</a></li>
+  <li><a href="#save-stage-commit-pull-push" id="toc-save-stage-commit-pull-push" class="nav-link" data-scroll-target="#save-stage-commit-pull-push">Save, stage, commit, pull, push!</a></li>
   </ul></li>
+  <li><a href="#end-activities" id="toc-end-activities" class="nav-link" data-scroll-target="#end-activities">END activities</a></li>
   </ul>
 </nav>
 </nav>
@@ -130,7 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TryPy 00 - Exploring St.&nbsp;Louis Blood Toxicity Data</h1>
+<h1 class="title">TryPy 2 - For Loops and Conditionals</h1>
 </div>
 
 
@@ -148,63 +113,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-0.-setup-steps" class="level2">
 <h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
 <ul>
-<li>Create a repo on GitHub named <code>eds217-trypy-00</code></li>
+<li>Create a repo on GitHub named <code>eds217-trypy-02</code></li>
 <li>Clone to create a version-controlled project</li>
-<li>Create some subfolder infrastructure (nbs, data, figs)</li>
-<li>Create and save a new <del>quarto in RStudio called</del> jupyter notebook (<code>.ipynb</code> file) named <code>stl-lead-yourinitials.ipynb</code> in the <code>nbs</code> folder (for example, mine would be <code>stl-lead-kc.ipynb</code>).</li>
-<li>Make sure to associate the notebook with the <code>eds217_2023</code> environment.</li>
+<li>Create some subfolder infrastructure (docs, data)</li>
+<li>Create a new python notebook.</li>
 </ul>
-<section id="part-1---get-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="part-1---get-the-data">Part 1 - Get the data</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">Create a new variable containing </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">the link to the .csv file on </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">the EDS_221 github repository.</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/'</span>\</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">'allisonhorst/EDS_221_programming-essentials/'</span>\</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">'main/activities/stl_blood_lead.csv'</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">""" </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">pandas can read a csv file into a </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">dataframe directly from a url:</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>stl_lead <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Read more about the data <a href="https://github.com/slu-soc1120/STL_HEALTH_Lead">here</a>.</p>
 </section>
-<section id="part-2---explore-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="part-2---explore-the-data">Part 2 - Explore the data</h3>
-<p>In your <code>.ipynb</code> file:</p>
-<ul>
-<li>Create a code cell that imports the <code>numpy</code> and <code>pandas</code> packages and run the cell to import the packages.</li>
-<li>Use the code above to read the url for <code>stl_blood_lead.csv</code> into a pandas DataFrame called <code>stl_lead</code></li>
-<li>Do some basic exploration of the dataset using the DataFrame <code>info</code> and <code>describe</code> commands.</li>
-<li>In a new code chunk, from <code>stl_lead</code> create a new column called <code>prop_white</code> that contains the percent of each census tract identifying as white (variable <code>white</code> in the dataset divided by variable <code>totalPop</code>, times 100).</li>
-</ul>
-<p>Hint: <code>df['new_col'] = df['col_a'] / df['col_b']</code> will create a new column <code>new_col</code> in the dataframe <code>df</code> that contains the value of <code>col_a / col_b</code></p>
+<section id="part-1.-real-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-real-data">Part 1. Real data</h2>
+<p>Explore this <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.10341.5">data package</a> from EDI, which contains a “Data file describing the biogeochemistry of samples collected at various sites near Toolik Lake, North Slope of Alaska”. Familiarize yourself with the metadata (particularly, View full metadata &gt; expand ‘Data entities’ to learn more about the variables in the dataset).</p>
+<p><strong>Citation:</strong> Kling, G. 2016. Biogeochemistry data set for soil waters, streams, and lakes near Toolik on the North Slope of Alaska, 2011. ver 5. Environmental Data Initiative. https://doi.org/10.6073/pasta/362c8eeac5cad9a45288cf1b0d617ba7</p>
+<ol type="1">
+<li><p>Download the CSV containing the Toolik biogeochemistry data</p></li>
+<li><p>Take a look at it - how are missing values stored? Keep that in mind.</p></li>
+<li><p>Drop the CSV into your data folder of your project</p></li>
+<li><p>Create a new notebook document in VSCode (or in a <code>jupyter notebook</code> server), save in docs as <code>toolik_chem.ipynb</code></p></li>
+<li><p>Import the <code>pandas</code> and <code>matplotlib</code> libraries into your first code cell.</p></li>
+<li><p>Read in the data as <code>toolik_biochem</code>. Remember, you’ll want to specify here how <code>NA</code> values are stored. Use the <code>na_values</code> argument in your <code>pd.read_csv</code> call to convert all column names to lower case/underscore format.</p></li>
+<li><p>Create a subset of the data that contains only observations from the “Toolik Inlet” site, and that only contains the variables (columns) for pH, dissolved organic carbon (DOC), and total dissolved nitrogen (TDN). Store this subset as <code>inlet_biochem</code>. Make sure to LOOK AT the subset you’ve created.</p></li>
+<li><p>Find the mean value of each column in <code>inlet_biochem</code> 2 different ways:</p></li>
+</ol>
+<ol type="a">
+<li>Write a for loop from scratch to calculate the mean for each</li>
+<li>Use <em>one other method</em> (e.g.&nbsp;<code>.mean()</code>, or <code>.apply()</code>) to find the mean for each column.</li>
+</ol>
+<section id="save-stage-commit-pull-push" class="level3">
+<h3 class="anchored" data-anchor-id="save-stage-commit-pull-push">Save, stage, commit, pull, push!</h3>
 </section>
-<section id="part-3---create-a-scatterplot" class="level3">
-<h3 class="anchored" data-anchor-id="part-3---create-a-scatterplot">Part 3 - Create a scatterplot</h3>
-<ul>
-<li>Import matplotlib (<code>import matplotlib.pyplot as plt</code>)</li>
-<li>Create a scatterplot graph of the percentage of children in each census tract with elevated blood lead levels (<code>pctElevated</code>) versus the percent of each census tract identifying as white.</li>
-</ul>
-<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true,&quot;source_hidden&quot;:true}" data-scrolled="true" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<p><img src="stl_blood_exercise_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
-</div>
-</div>
 </section>
-<section id="part-4---create-a-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="part-4---create-a-histogram">Part 4 - Create a histogram</h3>
-<ul>
-<li>Create a histogram of only the <code>pctElevated</code> column in the data frame</li>
-<li>Customize the fill, color, and size aesthetics - test some stuff! Feel free to make it awful.</li>
-</ul>
+<section id="end-activities" class="level2">
+<h2 class="anchored" data-anchor-id="end-activities">END activities</h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
