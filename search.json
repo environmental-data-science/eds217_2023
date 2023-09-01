@@ -609,39 +609,11 @@
     "text": "Learning Goals\n(what you will be able to do) - Setup a python environment for data science using conda.\n\nConduct reproducible analyses within interactive jupyter notebook environments\nUse the VSCode IDE to write and execute python notebooks as well as scripts.\nRead and write basic-to-intermediate scripts and programs in the Python programming language\nPerform analyses on structured data using numpy\nLoad, explore, aggregate, analyze, and display data using pandas.\nLearn to visualize data using matplotlib and friends.\nApply all of these tools to analyze environmental datasets\nDevelop a short tutorial on how to use a python data science library for environmental analysis"
   },
   {
-    "objectID": "index.html#lectures",
-    "href": "index.html#lectures",
+    "objectID": "index.html#course-activities",
+    "href": "index.html#course-activities",
     "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "Lectures",
-    "text": "Lectures\nLectures will be used to introduce general concepts and principles of the python language. We won’t have too many of these, but they will be used to introduce new concepts and provide context for the interactive sessions."
-  },
-  {
-    "objectID": "index.html#interactive-sessions",
-    "href": "index.html#interactive-sessions",
-    "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "Interactive Sessions",
-    "text": "Interactive Sessions\nInteractive sessions will be used to demonstrate the use of python syntax, libraries, and other tools essential to the environmental data science workflow. These sessions will generally be conducted in jupyter notebooks, and will be available for you to download and use as a reference. We will also use these sessions to work through example code and computations related to the major course topics."
-  },
-  {
-    "objectID": "index.html#practice-sessions",
-    "href": "index.html#practice-sessions",
-    "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "Practice Sessions",
-    "text": "Practice Sessions\nPractice sessions will be used to provide opportunities to using the concepts, tools, and libraries presented during interactive sessions to solve more open-ended programming problems. While the goal is to develop independent confidence in python programming, we will work through these problems in paired/collaborative coding. Example solutions to these practice problems will always be available."
-  },
-  {
-    "objectID": "index.html#trypy-sessions",
-    "href": "index.html#trypy-sessions",
-    "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "TryPy Sessions",
-    "text": "TryPy Sessions\nTryPy sessions are designed to allow you to develop your own reproducible workflows based on core data science principles. We will often structure these sessions in a similar way to prior activities from EDS221. This will allow you to get a better understanding of the differences between python and R as well as the strengths and weaknesses of each."
-  },
-  {
-    "objectID": "index.html#group-work",
-    "href": "index.html#group-work",
-    "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "Group Work",
-    "text": "Group Work\nYour group project is a “Data Science Show-and-Tell” that will extend the skills you develop during the first week of the course through the creation of collaborative presentations focused on datasets and libraries of your choosing. Working in teams, you will develop a short, reproducible tutorial on how to use a python data science library with examples using datasets relevant to environmental analysis. These tutorials will be presented to the class during the final week of the course and shared with the class via a github repository."
+    "section": "Course Activities",
+    "text": "Course Activities\nOur time together will be spent in a combination of lecture, interactive sessions, paired practice sessions, and group work.\n\nLectures\nLectures will be used to introduce general concepts and principles of the python language. We won’t have too many of these, but they will be used to introduce new concepts and provide context for the interactive sessions.\n\n\nInteractive Sessions\nInteractive sessions will be used to demonstrate the use of python syntax, libraries, and other tools essential to the environmental data science workflow. These sessions will generally be conducted in jupyter notebooks, and will be available for you to download and use as a reference. We will also use these sessions to work through example code and computations related to the major course topics.\n\n\nPractice Sessions\nPractice sessions will be used to provide opportunities to using the concepts, tools, and libraries presented during interactive sessions to solve more open-ended programming problems. While the goal is to develop independent confidence in python programming, we will work through these problems in paired/collaborative coding. Example solutions to these practice problems will always be available.\n\n\nTryPy Sessions\nTryPy sessions are designed to allow you to develop your own reproducible workflows based on core data science principles. We will often structure these sessions in a similar way to prior activities from EDS221. This will allow you to get a better understanding of the differences between python and R as well as the strengths and weaknesses of each.\n\n\nGroup Work\nYour group project is a “Data Science Show-and-Tell” that will extend the skills you develop during the first week of the course through the creation of collaborative presentations focused on datasets and libraries of your choosing. Working in teams, you will develop a short, reproducible tutorial on how to use a python data science library with examples using datasets relevant to environmental analysis. These tutorials will be presented to the class during the final week of the course and shared with the class via a github repository."
   },
   {
     "objectID": "index.html#course-outline",
