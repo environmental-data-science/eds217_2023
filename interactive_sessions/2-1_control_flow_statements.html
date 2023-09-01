@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EDS 217: Python for Environmental Data Science - Session 2-1: Control Flow Statements</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles/activities.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#conditionals" id="toc-conditionals" class="nav-link" data-scroll-target="#conditionals">Conditionals</a></li>
+  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a></li>
+  <li><a href="#try-it.-1" id="toc-try-it.-1" class="nav-link" data-scroll-target="#try-it.-1">✏️ Try it.</a></li>
+  <li><a href="#try-it.-2" id="toc-try-it.-2" class="nav-link" data-scroll-target="#try-it.-2">✏️ Try it.</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a>
+  <ul class="collapse">
+  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><code>for</code> loops</a></li>
+  <li><a href="#while-loops" id="toc-while-loops" class="nav-link" data-scroll-target="#while-loops"><code>while</code> loops</a></li>
+  <li><a href="#escaping-loops" id="toc-escaping-loops" class="nav-link" data-scroll-target="#escaping-loops">Escaping loops</a></li>
+  <li><a href="#list-comprehensions" id="toc-list-comprehensions" class="nav-link" data-scroll-target="#list-comprehensions">List comprehensions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<hr>
+<h4 class="anchored"> <a href="../">Return to Course Home Page</a></h4>
+<hr>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Session 2-1: Control Flow Statements</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="1-2_lists.ipynb">⬅️ Previous Session</a> | <a href="../index.html">🏠 Course Home</a> | <a href="../interactive_sessions/2-2_structured_data.html">➡️ Next Session</a> |</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2-1_control_flow_statements_files/figure-html/705d0476-1-control.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">control.jpeg</figcaption>
+</figure>
+</div>
+<p>The <strong>control flow</strong> of a program refers to the order in which its code is executed. In Python, control flow is regulated by conditional statements, loops, and functions. This session will cover <code>if</code> statements, <code>for</code> loops, and <code>while</code> loops; functions will be covered in a later session.</p>
+<p style="height:1pt">
+</p>
+<div class="boxhead1">
+<pre><code>Session 1-3 Control Flow Statements</code></pre>
+</div>
+<div class="boxtext1">
+<ul class="a">
+<li>
+📌 Conditionals: <code>if</code> statements
+</li>
+<ul class="b">
+<li>
+Basic <code>if</code> statements
+</li>
+<li>
+Evaluating multiple conditions with <code>if… elif… else</code>
+</li>
+<li>
+Operators: <code>or</code>, <code>and</code>, <code>in</code>
+</li>
+<li>
+Nested <code>if</code> statements
+</li>
+</ul>
+<li>
+📌 <code>for</code> loops
+</li>
+<ul class="b">
+<li>
+Generic counter <code>for</code> loops
+</li>
+<li>
+Iterating through lists
+</li>
+<li>
+Enumerating lists
+</li>
+<li>
+Iterating through multiple lists at once
+</li>
+<li>
+Nested <code>for</code> loops
+</li>
+</ul>
+<li>
+📌 <code>while</code> loops
+</li>
+<ul class="b">
+</ul>
+<li>
+📌 Escaping loops
+<ul class="b">
+<li>
+<code>break</code> statements
+</li>
+<li>
+<code>continue</code> statements
+</li>
+</ul>
+</li></ul>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
+
+<section id="instructions" class="level3">
+<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
+<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
+<p style="color:#408000; font-weight: bold">
+🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
+</p>
+<p style="color:#008C96; font-weight: bold">
+▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
+</p>
+<p style="color:#008C96; font-weight: bold">
+✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
+</p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+</section>
+<section id="conditionals" class="level3">
+<h3 class="anchored" data-anchor-id="conditionals">Conditionals</h3>
+<p>We’ve already learned about boolean operators for evaluating numerical conditions and returning <code>True</code> or <code>False</code>. <code>if</code> statements are code blocks used for similar simple comparisons, or for more complex or multiple comparisons.</p>
+<p>Code blocks are created by indenting (using a tab or 4 spaces) lines of code following an <code>if</code> statement. If the condition is met, the program will proceed through the indented code block. If not, it will move on to the next unindented line.</p>
+<p>Example if statement</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'x is a positive number.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> x is a positive number.
+</p>
+</section>
+<section id="try-it." class="level2">
+<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
+<p>Run the following cell, changing the value of x to be negative or positive to demonstrate how the <code>if</code> statement works.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define x</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate condition</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'x is a positive number.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The <code>if</code> statement can be used in conjunction with the <code>else</code> command to instruct the program to do something different if the condition is not met.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">3218</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'y is a positive number.'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'y is not a positive number.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> y is not a positive number.
+</p>
+<p>To evaluate multiple conditions, add the <code>elif</code> command after the <code>if</code> statement. Infinite <code>elif</code> statements can be included.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">3218</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'y is a positive number.'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> y <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'y = 0'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'y is a negative number.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> y is a negative number.
+</p>
+</section>
+<section id="try-it.-1" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-1">✏️ Try it.</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment with if, elif, and else statements.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
+<span style="color:black"> Operators </span>
+</h4>
+<p>There are several operators that can be used within <code>if</code> statements to evaluate more complex conditions. The <code>in</code> operator is used to check if an object exists within an iterable object container, such as a list.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aminoacids <span class="op">=</span> [<span class="st">'histidine'</span>, <span class="st">'isoleucine'</span>, <span class="st">'leucine'</span>, <span class="st">'lysine'</span>, <span class="st">'methionine'</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'phenylalanine'</span>, <span class="st">'threonine'</span>, <span class="st">'tryptophan'</span>, <span class="st">'valine'</span>, <span class="st">'alanine'</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'arginine'</span>, <span class="st">'asparagine'</span>, <span class="st">'aspartate'</span>, <span class="st">'cysteine'</span>, <span class="st">'glutamate'</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'glutamine'</span>, <span class="st">'glycine'</span>, <span class="st">'proline'</span>, <span class="st">'serine'</span>, <span class="st">'tyrosine'</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>org_compound <span class="op">=</span> <span class="st">'cysteine'</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> org_compound <span class="kw">in</span> aminoacids:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(org_compound.capitalize() <span class="op">+</span> <span class="st">' is an amino acid.'</span> )</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(org_compound.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> Cysteine is an amino acid.
+</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of amino acids</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>aminoacids <span class="op">=</span> [<span class="st">'histidine'</span>, <span class="st">'isoleucine'</span>, <span class="st">'leucine'</span>, <span class="st">'lysine'</span>, <span class="st">'methionine'</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'phenylalanine'</span>, <span class="st">'threonine'</span>, <span class="st">'tryptophan'</span>, <span class="st">'valine'</span>, <span class="st">'alanine'</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'arginine'</span>, <span class="st">'asparagine'</span>, <span class="st">'aspartate'</span>, <span class="st">'cysteine'</span>, <span class="st">'glutamate'</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>              <span class="st">'glutamine'</span>, <span class="st">'glycine'</span>, <span class="st">'proline'</span>, <span class="st">'serine'</span>, <span class="st">'tyrosine'</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>org_compound <span class="op">=</span> <span class="st">'adenine'</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> org_compound <span class="kw">in</span> aminoacids:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(org_compound.capitalize() <span class="op">+</span> <span class="st">' is an amino acid.'</span> )</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(org_compound.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The <code>and</code> and <code>or</code> operators can be used to build more complex <code>if</code> statements based on multiple expressions. The <code>and</code> operator is used to specify that multiple conditions must be satisfied.</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>essential <span class="op">=</span> [<span class="st">'histidine'</span>, <span class="st">'lysine'</span>, <span class="st">'threonine'</span>, <span class="st">'tryptophan'</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">'valine'</span>, <span class="st">'methionine'</span>, <span class="st">'leucine'</span>, <span class="st">'phenylalanine'</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>aromatic <span class="op">=</span> [<span class="st">'phenylalanine'</span>, <span class="st">'tryptophan'</span>, <span class="st">'tyrosine'</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>aa <span class="op">=</span> <span class="st">'tyrosine'</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> aa <span class="kw">in</span> aromatic <span class="kw">and</span> aa <span class="kw">in</span> essential:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is an essential, aromatic amino acid.'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> essential:</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is an essential, non-aromatic amino acid.'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aromatic:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a non-essential, aromatic amino acid.'</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">'is a non-essential amino acid.'</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The <code>or</code> operator is used to write an <code>if</code> statement where one of multiple conditions must be met.</p>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>charged <span class="op">=</span> [<span class="st">'arginine'</span>, <span class="st">'lysine'</span>, <span class="st">'aspartate'</span>, <span class="st">'glutamate'</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>polar_un <span class="op">=</span> [<span class="st">'glutamine'</span>, <span class="st">'asparagine'</span>, <span class="st">'histidine'</span>, <span class="st">'serine'</span>, <span class="st">'threonine'</span>, <span class="st">'tyrosine'</span>, <span class="st">'cysteine'</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> aa <span class="kw">in</span> charged <span class="kw">or</span> polar_un:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a polar amino acid.'</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a non-polar amino acid.'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
+<span style="color:black"> Nested <code>if</code> statements </span>
+</h4>
+<p><code>if</code> statements can build on one another to perform specific actions based on each condition by <strong>nesting</strong> <code>if</code> statements. For example, the previous cell could be re-written as follows:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> aa <span class="kw">in</span> charged <span class="kw">or</span> polar_un:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a polar amino acid.'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is a non-polar amino acid.'</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' is not an amino acid.'</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While this is a trivial example, nested <code>if</code> statements can be quite useful when inside a program as they allow the program to skip to the end if the first condition is not satisfied.</p>
+</section>
+<section id="try-it.-2" class="level2">
+<h2 class="anchored" data-anchor-id="try-it.-2">✏️ Try it.</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Experiment with nested if statements.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="loops" class="level2">
+<h2 class="anchored" data-anchor-id="loops">Loops</h2>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+<section id="for-loops" class="level3">
+<h3 class="anchored" data-anchor-id="for-loops"><code>for</code> loops</h3>
+<p><code>for</code> loops are the most commonly used type of loop and are extremely useful. <code>for</code> loops are used to iterate or loop through any object capable of returning its members one at time, i.e.&nbsp;an iterable object.</p>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt;  The &lt;b&gt;iterator&lt;/b&gt; in a &lt;code&gt;for&lt;/code&gt; loop is a temporary variable used to store each value in the iterable object. The iterator is defined in the &lt;code&gt;for&lt;/code&gt; loop syntax as follows:</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">&lt;</span>ITERATOR<span class="op">&gt;</span> <span class="kw">in</span> <span class="op">&lt;</span>ITERABLE<span class="op">&gt;</span>:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    do something to iterator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The name of the iterator should reflect the nature of the list. <code>i</code> is commonly used as an enumerator or counter variable and should be avoided for other uses.</p>
+</div>
+<p>A generic counter <code>for</code> loop can be generated using the <code>range()</code> function.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>for</code> loops are commonly used to iterate through lists. As with the generic <code>range()</code> <code>for</code> loop, the iterator is assigned the next value from the list at the end of the indented code block.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> histidine</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    isoleucine</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    leucine</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    lysine</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    methionine</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    phenylalanine</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    threonine</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    tryptophan</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    valine</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    alanine</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    arginine</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    asparagine</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    aspartate</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    cysteine</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    glutamate</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    glutamine</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    glycine</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    proline</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    serine</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    tyrosine</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
+<span style="color:black"> Built-in functions </span>
+</h4>
+<p>The <code>enumerate()</code> function can be used in a <code>for</code> loop to keep track of the index of the iterator. This can be useful for keeping track of the number of iterations completed, accessing other elements in the same list based on their relative index (e.g.&nbsp;the value immediately following the current iterator value), or accessing elements in another list based on the iterator’s index.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gases <span class="op">=</span> [<span class="st">'N2'</span>, <span class="st">'O2'</span>, <span class="st">'Ar'</span>, <span class="st">'H2O'</span>, <span class="st">'CO2'</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,gas <span class="kw">in</span> <span class="bu">enumerate</span>(gases):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    rank <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The #</span><span class="sc">%d</span><span class="st"> most abundant gas in the atmosphere is </span><span class="sc">%s</span><span class="st">.'</span> <span class="op">%</span>(rank,gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: -1pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> The #1 most abundant gas in the atmosphere is N2.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+The #2 most abundant gas in the atmosphere is O2.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+The #3 most abundant gas in the atmosphere is Ar.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+The #4 most abundant gas in the atmosphere is H2O.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: 12pt">
+The #5 most abundant gas in the atmosphere is CO2.
+</p>
+<div class="cell" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list of atomic masses of 6 most abundant elements</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>atomic_mass <span class="op">=</span> [<span class="fl">12.011</span>, <span class="fl">1.00784</span>, <span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">30.97376</span>, <span class="fl">32.065</span>]  <span class="co"># g/mol</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through org_elements + print the atomic mass of each element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>To iterate through multiple lists at the same time without indexing, use the <code>zip()</code> function.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gas_frac <span class="op">=</span> [<span class="fl">0.78084</span>, <span class="fl">0.209476</span>, <span class="fl">0.00934</span>, <span class="fl">0.0025</span>, <span class="fl">0.000314</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>gas_molar_mass <span class="op">=</span> [<span class="fl">14.0067</span>, <span class="fl">15.999</span>, <span class="fl">39.948</span>, <span class="fl">18.01528</span>, <span class="fl">44.01</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>mass_atmosphere <span class="op">=</span> <span class="fl">5.148e21</span>   <span class="co"># grams</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>n_a <span class="op">=</span> <span class="fl">6.022e23</span>    <span class="co"># Avogadro's number</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> frac,mol_mass <span class="kw">in</span> <span class="bu">zip</span>(gas_frac,gas_molar_mass):</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(molecules)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="fl">1.7282458205744395e+44</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0590156271366957e+43</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.248215956743767e+41</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.302078013774973e+41</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.211859664621677e+40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>zip()</code> function is nearly always used when each element of one list corresponds to an element in the same index position in another list. Therefore, it should mostly be used with two or more lists of the same length. If the lists do not have the same length, however, the number of iterations of the <code>for</code> loop will match the length of the shortest list.</p>
+<p>The <code>enumerate()</code> and <code>zip()</code> functions can also be used together, if necessary, to keep track of the index position of iterators.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,(frac,mol_mass) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(gas_frac,gas_molar_mass)):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    gas <span class="op">=</span> gases[i]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> frac <span class="op">*</span> mass_atmosphere</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    molecules <span class="op">=</span> (mass <span class="op">/</span> mol_mass ) <span class="op">*</span> n_a</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'There are '</span> <span class="op">+</span> <span class="st">'</span><span class="sc">{:.2e}</span><span class="st">'</span>.<span class="bu">format</span>(molecules) <span class="op">+</span> <span class="st">' molecules of </span><span class="sc">%s</span><span class="st"> in the atmosphere.'</span> <span class="op">%</span> (gas))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: -1pt">
+<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> There are 1.73e+44 molecules of N2 in the atmosphere.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+There are 4.06e+43 molecules of O2 in the atmosphere.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+There are 7.25e+41 molecules of Ar in the atmosphere.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: -1pt">
+There are 4.30e+41 molecules of H2O in the atmosphere.
+</p>
+<p style="font-family: Lucida Console, Courier, monospace; margin-left: 48pt; margin-top: 0pt; margin-bottom: 12pt">
+There are 2.21e+40 molecules of CO2 in the atmosphere.
+</p>
+<h4 style="border:1px; border-style:solid; border-color:black; padding: 0.5em;" class="anchored">
+<span style="color:black"> Nested <code>for</code> loops </span>
+</h4>
+<p>Like <code>if</code> statements, <code>for</code> loops can be nested to perform an operation multiple times for each iterator in the overall loop.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> aa <span class="kw">in</span> aminoacids:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    vowels <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> aa:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> letter <span class="kw">in</span> [<span class="st">'a'</span>, <span class="st">'e'</span>, <span class="st">'i'</span>, <span class="st">'o'</span>, <span class="st">'u'</span>]:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            vowels <span class="op">=</span> vowels <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(aa.capitalize() <span class="op">+</span> <span class="st">' has '</span> <span class="op">+</span> <span class="bu">str</span>(vowels) <span class="op">+</span> <span class="st">' vowels.'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> Histidine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    Isoleucine has <span class="dv">6</span> vowels.</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    Leucine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    Lysine has <span class="dv">2</span> vowels.</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    Methionine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    Phenylalanine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    Threonine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    Tryptophan has <span class="dv">2</span> vowels.</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    Valine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    Alanine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    Arginine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    Asparagine has <span class="dv">5</span> vowels.</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    Aspartate has <span class="dv">4</span> vowels.</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    Cysteine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    Glutamate has <span class="dv">4</span> vowels.</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    Glutamine has <span class="dv">4</span> vowels.</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    Glycine has <span class="dv">2</span> vowels.</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    Proline has <span class="dv">3</span> vowels.</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    Serine has <span class="dv">3</span> vowels.</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    Tyrosine has <span class="dv">3</span> vowels.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+<section id="while-loops" class="level3">
+<h3 class="anchored" data-anchor-id="while-loops"><code>while</code> loops</h3>
+<p><code>while</code> loops are used to repeatedly execute a block of code while a given condition is satisfied. The indented code block will be contiuously executed until the condition becomes <code>False</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>while</code> loops are often used for user input, which allows the program to “stall,” repeatedly prompting the user until an acceptable answer is input.</p>
+<div class="example">
+<p>✏️ Try it. Run the following cell to see how a <code>while</code> loop works, inputing various answers that do not satisfy the condition before inputing the value that will end the loop.</p>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a blank string variable</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>user_txt <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Wait for a specific answer, repeatedly asking for input until the condition is satisfied.</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> user_txt <span class="op">!=</span> <span class="st">"42"</span>:</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    user_txt <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="python">
+<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt; &lt;code&gt;while&lt;/code&gt; loops can be infinite, so they should be used very judiciously. For example, imagine if instead of &lt;code&gt;x = x + 1&lt;/code&gt; in the previous example, the code block executed in the &lt;code&gt;while&lt;/code&gt; loop were &lt;code&gt;x = x - 1&lt;/code&gt;:</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">3</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">4</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">5</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="dv">6</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    ... <span class="co"># and so on</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This loop would never stop executing because the condition can never be met.</p>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+<section id="escaping-loops" class="level3">
+<h3 class="anchored" data-anchor-id="escaping-loops">Escaping loops</h3>
+<p>Sometimes it is necessary to terminate a loop iteration or the loop itself. The <code>break</code> and <code>continue</code> statements are used to escape loops.</p>
+<p><code>break</code> statements in Python are used to escape an entire loop based on a condition. In nested loops, a break will only exit out of one level.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/break_chart.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">break_chart</figcaption>
+</figure>
+</div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"What is the answer to life, the universe, and everything? "</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    option <span class="op">=</span> <span class="bu">input</span>(<span class="st">"   Your answer: "</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> option.isdigit():</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">int</span>(option) <span class="op">==</span> <span class="dv">42</span>:</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">'You have solved the ultimate question.'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Nope. Try again...</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><code>continue</code> statements are used to skip the remainder of the loop for a given iteration.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/continue_chart.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">continue_chart</figcaption>
+</figure>
+</div>
+<div class="run">
+<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">47</span>, <span class="fl">22.5342</span>, <span class="st">'four hundred eighty-two'</span>, <span class="dv">0</span>, <span class="dv">72104</span>, <span class="op">-</span><span class="fl">932.14</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">23</span>, <span class="st">'eleven'</span>]:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check to see if value is a string</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(x) <span class="op">==</span> <span class="bu">str</span>:</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If so, skip to next iteration</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Otherwise, divide by 2 and print</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x<span class="op">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
+
+</section>
+<section id="list-comprehensions" class="level3">
+<h3 class="anchored" data-anchor-id="list-comprehensions">List comprehensions</h3>
+<p>A list comprehension is a quick, concise way to generate a list. They are generally used to condense the generation of a list from a simple expression into one line of code.</p>
+<p>For example, say you wanted a list of all the squares from 0 and 100. As we learned in <a href="../interactive_sessions/1-2_Lists.html">Session 1-2</a>, this could be accomplished as follows:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using a list comprehension, the same list could be generated in a single line of code as follows:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squares)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> squares <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">16</span>, <span class="dv">25</span>, <span class="dv">36</span>, <span class="dv">49</span>, <span class="dv">64</span>, <span class="dv">81</span>, <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>List comprehensions are often combined with <code>if</code> statements. For example, the following line of code creates a list of all even numbers from 0 to 100.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>evens <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>) <span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(evens)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> evens <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">20</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">34</span>, <span class="dv">36</span>, <span class="dv">38</span>, <span class="dv">40</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">42</span>, <span class="dv">44</span>, <span class="dv">46</span>, <span class="dv">48</span>, <span class="dv">50</span>, <span class="dv">52</span>, <span class="dv">54</span>, <span class="dv">56</span>, <span class="dv">58</span>, <span class="dv">60</span>, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">62</span>, <span class="dv">64</span>, <span class="dv">66</span>, <span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">72</span>, <span class="dv">74</span>, <span class="dv">76</span>, <span class="dv">78</span>, <span class="dv">80</span>, </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">82</span>, <span class="dv">84</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">92</span>, <span class="dv">94</span>, <span class="dv">96</span>, <span class="dv">98</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="example">
+<p>✏️ Try it. Change the code above to create a list of all even squares from 0 to 100.</p>
+<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
+
+
+
+</div></section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

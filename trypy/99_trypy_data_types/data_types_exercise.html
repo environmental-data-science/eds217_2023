@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EDS 217: Python for Environmental Data Science - TryPy 2 - Data Types, Indexing, Imports and Plotting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles/activities.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
+  <li><a href="#part-1.-checking-data-types" id="toc-part-1.-checking-data-types" class="nav-link" data-scroll-target="#part-1.-checking-data-types">Part 1. Checking data types</a>
+  <ul class="collapse">
+  <li><a href="#create-some-data-check-the-classes-index" id="toc-create-some-data-check-the-classes-index" class="nav-link" data-scroll-target="#create-some-data-check-the-classes-index">Create some data, check the classes, index!</a></li>
+  </ul></li>
+  <li><a href="#part-2.-wild-data" id="toc-part-2.-wild-data" class="nav-link" data-scroll-target="#part-2.-wild-data">Part 2. Wild data</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<hr>
+<h4 class="anchored"> <a href="../../">Return to Course Home Page</a></h4>
+<hr>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TryPy 2 - Data Types, Indexing, Imports and Plotting</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="part-0.-setup-steps" class="level2">
+<h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
+<ul>
+<li>Create a repo on GitHub named <code>eds217-trypy-02</code></li>
+<li>Clone to create a version-controlled project</li>
+<li>Create some subfolder infrastructure (docs, data)</li>
+<li>Create a <del>new quarto in RStudio</del> new <code>.ipynb</code> file called <code>eds217-trypy-02.ipynb</code> in VSCode. If working on your local machine, make sure to associate the notebook with the <code>eds217_2023</code> environment.</li>
+</ul>
+</section>
+<section id="part-1.-checking-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-checking-data-types">Part 1. Checking data types</h2>
+<section id="create-some-data-check-the-classes-index" class="level3">
+<h3 class="anchored" data-anchor-id="create-some-data-check-the-classes-index">Create some data, check the classes, index!</h3>
+<section id="vectors-lists-data-frames" class="level4">
+<h4 class="anchored" data-anchor-id="vectors-lists-data-frames">Vectors, lists &amp; data frames</h4>
+<p>In your notebook (or quarto) document:</p>
+<ol type="1">
+<li>Create a list called <code>vec_1</code>containing the following:</li>
+</ol>
+<p><code>[2, 5, 9, 10, 8, 12, 1, 0]</code></p>
+<p>Check the following for that list:</p>
+<ul>
+<li>What is the type of the list? <code>type()</code></li>
+<li>Access the 3rd element and store as <code>vec_1_e3</code></li>
+<li>Access the 1st element and store as <code>vec_1_e1</code></li>
+<li>Access the 5th through 7th elements and store as <code>vec_1_e5to7</code></li>
+<li>Reassign each element in <code>vec_1</code> as a string and store the new list as <code>vec_1_char</code>. What does the output look like?</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;
+['2', '5', '9', '10', '8', '12', '1', '0']</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Create a dictionary called <code>dict_1</code></li>
+</ol>
+<p><code>dict_1</code> should contained <em>named</em> elements, where <code>town = "Santa Barbara</code>, <code>location = "Rincon"</code>, `swell = “south”</p>
+<ul>
+<li>Take a look at what you’ve made</li>
+<li>What is the type of dictionary values? <code>type()</code></li>
+<li>What is the length of dict_1?</li>
+<li>Access the ‘location’ value and store as <code>dict_1_v2</code></li>
+</ul>
+<ol start="3" type="1">
+<li>Create a data frame in pandas</li>
+</ol>
+<p>Write code to create a data frame called <code>df_1</code> that looks like this:</p>
+<p>(Note: translate the <code>R</code> code below into python… don’t forget to <code>import pandas as pd</code>)</p>
+<p><code>{r, echo = FALSE} df_1 &lt;- data.frame(     region = c("A", "B", "A", "D"),     species = c("otter", "great white", "sea lion", "gray whale"),     count = c(12, 2, 36, 6)     ) df_1 max_count &lt;- max(df_1$count)</code></p>
+<ul>
+<li>Find the maximum value of the <code>count</code> column, store as <code>max_count</code></li>
+</ul>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>36</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-2.-wild-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-wild-data">Part 2. Wild data</h2>
+<section id="set-up" class="level4">
+<h4 class="anchored" data-anchor-id="set-up">Set-up</h4>
+<ul>
+<li><p>The <em>first CSV</em> listed (<code>AS00601.csv</code>) take a look at it (outside of python is fine as a first step, e.g.&nbsp;you can open the CSV in Excel.)</p></li>
+<li><p>Save the <code>AS00601.csv</code> in the <code>data</code> folder of your repo.</p></li>
+</ul>
+</section>
+<section id="read-in-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="read-in-the-data">Read in the data</h4>
+<ul>
+<li><p>Read in the data using <code>pd.read_csv()</code>, store as <code>mack_verts</code></p></li>
+<li><p>Look at what you’ve read in</p></li>
+</ul>
+</section>
+<section id="a-bit-of-wrangling-exploring" class="level4">
+<h4 class="anchored" data-anchor-id="a-bit-of-wrangling-exploring">A bit of wrangling &amp; exploring</h4>
+<ul>
+<li><p>In a new code chunk, practice accessing individual pieces of the data frame (there is no real functionality to this, but just to reinforce stuff we learned in our interactive session):</p>
+<ul>
+<li>Store the 5th value in column <code>"WEIGHT"</code> as <code>mc_wt_5</code>. Check by looking at your data frame to confirm.</li>
+<li>Store the 8th - 20th value in the <code>"LENGTH1"</code> column as <code>mc_length_8_20</code>. Check by looking at your data frame to confirm.</li>
+<li>Store everything in column SAMPLEDATE as a <code>pd.Series</code> called <code>mc_dates</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="make-a-salamander-subset" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-salamander-subset">Make a salamander subset</h4>
+<ul>
+<li>Create a subset that only contains observations for Pacific Giant Salamanders (species <em>Dicamptodon tenebrosus</em>, stored in <code>SPECIES</code> as <code>DITE</code>). Store the subset as <code>mc_salamanders</code>.</li>
+</ul>
+<p><em>Hint:</em> use a logical operator to filter for the rows you want.</p>
+<p>For example, the following code block creates a new dataframe <code>df_new</code> containing only the rows in <code>df_old</code> where the value of column named <code>ID</code> is equal to <code>Batman</code>.</p>
+<pre class="{python}"><code>    df_new = df_old[df_old['ID'] == 'Batman']</code></pre>
+</section>
+<section id="make-a-scatterplot-of-salamander-length-x-weight" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-scatterplot-of-salamander-length-x-weight">Make a scatterplot of salamander length x weight</h4>
+<ul>
+<li>Create a scatterplot of LENGTH1 (snout-vent length in millimeters) versus WEIGHT (grams) for all salamanders in the subset you created above, <code>mc_salamanders</code>. Update axis labels, title, subtitle, and add a caption with the data source. Customize point color and size, possibly opacity, and the style.</li>
+</ul>
+<div class="cell" data-execution_count="41">
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kellycaylor/mambaforge/envs/eds217_2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="data_types_exercise_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>Export your scatterplot as <code>salamander_size.png</code> to your figs folder using the <code>fig.savefig()</code> command.</li>
+</ul>
+</section>
+<section id="make-a-cutthroat-plot" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-cutthroat-plot">Make a cutthroat plot</h4>
+<ul>
+<li>Similar to above, make a subset called <code>mc_trout</code> that only contains observations for cutthroat trout (species “ONCL”)</li>
+</ul>
+<p><em>Note:</em> In the following, it is <em>way</em> easier to make use of the <a href="https://seaborn.pydata.org/tutorial/relational.html#showing-multiple-relationships-with-facets">sns.relplot()</a> command in the <code>seaborn</code> library than matplotlib</p>
+<ul>
+<li>Create a scatterplot of <code>"LENGHTH1"</code> by <code>"WEIGHT"</code> for all trout in the dataset</li>
+<li>Customize so that the point color depends on <em>reach</em>
+<ul>
+<li><code>hue="REACH"</code> in <code>sns.relplot()</code></li>
+</ul></li>
+<li>Facet your plot by creek reach
+<ul>
+<li><code>col="REACH"</code> in <code>sns.relplot()</code></li>
+</ul></li>
+<li>store the output of <code>sns.relplot()</code> as <code>ax</code></li>
+<li>Update facet plot axis labels and title
+<ul>
+<li><code>ax.set_axis_labels(xlabel,ylabel)</code></li>
+<li><code>ax.fig.suptitle(title)</code></li>
+</ul></li>
+<li>Export your graph as <code>cutthroat_size.png</code> to the <code>figs</code> folder (<code>fig.savefig()</code>)</li>
+</ul>
+<div class="cell" data-execution_count="37">
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kellycaylor/mambaforge/envs/eds217_2023/lib/python3.10/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 640x480 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="data_types_exercise_files/figure-html/cell-11-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
