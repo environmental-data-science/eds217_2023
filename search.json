@@ -1404,7 +1404,7 @@
     "href": "trypy/TryPy.html#trypy-exercises",
     "title": "TryPy - Re-examining R exercises through Python",
     "section": "TryPy Exercises",
-    "text": "TryPy Exercises\n\nSt. Louis Lead data exercise (reading csv, dataframe calculations, simple plots)\n\n\nData types, indexing, import and plot data\n\n\nConditionals and Loops"
+    "text": "TryPy Exercises\n\nTryPy 01 - St. Louis Lead data exercise (reading csv, dataframe calculations, simple plots)\n\n\nTryPy 02 - Conditionals and Loops"
   },
   {
     "objectID": "interactive_sessions/conda_setup.html#installing-conda",
