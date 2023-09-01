@@ -197,19 +197,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Calculate ( $ e^*(T_a) $ ) in kPa for all temperatures in <code>bsrn</code>.</li>
 <li>Plot temperature vs.&nbsp;saturation vapor pressure for the BSRN station. Be sure to format your plot appropriately and include axis labels, a title, and a legend, if necessary.</li>
-<li>Compare your plot to Figure 3-1 in Campbell and Norman (1998). Do they look more or less the same?</li>
+<li>Compare your plot to Figure 3-1 in Campbell and Norman (1998), included below. Do they look more or less the same?</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/campbell_norman_fig3-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cn</figcaption>
+</figure>
+</div>
 </section>
 <section id="practice-5." class="level2">
 <h2 class="anchored" data-anchor-id="practice-5.">📚 <b> Practice 5. </b></h2>
 <p>The difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, <span class="math inline">\textit{VPD}</span>. <span class="math inline">\textit{VPD}</span> can be calculated from saturation vapor pressure and relative humidity, <span class="math inline">h_r</span>, as follows: <span class="math display"> \textit{VPD} \, = \, e^*(T_a) \cdot (1 \, - \, h_r)</span> where <span class="math inline">h_r</span> is expressed as a fraction.</p>
 <ol type="1">
 <li>Calculate the vapor pressure deficit for the BSRN data.</li>
-<li>Calculate the mean hourly <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> over the entire month.</li>
-<li>Plot <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (for extra python points, try plotting both variables on one plot using <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html">ax.twinx()</a>)</li>
+<li>Calculate the mean hourly <span class="math inline">RH</span> and <span class="math inline">\textit{VPD}</span> over the entire month.</li>
+<li>Plot <span class="math inline">RH</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (for extra python points, try plotting both variables on one plot using <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html">ax.twinx()</a>)</li>
 <li>How does relative humidity vary throughout the day? Why?</li>
 <li>Compare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> for the BSRN station compare to those at constant vapor pressure in Figure 3-3?</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/campbell_norman_fig3-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cn</figcaption>
+</figure>
+</div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 

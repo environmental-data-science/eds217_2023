@@ -329,12 +329,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, <span class="math inline">\textit{VPD}</span>. <span class="math inline">\textit{VPD}</span> can be calculated from saturation vapor pressure and relative humidity, <span class="math inline">h_r</span>, as follows: <span class="math display"> \textit{VPD} \, = \, e^*(T_a) \cdot (1 \, - \, h_r)</span> where <span class="math inline">h_r</span> is expressed as a fraction.</p>
 <ol type="1">
 <li>Calculate the vapor pressure deficit for the BSRN data.</li>
-<li>Calculate the mean hourly <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> over the entire month.</li>
-<li>Plot <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (for extra python points, try plotting both variables on one plot using <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html">ax.twinx()</a>)</li>
+<li>Calculate the mean hourly <span class="math inline">RH</span> and <span class="math inline">\textit{VPD}</span> over the entire month.</li>
+<li>Plot <span class="math inline">RH</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (for extra python points, try plotting both variables on one plot using <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html">ax.twinx()</a>)</li>
 <li>How does relative humidity vary throughout the day? Why?</li>
 <li>Compare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> for the BSRN station compare to those at constant vapor pressure in Figure 3-3?</li>
 </ol>
-<div class="cell" data-execution_count="5">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/campbell_norman_fig3-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cn</figcaption>
+</figure>
+</div>
+<div class="cell" data-execution_count="43">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calulate VPD in kPa for bsrn data:</span></span>
@@ -347,21 +353,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>ax.plot(bsrn_hourly.index,bsrn_hourly.VPD_kPa,color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax2.plot(bsrn_hourly.index,bsrn_hourly.e_sat_kPa,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>ax.plot(bsrn_hourly.index,bsrn_hourly.RH<span class="op">/</span><span class="dv">100</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax2.plot(bsrn_hourly.index,bsrn_hourly.VPD_kPa,color<span class="op">=</span><span class="st">'red'</span>)</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># set xlabel</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Hour of day'</span>)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># set ylabel</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'VPD (kPa)'</span>,color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Saturation vapor pressure (kPa)'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'VPD (kPa)'</span>,color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Relative Humidity [0-1]'</span>,color<span class="op">=</span><span class="st">'blue'</span>)</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># set title</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Hourly means of VPD and saturation vapor pressure'</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Hourly means of VPD and Relative Humidity'</span>)</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># show the figure</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>Text(0.5, 1.0, 'Hourly means of VPD and saturation vapor pressure')</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>Text(0.5, 1.0, 'Hourly means of VPD and Relative Humidity')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="practice_5-1_matplotlib_key_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>

@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>There are extensive options for plotting in Python – some favorites include statistical visualizations in <a href="https://seaborn.pydata.org"><span class="codeb">Seaborn</span></a> and interactive plots for web applications in <a href="https://docs.bokeh.org/en/latest/index.html"><span class="codeb">Bokeh</span></a>. The original and fundamental library for visualizations in Python, however, is <a href="https://matplotlib.org"><span class="codeb">matplotlib</span></a>.</p>
 <p><span class="code">Matplotlib</span> was the first plotting library developed for Python and remains the most widely used library for data visualization in the Python community. Designed to resemble graphics in MATLAB, <span class="code">matplotlib</span> is reminiscent of MATLAB in both appearance and functionality. As a result, it is not the easiest library to work with, and deviates from the object-oriented syntax we are familiar with in Python.</p>
-<p>This session will serve as an introduction to plotting in Python using <span class="code">matplotlib</span>. The nature of <span class="code">matplotlib</span> – and figure-making in general –&nbsp;is such that the easiest way to learn is by following examples. As such, this exercise is structured a bit differently than the others, so be sure to look carefully at the coded examples. Finally, the <em>best</em> way to learn advanced functions and find help with <span class="code">matplotlib</span> is by exploring the examples in the <a href="https://matplotlib.org/gallery/index.html">gallery</a>.</p>
+<p>This session will serve as an introduction to plotting in Python using <span class="code">matplotlib</span>. The nature of <span class="code">matplotlib</span> – and figure-making in general –&nbsp;is such that the easiest way to learn is by following examples. As such, this session is structured a bit differently than the others, so be sure to look carefully at the coded examples. Finally, the <em>best</em> way to learn advanced functions and find help with <span class="code">matplotlib</span> is by exploring the examples in the <a href="https://matplotlib.org/gallery/index.html">gallery</a>.</p>
 <p style="height:1pt">
 </p>
 <div class="boxhead2">
@@ -1062,16 +1062,6 @@ Legends + titles
 </div>
 <p>In the last example, we included a command, <code>plt.tight_layout()</code>, which automatically formats the figure to fit the window. This is most useful when using an IDE with a separate plotting window, rather than with in-line plots like those in a notebook. To get a sense of what <code>plt.tight_layout()</code> does, try re-running the above cell with this command commented out.</p>
 <p>To go beyond regularly gridded subplots and create subplots that span multiple rows and/or columns, check out <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.gridspec.GridSpec.html#matplotlib.gridspec.GridSpec"><code>GridSpec</code></a>.</p>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 1. &lt;/b&gt; 
-Recreate the plot below. You do not need to match the colors exactly, but do not rely on &lt;span class="codeb"&gt;matplotlib&lt;/span&gt; defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.</code></pre>
-</div>
-<p><img src="./assets/mpl_prac1.svg" alt="prac1" width="600"></p>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 2. &lt;/b&gt; 
-Recreate the plot below. You do not need to match the colors exactly, but do not rely on &lt;span class="codeb"&gt;matplotlib&lt;/span&gt; defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.</code></pre>
-</div>
-<p><img src="./assets/mpl_prac2.svg" alt="prac2" width="600"></p>
 </section>
 </section>
 <section id="working-with-real-data" class="level3">
@@ -1085,8 +1075,8 @@ Recreate the plot below. You do not need to match the colors exactly, but do not
 <div class="cell" data-execution_count="20">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now that we’ve imported our data, let’s make a quick plot of incoming shortwave radiation over time.</p>
@@ -1096,18 +1086,18 @@ Recreate the plot below. You do not need to match the colors exactly, but do not
 <div class="cell" data-execution_count="21">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty figure</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot incoming SW radiation</span></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>plt.plot(bsrn.index,bsrn.SWD_Wm2)</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Label y-axis</span></span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Incoming SW radiation (W m$^{-2}$)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty figure</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot incoming SW radiation</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>plt.plot(bsrn.index,bsrn.SWD_Wm2)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Label y-axis</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Incoming SW radiation (W m$^{-2}$)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>Text(0, 0.5, 'Incoming SW radiation (W m$^{-2}$)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="5-1_matplotlib_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
+<p><img src="5-1_matplotlib_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>The x-axis looks rather messy because the tick labels are <em>timestamps</em>, which are, by nature, very long. Luckily, <span class="code">matplotlib</span> has a module called <span class="code">dates</span> for dealing with <code>datetime</code> objects.</p>
@@ -1117,7 +1107,7 @@ Recreate the plot below. You do not need to match the colors exactly, but do not
 <div class="cell" data-execution_count="22">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Without going into too much detail, we can use some of the more advanced <code>Axes</code> settings to format and rotate the tick labels such that they no longer overlap, and we can use <span class="code">matplotlib.dates</span> to format the timestamps. In short, we will use the <code>mdates.DateFormatter()</code> function to format the timestamps according to <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">C formatting codes</a>.</p>
@@ -1128,19 +1118,19 @@ Recreate the plot below. You do not need to match the colors exactly, but do not
 <div class="cell" data-execution_count="23">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty figure and axes</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot incoming SW radiation</span></span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>ax.plot(bsrn.index,bsrn.SWD_Wm2)</span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Label y-axis</span></span>
-<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'Incoming SW radiation (W m$^{-2}$)'</span>)</span>
-<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Format timestamps</span></span>
-<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_formatter(mdates.DateFormatter(<span class="st">'</span><span class="sc">%d</span><span class="st">-%b-%y'</span>))</span>
-<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Format and rotate ticks</span></span>
-<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>plt.setp(ax.get_xticklabels(), rotation<span class="op">=</span><span class="dv">45</span>, fontsize<span class="op">=</span><span class="dv">10</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>ax.get_xticklabels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty figure and axes</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot incoming SW radiation</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>ax.plot(bsrn.index,bsrn.SWD_Wm2)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Label y-axis</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'Incoming SW radiation (W m$^{-2}$)'</span>)</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Format timestamps</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_formatter(mdates.DateFormatter(<span class="st">'</span><span class="sc">%d</span><span class="st">-%b-%y'</span>))</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Format and rotate ticks</span></span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>plt.setp(ax.get_xticklabels(), rotation<span class="op">=</span><span class="dv">45</span>, fontsize<span class="op">=</span><span class="dv">10</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>ax.get_xticklabels()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>[Text(18170.0, 0, '01-Oct-19'),
@@ -1154,52 +1144,8 @@ Recreate the plot below. You do not need to match the colors exactly, but do not
  Text(18201.0, 0, '01-Nov-19')]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="5-1_matplotlib_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
+<p><img src="5-1_matplotlib_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
-</div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 3. &lt;/b&gt; 
-Plot temperature and relative humidity (ideally using subplots) over the month of October 2019 at the BSRN station. Be sure to format the timestamps and include axis labels, a title, and a legend, if necessary.</code></pre>
-</div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 4. &lt;/b&gt; 
-Saturation vapor pressure, $e^*(T_a)$, is the maximum pressure of water vapor that can exist in equilibrium above a flat plane of water at a given temperature. It can be calculated from the Tetens equation:
-$$e^{*}(T_{a}) \, = \, a \, e^{\frac{b\, \cdot \, T_{_a}}{T_{_a}\, + \, c}} $$</code></pre>
-<p>where <span class="math inline">T_a</span> is the air temperature in °C, <span class="math inline">a = 0.611 \, \text{kPa}</span>, <span class="math inline">b = 17.502</span>, and <span class="math inline">c = 240.97^{\circ} \text{C}</span>. <br></p>
-<ol class="alpha">
-<li>
-Calculate <span class="math inline">e^*(T_a)</span> in kPa for all temperatures in <code>bsrn</code>.
-</li>
-<li>
-Plot temperature vs.&nbsp;saturation vapor pressure for the BSRN station. Be sure to format your plot appropriately and include axis labels, a title, and a legend, if necessary.
-</li>
-<li>
-Compare your plot to Figure 3-1 in Campbell and Norman (1998). Do they look more or less the same?
-</li>
-</ol>
-</div>
-<div class="practice">
-<pre><code>📚  &lt;b&gt; Practice 5. &lt;/b&gt; 
-The difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, $\textit{VPD}$. $\textit{VPD}$ can be calculated from saturation vapor pressure and relative humidity, $h_r$, as follows:
-$$ \textit{VPD} \, = \, e^*(T_a) \cdot (1 \, - \, h_r)$$</code></pre>
-where <span class="math inline">h_r</span> is expressed as a fraction.
-<ol class="alpha">
-<li>
-Calculate the vapor pressure deficit for the BSRN data.
-</li>
-<li>
-Calculate the mean hourly <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> over the entire month.
-</li>
-<li>
-Plot <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (Bonus: if you want to get fancy, plot both variables on one plot using <a href="https://matplotlib.org/3.1.1/gallery/subplots_axes_and_figures/two_scales.html#sphx-glr-gallery-subplots-axes-and-figures-two-scales-py"> <code>ax.twinx()</code></a>.)
-</li>
-<li>
-How does relative humidity vary throughout the day? Why?
-</li>
-<li>
-Compare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> for the BSRN station compare to those at constant vapor pressure in Figure 3-3?
-</li>
-</ol>
 </div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
