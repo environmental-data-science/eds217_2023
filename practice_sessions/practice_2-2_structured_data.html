@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Interactive Session 0-2: Hello, World!</title>
+<title>EDS 217: Python for Environmental Data Science - Practice 1-4: Structured Data in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,16 +108,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#introduction-to-python" id="toc-introduction-to-python" class="nav-link" data-scroll-target="#introduction-to-python">Introduction to Python</a>
+  <li><a href="#practice-1." id="toc-practice-1." class="nav-link active" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a>
   <ul class="collapse">
-  <li><a href="#print-statements" id="toc-print-statements" class="nav-link" data-scroll-target="#print-statements">Print statements</a></li>
-  <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input">User input</a></li>
+  <li><a href="#make-a-dictionary-of-your-peers." id="toc-make-a-dictionary-of-your-peers." class="nav-link" data-scroll-target="#make-a-dictionary-of-your-peers.">Make a dictionary of your peers.</a></li>
   </ul></li>
-  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a>
+  <li><a href="#dictionary-to-dataframe" id="toc-dictionary-to-dataframe" class="nav-link" data-scroll-target="#dictionary-to-dataframe">Dictionary to dataframe</a>
   <ul class="collapse">
-  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#convert-your-dictionary-to-a-dataframe" id="toc-convert-your-dictionary-to-a-dataframe" class="nav-link" data-scroll-target="#convert-your-dictionary-to-a-dataframe">Convert your dictionary to a dataframe</a></li>
+  <li><a href="#investigate-your-dataframe-using-the-following-functions" id="toc-investigate-your-dataframe-using-the-following-functions" class="nav-link" data-scroll-target="#investigate-your-dataframe-using-the-following-functions">Investigate your dataframe using the following functions:</a></li>
+  <li><a href="#visualizesummarize-your-dataframe-using-one-or-more-of-the-following-functions" id="toc-visualizesummarize-your-dataframe-using-one-or-more-of-the-following-functions" class="nav-link" data-scroll-target="#visualizesummarize-your-dataframe-using-one-or-more-of-the-following-functions">Visualize/summarize your dataframe using one or more of the following functions:</a></li>
   </ul></li>
+  <li><a href="#practice-2." id="toc-practice-2." class="nav-link" data-scroll-target="#practice-2.">📚 <b> Practice 2. </b></a>
+  <ul class="collapse">
+  <li><a href="#structured-data-search-find-structured-data-on-the-internet-and-convert-it-to-a-dataframe." id="toc-structured-data-search-find-structured-data-on-the-internet-and-convert-it-to-a-dataframe." class="nav-link" data-scroll-target="#structured-data-search-find-structured-data-on-the-internet-and-convert-it-to-a-dataframe.">Structured data search: Find structured data on the internet and convert it to a dataframe.</a></li>
+  <li><a href="#convert-your-data-to-a-dataframe" id="toc-convert-your-data-to-a-dataframe" class="nav-link" data-scroll-target="#convert-your-data-to-a-dataframe">Convert your data to a dataframe</a></li>
+  </ul></li>
+  <li><a href="#explore-your-dataframe-using-the-following-functions" id="toc-explore-your-dataframe-using-the-following-functions" class="nav-link" data-scroll-target="#explore-your-dataframe-using-the-following-functions">Explore your dataframe using the following functions:</a></li>
   </ul>
 </nav>
 </nav>
@@ -133,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interactive Session 0-2: Hello, World!</h1>
+<h1 class="title">Practice 1-4: Structured Data in Python</h1>
 </div>
 
 
@@ -148,163 +154,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="99_hello_world_files/figure-html/883b61e8-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Hello_mac-2.jpg</figcaption>
-</figure>
-</div>
-<p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn.</p>
-<p>In addition to Python scripts (<code>.py</code> files), many data scientists use Jupyter Notebooks (<code>.ipynb</code> files) for experimentation and visualization.</p>
-<p>Notebooks allow for rapid code evaluation and ease of use. For this reason, sessions have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
-<p>This first session will briefly introduce a few basic Python features.</p>
-<p style="height:1pt">
-</p>
-<div class="boxhead1">
-<pre><code>Session Topics</code></pre>
-</div>
-<div class="boxtext1">
-<ul class="a">
-<li>
-📌 Print statements
-</li>
-<li>
-📌 User input
-</li>
-<li>
-📌 Comments
-</li>
-</ul>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
-
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
-<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
-<p style="color:#408000; font-weight: bold">
-🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
-</p>
-<p style="color:#008C96; font-weight: bold">
-▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
-</p>
-<p style="color:#008C96; font-weight: bold">
-✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
-</p>
-<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
-
+<p><a href="../practice_sessions/practice_2-1_control_flow_statements.html">⬅️ Previous Session</a> | <a href="../index.html">🏠 Course Home</a> | <a href="../practice_sessions/practice_3-1_numpy.html">➡️ Next Session</a> |</p>
+<section id="practice-1." class="level2">
+<h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
+<p>Dictionaries are an extremely common data structure. Often data is easiest to store according to keys, where each row of data has a unique key.</p>
+<p>For example, a dictionary of students might have a key for each student’s name or id, and then a set of values that are associated with that student.</p>
+<section id="make-a-dictionary-of-your-peers." class="level3">
+<h3 class="anchored" data-anchor-id="make-a-dictionary-of-your-peers.">Make a dictionary of your peers.</h3>
+<p>Come up with 3-4 questions and ask 5-6 of your peers to give answers to each one. The questions can be anything you want, but they should be questions that can be answered with a single word or number.</p>
+<p>For example, you might ask: - What is your favorite color? (pretty weak question) - How many siblings do you have? (ok, but not great) - What is your favorite genre of film? (better) - On a scale of 1-10, how well do you feel that you understand python dictionaries? (better still)</p>
+<p>Make sure you have a key for each person, and then a set of values for each question.</p>
+<p>Based on each person’s responses, build a dictionary in the cell below:</p>
+<p>(note: You will end up with a dictionary of dictionaries)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_dict <span class="op">=</span> {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'person1'</span>: {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question1'</span>: <span class="st">'answer1'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question2'</span>: <span class="st">'answer2'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question3'</span>: <span class="st">'answer3'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question4'</span>: <span class="st">'answer4'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'person2'</span>: {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question1'</span>: <span class="st">'answer1'</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question2'</span>: <span class="st">'answer2'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question3'</span>: <span class="st">'answer3'</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question4'</span>: <span class="st">'answer4'</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'person3'</span>: {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question1'</span>: <span class="st">'answer1'</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question2'</span>: <span class="st">'answer2'</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question3'</span>: <span class="st">'answer3'</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'question4'</span>: <span class="st">'answer4'</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="introduction-to-python" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-python">Introduction to Python</h2>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="print-statements" class="level3">
-<h3 class="anchored" data-anchor-id="print-statements">Print statements</h3>
-<p>The most basic function in Python is the <code>print()</code> function, which simply prints out a line.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
-<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> This is a print statement.
-</p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
+</section>
+<section id="dictionary-to-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="dictionary-to-dataframe">Dictionary to dataframe</h2>
+<p>Now that you have a dictionary, you can convert it to a dataframe.</p>
+<section id="convert-your-dictionary-to-a-dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="convert-your-dictionary-to-a-dataframe">Convert your dictionary to a dataframe</h3>
+<p>Use the <code>pd.DataFrame()</code> function to convert your dictionary to a dataframe.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a dictionary to a dataframe</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(my_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="investigate-your-dataframe-using-the-following-functions" class="level3">
+<h3 class="anchored" data-anchor-id="investigate-your-dataframe-using-the-following-functions">Investigate your dataframe using the following functions:</h3>
+<ul>
+<li><code>df.head()</code></li>
+<li><code>df.tail()</code></li>
+<li><code>df.info()</code></li>
+</ul>
+<p>Is your dataframe what you expected? If not, what is different? Why?? How would you need to change your data structure to get the dataframe you expected?</p>
+<p><code>df.transpose()</code> might be helpful here. What does it do? create a new dataframe that is a transposed version of your original dataframe.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose a dataframe</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_transposed <span class="op">=</span> df.transpose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose your dataframe so that the people are the rows and the questions are the columns.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>This is a print statement.</code></pre>
 </div>
-</div>
-<div class="practice">
-<p>📚 Practice 1. In the following cell, use the <code>print()</code> command to print the line “Hello, World!”)</p>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
 </section>
-<section id="user-input" class="level3">
-<h3 class="anchored" data-anchor-id="user-input">User input</h3>
-<p>The <code>input()</code> command is an important Python function that can be used in a program to prompt for user input.</p>
+<section id="visualizesummarize-your-dataframe-using-one-or-more-of-the-following-functions" class="level3">
+<h3 class="anchored" data-anchor-id="visualizesummarize-your-dataframe-using-one-or-more-of-the-following-functions">Visualize/summarize your dataframe using one or more of the following functions:</h3>
+<ul>
+<li><code>df.describe()</code></li>
+<li><code>df.plot()</code></li>
+<li><code>df.hist()</code></li>
+</ul>
 </section>
 </section>
-<section id="try-it." class="level2">
-<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
-<p>Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>( <span class="st">'What is your first name? '</span> )</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="comments" class="level3">
-<h3 class="anchored" data-anchor-id="comments">Comments</h3>
-<p>In programming, a <strong>comment</strong> is a piece of text that the computer ignores when running the program. Comments are usually used at the top of a program to provide a description of the program, name and information of the author, dependencies, etc., as well as throughout the script to explain lines of code. Commenting is a critical element of proper coding etiquette.</p>
-<p>There are two types of comments: <strong>in-line comments</strong> and <strong>block comments</strong>. In-line comments are used to provide context at the end of a line of code, while block comments come before a “block” or chunk of code.</p>
-<div class="python">
-<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt;
-In Python, there are two ways of writing comments. For in-line comments and most short comments, the &lt;span style="font-weight:bold"&gt; # &lt;/span&gt; character is used. For large block comments, such as those at the beginning of a file or function, three quotations &lt;span style="font-weight:bold"&gt;  '''  &lt;/span&gt; are used to enclose comments. Both single and double quotations are interpreted the same, as long as they are not used together.</code></pre>
-</div>
-<p>The following example is a function (a type of Python object we will cover later on) that uses both methods of commenting. As you can see, without the comments, it would be difficult to understand what the function does, what parameters it takes, and what the intermediate steps are to reach the end.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> homo_affine_matrix(p, p_prime):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds the unique homogeneous affine transformation that </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    transforms a set of 3 points from one coordinate system </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    to that of a second set of points in 3-D space</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p : array</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        original set of points as a row vector: ((p1, p2, p3))</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    p_prime : array</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Transformed points as a row vector: ((p1_prime, p2_prime, p3_prime))</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    array</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">        4 x 3 affine transformation matrix.</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Source: Adapted by B. Morgan from https://math.stackexchange.com/a/222170 (robjohn)</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct intermediate matrix</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    Q       <span class="op">=</span> p[<span class="dv">1</span>:]       <span class="op">-</span> p[<span class="dv">0</span>]</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    Q_prime <span class="op">=</span> p_prime[<span class="dv">1</span>:] <span class="op">-</span> p_prime[<span class="dv">0</span>]</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate rotation matrix</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> np.dot(np.linalg.inv(np.row_stack((Q, np.cross(<span class="op">*</span>Q)))),</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>               np.row_stack((Q_prime, np.cross(<span class="op">*</span>Q_prime))))</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate translation vector</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> p_prime[<span class="dv">0</span>] <span class="op">-</span> np.dot(p[<span class="dv">0</span>], R)</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate affine transformation matrix</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.column_stack((np.row_stack((R, t)),</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> <br></p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>4</code></pre>
-</div>
-</div>
-<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
-
-
-
+<section id="practice-2." class="level2">
+<h2 class="anchored" data-anchor-id="practice-2.">📚 <b> Practice 2. </b></h2>
+<section id="structured-data-search-find-structured-data-on-the-internet-and-convert-it-to-a-dataframe." class="level3">
+<h3 class="anchored" data-anchor-id="structured-data-search-find-structured-data-on-the-internet-and-convert-it-to-a-dataframe.">Structured data search: Find structured data on the internet and convert it to a dataframe.</h3>
+<p>You’re looking for data that is in a table format, like a spreadsheet, but not available as an easy to download <code>.csv</code> or <code>.excel</code> file. This turns out to describe a lot of data!</p>
+<p>Often you can find this kind of data on wikipedia, or on government websites, or in research articles that contain tables of results.</p>
 </section>
+<section id="convert-your-data-to-a-dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="convert-your-data-to-a-dataframe">Convert your data to a dataframe</h3>
+</section>
+</section>
+<section id="explore-your-dataframe-using-the-following-functions" class="level2">
+<h2 class="anchored" data-anchor-id="explore-your-dataframe-using-the-following-functions">Explore your dataframe using the following functions:</h2>
+<ul>
+<li><code>df.describe()</code></li>
+<li><code>df.plot()</code></li>
+<li><code>df.hist()</code></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
