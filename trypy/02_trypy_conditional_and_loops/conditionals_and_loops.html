@@ -127,9 +127,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Download the CSV containing the Toolik biogeochemistry data</p></li>
 <li><p>Take a look at it - how are missing values stored? Keep that in mind.</p></li>
 <li><p>Drop the CSV into your data folder of your project</p></li>
-<li><p>Create a new qmd document, save in docs as <code>toolik_chem.ipynb</code></p></li>
-<li><p>Import the <code>pandas</code> and <code>janitor</code> package in your setup code chunk.</p></li>
-<li><p>Read in the data as <code>toolik_biochem</code>. Remember, you’ll want to specify here how <code>NA</code> values are stored. Use the <code>clean_names()</code> function to convert all column names to lower case/underscore format.</p></li>
+<li><p>Create a new notebook document in VSCode (or in a <code>jupyter notebook</code> server), save in docs as <code>toolik_chem.ipynb</code></p></li>
+<li><p>Import the <code>pandas</code> and <code>matplotlib</code> libraries into your first code cell.</p></li>
+<li><p>Read in the data as <code>toolik_biochem</code>. Remember, you’ll want to specify here how <code>NA</code> values are stored. Use the <code>na_values</code> argument in your <code>pd.read_csv</code> call to convert all column names to lower case/underscore format.</p></li>
 <li><p>Create a subset of the data that contains only observations from the “Toolik Inlet” site, and that only contains the variables (columns) for pH, dissolved organic carbon (DOC), and total dissolved nitrogen (TDN). Store this subset as <code>inlet_biochem</code>. Make sure to LOOK AT the subset you’ve created.</p></li>
 <li><p>Find the mean value of each column in <code>inlet_biochem</code> 2 different ways:</p></li>
 </ol>
