@@ -303,13 +303,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Windows:
 <ol type="1">
-<li>Open the a PowerShell from the Start Menu.</li>
-<li>Run the following command to update <code>conda</code>: <code>bash      conda update conda</code></li>
+<li><p>Open the a PowerShell from the Start Menu.</p></li>
+<li><p>Run the following command to update <code>conda</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol></li>
 <li>MacOS/Linux:
 <ol type="1">
-<li>Open the Terminal.</li>
-<li>Run the following command to update <code>conda</code>: <code>bash      conda update conda</code></li>
+<li><p>Open the Terminal.</p></li>
+<li><p>Run the following command to update <code>conda</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol></li>
 </ol>
 </section>
@@ -321,33 +323,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="creating-a-new-conda-environment">Creating a new <code>conda</code> environment</h2>
 <p>Conda can create new environments using a markup language specification called <code>yaml</code>. We will use an environment file created for our course to create an <code>eds217_2023</code> environment on your local machine.</p>
 <p>You can create a new environment using the following command:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">-n</span> my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">-n</span> my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will create a new environment named <code>my_cool_environment</code></p>
 <p>Often you will want to specify the python that you’d like the environment to use. You do that by adding a <code>python=&lt;version&gt;</code>. Here is a command that would create an environment that had the python 3.10 interpreter installed:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">-n</span> my_py310_environment python=3.10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">-n</span> my_py310_environment python=3.10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, you probably noticed that <code>conda</code> prompts you for permission before installing new packages. Sometimes you need to pay attention to these prompts, especially when you are adding packages to very complex environments. But on creation, you may want to speed things up. The <code>--yes</code> flag allows you to bypass approval and go straight to installation:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">--yes</span> <span class="at">-n</span> my_py310_environment python=3.10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> create <span class="at">--yes</span> <span class="at">-n</span> my_py310_environment python=3.10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="activating-an-environment" class="level2">
 <h2 class="anchored" data-anchor-id="activating-an-environment">Activating an environment</h2>
 <p>You can activate an environment using the following command:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> activate my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> activate my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="deactivating-an-environment" class="level2">
 <h2 class="anchored" data-anchor-id="deactivating-an-environment">Deactivating an environment</h2>
 <p>You can deactivate an environment using the following command:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There is no need to deactivate an environment before activating a different environment.</p>
 </section>
 <section id="removing-an-environment-generally-you-wont-want-to-do-this" class="level2">
 <h2 class="anchored" data-anchor-id="removing-an-environment-generally-you-wont-want-to-do-this">Removing an environment (generally, you won’t want to do this!)</h2>
 <p>You can remove an environment using the following command:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> env remove <span class="at">-n</span> my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> env remove <span class="at">-n</span> my_cool_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="listing-all-available-environments" class="level2">
 <h2 class="anchored" data-anchor-id="listing-all-available-environments">Listing all available environments</h2>
 <p>Eventually you are going to have a lot of different environments, and you may not remember all of them, or the exact name of the one you are looking to activate. In this case, <code>conda env list</code> (or <code>conda info --envs</code>) is your friend.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will display a list of all the conda environments you have created. The currently active environment (if any) will be marked with an asterisk (*) next to its name.</p>
 </section>
 </section>
@@ -368,28 +370,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="clone-your-forked-repository" class="level3">
 <h3 class="anchored" data-anchor-id="clone-your-forked-repository">1. Clone Your Forked Repository:</h3>
 <p>Open a terminal (Command Prompt on Windows, Terminal on MacOS/Linux) and navigate to the directory where you want to clone the repository.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR_USERNAME/eds217_2023.git</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR_USERNAME/eds217_2023.git</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Replace <code>YOUR_USERNAME</code> with your GitHub username.</p>
 </section>
 <section id="create-the-conda-environment" class="level3">
 <h3 class="anchored" data-anchor-id="create-the-conda-environment">2. Create the Conda Environment:</h3>
 <section id="windows" class="level4">
 <h4 class="anchored" data-anchor-id="windows">Windows:</h4>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="macoslinux" class="level4">
 <h4 class="anchored" data-anchor-id="macoslinux">MacOS/Linux:</h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="set-up-the-eds217_2023-environment-as-an-ipykernel" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-the-eds217_2023-environment-as-an-ipykernel">3. Set Up the <code>eds217_2023</code> Environment as an ipykernel:</h3>
 <p>In order to make sure our python environment is used when running code within an interactive editor such as a Jupyter notebook or in an IDE, you need ensure that the correct kernel is used to run our code. A python kernel is a program that runs and introspects the user’s code. Interactive tools such as Jupyter and IDEs use the kernel to execute code when you run a cell in the editor. `ipykernel`` is a tool that allows you to use specific python kernels when running code interactively within Jupyter notebooks and IDEs.</p>
 <p>After activating the <code>eds217_2023</code> environment, run the following command:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> eds217_2023 <span class="at">--display-name</span> <span class="st">"Python (eds217_2023)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> eds217_2023 <span class="at">--display-name</span> <span class="st">"Python (eds217_2023)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will allow you to select the <code>eds217_2023</code> environment as a kernel in Jupyter or in your IDE, which we will install next.</p>
 
 

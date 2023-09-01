@@ -588,144 +588,151 @@
     "text": "📚  Practice 7. \nExport your rivers DataFrame to a CSV file in the exports folder.\n\n\nCode\n# 7. Export rivers\nrivers.to_csv('../exports/rivers.csv') # note: will be different from the practice session folder.\n# rivers.to_csv('exports/rivers.csv') # note: will be different from the practice session folder."
   },
   {
-    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-1.",
-    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-1.",
-    "title": "Practice 2-2: Structured Data in Python",
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "",
+    "text": "⬅️ Previous Session | 🏠 Course Home\nDon’t forget to start your notebook with a cell containing the import statements you need for the session.\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-1.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 1. ",
+    "text": "📚  Practice 1. \nRecreate the plot below. You do not need to match the colors exactly, but do not rely on matplotlib defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.\n\n\n\nCode\n# Plot y=log(x) in green\nx = np.linspace(.01, 1, 100)\ny = np.log(x)\nfig, ax = plt.subplots()\nax.plot(x, y, 'g-')\nax.set_title('y=log(x)')\nax.set_xlabel('x')\nax.set_ylabel('y')\nplt.show()"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-2.",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-2.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 2. ",
+    "text": "📚  Practice 2. \nRecreate the plot below. You do not need to match the colors exactly, but do not rely on matplotlib defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.\n\n\n\nCode\n# Plot a series of three sine waves, with amplitudes 1, 10, and 5, in different colors from 0-10\n\n\n(1.0, 0.0, 0.0)\n\n\n\n\nCode\ndef rgb(r, g, b):\n    return (r/255, g/255, b/255)\n\nx = np.linspace(0, 10, 100)\ny1 = 1 * x* np.sin(2*np.pi*x)\ny2 = 10 * x * np.sin(2*np.pi*x)\ny3 = 5 * x * np.sin(2*np.pi*x)\nfig, ax = plt.subplots(figsize=(10, 6))\nax.plot(x, y1, '-', label='A=1', marker='o', color=rgb(83,127,232))\nax.plot(x, y2, '--', label='A=10', marker='*', color=rgb(97,180,186))\nax.plot(x, y3, '-.', label='A=5', marker='^', color=rgb(205,61,62))\n# add markers to the plot\nax.set_title('y=Axsin(2$\\pi$x)')\nax.set_xlabel('x')\nax.set_ylabel('y')\nax.legend()\nplt.show()"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-3.",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-3.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 3. ",
+    "text": "📚  Practice 3. \nImport the data from ./data/BSRN_data.csv and plot the temperature and relative humidity over the month of October 2019 at the BSRN station. Be sure to format the timestamps and include axis labels, a title, and a legend, if necessary.\n\n\nCode\n# Import data\nbsrn = pd.read_csv('../data/BSRN_GOB_2019-10.csv',index_col=0,parse_dates=True)\n\n\n\n\nCode\n\n# Initialize empty figure and axes\nfig = plt.figure(figsize=(8,8))\n# Create two subplots in a 1x2 grid:\n# 1. Incoming SW radiation\n# 2. Incoming LW radiation\nax1 = fig.add_subplot(2,1,1)\nax2 = fig.add_subplot(2,1,2)\n\n# Filter data for October 2019:\nbsrn = bsrn.loc['2019-10-01':'2019-10-31']\n# Plot incoming SW radiation for October 2019:\nax1.plot(bsrn.index,bsrn.SWD_Wm2)\n# Plot incoming LW radiation\nax2.plot(bsrn.index,bsrn.LWD_Wm2)\n# Label y-axes\nax1.set_ylabel(\"Incoming SW  \\n (W m$^{-2}$)\")\nax2.set_ylabel(\"Incoming LW  \\n (W m$^{-2}$)\")\n# Format timestamps\nax1.xaxis.set_major_formatter(mdates.DateFormatter('%d-%b-%y'))\nax2.xaxis.set_major_formatter(mdates.DateFormatter('%d-%b-%y'))\n# Format and rotate ticks\nplt.setp(ax1.get_xticklabels(), rotation=45, fontsize=10, ha='right')\nplt.setp(ax2.get_xticklabels(), rotation=45, fontsize=10, ha='right')\n# Label x-axes\nax1.set_xlabel('Date')\nax2.set_xlabel('Date')\n# Set figure title\nfig.suptitle('Incoming SW and LW radiation at BSRN station Gobabeb, Namibia')\n# Show figure\nfig.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-4.",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-4.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚 Practice 4.",
+    "text": "📚 Practice 4.\nSaturation vapor pressure, ( $ e^*(T_a) $ ), is the maximum pressure of water vapor that can exist in equilibrium above a flat plane of water at a given temperature. It can be calculated from the Tetens equation:\n e^{*}(T_{a}) = a \\times exp({\\frac{b \\cdot T_{a}}{T_{a} + c}}) \nwhere $ T_a $ is the air temperature in °C, $ a = 0.611 $ kPa, $ b = 17.502 $, and $ c = 240.97 °C $.\n\nCalculate ( $ e^*(T_a) $ ) in kPa for all temperatures in bsrn.\nPlot temperature vs. saturation vapor pressure for the BSRN station. Be sure to format your plot appropriately and include axis labels, a title, and a legend, if necessary.\nCompare your plot to Figure 3-1 in Campbell and Norman (1998). Do they look more or less the same?\n\n\n\nCode\n\n# 1. Calculate saturation vapor pressure in kPa for a T_degC column in bsrn and assign it to a new column 'e_sat_kPa' \nimport numpy as np\nbsrn['e_sat_kPa'] = 0.611 * np.exp((17.502 * bsrn.T_degC) / (bsrn.T_degC + 240.97))\n\n# 2. Create a scatterplot of temperature versus stauration vapor pressure. Be sure to format the x-axis ticks as dates.\nfig = plt.figure(figsize=(8,8))\nax = fig.add_subplot(1,1,1)\nplt.scatter(bsrn.T_degC,bsrn.e_sat_kPa)\n# set xlabel\nax.set_xlabel('Temperature (°C)')\n# set ylabel\nax.set_ylabel('Saturation vapor pressure (kPa)')\n# set title\nax.set_title('Saturation vapor pressure as a function of temperature')\n\n# show the figure\nplt.show()"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-5.",
+    "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-5.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 5. ",
+    "text": "📚  Practice 5. \nThe difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, \\textit{VPD}. \\textit{VPD} can be calculated from saturation vapor pressure and relative humidity, h_r, as follows:  \\textit{VPD} \\, = \\, e^*(T_a) \\cdot (1 \\, - \\, h_r) where h_r is expressed as a fraction.\n\nCalculate the vapor pressure deficit for the BSRN data.\nCalculate the mean hourly e^*(T_a) and \\textit{VPD} over the entire month.\nPlot e^*(T_a) and \\textit{VPD} as a function of time of day. (for extra python points, try plotting both variables on one plot using ax.twinx())\nHow does relative humidity vary throughout the day? Why?\nCompare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of e^*(T_a) and \\textit{VPD} for the BSRN station compare to those at constant vapor pressure in Figure 3-3?\n\n\n\nCode\n# Calulate VPD in kPa for bsrn data:\nbsrn['VPD_kPa'] = bsrn.e_sat_kPa * (1 - bsrn.RH/100)\n\n# For each hour in the day, calculate the monthly means\nbsrn_hourly = bsrn.groupby(bsrn.index.hour).mean()\n\n# plot the hourly means of VPD and e_sat_kPa. Use ax.twinx() to plot both variables on the same axes.\nfig = plt.figure(figsize=(8,8))\nax = fig.add_subplot(1,1,1)\nax2 = ax.twinx()\nax.plot(bsrn_hourly.index,bsrn_hourly.VPD_kPa,color='red')\nax2.plot(bsrn_hourly.index,bsrn_hourly.e_sat_kPa,color='blue')\n# set xlabel\nax.set_xlabel('Hour of day')\n# set ylabel\nax.set_ylabel('VPD (kPa)',color='red')\nax2.set_ylabel('Saturation vapor pressure (kPa)',color='blue')\n# set title\nax.set_title('Hourly means of VPD and saturation vapor pressure')\n# show the figure\n\n\n\n\nText(0.5, 1.0, 'Hourly means of VPD and saturation vapor pressure')"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-1.",
+    "title": "Practice 1-2: Lists + Indexing",
+    "section": "📚  Practice 1. ",
+    "text": "📚  Practice 1. \nDefine a new list of floats with 8 elements called my_list.\n\nFind the 5th element in your list.\nCreate a new list containing every other value in your original list.\nUsing slicing and two different methods of indexing, remove the first and last values in your list.\n\n\n\nCode\n# Define a new list called my_list.\nmy_list = [432.0,-401.943582,3.9,0.8712054,57849.097,1.2753,-98437.0,7.78]\nprint(f\"my_list: {my_list}\")\n# Find the 5th element.\nprint(f\"my_list 5th element:{my_list[4]}\")\n# New list with every other value.\nevery_other = my_list[::2]\nprint(f\"every_other: {every_other}\")\n# Remove first and last values. \nprint(f\"first and last removed: {my_list[1:-1]}\")\n\n\nmy_list: [432.0, -401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0, 7.78]\nmy_list 5th element:57849.097\nevery_other: [432.0, 3.9, 57849.097, -98437.0]\nfirst and last removed: [-401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-2.",
+    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-2.",
+    "title": "Practice 1-2: Lists + Indexing",
+    "section": "📚  Practice 2. ",
+    "text": "📚  Practice 2. \nUse indexing to extract the second letter of the third element (‘a’) in str_list.\n\n\nCode\nstr_list = ['energy', 'water', 'carbon']\n\n\n\n\nCode\nprint(f\"str_list[2][1]: {str_list[2][1]}\")\n\n\nstr_list[2][1]: a"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-3.",
+    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-3.",
+    "title": "Practice 1-2: Lists + Indexing",
+    "section": "📚  Practice 3. ",
+    "text": "📚  Practice 3. \nCreate a copy of my_list, which you assigned above.\n\nUsing indexing or list operators, remove the first and last elements of your copied list.\nSort both the original list and the copied list in reverse order.\nUse the len() function and a boolean operator to determine which list is longer.\n\n\n\nCode\n# Create a copy of mylist.\n\nmy_list_copy = my_list.copy()\nmy_list_copy = my_list_copy[1:-1]\n\n\nprint(f\"my_list: {my_list}\")\nprint(f\"my_list_copy: {my_list_copy}\")\n\n# Sort both lists from largest to smallest.\nmy_list.sort(reverse=True)\nprint(f\"Reverse sorted my_list: {my_list}\")\n\nmy_list_copy.sort(reverse=True)\nprint(f\"Reverse sorted my_list_copy: {my_list_copy}\")\n\n# Determine which list is longer.\nif len(my_list) &gt; len(my_list_copy):\n    print(\"my_list is longer\")\nelse:\n    print(\"my_list_copy is longer\")\n\n\nmy_list: [432.0, -401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0, 7.78]\nmy_list_copy: [-401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0]\nReverse sorted my_list: [57849.097, 432.0, 7.78, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]\nReverse sorted my_list_copy: [57849.097, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]\nmy_list is longer"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-4.",
+    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-4.",
+    "title": "Practice 1-2: Lists + Indexing",
+    "section": "📚  Practice 4. ",
+    "text": "📚  Practice 4. \nCreate a new list of 10 random floats between 0 and 1 called rand_list.\nAdd rand_list and my_list together in a new list called float_list.\nPrint the result.\n\n\nCode\n# Create a list of 10 random numbers between 0 and 1:\nfrom random import random\nrand_list = [random() for i in range(10)]\n\n# Add the lists together.\nfloat_list = rand_list + my_list\n\n# Print the result\nprint(float_list)\n\n\n[0.10955523298441361, 0.32572232971017967, 0.13761744658626607, 0.3203685653642424, 0.8091200680274167, 0.23342354410038746, 0.2821092128951217, 0.6901705052507255, 0.8891754795166417, 0.327553436209607, 57849.097, 432.0, 7.78, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-5.",
+    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-5.",
+    "title": "Practice 1-2: Lists + Indexing",
+    "section": "📚  Practice 5. ",
+    "text": "📚  Practice 5. \nUse the range() function to construct a list of all hundreds (e.g. 100, 200, etc.) between 0 and 1000, inclusive.\n\n\nCode\n# Construct a list of hundreds from 0 to 1000\nhundreds = list(range(0,1001,100))\n# Print your list\nprint(hundreds)\n\n\n[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#variables-operators",
+    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#variables-operators",
+    "title": "Practice 1-1: Variables + Operators",
+    "section": "Variables + Operators",
+    "text": "Variables + Operators"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-1.",
+    "title": "Practice 1-1: Variables + Operators",
+    "section": "📚 Practice 1.",
+    "text": "📚 Practice 1.\nThe laws of conservation state that in a closed system, mass, energy, and momentum can be neither created nor destroyed. Thus, the energy coming into the Earth’s surface (via solar radiation) must be equal to the energy going out from the Earth’s surface. The energy coming in via solar radiation can be written:\nR_{\\text{in}} = G_s \\pi {r_{e}}^2 (1 - \\alpha) where r_e is the radius of the Earth; \\alpha is the Earth’s albedo, a fraction correponding to the amount of incident radiation that is reflected; and G_s is the Solar Constant, or the flux density of the solar radiation at the Earth’s surface. The Solar Constant can be calculated according to the equation\nG_s = \\sigma {T_{sun}}^4 \\left( \\frac{4 \\pi {r_{sun}}^2}{4 \\pi d^2} \\right)\nwhere \\sigma is the Stefan-Boltzmann constant, T_{sun} is the temperature of the sun, r_{sun} is the radius of the sun, and d is the average distance between the sun and the Earth. The outgoing radiation from the Earth is given by the Stefan-Boltzmann law:\nR_{\\text{out}} = \\varepsilon \\sigma A_{e} {T_e}^4\nwhere \\varepsilon is the emissivity of the Earth, A_e is the surface area of the Earth approximated as a sphere, and T_e is the temperature of the Earth’s surface.\nGiven:\n\n\\sigma = 5.67 \\times 10-8 W m-2 K-4\nthe radius of the sun is 6.957 \\times 105 km,\nthe temperature of the sun is 5778 K,\nthe average distance between the sun and the Earth is 1.5 \\times 108 km,\nthe average albedo of the planet is 0.3\nand the emissivity of the Earth is 1.0,\n\n\n\n\nCalculate the Solar Constant in W m-2. Print your answer rounded to 3 decimal places.\n\n\nCalculate the temperature of the Earth’s surface in °C. Print your answer as both a float and an integer.\n\n\nThe actual global surface temperature of the Earth is about 14.6°C. What accounts for the difference between the answer you calculated above in the actual surface temperature?\n\n\n\nShow your work by including comments in your code and assigning variables."
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-3.",
+    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-3.",
+    "title": "Practice 1-1: Variables + Operators",
+    "section": "📚 Practice 3.",
+    "text": "📚 Practice 3.\nAssign your first and last names to variables and use the + operator to combine them into a single variable. Practice capitalizing the first letter and then the entire string. Print your answers.\n\n\nCode\n# Define variables\nfirst = 'Kelly'\nlast = 'Caylor'\n# Combine in a single string.\nfull_name = first + ' ' + last\n# Capitalize the first letter\ncap_name = full_name.capitalize()\n# Capitalize the entire string.\nupper_name = full_name.upper()\n# Print outputs.\nprint(full_name)\nprint(cap_name)\nprint(upper_name)\n\n\nKelly Caylor\nKelly caylor\nKELLY CAYLOR"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-4.",
+    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-4.",
+    "title": "Practice 1-1: Variables + Operators",
+    "section": "📚 Practice 4.",
+    "text": "📚 Practice 4.\nRewrite your answers to practice questions 1a and 1b using formatted print statements. Each answer should include: 1. What you are solving for; 2. Your solution as an integer, float, and a float rounded to 3 decimal places; and 3. Units. For example:\n\nThe radius of the earth is 6,378 km.\n\nYou should have a total of 6 print statements.\n\n\n\nCode\n# Formatted print statement for 1a.\nprint('Solar constant = %d W m-2' % (int(g_s)))\nprint('Solar constant = %f W m-2' % (g_s))\nprint('Solar constant = %.3f W m-2' % (g_s))\n\n# Formatted print statement for 1b.\nprint(\"Temperature of the Earth's surface =  %d°C\" % (int(T_e)))\nprint(\"Temperature of the Earth's surface =  %f°C\" % (T_e))\nprint(\"Temperature of the Earth's surface =  %.3f°C\" % (T_e))"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-5.",
+    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-5.",
+    "title": "Practice 1-1: Variables + Operators",
+    "section": "📚 Practice 5.",
+    "text": "📚 Practice 5.\nFollowing the example above, create a variable corresponding to the day on which you were born based on user input. Convert both variables to floats and assign the float versions to new variables. Lastly, use one of the boolean operators to evaluate which variable is greater – the day or the month – and print the result.\n\n\nCode\n# User input variable for month of birth\nmonth_in = input('Month of birth (1-12): ')\n# User input variable for day of birth\nday_in = input('Day of birth (1-31): ')\n# Convert birth day and month to floats.\nmonth = float(month_in)\nday = float(day_in)\n# Evaluate boolean operation + print result.\nprint(month &gt; day)\n\n\nNameError: name 'month_in' is not defined\n\n\n\n\n\n\nCode\n# IGNORE THIS CELL\nfrom IPython.core.display import HTML\ndef css_styling():\n    styles = open(\"./styles/exercises.css\", \"r\").read()\n    return HTML(styles)\ncss_styling()"
+  },
+  {
+    "objectID": "practice_sessions/practice_2-2_structured_data.html",
+    "href": "practice_sessions/practice_2-2_structured_data.html",
+    "title": "Practice 1-4: Structured Data in Python",
+    "section": "",
+    "text": "⬅️ Previous Session | 🏠 Course Home | ➡️ Next Session |"
+  },
+  {
+    "objectID": "practice_sessions/practice_2-2_structured_data.html#practice-1.",
+    "href": "practice_sessions/practice_2-2_structured_data.html#practice-1.",
+    "title": "Practice 1-4: Structured Data in Python",
     "section": "📚  Practice 1. ",
     "text": "📚  Practice 1. \nDictionaries are an extremely common data structure. Often data is easiest to store according to keys, where each row of data has a unique key.\nFor example, a dictionary of students might have a key for each student’s name or id, and then a set of values that are associated with that student.\n\nMake a dictionary of your peers.\nCome up with 3-4 questions and ask 5-6 of your peers to give answers to each one. The questions can be anything you want, but they should be questions that can be answered with a single word or number.\nFor example, you might ask: - What is your favorite color? (pretty weak question) - How many siblings do you have? (ok, but not great) - What is your favorite genre of film? (better) - On a scale of 1-10, how well do you feel that you understand python dictionaries? (better still)\nMake sure you have a key for each person, and then a set of values for each question.\nBased on each person’s responses, build a dictionary in the cell below:\n(note: You will end up with a dictionary of dictionaries)\n# Example:\nmy_dict = {\n    'person1': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n    'person2': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n    'person3': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n}"
   },
   {
-    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#dictionary-to-dataframe",
-    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#dictionary-to-dataframe",
-    "title": "Practice 2-2: Structured Data in Python",
+    "objectID": "practice_sessions/practice_2-2_structured_data.html#dictionary-to-dataframe",
+    "href": "practice_sessions/practice_2-2_structured_data.html#dictionary-to-dataframe",
+    "title": "Practice 1-4: Structured Data in Python",
     "section": "Dictionary to dataframe",
     "text": "Dictionary to dataframe\nNow that you have a dictionary, you can convert it to a dataframe.\n\nConvert your dictionary to a dataframe\nUse the pd.DataFrame() function to convert your dictionary to a dataframe.\nimport pandas as pd\n\n# Convert a dictionary to a dataframe\ndf = pd.DataFrame(my_dict)\n\n\nInvestigate your dataframe using the following functions:\n\ndf.head()\ndf.tail()\ndf.info()\n\nIs your dataframe what you expected? If not, what is different? Why?? How would you need to change your data structure to get the dataframe you expected?\ndf.transpose() might be helpful here. What does it do? create a new dataframe that is a transposed version of your original dataframe.\n# Transpose a dataframe\ndf_transposed = df.transpose()\n\n\nCode\n# Transpose your dataframe so that the people are the rows and the questions are the columns.\n\n\n\n\n\nVisualize/summarize your dataframe using one or more of the following functions:\n\ndf.describe()\ndf.plot()\ndf.hist()"
   },
   {
-    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-2.",
-    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-2.",
-    "title": "Practice 2-2: Structured Data in Python",
+    "objectID": "practice_sessions/practice_2-2_structured_data.html#practice-2.",
+    "href": "practice_sessions/practice_2-2_structured_data.html#practice-2.",
+    "title": "Practice 1-4: Structured Data in Python",
     "section": "📚  Practice 2. ",
     "text": "📚  Practice 2. \n\nStructured data search: Find structured data on the internet and convert it to a dataframe.\nYou’re looking for data that is in a table format, like a spreadsheet, but not available as an easy to download .csv or .excel file. This turns out to describe a lot of data!\nOften you can find this kind of data on wikipedia, or on government websites, or in research articles that contain tables of results.\n\n\nConvert your data to a dataframe"
   },
   {
-    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#explore-your-dataframe-using-the-following-functions",
-    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#explore-your-dataframe-using-the-following-functions",
-    "title": "Practice 2-2: Structured Data in Python",
+    "objectID": "practice_sessions/practice_2-2_structured_data.html#explore-your-dataframe-using-the-following-functions",
+    "href": "practice_sessions/practice_2-2_structured_data.html#explore-your-dataframe-using-the-following-functions",
+    "title": "Practice 1-4: Structured Data in Python",
     "section": "Explore your dataframe using the following functions:",
     "text": "Explore your dataframe using the following functions:\n\ndf.describe()\ndf.plot()\ndf.hist()"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "",
-    "text": "Code\n# Imports\nimport numpy as np"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-1.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-1.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚 Practice 1.",
-    "text": "📚 Practice 1.\nCreate the following arrays and assign the corresponding variable names:\n\na\n\n\\begin{bmatrix}\n     4 & 5 & 0 & 12 & -1 \\\\\n     8 & -21 & -4 & 6 & 3 \\\\\n     17 & 1 & -13 & 7 & 0\n\\end{bmatrix}\n\nb\n\n\\begin{bmatrix}\n     1.0 & 2.7 & 0 & 0.188 & 4.07 & 0.24\n\\end{bmatrix}\n\nc\n\n\\begin{bmatrix}\n     0.4 \\\\\n     0.8 \\\\\n     1.2 \\\\\n     1.6 \\\\\n     2.0 \\\\\n     2.4\n\\end{bmatrix}\n\n\n\n\nCode\n# Create 3x5 array of integers\na = np.array([[4, 5, 0, 12, -1], [8, -21, -4, 6, 3], [17, 1, -13, 7, 0]])\n\n# Create a 1x6 array of floats\nb = np.array([[1.0, 2.7, 0, 0.188, 4.07, 0.24]])\n\n# Create a one-d array with 6 elements\nc = np.array([0.4, 0.8, 1.2, 1.6, 2.0, 2.4])"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-2.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-2.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 2. ",
-    "text": "📚  Practice 2. \n\n\nCreate a new array d of integers the multiples of 3 between 0 and 100.\n\n\nCreate an array f 10 evenly spaced elements between 0 and 2.\n\n\nRe-create array c from Practice 1c using a function. Assign this to variable name g.\n\n\n\n\nCode\n# a.\nd = np.arange(1,100,3)\n# b. \nf = np.linspace(0,2,10)\n# c.\ng = np.linspace(0.4,2.4,6)"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-3.-assign-the-following-to-variables",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-3.-assign-the-following-to-variables",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 3.  Assign the following to variables:",
-    "text": "📚  Practice 3.  Assign the following to variables:\n\n\nA 5x3 array of ones.\n\n\nA one-dimensional array of 6 zeros.\n\n\nA 7x7 identity array.\n\n\nA random 10x10 array.\n\n\n\n\nCode\n# a. \nones = np.ones((5,3))\n# b.\nzeros6 = np.zeros(6)\n# c.\neye = np.eye(7)\n# d.\nrand100 = np.random.rand(10,10)"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-4.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-4.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 4. ",
-    "text": "📚  Practice 4. \nUse array methods and the array you created in Practice 2a (d) to count the number of multiples of 3 between 0 and 100.\n\n\nCode\n# Print size of d\nd.size\n\n\n33"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-5.-using-the-array-you-created-in-practice-3d",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-5.-using-the-array-you-created-in-practice-3d",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 5.  Using the array you created in Practice 3d,",
-    "text": "📚  Practice 5.  Using the array you created in Practice 3d,\n\n\nPrint all the elements in column 4.\n\n\nPrint all the elements in row 7.\n\n\nExtract the 4x4 subarray at the center of the array and assign it as a new variable.\n\n\nPrint the last two values in column 10.\n\n\n\n\nCode\n# a. Print all the elements in column 4\nprint(rand100[:,3])\n\n# b. Print all the elements in row 7\nprint(rand100[6])\n\n# c. Extract the 4x4 subarray at the center of the array and assign it as a new variable.\nprint(rand100[3:7,3:7])\n\n# d. Print the last two values in column 10.\nprint(rand100[-2:,9])\n\n\n[0.47355526 0.16640376 0.48631518 0.42032605 0.12026176 0.35326962\n 0.70223167 0.45058564 0.921611   0.26428948]\n[0.12746749 0.86608784 0.35305607 0.70223167 0.85187631 0.7585961\n 0.21004781 0.54591833 0.06646384 0.74774   ]\n[[0.42032605 0.37801466 0.83169814 0.26346432]\n [0.12026176 0.22708852 0.72144037 0.0987514 ]\n [0.35326962 0.10750686 0.88008533 0.43263521]\n [0.70223167 0.85187631 0.7585961  0.21004781]]\n[0.70838202 0.41093916]"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-6.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-6.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 6. ",
-    "text": "📚  Practice 6. \nCreate a blank 8x8 matrix and fill it with a checkerboard pattern of 0s and 1s using indexing.\n\n\nCode\n# Blank 8x8 array\nq = np.zeros((8,8))\n\n# Fill with checkerboard pattern\nq[::2,1::2] = 1\nq[1::2,::2] = 1\nq\n\n\narray([[0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.]])"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-7.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-7.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 7. ",
-    "text": "📚  Practice 7. \n\n\nCreate a 3x3 matrix with values ranging from 0 to 8.\n\n\nReverse the order of elements in your random 10x10 array from 3d.\n\n\n\n\nCode\n# a. Create a 3x3 matrix with values ranging from 0 to 8\nw = np.arange(0,9)\nv = w.reshape(3,3)\n\n# b. Reverse the order of elements in your random 10x10 array from 3d.\nrand100_rev = np.flip(rand100)"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-8.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-8.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 8. ",
-    "text": "📚  Practice 8. \nCreate two random 1-D arrays of length 10. Merge them into a 2x10 array and then a 10x2 array.\n\n\nCode\n# 2 random 1-D arrays\nj = np.random.rand(10)\nk = np.random.rand(10)\n\n# Concat as 2x10 array\nvert = np.vstack((j,k))\n# Concat as 10x2 array\nhoriz = vert.T # or np.column_stack((j,k)).shape"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-9.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-9.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 9. ",
-    "text": "📚  Practice 9. \n\n\nSplit your random 10x10 array from 3d into two 10x5 arrays.\n\n\nCombine the first 10x5 array from (a), the 10x2 array from 8b, and the other 10x5 array from (a). In other words, recombine the 10x10 array from 3d with two new columns in index positions 5 and 6. Your final array should have 10 rows and 12 columns. Verify this by printing the shape of the resulting array.\n\n\n\n\nCode\n# Split into equal 10x5 arrays.\nx,y = np.hsplit(rand100,[5])\n\n# Concatenate x, y, and horiz\nrand120 = np.concatenate((x,y,horiz), axis=1)\n\n# Print dimensions\nprint(rand120.shape)\n\n\n(10, 12)"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-10.",
-    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-10.",
-    "title": "Practice 3-1: Introduction to NumPy",
-    "section": "📚  Practice 10. ",
-    "text": "📚  Practice 10. \n\n\nRaise array b to the power of array c.\n\n\nCreate a new 5x10 array of random values. Subtract the mean of each row from every value.\n\n\n\n\nCode\n# a. \nb ** c\n\n# b. \n# Random 5x10 array\nrand50 = np.random.rand(5, 10)\n\n# Calculate mean of each row\nm = np.array([rand50.mean(axis=1)])\n# Subtract mean from each element\nl = rand50 - m.T\nprint(l)\n\n\n[[-0.41170877  0.15229157  0.34946892  0.2381375  -0.0113315   0.13161321\n  -0.1760515  -0.36044148 -0.12893971  0.21696174]\n [ 0.40968579  0.15228368  0.20724049 -0.33369976 -0.02910147 -0.4137152\n   0.06196756  0.17497702 -0.33630459  0.10666647]\n [-0.37876503  0.19540316  0.41508675 -0.39110682  0.25720744  0.11413381\n  -0.26093547 -0.22328425 -0.10556412  0.37782455]\n [ 0.21099536 -0.14109065  0.19566946  0.11854273 -0.44249867 -0.1864767\n   0.04331053 -0.16904161  0.06026488  0.31032467]\n [ 0.38219275  0.1848438   0.00265078  0.33216692 -0.39019945  0.02188796\n   0.01753881 -0.28219403 -0.24254002 -0.02634752]]"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-1.",
-    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-1.",
-    "title": "Exercise 2-1: Control Flow Statements",
-    "section": "📚  Practice 1. ",
-    "text": "📚  Practice 1. \nIn programs, if statements are useful for catching errors due to user input. Define two new variables based on user input: the first prompting for a temperature value and the second prompting for the units as “F” or “C”. Using the equation below, write an if statement that converts the temperature input to °C if it was given in °F or to °F if given in °C. Recall that all variables assigned based on user input are strings. Be sure to comment your code.\nFormula for conversion between °F and °C:  T_{^{\\circ} C} = (T_{^{\\circ} F} - 32) \\times 5/9"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-2.",
-    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-2.",
-    "title": "Exercise 2-1: Control Flow Statements",
-    "section": "📚  Practice 2. ",
-    "text": "📚  Practice 2. \nUsing nested if statements and your code from Practice question #1, convert the user input temperature to the opposite units (°F to °C or vice versa), print a statement to the user that reports the temperature in the converted units and indicates whether or not the temperature below freezing.\nYour print statement should look something like,\nThe temperature is __°C/F. It is (not) below freezing.\n\n\nCode\n# User input variables\ntemp_in = float(input(\"Temperature: \"))\nunits_in = input(\"Temperature units (F or C): \")\n\n# Convert temperature units\nif units_in == 'F':\n    temp = (temp_in - 32) * (5/9)\n    if temp &lt; 0:\n        print(\"The temperature is %d°C. It is below freezing.\" % (temp))\n    elif temp == 0:\n        print(\"The temperature is %d°C. It is freezing.\" % (temp))\n    else:\n        print(\"The temperature is %d°C. It is not below freezing.\" % (temp))\nelse:\n    temp = (temp_in * (9/5)) + 32\n    if temp &lt; 32:\n        print(\"The temperature is %d°F. It is below freezing.\" % (temp))\n    elif temp == 32:\n        print(\"The temperature is %d°F. It is freezing.\" % (temp))\n    else:\n        print(\"The temperature is %d°F. It is not below freezing.\" % (temp))"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-3.",
-    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-3.",
-    "title": "Exercise 2-1: Control Flow Statements",
-    "section": "📚  Practice 3. ",
-    "text": "📚  Practice 3. \n\nCreate a list of the six organic elements sorted in alphabetical order and then print each element in the list.\nGiven your sorted org_elements list and the corresponding list of atomic masses given in the cell below, use enumerate() in a for loop to print a formatted statement that expresses the atomic mass of of each element.\n\nYour formatted print statement should include the name of the element, the atomic mass rounded to 2 decimal places, and units.\n\n\nCode\n# Define org_elements\norg_elements = ['carbon', 'oxygen', 'hydrogen','phosphorous', 'sulfur','nitrogen']\n\norg_elements.sort()\n\n# Print each element in org_elements\nfor element in org_elements:\n    print(element)\n\n# Define list of atomic masses of 6 organic elements\natomic_mass = [12.011, 1.00784, 14.0067, 15.999, 30.97376, 32.065]  # g/mol\n\n# Iterate through org_elements + print the atomic mass of each element\nfor i,element in enumerate(org_elements):\n    mass = atomic_mass[i]\n    print('The atomic mass of %s is %.2f g/mol.' % (element,mass))\n\n\ncarbon\nhydrogen\nnitrogen\noxygen\nphosphorous\nsulfur\nThe atomic mass of carbon is 12.01 g/mol.\nThe atomic mass of hydrogen is 1.01 g/mol.\nThe atomic mass of nitrogen is 14.01 g/mol.\nThe atomic mass of oxygen is 16.00 g/mol.\nThe atomic mass of phosphorous is 30.97 g/mol.\nThe atomic mass of sulfur is 32.06 g/mol.\n\n\nAnother solution using zip() is given in the cell below.\n\n\nCode\nfor element,mass in zip(org_elements,atomic_mass):\n    print('The atomic mass of %s is %.2f g/mol.' % (element,mass))\n\n\nThe atomic mass of carbon is 12.01 g/mol.\nThe atomic mass of hydrogen is 1.01 g/mol.\nThe atomic mass of nitrogen is 14.01 g/mol.\nThe atomic mass of oxygen is 16.00 g/mol.\nThe atomic mass of phosphorous is 30.97 g/mol.\nThe atomic mass of sulfur is 32.06 g/mol."
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-4.",
-    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-4.",
-    "title": "Exercise 2-1: Control Flow Statements",
-    "section": "📚  Practice 4. ",
-    "text": "📚  Practice 4. \nThe cell below contains monthly global land-ocean surface temperature in °F for each month during the years 2015-2022.\nUsing enumerate(), zip(), a nested for loop, or some combination of the three:\n\n\nCalculate the monthly global land-ocean surface temperature anomalies (deviation from the mean) in °C for 2015-2018. The mean global land-ocean surface temperature calculated over the 20th century was 15.6°C.\n\n\nCreate a new list with the mean monthly global surface temperature anomalies in °C for 2015-2023 (i.e. calculate the mean temperature anomaly for each month and put these values in a list). Use the command np.mean() to calculate mean values.\n\n\nPrint each monthly mean value with the name of the month and units.\n\n\n\n\n\nCode\n# Import numpy for mean calculations\nimport numpy as np\n\ntempF_2015 = [61.628, 61.7, 61.808, 61.448, 61.52, 61.538, 61.394, 61.52, 61.61, 62.042, 61.988, 62.168]\ntempF_2016 = [62.186, 62.546, 62.528, 62.06, 61.79, 61.52, 61.61, 61.916, 61.718, 61.682, 61.736, 61.628]\ntempF_2017 = [61.916, 62.132, 62.168, 61.772, 61.718, 61.376, 61.556, 61.646, 61.466, 61.7, 61.664, 61.754]\ntempF_2018 = [61.556, 61.61, 61.664, 61.682, 61.556, 61.466, 61.556, 61.448, 61.52, 61.916, 61.556, 61.718]\ntempF_2019 = [61.754, 61.79, 62.186, 61.898, 61.61, 61.7, 61.772, 61.79, 61.754, 61.898, 61.862, 62.042]\ntempF_2020 = [62.186, 62.312, 62.186, 62.114, 61.898, 61.736, 61.7, 61.646, 61.862, 61.664, 62.06, 61.538]\ntempF_2021 = [61.538, 61.232, 61.664, 61.43, 61.484, 61.592, 61.736, 61.556, 61.736, 61.88, 61.772, 61.61]\n\n# List of yearly lists (may or may not be useful)\ntempF_list = [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]\n\n# List of years (probably useful)\nyears = [2015, 2016, 2017, 2018, 2019, 2020, 2021]\n\n\n\n\nCode\n# 4a. Monthly temperature anomalies\nprint('Practice 4a')\n# Empty list of lists\ntempC_list = []\nanomC_list = []\n# Iterate through yearly lists\nfor tempsF,year in zip(tempF_list,years):\n    # Empty list for a single year\n    tempsC = []\n    anomsC = []\n    # Iterate through a single year\n    for tempF in tempsF:\n        # Convert temp from F to C\n        tempC = (tempF - 32.0) * (5/9)\n        # Append to tempsC\n        tempsC.append(round(tempC,2))\n        # Calculate temp anomaly in °C\n        anomC = tempC - 15.6\n        # Append to anomsC\n        anomsC.append(round(anomC,2))\n    # Add list of °C temps to tempC_list (list of lists)\n    tempC_list.append(tempsC)\n    # Add list of anomalies in °C to anomC_list (list of lists)\n    anomC_list.append(anomsC)\nfor anom_list,year in zip(anomC_list,years):\n    print(f\"{year} anomalies: {anom_list}\")\n\n\n# 4b. Mean monthly temperature anomaly, 2015-2018\nprint('Practice 4b')\n# Empty list for monthly mean temperature anomalies\nmonthly_means = []\n# Set up generic counter loop with 12 iterations\nfor i in range(12):\n    # Generate list of temperature anomalies for each month by extracting the ith value from each sublist.\n    monthly = [anom[i] for anom in anomC_list]\n    # Calculate mean for month i\n    monthly_mean = np.mean(monthly)\n    # Add mean for month i to list of means\n    monthly_means.append(round(monthly_mean,4))\n# Print list of mean monthly temperature anomalies, 2015-2018.\nprint(f\"monthly_means: {monthly_means}\")\n\n\nPractice 4a\n2015 anomalies: [0.86, 0.9, 0.96, 0.76, 0.8, 0.81, 0.73, 0.8, 0.85, 1.09, 1.06, 1.16]\n2016 anomalies: [1.17, 1.37, 1.36, 1.1, 0.95, 0.8, 0.85, 1.02, 0.91, 0.89, 0.92, 0.86]\n2017 anomalies: [1.02, 1.14, 1.16, 0.94, 0.91, 0.72, 0.82, 0.87, 0.77, 0.9, 0.88, 0.93]\n2018 anomalies: [0.82, 0.85, 0.88, 0.89, 0.82, 0.77, 0.82, 0.76, 0.8, 1.02, 0.82, 0.91]\n2019 anomalies: [0.93, 0.95, 1.17, 1.01, 0.85, 0.9, 0.94, 0.95, 0.93, 1.01, 0.99, 1.09]\n2020 anomalies: [1.17, 1.24, 1.17, 1.13, 1.01, 0.92, 0.9, 0.87, 0.99, 0.88, 1.1, 0.81]\n2021 anomalies: [0.81, 0.64, 0.88, 0.75, 0.78, 0.84, 0.92, 0.82, 0.92, 1.0, 0.94, 0.85]\nPractice 4b\nmonthly_means: [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]\n\n\n\n\nCode\n# Alternative:\nmonthly_means = []\nfor anomC_15,anomC_16,anomC_17,anomC_18,anomC_19,anomC_20,anomC_21 in zip(*anomC_list):\n# Note: * is an \"unpacking\" operator that extracts each sublist of anomC_list making them iterables.\n# for i,(anomC_15,anomC_16,anomC_17,anomC_18) in enumerate(zip(anomC_list[0],\n#                                                              anomC_list[1],\n#                                                              anomC_list[2],\n#                                                              anomC_list[3])):\n    # Put month i values in a list\n    monthly = [anomC_15, anomC_16, anomC_17, anomC_18, anomC_19, anomC_20, anomC_21]\n    # Calculate mean for month i\n    monthly_mean = np.mean(monthly)\n    # Add mean for month i to list of means\n    monthly_means.append(round(monthly_mean,4))\n# Print list of mean monthly temperature anomalies, 2015-2021.\nprint(f\"Monthly means (alternative approach): {monthly_means}\")\n\n\n\nMonthly means (alternative approach): [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]\n\n\n\n\nCode\n# 4c. Print mean temperature anomalies by month\nprint('Practice 4c')\n\nmonths = ['January', 'February', 'March', 'April', 'May', 'June', \n          'July', 'August', 'September', 'October', 'November', 'December']\n\nfor month,mean in zip(months,monthly_means):\n    print(f'Mean {month} temperature anomaly, {min(years)}-{max(years)}: {mean:.4f}°C')\n\n\nPractice 4c\nMean January temperature anomaly, 2015-2021: 0.9686°C\nMean February temperature anomaly, 2015-2021: 1.0129°C\nMean March temperature anomaly, 2015-2021: 1.0829°C\nMean April temperature anomaly, 2015-2021: 0.9400°C\nMean May temperature anomaly, 2015-2021: 0.8743°C\nMean June temperature anomaly, 2015-2021: 0.8229°C\nMean July temperature anomaly, 2015-2021: 0.8543°C\nMean August temperature anomaly, 2015-2021: 0.8700°C\nMean September temperature anomaly, 2015-2021: 0.8814°C\nMean October temperature anomaly, 2015-2021: 0.9700°C\nMean November temperature anomaly, 2015-2021: 0.9586°C\nMean December temperature anomaly, 2015-2021: 0.9443°C"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-5.",
-    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-5.",
-    "title": "Exercise 2-1: Control Flow Statements",
-    "section": "📚 Practice 5.",
-    "text": "📚 Practice 5.\nUse a list comprehension to print a list of all months that had an anomaly above the average monthly anomaly.\nSome helpful code is provided below:\nmonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']\n\naverage_anomaly = np.mean(mean_monthly_anomalies)\nRecall that list comprehensions can contain if statements. For example:\n[item for item in list if item &gt; value]\nAnd they can also contain enumerate statements:\n[item for index,item in enumerate(list) if other_list[index] &gt; value]\n\n\nCode\nmonths = ['January', 'February', 'March', 'April', \n          'May', 'June', 'July', 'August', 'September', \n          'October', 'November', 'December']\n\navg_anomaly = np.mean(monthly_means)\n\nprint(\"Months with above average temperature anomalies:\")\n[\n print(month) for i,month in enumerate(months) \n if monthly_means[i] &gt; avg_anomaly\n]\n\n\nMonths with above average temperature anomalies:\nJanuary\nFebruary\nMarch\nApril\nOctober\nNovember\nDecember\n\n\n[None, None, None, None, None, None, None]"
   },
   {
     "objectID": "practice_sessions/practice_1-1_variables.html",
@@ -1043,109 +1050,186 @@
     "text": "Return to Course Home Page\n\n\n\n\n🏠 index\nLab 1 Introduction Slides\nLab 1 - Catchment Water Balance\nLab 2 - Energy Balance"
   },
   {
-    "objectID": "practice_sessions/practice_2-2_structured_data.html",
-    "href": "practice_sessions/practice_2-2_structured_data.html",
-    "title": "Practice 1-4: Structured Data in Python",
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html",
+    "href": "practice_sessions/practice_5-1_matplotlib.html",
+    "title": "Session 5-1: Matplotlib 📈",
     "section": "",
-    "text": "⬅️ Previous Session | 🏠 Course Home | ➡️ Next Session |"
+    "text": "⬅️ Previous Session | 🏠 Course Home\nDon’t forget to start your notebook with a cell containing the import statements you need for the session.\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates"
   },
   {
-    "objectID": "practice_sessions/practice_2-2_structured_data.html#practice-1.",
-    "href": "practice_sessions/practice_2-2_structured_data.html#practice-1.",
-    "title": "Practice 1-4: Structured Data in Python",
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html#practice-1.",
+    "href": "practice_sessions/practice_5-1_matplotlib.html#practice-1.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 1. ",
+    "text": "📚  Practice 1. \nRecreate the plot below. You do not need to match the colors exactly, but do not rely on matplotlib defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot."
+  },
+  {
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html#practice-2.",
+    "href": "practice_sessions/practice_5-1_matplotlib.html#practice-2.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 2. ",
+    "text": "📚  Practice 2. \nRecreate the plot below. You do not need to match the colors exactly, but do not rely on matplotlib defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot."
+  },
+  {
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html#practice-3.",
+    "href": "practice_sessions/practice_5-1_matplotlib.html#practice-3.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 3. ",
+    "text": "📚  Practice 3. \nImport the data from ./data/BSRN_data.csv and plot the temperature and relative humidity over the month of October 2019 at the BSRN station. Be sure to format the timestamps and include axis labels, a title, and a legend, if necessary."
+  },
+  {
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html#practice-4.",
+    "href": "practice_sessions/practice_5-1_matplotlib.html#practice-4.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚 Practice 4.",
+    "text": "📚 Practice 4.\nSaturation vapor pressure, ( $ e^*(T_a) $ ), is the maximum pressure of water vapor that can exist in equilibrium above a flat plane of water at a given temperature. It can be calculated from the Tetens equation:\n e^{*}(T_{a}) = a \\times exp({\\frac{b \\cdot T_{a}}{T_{a} + c}}) \nwhere $ T_a $ is the air temperature in °C, $ a = 0.611 $ kPa, $ b = 17.502 $, and $ c = 240.97 °C $.\n\nCalculate ( $ e^*(T_a) $ ) in kPa for all temperatures in bsrn.\nPlot temperature vs. saturation vapor pressure for the BSRN station. Be sure to format your plot appropriately and include axis labels, a title, and a legend, if necessary.\nCompare your plot to Figure 3-1 in Campbell and Norman (1998). Do they look more or less the same?"
+  },
+  {
+    "objectID": "practice_sessions/practice_5-1_matplotlib.html#practice-5.",
+    "href": "practice_sessions/practice_5-1_matplotlib.html#practice-5.",
+    "title": "Session 5-1: Matplotlib 📈",
+    "section": "📚  Practice 5. ",
+    "text": "📚  Practice 5. \nThe difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, \\textit{VPD}. \\textit{VPD} can be calculated from saturation vapor pressure and relative humidity, h_r, as follows:  \\textit{VPD} \\, = \\, e^*(T_a) \\cdot (1 \\, - \\, h_r) where h_r is expressed as a fraction.\n\nCalculate the vapor pressure deficit for the BSRN data.\nCalculate the mean hourly e^*(T_a) and \\textit{VPD} over the entire month.\nPlot e^*(T_a) and \\textit{VPD} as a function of time of day. (for extra python points, try plotting both variables on one plot using ax.twinx())\nHow does relative humidity vary throughout the day? Why?\nCompare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of e^*(T_a) and \\textit{VPD} for the BSRN station compare to those at constant vapor pressure in Figure 3-3?"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-1.",
+    "title": "Exercise 2-1: Control Flow Statements",
+    "section": "📚  Practice 1. ",
+    "text": "📚  Practice 1. \nIn programs, if statements are useful for catching errors due to user input. Define two new variables based on user input: the first prompting for a temperature value and the second prompting for the units as “F” or “C”. Using the equation below, write an if statement that converts the temperature input to °C if it was given in °F or to °F if given in °C. Recall that all variables assigned based on user input are strings. Be sure to comment your code.\nFormula for conversion between °F and °C:  T_{^{\\circ} C} = (T_{^{\\circ} F} - 32) \\times 5/9"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-2.",
+    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-2.",
+    "title": "Exercise 2-1: Control Flow Statements",
+    "section": "📚  Practice 2. ",
+    "text": "📚  Practice 2. \nUsing nested if statements and your code from Practice question #1, convert the user input temperature to the opposite units (°F to °C or vice versa), print a statement to the user that reports the temperature in the converted units and indicates whether or not the temperature below freezing.\nYour print statement should look something like,\nThe temperature is __°C/F. It is (not) below freezing.\n\n\nCode\n# User input variables\ntemp_in = float(input(\"Temperature: \"))\nunits_in = input(\"Temperature units (F or C): \")\n\n# Convert temperature units\nif units_in == 'F':\n    temp = (temp_in - 32) * (5/9)\n    if temp &lt; 0:\n        print(\"The temperature is %d°C. It is below freezing.\" % (temp))\n    elif temp == 0:\n        print(\"The temperature is %d°C. It is freezing.\" % (temp))\n    else:\n        print(\"The temperature is %d°C. It is not below freezing.\" % (temp))\nelse:\n    temp = (temp_in * (9/5)) + 32\n    if temp &lt; 32:\n        print(\"The temperature is %d°F. It is below freezing.\" % (temp))\n    elif temp == 32:\n        print(\"The temperature is %d°F. It is freezing.\" % (temp))\n    else:\n        print(\"The temperature is %d°F. It is not below freezing.\" % (temp))"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-3.",
+    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-3.",
+    "title": "Exercise 2-1: Control Flow Statements",
+    "section": "📚  Practice 3. ",
+    "text": "📚  Practice 3. \n\nCreate a list of the six organic elements sorted in alphabetical order and then print each element in the list.\nGiven your sorted org_elements list and the corresponding list of atomic masses given in the cell below, use enumerate() in a for loop to print a formatted statement that expresses the atomic mass of of each element.\n\nYour formatted print statement should include the name of the element, the atomic mass rounded to 2 decimal places, and units.\n\n\nCode\n# Define org_elements\norg_elements = ['carbon', 'oxygen', 'hydrogen','phosphorous', 'sulfur','nitrogen']\n\norg_elements.sort()\n\n# Print each element in org_elements\nfor element in org_elements:\n    print(element)\n\n# Define list of atomic masses of 6 organic elements\natomic_mass = [12.011, 1.00784, 14.0067, 15.999, 30.97376, 32.065]  # g/mol\n\n# Iterate through org_elements + print the atomic mass of each element\nfor i,element in enumerate(org_elements):\n    mass = atomic_mass[i]\n    print('The atomic mass of %s is %.2f g/mol.' % (element,mass))\n\n\ncarbon\nhydrogen\nnitrogen\noxygen\nphosphorous\nsulfur\nThe atomic mass of carbon is 12.01 g/mol.\nThe atomic mass of hydrogen is 1.01 g/mol.\nThe atomic mass of nitrogen is 14.01 g/mol.\nThe atomic mass of oxygen is 16.00 g/mol.\nThe atomic mass of phosphorous is 30.97 g/mol.\nThe atomic mass of sulfur is 32.06 g/mol.\n\n\nAnother solution using zip() is given in the cell below.\n\n\nCode\nfor element,mass in zip(org_elements,atomic_mass):\n    print('The atomic mass of %s is %.2f g/mol.' % (element,mass))\n\n\nThe atomic mass of carbon is 12.01 g/mol.\nThe atomic mass of hydrogen is 1.01 g/mol.\nThe atomic mass of nitrogen is 14.01 g/mol.\nThe atomic mass of oxygen is 16.00 g/mol.\nThe atomic mass of phosphorous is 30.97 g/mol.\nThe atomic mass of sulfur is 32.06 g/mol."
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-4.",
+    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-4.",
+    "title": "Exercise 2-1: Control Flow Statements",
+    "section": "📚  Practice 4. ",
+    "text": "📚  Practice 4. \nThe cell below contains monthly global land-ocean surface temperature in °F for each month during the years 2015-2022.\nUsing enumerate(), zip(), a nested for loop, or some combination of the three:\n\n\nCalculate the monthly global land-ocean surface temperature anomalies (deviation from the mean) in °C for 2015-2018. The mean global land-ocean surface temperature calculated over the 20th century was 15.6°C.\n\n\nCreate a new list with the mean monthly global surface temperature anomalies in °C for 2015-2023 (i.e. calculate the mean temperature anomaly for each month and put these values in a list). Use the command np.mean() to calculate mean values.\n\n\nPrint each monthly mean value with the name of the month and units.\n\n\n\n\n\nCode\n# Import numpy for mean calculations\nimport numpy as np\n\ntempF_2015 = [61.628, 61.7, 61.808, 61.448, 61.52, 61.538, 61.394, 61.52, 61.61, 62.042, 61.988, 62.168]\ntempF_2016 = [62.186, 62.546, 62.528, 62.06, 61.79, 61.52, 61.61, 61.916, 61.718, 61.682, 61.736, 61.628]\ntempF_2017 = [61.916, 62.132, 62.168, 61.772, 61.718, 61.376, 61.556, 61.646, 61.466, 61.7, 61.664, 61.754]\ntempF_2018 = [61.556, 61.61, 61.664, 61.682, 61.556, 61.466, 61.556, 61.448, 61.52, 61.916, 61.556, 61.718]\ntempF_2019 = [61.754, 61.79, 62.186, 61.898, 61.61, 61.7, 61.772, 61.79, 61.754, 61.898, 61.862, 62.042]\ntempF_2020 = [62.186, 62.312, 62.186, 62.114, 61.898, 61.736, 61.7, 61.646, 61.862, 61.664, 62.06, 61.538]\ntempF_2021 = [61.538, 61.232, 61.664, 61.43, 61.484, 61.592, 61.736, 61.556, 61.736, 61.88, 61.772, 61.61]\n\n# List of yearly lists (may or may not be useful)\ntempF_list = [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]\n\n# List of years (probably useful)\nyears = [2015, 2016, 2017, 2018, 2019, 2020, 2021]\n\n\n\n\nCode\n# 4a. Monthly temperature anomalies\nprint('Practice 4a')\n# Empty list of lists\ntempC_list = []\nanomC_list = []\n# Iterate through yearly lists\nfor tempsF,year in zip(tempF_list,years):\n    # Empty list for a single year\n    tempsC = []\n    anomsC = []\n    # Iterate through a single year\n    for tempF in tempsF:\n        # Convert temp from F to C\n        tempC = (tempF - 32.0) * (5/9)\n        # Append to tempsC\n        tempsC.append(round(tempC,2))\n        # Calculate temp anomaly in °C\n        anomC = tempC - 15.6\n        # Append to anomsC\n        anomsC.append(round(anomC,2))\n    # Add list of °C temps to tempC_list (list of lists)\n    tempC_list.append(tempsC)\n    # Add list of anomalies in °C to anomC_list (list of lists)\n    anomC_list.append(anomsC)\nfor anom_list,year in zip(anomC_list,years):\n    print(f\"{year} anomalies: {anom_list}\")\n\n\n# 4b. Mean monthly temperature anomaly, 2015-2018\nprint('Practice 4b')\n# Empty list for monthly mean temperature anomalies\nmonthly_means = []\n# Set up generic counter loop with 12 iterations\nfor i in range(12):\n    # Generate list of temperature anomalies for each month by extracting the ith value from each sublist.\n    monthly = [anom[i] for anom in anomC_list]\n    # Calculate mean for month i\n    monthly_mean = np.mean(monthly)\n    # Add mean for month i to list of means\n    monthly_means.append(round(monthly_mean,4))\n# Print list of mean monthly temperature anomalies, 2015-2018.\nprint(f\"monthly_means: {monthly_means}\")\n\n\nPractice 4a\n2015 anomalies: [0.86, 0.9, 0.96, 0.76, 0.8, 0.81, 0.73, 0.8, 0.85, 1.09, 1.06, 1.16]\n2016 anomalies: [1.17, 1.37, 1.36, 1.1, 0.95, 0.8, 0.85, 1.02, 0.91, 0.89, 0.92, 0.86]\n2017 anomalies: [1.02, 1.14, 1.16, 0.94, 0.91, 0.72, 0.82, 0.87, 0.77, 0.9, 0.88, 0.93]\n2018 anomalies: [0.82, 0.85, 0.88, 0.89, 0.82, 0.77, 0.82, 0.76, 0.8, 1.02, 0.82, 0.91]\n2019 anomalies: [0.93, 0.95, 1.17, 1.01, 0.85, 0.9, 0.94, 0.95, 0.93, 1.01, 0.99, 1.09]\n2020 anomalies: [1.17, 1.24, 1.17, 1.13, 1.01, 0.92, 0.9, 0.87, 0.99, 0.88, 1.1, 0.81]\n2021 anomalies: [0.81, 0.64, 0.88, 0.75, 0.78, 0.84, 0.92, 0.82, 0.92, 1.0, 0.94, 0.85]\nPractice 4b\nmonthly_means: [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]\n\n\n\n\nCode\n# Alternative:\nmonthly_means = []\nfor anomC_15,anomC_16,anomC_17,anomC_18,anomC_19,anomC_20,anomC_21 in zip(*anomC_list):\n# Note: * is an \"unpacking\" operator that extracts each sublist of anomC_list making them iterables.\n# for i,(anomC_15,anomC_16,anomC_17,anomC_18) in enumerate(zip(anomC_list[0],\n#                                                              anomC_list[1],\n#                                                              anomC_list[2],\n#                                                              anomC_list[3])):\n    # Put month i values in a list\n    monthly = [anomC_15, anomC_16, anomC_17, anomC_18, anomC_19, anomC_20, anomC_21]\n    # Calculate mean for month i\n    monthly_mean = np.mean(monthly)\n    # Add mean for month i to list of means\n    monthly_means.append(round(monthly_mean,4))\n# Print list of mean monthly temperature anomalies, 2015-2021.\nprint(f\"Monthly means (alternative approach): {monthly_means}\")\n\n\n\nMonthly means (alternative approach): [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]\n\n\n\n\nCode\n# 4c. Print mean temperature anomalies by month\nprint('Practice 4c')\n\nmonths = ['January', 'February', 'March', 'April', 'May', 'June', \n          'July', 'August', 'September', 'October', 'November', 'December']\n\nfor month,mean in zip(months,monthly_means):\n    print(f'Mean {month} temperature anomaly, {min(years)}-{max(years)}: {mean:.4f}°C')\n\n\nPractice 4c\nMean January temperature anomaly, 2015-2021: 0.9686°C\nMean February temperature anomaly, 2015-2021: 1.0129°C\nMean March temperature anomaly, 2015-2021: 1.0829°C\nMean April temperature anomaly, 2015-2021: 0.9400°C\nMean May temperature anomaly, 2015-2021: 0.8743°C\nMean June temperature anomaly, 2015-2021: 0.8229°C\nMean July temperature anomaly, 2015-2021: 0.8543°C\nMean August temperature anomaly, 2015-2021: 0.8700°C\nMean September temperature anomaly, 2015-2021: 0.8814°C\nMean October temperature anomaly, 2015-2021: 0.9700°C\nMean November temperature anomaly, 2015-2021: 0.9586°C\nMean December temperature anomaly, 2015-2021: 0.9443°C"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-5.",
+    "href": "practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html#practice-5.",
+    "title": "Exercise 2-1: Control Flow Statements",
+    "section": "📚 Practice 5.",
+    "text": "📚 Practice 5.\nUse a list comprehension to print a list of all months that had an anomaly above the average monthly anomaly.\nSome helpful code is provided below:\nmonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']\n\naverage_anomaly = np.mean(mean_monthly_anomalies)\nRecall that list comprehensions can contain if statements. For example:\n[item for item in list if item &gt; value]\nAnd they can also contain enumerate statements:\n[item for index,item in enumerate(list) if other_list[index] &gt; value]\n\n\nCode\nmonths = ['January', 'February', 'March', 'April', \n          'May', 'June', 'July', 'August', 'September', \n          'October', 'November', 'December']\n\navg_anomaly = np.mean(monthly_means)\n\nprint(\"Months with above average temperature anomalies:\")\n[\n print(month) for i,month in enumerate(months) \n if monthly_means[i] &gt; avg_anomaly\n]\n\n\nMonths with above average temperature anomalies:\nJanuary\nFebruary\nMarch\nApril\nOctober\nNovember\nDecember\n\n\n[None, None, None, None, None, None, None]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "",
+    "text": "Code\n# Imports\nimport numpy as np"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-1.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚 Practice 1.",
+    "text": "📚 Practice 1.\nCreate the following arrays and assign the corresponding variable names:\n\na\n\n\\begin{bmatrix}\n     4 & 5 & 0 & 12 & -1 \\\\\n     8 & -21 & -4 & 6 & 3 \\\\\n     17 & 1 & -13 & 7 & 0\n\\end{bmatrix}\n\nb\n\n\\begin{bmatrix}\n     1.0 & 2.7 & 0 & 0.188 & 4.07 & 0.24\n\\end{bmatrix}\n\nc\n\n\\begin{bmatrix}\n     0.4 \\\\\n     0.8 \\\\\n     1.2 \\\\\n     1.6 \\\\\n     2.0 \\\\\n     2.4\n\\end{bmatrix}\n\n\n\n\nCode\n# Create 3x5 array of integers\na = np.array([[4, 5, 0, 12, -1], [8, -21, -4, 6, 3], [17, 1, -13, 7, 0]])\n\n# Create a 1x6 array of floats\nb = np.array([[1.0, 2.7, 0, 0.188, 4.07, 0.24]])\n\n# Create a one-d array with 6 elements\nc = np.array([0.4, 0.8, 1.2, 1.6, 2.0, 2.4])"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-2.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-2.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 2. ",
+    "text": "📚  Practice 2. \n\n\nCreate a new array d of integers the multiples of 3 between 0 and 100.\n\n\nCreate an array f 10 evenly spaced elements between 0 and 2.\n\n\nRe-create array c from Practice 1c using a function. Assign this to variable name g.\n\n\n\n\nCode\n# a.\nd = np.arange(1,100,3)\n# b. \nf = np.linspace(0,2,10)\n# c.\ng = np.linspace(0.4,2.4,6)"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-3.-assign-the-following-to-variables",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-3.-assign-the-following-to-variables",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 3.  Assign the following to variables:",
+    "text": "📚  Practice 3.  Assign the following to variables:\n\n\nA 5x3 array of ones.\n\n\nA one-dimensional array of 6 zeros.\n\n\nA 7x7 identity array.\n\n\nA random 10x10 array.\n\n\n\n\nCode\n# a. \nones = np.ones((5,3))\n# b.\nzeros6 = np.zeros(6)\n# c.\neye = np.eye(7)\n# d.\nrand100 = np.random.rand(10,10)"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-4.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-4.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 4. ",
+    "text": "📚  Practice 4. \nUse array methods and the array you created in Practice 2a (d) to count the number of multiples of 3 between 0 and 100.\n\n\nCode\n# Print size of d\nd.size\n\n\n33"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-5.-using-the-array-you-created-in-practice-3d",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-5.-using-the-array-you-created-in-practice-3d",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 5.  Using the array you created in Practice 3d,",
+    "text": "📚  Practice 5.  Using the array you created in Practice 3d,\n\n\nPrint all the elements in column 4.\n\n\nPrint all the elements in row 7.\n\n\nExtract the 4x4 subarray at the center of the array and assign it as a new variable.\n\n\nPrint the last two values in column 10.\n\n\n\n\nCode\n# a. Print all the elements in column 4\nprint(rand100[:,3])\n\n# b. Print all the elements in row 7\nprint(rand100[6])\n\n# c. Extract the 4x4 subarray at the center of the array and assign it as a new variable.\nprint(rand100[3:7,3:7])\n\n# d. Print the last two values in column 10.\nprint(rand100[-2:,9])\n\n\n[0.47355526 0.16640376 0.48631518 0.42032605 0.12026176 0.35326962\n 0.70223167 0.45058564 0.921611   0.26428948]\n[0.12746749 0.86608784 0.35305607 0.70223167 0.85187631 0.7585961\n 0.21004781 0.54591833 0.06646384 0.74774   ]\n[[0.42032605 0.37801466 0.83169814 0.26346432]\n [0.12026176 0.22708852 0.72144037 0.0987514 ]\n [0.35326962 0.10750686 0.88008533 0.43263521]\n [0.70223167 0.85187631 0.7585961  0.21004781]]\n[0.70838202 0.41093916]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-6.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-6.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 6. ",
+    "text": "📚  Practice 6. \nCreate a blank 8x8 matrix and fill it with a checkerboard pattern of 0s and 1s using indexing.\n\n\nCode\n# Blank 8x8 array\nq = np.zeros((8,8))\n\n# Fill with checkerboard pattern\nq[::2,1::2] = 1\nq[1::2,::2] = 1\nq\n\n\narray([[0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.]])"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-7.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-7.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 7. ",
+    "text": "📚  Practice 7. \n\n\nCreate a 3x3 matrix with values ranging from 0 to 8.\n\n\nReverse the order of elements in your random 10x10 array from 3d.\n\n\n\n\nCode\n# a. Create a 3x3 matrix with values ranging from 0 to 8\nw = np.arange(0,9)\nv = w.reshape(3,3)\n\n# b. Reverse the order of elements in your random 10x10 array from 3d.\nrand100_rev = np.flip(rand100)"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-8.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-8.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 8. ",
+    "text": "📚  Practice 8. \nCreate two random 1-D arrays of length 10. Merge them into a 2x10 array and then a 10x2 array.\n\n\nCode\n# 2 random 1-D arrays\nj = np.random.rand(10)\nk = np.random.rand(10)\n\n# Concat as 2x10 array\nvert = np.vstack((j,k))\n# Concat as 10x2 array\nhoriz = vert.T # or np.column_stack((j,k)).shape"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-9.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-9.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 9. ",
+    "text": "📚  Practice 9. \n\n\nSplit your random 10x10 array from 3d into two 10x5 arrays.\n\n\nCombine the first 10x5 array from (a), the 10x2 array from 8b, and the other 10x5 array from (a). In other words, recombine the 10x10 array from 3d with two new columns in index positions 5 and 6. Your final array should have 10 rows and 12 columns. Verify this by printing the shape of the resulting array.\n\n\n\n\nCode\n# Split into equal 10x5 arrays.\nx,y = np.hsplit(rand100,[5])\n\n# Concatenate x, y, and horiz\nrand120 = np.concatenate((x,y,horiz), axis=1)\n\n# Print dimensions\nprint(rand120.shape)\n\n\n(10, 12)"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-10.",
+    "href": "practice_sessions/answerkeys/practice_3-1_numpy_key.html#practice-10.",
+    "title": "Practice 3-1: Introduction to NumPy",
+    "section": "📚  Practice 10. ",
+    "text": "📚  Practice 10. \n\n\nRaise array b to the power of array c.\n\n\nCreate a new 5x10 array of random values. Subtract the mean of each row from every value.\n\n\n\n\nCode\n# a. \nb ** c\n\n# b. \n# Random 5x10 array\nrand50 = np.random.rand(5, 10)\n\n# Calculate mean of each row\nm = np.array([rand50.mean(axis=1)])\n# Subtract mean from each element\nl = rand50 - m.T\nprint(l)\n\n\n[[-0.41170877  0.15229157  0.34946892  0.2381375  -0.0113315   0.13161321\n  -0.1760515  -0.36044148 -0.12893971  0.21696174]\n [ 0.40968579  0.15228368  0.20724049 -0.33369976 -0.02910147 -0.4137152\n   0.06196756  0.17497702 -0.33630459  0.10666647]\n [-0.37876503  0.19540316  0.41508675 -0.39110682  0.25720744  0.11413381\n  -0.26093547 -0.22328425 -0.10556412  0.37782455]\n [ 0.21099536 -0.14109065  0.19566946  0.11854273 -0.44249867 -0.1864767\n   0.04331053 -0.16904161  0.06026488  0.31032467]\n [ 0.38219275  0.1848438   0.00265078  0.33216692 -0.39019945  0.02188796\n   0.01753881 -0.28219403 -0.24254002 -0.02634752]]"
+  },
+  {
+    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-1.",
+    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-1.",
+    "title": "Practice 2-2: Structured Data in Python",
     "section": "📚  Practice 1. ",
     "text": "📚  Practice 1. \nDictionaries are an extremely common data structure. Often data is easiest to store according to keys, where each row of data has a unique key.\nFor example, a dictionary of students might have a key for each student’s name or id, and then a set of values that are associated with that student.\n\nMake a dictionary of your peers.\nCome up with 3-4 questions and ask 5-6 of your peers to give answers to each one. The questions can be anything you want, but they should be questions that can be answered with a single word or number.\nFor example, you might ask: - What is your favorite color? (pretty weak question) - How many siblings do you have? (ok, but not great) - What is your favorite genre of film? (better) - On a scale of 1-10, how well do you feel that you understand python dictionaries? (better still)\nMake sure you have a key for each person, and then a set of values for each question.\nBased on each person’s responses, build a dictionary in the cell below:\n(note: You will end up with a dictionary of dictionaries)\n# Example:\nmy_dict = {\n    'person1': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n    'person2': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n    'person3': {\n        'question1': 'answer1',\n        'question2': 'answer2',\n        'question3': 'answer3',\n        'question4': 'answer4',\n    },\n}"
   },
   {
-    "objectID": "practice_sessions/practice_2-2_structured_data.html#dictionary-to-dataframe",
-    "href": "practice_sessions/practice_2-2_structured_data.html#dictionary-to-dataframe",
-    "title": "Practice 1-4: Structured Data in Python",
+    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#dictionary-to-dataframe",
+    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#dictionary-to-dataframe",
+    "title": "Practice 2-2: Structured Data in Python",
     "section": "Dictionary to dataframe",
     "text": "Dictionary to dataframe\nNow that you have a dictionary, you can convert it to a dataframe.\n\nConvert your dictionary to a dataframe\nUse the pd.DataFrame() function to convert your dictionary to a dataframe.\nimport pandas as pd\n\n# Convert a dictionary to a dataframe\ndf = pd.DataFrame(my_dict)\n\n\nInvestigate your dataframe using the following functions:\n\ndf.head()\ndf.tail()\ndf.info()\n\nIs your dataframe what you expected? If not, what is different? Why?? How would you need to change your data structure to get the dataframe you expected?\ndf.transpose() might be helpful here. What does it do? create a new dataframe that is a transposed version of your original dataframe.\n# Transpose a dataframe\ndf_transposed = df.transpose()\n\n\nCode\n# Transpose your dataframe so that the people are the rows and the questions are the columns.\n\n\n\n\n\nVisualize/summarize your dataframe using one or more of the following functions:\n\ndf.describe()\ndf.plot()\ndf.hist()"
   },
   {
-    "objectID": "practice_sessions/practice_2-2_structured_data.html#practice-2.",
-    "href": "practice_sessions/practice_2-2_structured_data.html#practice-2.",
-    "title": "Practice 1-4: Structured Data in Python",
+    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-2.",
+    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#practice-2.",
+    "title": "Practice 2-2: Structured Data in Python",
     "section": "📚  Practice 2. ",
     "text": "📚  Practice 2. \n\nStructured data search: Find structured data on the internet and convert it to a dataframe.\nYou’re looking for data that is in a table format, like a spreadsheet, but not available as an easy to download .csv or .excel file. This turns out to describe a lot of data!\nOften you can find this kind of data on wikipedia, or on government websites, or in research articles that contain tables of results.\n\n\nConvert your data to a dataframe"
   },
   {
-    "objectID": "practice_sessions/practice_2-2_structured_data.html#explore-your-dataframe-using-the-following-functions",
-    "href": "practice_sessions/practice_2-2_structured_data.html#explore-your-dataframe-using-the-following-functions",
-    "title": "Practice 1-4: Structured Data in Python",
+    "objectID": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#explore-your-dataframe-using-the-following-functions",
+    "href": "practice_sessions/answerkeys/practice_2-2_structured_data_key.html#explore-your-dataframe-using-the-following-functions",
+    "title": "Practice 2-2: Structured Data in Python",
     "section": "Explore your dataframe using the following functions:",
     "text": "Explore your dataframe using the following functions:\n\ndf.describe()\ndf.plot()\ndf.hist()"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#variables-operators",
-    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#variables-operators",
-    "title": "Practice 1-1: Variables + Operators",
-    "section": "Variables + Operators",
-    "text": "Variables + Operators"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-1.",
-    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-1.",
-    "title": "Practice 1-1: Variables + Operators",
-    "section": "📚 Practice 1.",
-    "text": "📚 Practice 1.\nThe laws of conservation state that in a closed system, mass, energy, and momentum can be neither created nor destroyed. Thus, the energy coming into the Earth’s surface (via solar radiation) must be equal to the energy going out from the Earth’s surface. The energy coming in via solar radiation can be written:\nR_{\\text{in}} = G_s \\pi {r_{e}}^2 (1 - \\alpha) where r_e is the radius of the Earth; \\alpha is the Earth’s albedo, a fraction correponding to the amount of incident radiation that is reflected; and G_s is the Solar Constant, or the flux density of the solar radiation at the Earth’s surface. The Solar Constant can be calculated according to the equation\nG_s = \\sigma {T_{sun}}^4 \\left( \\frac{4 \\pi {r_{sun}}^2}{4 \\pi d^2} \\right)\nwhere \\sigma is the Stefan-Boltzmann constant, T_{sun} is the temperature of the sun, r_{sun} is the radius of the sun, and d is the average distance between the sun and the Earth. The outgoing radiation from the Earth is given by the Stefan-Boltzmann law:\nR_{\\text{out}} = \\varepsilon \\sigma A_{e} {T_e}^4\nwhere \\varepsilon is the emissivity of the Earth, A_e is the surface area of the Earth approximated as a sphere, and T_e is the temperature of the Earth’s surface.\nGiven:\n\n\\sigma = 5.67 \\times 10-8 W m-2 K-4\nthe radius of the sun is 6.957 \\times 105 km,\nthe temperature of the sun is 5778 K,\nthe average distance between the sun and the Earth is 1.5 \\times 108 km,\nthe average albedo of the planet is 0.3\nand the emissivity of the Earth is 1.0,\n\n\n\n\nCalculate the Solar Constant in W m-2. Print your answer rounded to 3 decimal places.\n\n\nCalculate the temperature of the Earth’s surface in °C. Print your answer as both a float and an integer.\n\n\nThe actual global surface temperature of the Earth is about 14.6°C. What accounts for the difference between the answer you calculated above in the actual surface temperature?\n\n\n\nShow your work by including comments in your code and assigning variables."
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-3.",
-    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-3.",
-    "title": "Practice 1-1: Variables + Operators",
-    "section": "📚 Practice 3.",
-    "text": "📚 Practice 3.\nAssign your first and last names to variables and use the + operator to combine them into a single variable. Practice capitalizing the first letter and then the entire string. Print your answers.\n\n\nCode\n# Define variables\nfirst = 'Kelly'\nlast = 'Caylor'\n# Combine in a single string.\nfull_name = first + ' ' + last\n# Capitalize the first letter\ncap_name = full_name.capitalize()\n# Capitalize the entire string.\nupper_name = full_name.upper()\n# Print outputs.\nprint(full_name)\nprint(cap_name)\nprint(upper_name)\n\n\nKelly Caylor\nKelly caylor\nKELLY CAYLOR"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-4.",
-    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-4.",
-    "title": "Practice 1-1: Variables + Operators",
-    "section": "📚 Practice 4.",
-    "text": "📚 Practice 4.\nRewrite your answers to practice questions 1a and 1b using formatted print statements. Each answer should include: 1. What you are solving for; 2. Your solution as an integer, float, and a float rounded to 3 decimal places; and 3. Units. For example:\n\nThe radius of the earth is 6,378 km.\n\nYou should have a total of 6 print statements.\n\n\n\nCode\n# Formatted print statement for 1a.\nprint('Solar constant = %d W m-2' % (int(g_s)))\nprint('Solar constant = %f W m-2' % (g_s))\nprint('Solar constant = %.3f W m-2' % (g_s))\n\n# Formatted print statement for 1b.\nprint(\"Temperature of the Earth's surface =  %d°C\" % (int(T_e)))\nprint(\"Temperature of the Earth's surface =  %f°C\" % (T_e))\nprint(\"Temperature of the Earth's surface =  %.3f°C\" % (T_e))"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-5.",
-    "href": "practice_sessions/answerkeys/practice_1-1_variables_key.html#practice-5.",
-    "title": "Practice 1-1: Variables + Operators",
-    "section": "📚 Practice 5.",
-    "text": "📚 Practice 5.\nFollowing the example above, create a variable corresponding to the day on which you were born based on user input. Convert both variables to floats and assign the float versions to new variables. Lastly, use one of the boolean operators to evaluate which variable is greater – the day or the month – and print the result.\n\n\nCode\n# User input variable for month of birth\nmonth_in = input('Month of birth (1-12): ')\n# User input variable for day of birth\nday_in = input('Day of birth (1-31): ')\n# Convert birth day and month to floats.\nmonth = float(month_in)\nday = float(day_in)\n# Evaluate boolean operation + print result.\nprint(month &gt; day)\n\n\nNameError: name 'month_in' is not defined\n\n\n\n\n\n\nCode\n# IGNORE THIS CELL\nfrom IPython.core.display import HTML\ndef css_styling():\n    styles = open(\"./styles/exercises.css\", \"r\").read()\n    return HTML(styles)\ncss_styling()"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-1.",
-    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-1.",
-    "title": "Practice 1-2: Lists + Indexing",
-    "section": "📚  Practice 1. ",
-    "text": "📚  Practice 1. \nDefine a new list of floats with 8 elements called my_list.\n\nFind the 5th element in your list.\nCreate a new list containing every other value in your original list.\nUsing slicing and two different methods of indexing, remove the first and last values in your list.\n\n\n\nCode\n# Define a new list called my_list.\nmy_list = [432.0,-401.943582,3.9,0.8712054,57849.097,1.2753,-98437.0,7.78]\nprint(f\"my_list: {my_list}\")\n# Find the 5th element.\nprint(f\"my_list 5th element:{my_list[4]}\")\n# New list with every other value.\nevery_other = my_list[::2]\nprint(f\"every_other: {every_other}\")\n# Remove first and last values. \nprint(f\"first and last removed: {my_list[1:-1]}\")\n\n\nmy_list: [432.0, -401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0, 7.78]\nmy_list 5th element:57849.097\nevery_other: [432.0, 3.9, 57849.097, -98437.0]\nfirst and last removed: [-401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0]"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-2.",
-    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-2.",
-    "title": "Practice 1-2: Lists + Indexing",
-    "section": "📚  Practice 2. ",
-    "text": "📚  Practice 2. \nUse indexing to extract the second letter of the third element (‘a’) in str_list.\n\n\nCode\nstr_list = ['energy', 'water', 'carbon']\n\n\n\n\nCode\nprint(f\"str_list[2][1]: {str_list[2][1]}\")\n\n\nstr_list[2][1]: a"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-3.",
-    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-3.",
-    "title": "Practice 1-2: Lists + Indexing",
-    "section": "📚  Practice 3. ",
-    "text": "📚  Practice 3. \nCreate a copy of my_list, which you assigned above.\n\nUsing indexing or list operators, remove the first and last elements of your copied list.\nSort both the original list and the copied list in reverse order.\nUse the len() function and a boolean operator to determine which list is longer.\n\n\n\nCode\n# Create a copy of mylist.\n\nmy_list_copy = my_list.copy()\nmy_list_copy = my_list_copy[1:-1]\n\n\nprint(f\"my_list: {my_list}\")\nprint(f\"my_list_copy: {my_list_copy}\")\n\n# Sort both lists from largest to smallest.\nmy_list.sort(reverse=True)\nprint(f\"Reverse sorted my_list: {my_list}\")\n\nmy_list_copy.sort(reverse=True)\nprint(f\"Reverse sorted my_list_copy: {my_list_copy}\")\n\n# Determine which list is longer.\nif len(my_list) &gt; len(my_list_copy):\n    print(\"my_list is longer\")\nelse:\n    print(\"my_list_copy is longer\")\n\n\nmy_list: [432.0, -401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0, 7.78]\nmy_list_copy: [-401.943582, 3.9, 0.8712054, 57849.097, 1.2753, -98437.0]\nReverse sorted my_list: [57849.097, 432.0, 7.78, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]\nReverse sorted my_list_copy: [57849.097, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]\nmy_list is longer"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-4.",
-    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-4.",
-    "title": "Practice 1-2: Lists + Indexing",
-    "section": "📚  Practice 4. ",
-    "text": "📚  Practice 4. \nCreate a new list of 10 random floats between 0 and 1 called rand_list.\nAdd rand_list and my_list together in a new list called float_list.\nPrint the result.\n\n\nCode\n# Create a list of 10 random numbers between 0 and 1:\nfrom random import random\nrand_list = [random() for i in range(10)]\n\n# Add the lists together.\nfloat_list = rand_list + my_list\n\n# Print the result\nprint(float_list)\n\n\n[0.10955523298441361, 0.32572232971017967, 0.13761744658626607, 0.3203685653642424, 0.8091200680274167, 0.23342354410038746, 0.2821092128951217, 0.6901705052507255, 0.8891754795166417, 0.327553436209607, 57849.097, 432.0, 7.78, 3.9, 1.2753, 0.8712054, -401.943582, -98437.0]"
-  },
-  {
-    "objectID": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-5.",
-    "href": "practice_sessions/answerkeys/practice_1-2_lists_key.html#practice-5.",
-    "title": "Practice 1-2: Lists + Indexing",
-    "section": "📚  Practice 5. ",
-    "text": "📚  Practice 5. \nUse the range() function to construct a list of all hundreds (e.g. 100, 200, etc.) between 0 and 1000, inclusive.\n\n\nCode\n# Construct a list of hundreds from 0 to 1000\nhundreds = list(range(0,1001,100))\n# Print your list\nprint(hundreds)\n\n\n[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]"
   },
   {
     "objectID": "practice_sessions/answerkeys/practice_99_functions_objects_classes_key.html",
@@ -1341,7 +1425,7 @@
     "href": "interactive_sessions/conda_setup.html#initializing-conda-for-your-shell",
     "title": "conda installation and usage",
     "section": "Initializing Conda for Your Shell:",
-    "text": "Initializing Conda for Your Shell:\nOnce you’ve identified your shell, you can initialize conda for it:\nconda init &lt;shell_name&gt;\nReplace &lt;shell_name&gt; with the name of the shell (bash, zsh, cmd, powershell, etc.)\nNote: If for any reason conda is not recognized as a command, it’s possible the conda binary path isn’t in your system’s PATH variable. You’ll need to add it manually, and the process will depend on which OS and shell you’re using.\n\nUpdating conda\nYou won’t need to do this very often, but it’s a good idea to update conda periodically to ensure you have the latest version.\n\nWindows:\n\nOpen the a PowerShell from the Start Menu.\nRun the following command to update conda: bash      conda update conda\n\nMacOS/Linux:\n\nOpen the Terminal.\nRun the following command to update conda: bash      conda update conda"
+    "text": "Initializing Conda for Your Shell:\nOnce you’ve identified your shell, you can initialize conda for it:\nconda init &lt;shell_name&gt;\nReplace &lt;shell_name&gt; with the name of the shell (bash, zsh, cmd, powershell, etc.)\nNote: If for any reason conda is not recognized as a command, it’s possible the conda binary path isn’t in your system’s PATH variable. You’ll need to add it manually, and the process will depend on which OS and shell you’re using.\n\nUpdating conda\nYou won’t need to do this very often, but it’s a good idea to update conda periodically to ensure you have the latest version.\n\nWindows:\n\nOpen the a PowerShell from the Start Menu.\nRun the following command to update conda:\nconda update conda\n\nMacOS/Linux:\n\nOpen the Terminal.\nRun the following command to update conda:\nconda update conda"
   },
   {
     "objectID": "interactive_sessions/conda_setup.html#creating-a-new-conda-environment",

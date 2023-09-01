@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Interactive Session 0-2: Hello, World!</title>
+<title>EDS 217: Python for Environmental Data Science - Session 5-1: Matplotlib 📈</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,6 +93,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles/activities.css">
 </head>
@@ -108,16 +124,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#introduction-to-python" id="toc-introduction-to-python" class="nav-link" data-scroll-target="#introduction-to-python">Introduction to Python</a>
-  <ul class="collapse">
-  <li><a href="#print-statements" id="toc-print-statements" class="nav-link" data-scroll-target="#print-statements">Print statements</a></li>
-  <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input">User input</a></li>
-  </ul></li>
-  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a>
-  <ul class="collapse">
-  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
-  </ul></li>
+  <li><a href="#practice-1." id="toc-practice-1." class="nav-link active" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a></li>
+  <li><a href="#practice-2." id="toc-practice-2." class="nav-link" data-scroll-target="#practice-2.">📚 <b> Practice 2. </b></a></li>
+  <li><a href="#practice-3." id="toc-practice-3." class="nav-link" data-scroll-target="#practice-3.">📚 <b> Practice 3. </b></a></li>
+  <li><a href="#practice-4." id="toc-practice-4." class="nav-link" data-scroll-target="#practice-4.">📚 Practice 4.</a></li>
+  <li><a href="#practice-5." id="toc-practice-5." class="nav-link" data-scroll-target="#practice-5.">📚 <b> Practice 5. </b></a></li>
   </ul>
 </nav>
 </nav>
@@ -133,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interactive Session 0-2: Hello, World!</h1>
+<h1 class="title">Session 5-1: Matplotlib 📈</h1>
 </div>
 
 
@@ -148,163 +159,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><a href="4-1_pandas.ipynb">⬅️ Previous Session</a> | <a href="../index.html">🏠 Course Home</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="99_hello_world_files/figure-html/524b550e-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Hello_mac-2.jpg</figcaption>
+<p><img src="./assets/mpl.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">mpl</figcaption>
 </figure>
 </div>
-<p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn.</p>
-<p>In addition to Python scripts (<code>.py</code> files), many data scientists use Jupyter Notebooks (<code>.ipynb</code> files) for experimentation and visualization.</p>
-<p>Notebooks allow for rapid code evaluation and ease of use. For this reason, sessions have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
-<p>This first session will briefly introduce a few basic Python features.</p>
-<p style="height:1pt">
-</p>
-<div class="boxhead1">
-<pre><code>Session Topics</code></pre>
-</div>
-<div class="boxtext1">
-<ul class="a">
-<li>
-📌 Print statements
-</li>
-<li>
-📌 User input
-</li>
-<li>
-📌 Comments
-</li>
-</ul>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
-
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
-<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
-<p style="color:#408000; font-weight: bold">
-🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
-</p>
-<p style="color:#008C96; font-weight: bold">
-▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
-</p>
-<p style="color:#008C96; font-weight: bold">
-✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
-</p>
-<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
-
-</section>
-<section id="introduction-to-python" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-python">Introduction to Python</h2>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="print-statements" class="level3">
-<h3 class="anchored" data-anchor-id="print-statements">Print statements</h3>
-<p>The most basic function in Python is the <code>print()</code> function, which simply prints out a line.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
-<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> This is a print statement.
-</p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
+<p><strong>Don’t forget to start your notebook with a cell containing the import statements you need for the session.</strong></p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>This is a print statement.</code></pre>
 </div>
-</div>
-<div class="practice">
-<p>📚 Practice 1. In the following cell, use the <code>print()</code> command to print the line “Hello, World!”)</p>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
+<section id="practice-1." class="level2">
+<h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
+<p>Recreate the plot below. You do not need to match the colors exactly, but do not rely on <span class="codeb">matplotlib</span> defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.</p>
+<p><img src="./assets/mpl_prac1.png" alt="prac1" width="600"></p>
 </section>
-<section id="user-input" class="level3">
-<h3 class="anchored" data-anchor-id="user-input">User input</h3>
-<p>The <code>input()</code> command is an important Python function that can be used in a program to prompt for user input.</p>
+<section id="practice-2." class="level2">
+<h2 class="anchored" data-anchor-id="practice-2.">📚 <b> Practice 2. </b></h2>
+<p>Recreate the plot below. You do not need to match the colors exactly, but do not rely on <span class="codeb">matplotlib</span> defaults. Note: do not worry about the equation(s); these are included to indicate which functions to plot.</p>
+<p><img src="./assets/mpl_prac2.png" alt="prac2" width="600"></p>
 </section>
+<section id="practice-3." class="level2">
+<h2 class="anchored" data-anchor-id="practice-3.">📚 <b> Practice 3. </b></h2>
+<p>Import the data from <code>./data/BSRN_data.csv</code> and plot the temperature and relative humidity over the month of October 2019 at the BSRN station. Be sure to format the timestamps and include axis labels, a title, and a legend, if necessary.</p>
 </section>
-<section id="try-it." class="level2">
-<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
-<p>Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>( <span class="st">'What is your first name? '</span> )</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="comments" class="level3">
-<h3 class="anchored" data-anchor-id="comments">Comments</h3>
-<p>In programming, a <strong>comment</strong> is a piece of text that the computer ignores when running the program. Comments are usually used at the top of a program to provide a description of the program, name and information of the author, dependencies, etc., as well as throughout the script to explain lines of code. Commenting is a critical element of proper coding etiquette.</p>
-<p>There are two types of comments: <strong>in-line comments</strong> and <strong>block comments</strong>. In-line comments are used to provide context at the end of a line of code, while block comments come before a “block” or chunk of code.</p>
-<div class="python">
-<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt;
-In Python, there are two ways of writing comments. For in-line comments and most short comments, the &lt;span style="font-weight:bold"&gt; # &lt;/span&gt; character is used. For large block comments, such as those at the beginning of a file or function, three quotations &lt;span style="font-weight:bold"&gt;  '''  &lt;/span&gt; are used to enclose comments. Both single and double quotations are interpreted the same, as long as they are not used together.</code></pre>
-</div>
-<p>The following example is a function (a type of Python object we will cover later on) that uses both methods of commenting. As you can see, without the comments, it would be difficult to understand what the function does, what parameters it takes, and what the intermediate steps are to reach the end.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> homo_affine_matrix(p, p_prime):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds the unique homogeneous affine transformation that </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    transforms a set of 3 points from one coordinate system </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    to that of a second set of points in 3-D space</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p : array</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        original set of points as a row vector: ((p1, p2, p3))</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    p_prime : array</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Transformed points as a row vector: ((p1_prime, p2_prime, p3_prime))</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    array</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">        4 x 3 affine transformation matrix.</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Source: Adapted by B. Morgan from https://math.stackexchange.com/a/222170 (robjohn)</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct intermediate matrix</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    Q       <span class="op">=</span> p[<span class="dv">1</span>:]       <span class="op">-</span> p[<span class="dv">0</span>]</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    Q_prime <span class="op">=</span> p_prime[<span class="dv">1</span>:] <span class="op">-</span> p_prime[<span class="dv">0</span>]</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate rotation matrix</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> np.dot(np.linalg.inv(np.row_stack((Q, np.cross(<span class="op">*</span>Q)))),</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>               np.row_stack((Q_prime, np.cross(<span class="op">*</span>Q_prime))))</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate translation vector</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> p_prime[<span class="dv">0</span>] <span class="op">-</span> np.dot(p[<span class="dv">0</span>], R)</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate affine transformation matrix</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.column_stack((np.row_stack((R, t)),</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> <br></p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>4</code></pre>
-</div>
-</div>
+<section id="practice-4." class="level2">
+<h2 class="anchored" data-anchor-id="practice-4.">📚 Practice 4.</h2>
+<p>Saturation vapor pressure, ( $ e^*(T_a) $ ), is the maximum pressure of water vapor that can exist in equilibrium above a flat plane of water at a given temperature. It can be calculated from the Tetens equation:</p>
+<p><span class="math display"> e^{*}(T_{a}) = a \times exp({\frac{b \cdot T_{a}}{T_{a} + c}}) </span></p>
+<p>where $ T_a $ is the air temperature in °C, $ a = 0.611 $ kPa, $ b = 17.502 $, and $ c = 240.97 °C $.</p>
+<ol type="1">
+<li>Calculate ( $ e^*(T_a) $ ) in kPa for all temperatures in <code>bsrn</code>.</li>
+<li>Plot temperature vs.&nbsp;saturation vapor pressure for the BSRN station. Be sure to format your plot appropriately and include axis labels, a title, and a legend, if necessary.</li>
+<li>Compare your plot to Figure 3-1 in Campbell and Norman (1998). Do they look more or less the same?</li>
+</ol>
+</section>
+<section id="practice-5." class="level2">
+<h2 class="anchored" data-anchor-id="practice-5.">📚 <b> Practice 5. </b></h2>
+<p>The difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, <span class="math inline">\textit{VPD}</span>. <span class="math inline">\textit{VPD}</span> can be calculated from saturation vapor pressure and relative humidity, <span class="math inline">h_r</span>, as follows: <span class="math display"> \textit{VPD} \, = \, e^*(T_a) \cdot (1 \, - \, h_r)</span> where <span class="math inline">h_r</span> is expressed as a fraction.</p>
+<ol type="1">
+<li>Calculate the vapor pressure deficit for the BSRN data.</li>
+<li>Calculate the mean hourly <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> over the entire month.</li>
+<li>Plot <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> as a function of time of day. (for extra python points, try plotting both variables on one plot using <a href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/two_scales.html">ax.twinx()</a>)</li>
+<li>How does relative humidity vary throughout the day? Why?</li>
+<li>Compare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of <span class="math inline">e^*(T_a)</span> and <span class="math inline">\textit{VPD}</span> for the BSRN station compare to those at constant vapor pressure in Figure 3-3?</li>
+</ol>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
