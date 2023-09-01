@@ -403,7 +403,7 @@
     "href": "trypy/01_trypy_stl_blood/stl_blood_exercise.html#part-0.-setup-steps",
     "title": "TryPy 00 - Exploring St. Louis Blood Toxicity Data",
     "section": "Part 0. Setup Steps",
-    "text": "Part 0. Setup Steps\n\nCreate a repo on GitHub named eds217-trypy-00\nClone to create a version-controlled project\nCreate some subfolder infrastructure (nbs, data, figs)\nCreate and save a new quarto in RStudio called jupyter notebook (.ipynb file) named stl-lead-yourinitials.ipynb in the nbs folder (for example, mine would be stl-lead-kc.ipynb).\nMake sure to associate the notebook with the eds217_2023 environment.\n\n\nPart 1 - Get the data\n\n\"\"\"\nCreate a new variable containing \nthe link to the .csv file on \nthe EDS_221 github repository.\n\"\"\"\nurl = 'https://raw.githubusercontent.com/'\\\n'allisonhorst/EDS_221_programming-essentials/'\\\n'main/activities/stl_blood_lead.csv'\n\n\"\"\" \npandas can read a csv file into a \ndataframe directly from a url:\n\"\"\"\nstl_lead = pd.read_csv(url)\nRead more about the data here.\n\n\nPart 2 - Explore the data\nIn your .ipynb file:\n\nCreate a code cell that imports the numpy and pandas packages and run the cell to import the packages.\nUse the code above to read the url for stl_blood_lead.csv into a pandas DataFrame called stl_lead\nDo some basic exploration of the dataset using the DataFrame info and describe commands.\nIn a new code chunk, from stl_lead create a new column called prop_white that contains the percent of each census tract identifying as white (variable white in the dataset divided by variable totalPop, times 100).\n\nHint: df['new_col'] = df['col_a'] / df['col_b'] will create a new column new_col in the dataframe df that contains the value of col_a / col_b\n\n\nPart 3 - Create a scatterplot\n\nImport matplotlib (import matplotlib.pyplot as plt)\nCreate a scatterplot graph of the percentage of children in each census tract with elevated blood lead levels (pctElevated) versus the percent of each census tract identifying as white.\n\n\n\n\n\n\n\n\nPart 4 - Create a histogram\n\nCreate a histogram of only the pctElevated column in the data frame\nCustomize the fill, color, and size aesthetics - test some stuff! Feel free to make it awful."
+    "text": "Part 0. Setup Steps\n\nCreate a repo on GitHub named eds217-trypy-01\nClone to create a version-controlled project\nCreate some subfolder infrastructure (nbs, data, figs)\nCreate and save a new quarto in RStudio called jupyter notebook (.ipynb file) named stl-lead-yourinitials.ipynb in the nbs folder (for example, mine would be stl-lead-kc.ipynb).\nMake sure to associate the notebook with the eds217_2023 environment.\n\n\nPart 1 - Get the data\n\n\"\"\"\nCreate a new variable containing \nthe link to the .csv file on \nthe EDS_221 github repository.\n\"\"\"\nurl = 'https://raw.githubusercontent.com/'\\\n'allisonhorst/EDS_221_programming-essentials/'\\\n'main/activities/stl_blood_lead.csv'\n\n\"\"\" \npandas can read a csv file into a \ndataframe directly from a url:\n\"\"\"\nstl_lead = pd.read_csv(url)\nRead more about the data here.\n\n\nPart 2 - Explore the data\nIn your .ipynb file:\n\nCreate a code cell that imports the numpy and pandas packages and run the cell to import the packages.\nUse the code above to read the url for stl_blood_lead.csv into a pandas DataFrame called stl_lead\nDo some basic exploration of the dataset using the DataFrame info and describe commands.\nIn a new code chunk, from stl_lead create a new column called prop_white that contains the percent of each census tract identifying as white (variable white in the dataset divided by variable totalPop, times 100).\n\nHint: df['new_col'] = df['col_a'] / df['col_b'] will create a new column new_col in the dataframe df that contains the value of col_a / col_b\n\n\nPart 3 - Create a scatterplot\n\nImport matplotlib (import matplotlib.pyplot as plt)\nCreate a scatterplot graph of the percentage of children in each census tract with elevated blood lead levels (pctElevated) versus the percent of each census tract identifying as white.\n\n\n\n\n\n\n\n\nPart 4 - Create a histogram\n\nCreate a histogram of only the pctElevated column in the data frame\nCustomize the fill, color, and size aesthetics - test some stuff! Feel free to make it awful."
   },
   {
     "objectID": "trypy/02_trypy_conditionals_and_loops/conditionals_and_loops.html#part-0.-setup-steps",
@@ -725,7 +725,7 @@
     "href": "practice_sessions/practice_1-1_variables.html#practice-3.",
     "title": "Practice 1-1: Variables & Operators",
     "section": "📚 Practice 3.",
-    "text": "📚 Practice 3.\nAssign your first and last names to variables and use the + operator to combine them into a single variable. Practice capitalizing the first letter and then the entire string. Print your answers.\n\n\nCode\n# Define variables\n\n# Combine in a single string.\n\n# Capitalize the first letter\n\n# Capitalize the entire string.\n\n# Print outputs.\n\n\n###\n\n📚 Practice 4 Use the code below to write a formatted string that prints the sentence My name is [YOUR FIRST NAME]. I am [YOUR AGE] years old., inputing your name and age. Replace first with the name of the variable you assigned to your first name in the previous question. Replace age with your age as an integer.\n\n\n\nCode\n# Define variables first and age\n\n# Define the variable info.\ninfo = (first, age)\n\n# Complete the sentence to be printed\nsentence = \"My name...\"\n\n# Print\nprint( sentence % info)\n\n\n###\n\n📚 Practice 5. Rewrite your answers to practice questions 1 and 2 using formatted print statements.\nEach answer should include:\n\nWhat you are solving for;\nYour solution, with the correct formatting, and\nUnits.\n\nFor example:\n\nThe radius of the earth is 6,378 km.\n\n\n\n\nCode\n# Formatted print statement for 1a.\n\n# Formatted print statement for 1b."
+    "text": "📚 Practice 3.\nAssign your first and last names to variables and use the + operator to combine them into a single variable. Practice capitalizing the first letter and then the entire string. Print your answers.\n###\n\n📚 Practice 4 Use the code below to write a formatted string that prints the sentence My name is [YOUR FIRST NAME]. I am [YOUR AGE] years old., inputing your name and age. Replace first with the name of the variable you assigned to your first name in the previous question. Replace age with your age as an integer.\n\n###\n\n📚 Practice 5. Rewrite your answers to practice questions 1 and 2 using formatted print statements.\nEach answer should include:\n\nWhat you are solving for;\nYour solution, with the correct formatting, and\nUnits.\n\nFor example:\n\nThe radius of the earth is 6,378 km."
   },
   {
     "objectID": "resources/labs/Lab-2_Energy_Balance.html",
@@ -1306,35 +1306,35 @@
     "href": "practice_sessions/practice_1-2_lists.html#practice-1.",
     "title": "Practice 1-2: Lists + Indexing",
     "section": "📚  Practice 1. ",
-    "text": "📚  Practice 1. \nDefine a new list of floats with 8 elements called my_list.\n\nFind the 5th element in your list.\nCreate a new list containing every other value in your original list.\nUsing slicing and two different methods of indexing, remove the first and last values in your list.\n\n\n\nCode\n# Define a new list called my_list.\n\n# Find the 5th element.\n\n# New list with every other value.\n\n# Remove first and last values."
+    "text": "📚  Practice 1. \nDefine a new list of floats with 8 elements called my_list.\n\nFind the 5th element in your list.\nCreate a new list containing every other value in your original list.\nUsing slicing and two different methods of indexing, remove the first and last values in your list."
   },
   {
     "objectID": "practice_sessions/practice_1-2_lists.html#practice-2.",
     "href": "practice_sessions/practice_1-2_lists.html#practice-2.",
     "title": "Practice 1-2: Lists + Indexing",
     "section": "📚  Practice 2. ",
-    "text": "📚  Practice 2. \nUse indexing to extract the second letter of the third element (‘a’) in str_list.\n\n\nCode\nstr_list = ['energy', 'water', 'carbon']"
+    "text": "📚  Practice 2. \nCreate the variable str_list and assign it to the list [‘energy’, ‘water’, ‘carbon’]. Use indexing to extract the second letter of the third element (‘a’) in str_list.\nstr_list = ['energy', 'water', 'carbon']"
   },
   {
     "objectID": "practice_sessions/practice_1-2_lists.html#practice-3.",
     "href": "practice_sessions/practice_1-2_lists.html#practice-3.",
     "title": "Practice 1-2: Lists + Indexing",
     "section": "📚  Practice 3. ",
-    "text": "📚  Practice 3. \nCreate a copy of my_list, which you assigned above.\n\nUsing indexing or list operators, remove the first and last elements of your copied list.\nSort both the original list and the copied list in reverse order.\nUse the len() function and a boolean operator to determine which list is longer.\n\n\n\nCode\n# Create a copy of mylist.\n\n\n\n# Sort both lists from largest to smallest.\n\n\n# Determine which list is longer."
+    "text": "📚  Practice 3. \nCreate a copy of my_list, which you assigned above.\n\nUsing indexing or list operators, remove the first and last elements of your copied list.\nSort both the original list and the copied list in reverse order.\nUse the len() function and a boolean operator to determine which list is longer."
   },
   {
     "objectID": "practice_sessions/practice_1-2_lists.html#practice-4.",
     "href": "practice_sessions/practice_1-2_lists.html#practice-4.",
     "title": "Practice 1-2: Lists + Indexing",
     "section": "📚  Practice 4. ",
-    "text": "📚  Practice 4. \nCreate a new list of 10 random floats between 0 and 1 called rand_list.\nAdd rand_list and my_list together in a new list called float_list.\nPrint the result.\n\n\nCode\n# Create a list of 10 random numbers between 0 and 1:\n\n# Add the rand_list and my_list together\n# and assign to float_list\n\n# Print the result"
+    "text": "📚  Practice 4. \n\nCreate a new list of 10 random floats between 0 and 1 called rand_list.\nAdd rand_list and my_list together in a new list called float_list.\nPrint the result."
   },
   {
     "objectID": "practice_sessions/practice_1-2_lists.html#practice-5.",
     "href": "practice_sessions/practice_1-2_lists.html#practice-5.",
     "title": "Practice 1-2: Lists + Indexing",
     "section": "📚  Practice 5. ",
-    "text": "📚  Practice 5. \nUse the range() function to construct a list of all hundreds (e.g. 100, 200, etc.) between 0 and 1000, inclusive.\n\n\nCode\n# Construct a list of hundreds from 0 to 1000 using range\n\n# Print the list"
+    "text": "📚  Practice 5. \nUse the range() function to construct a list of all hundreds (e.g. 100, 200, etc.) between 0 and 1000, inclusive."
   },
   {
     "objectID": "practice_sessions/practice_2-1_control_flow_statements.html",
