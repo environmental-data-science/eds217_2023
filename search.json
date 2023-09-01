@@ -452,70 +452,70 @@
     "href": "practice_sessions/practice_3-1_numpy.html#practice-1.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚 Practice 1.",
-    "text": "📚 Practice 1.\nCreate the following arrays and assign the corresponding variable names:\n\na\n\n\\begin{bmatrix}\n     4 & 5 & 0 & 12 & -1 \\\\\n     8 & -21 & -4 & 6 & 3 \\\\\n     17 & 1 & -13 & 7 & 0\n\\end{bmatrix}\n\nb\n\n\\begin{bmatrix}\n     1.0 & 2.7 & 0 & 0.188 & 4.07 & 0.24\n\\end{bmatrix}\n\nc\n\n\\begin{bmatrix}\n     0.4 \\\\\n     0.8 \\\\\n     1.2 \\\\\n     1.6 \\\\\n     2.0 \\\\\n     2.4\n\\end{bmatrix}\n\n\n\n\nCode\n# Create 3x5 array of integers\na = np.array([[4, 5, 0, 12, -1], [8, -21, -4, 6, 3], [17, 1, -13, 7, 0]])\n\n# Create a 1x6 array of floats\nb = np.array([[1.0, 2.7, 0, 0.188, 4.07, 0.24]])\n\n# Create a one-d array with 6 elements\nc = np.array([0.4, 0.8, 1.2, 1.6, 2.0, 2.4])"
+    "text": "📚 Practice 1.\nCreate the following arrays and assign the corresponding variable names:\n\na\n\n\\begin{bmatrix}\n     4 & 5 & 0 & 12 & -1 \\\\\n     8 & -21 & -4 & 6 & 3 \\\\\n     17 & 1 & -13 & 7 & 0\n\\end{bmatrix}\n\nb\n\n\\begin{bmatrix}\n     1.0 & 2.7 & 0 & 0.188 & 4.07 & 0.24\n\\end{bmatrix}\n\nc\n\n\\begin{bmatrix}\n     0.4 \\\\\n     0.8 \\\\\n     1.2 \\\\\n     1.6 \\\\\n     2.0 \\\\\n     2.4\n\\end{bmatrix}"
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-2.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-2.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 2. ",
-    "text": "📚  Practice 2. \n\n\nCreate a new array d of integers the multiples of 3 between 0 and 100.\n\n\nCreate an array f 10 evenly spaced elements between 0 and 2.\n\n\nRe-create array c from Practice 1c using a function. Assign this to variable name g.\n\n\n\n\nCode\n# a.\nd = np.arange(1,100,3)\n# b. \nf = np.linspace(0,2,10)\n# c.\ng = np.linspace(0.4,2.4,6)"
+    "text": "📚  Practice 2. \n\n\nCreate a new array d of integers the multiples of 3 between 0 and 100.\n\n\nCreate an array f 10 evenly spaced elements between 0 and 2.\n\n\nRe-create array c from Practice 1c using a function. Assign this to variable name g."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-3.-assign-the-following-to-variables",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-3.-assign-the-following-to-variables",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 3.  Assign the following to variables:",
-    "text": "📚  Practice 3.  Assign the following to variables:\n\n\nA 5x3 array of ones.\n\n\nA one-dimensional array of 6 zeros.\n\n\nA 7x7 identity array.\n\n\nA random 10x10 array.\n\n\n\n\nCode\n# a. \nones = np.ones((5,3))\n# b.\nzeros6 = np.zeros(6)\n# c.\neye = np.eye(7)\n# d.\nrand100 = np.random.rand(10,10)"
+    "text": "📚  Practice 3.  Assign the following to variables:\n\n\nA 5x3 array of ones.\n\n\nA one-dimensional array of 6 zeros.\n\n\nA 7x7 identity array.\n\n\nA random 10x10 array."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-4.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-4.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 4. ",
-    "text": "📚  Practice 4. \nUse array methods and the array you created in Practice 2a (d) to count the number of multiples of 3 between 0 and 100.\n\n\nCode\n# Print size of d\nd.size\n\n\n33"
+    "text": "📚  Practice 4. \nUse array methods and the array you created in Practice 2a (d) to count the number of multiples of 3 between 0 and 100."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-5.-using-the-array-you-created-in-practice-3d",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-5.-using-the-array-you-created-in-practice-3d",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 5.  Using the array you created in Practice 3d,",
-    "text": "📚  Practice 5.  Using the array you created in Practice 3d,\n\n\nPrint all the elements in column 4.\n\n\nPrint all the elements in row 7.\n\n\nExtract the 4x4 subarray at the center of the array and assign it as a new variable.\n\n\nPrint the last two values in column 10.\n\n\n\n\nCode\n# a. Print all the elements in column 4\nprint(rand100[:,3])\n\n# b. Print all the elements in row 7\nprint(rand100[6])\n\n# c. Extract the 4x4 subarray at the center of the array and assign it as a new variable.\nprint(rand100[3:7,3:7])\n\n# d. Print the last two values in column 10.\nprint(rand100[-2:,9])\n\n\n[0.47355526 0.16640376 0.48631518 0.42032605 0.12026176 0.35326962\n 0.70223167 0.45058564 0.921611   0.26428948]\n[0.12746749 0.86608784 0.35305607 0.70223167 0.85187631 0.7585961\n 0.21004781 0.54591833 0.06646384 0.74774   ]\n[[0.42032605 0.37801466 0.83169814 0.26346432]\n [0.12026176 0.22708852 0.72144037 0.0987514 ]\n [0.35326962 0.10750686 0.88008533 0.43263521]\n [0.70223167 0.85187631 0.7585961  0.21004781]]\n[0.70838202 0.41093916]"
+    "text": "📚  Practice 5.  Using the array you created in Practice 3d,\n\n\nPrint all the elements in column 4.\n\n\nPrint all the elements in row 7.\n\n\nExtract the 4x4 subarray at the center of the array and assign it as a new variable.\n\n\nPrint the last two values in column 10."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-6.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-6.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 6. ",
-    "text": "📚  Practice 6. \nCreate a blank 8x8 matrix and fill it with a checkerboard pattern of 0s and 1s using indexing.\n\n\nCode\n# Blank 8x8 array\nq = np.zeros((8,8))\n\n# Fill with checkerboard pattern\nq[::2,1::2] = 1\nq[1::2,::2] = 1\nq\n\n\narray([[0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.],\n       [0., 1., 0., 1., 0., 1., 0., 1.],\n       [1., 0., 1., 0., 1., 0., 1., 0.]])"
+    "text": "📚  Practice 6. \nCreate a blank 8x8 matrix and fill it with a checkerboard pattern of 0s and 1s using indexing."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-7.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-7.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 7. ",
-    "text": "📚  Practice 7. \n\n\nCreate a 3x3 matrix with values ranging from 0 to 8.\n\n\nReverse the order of elements in your random 10x10 array from 3d.\n\n\n\n\nCode\n# a. Create a 3x3 matrix with values ranging from 0 to 8\nw = np.arange(0,9)\nv = w.reshape(3,3)\n\n# b. Reverse the order of elements in your random 10x10 array from 3d.\nrand100_rev = np.flip(rand100)"
+    "text": "📚  Practice 7. \n\n\nCreate a 3x3 matrix with values ranging from 0 to 8.\n\n\nReverse the order of elements in your random 10x10 array from 3d."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-8.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-8.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 8. ",
-    "text": "📚  Practice 8. \nCreate two random 1-D arrays of length 10. Merge them into a 2x10 array and then a 10x2 array.\n\n\nCode\n# 2 random 1-D arrays\nj = np.random.rand(10)\nk = np.random.rand(10)\n\n# Concat as 2x10 array\nvert = np.vstack((j,k))\n# Concat as 10x2 array\nhoriz = vert.T # or np.column_stack((j,k)).shape"
+    "text": "📚  Practice 8. \nCreate two random 1-D arrays of length 10. Merge them into a 2x10 array and then a 10x2 array."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-9.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-9.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 9. ",
-    "text": "📚  Practice 9. \n\n\nSplit your random 10x10 array from 3d into two 10x5 arrays.\n\n\nCombine the first 10x5 array from (a), the 10x2 array from 8b, and the other 10x5 array from (a). In other words, recombine the 10x10 array from 3d with two new columns in index positions 5 and 6. Your final array should have 10 rows and 12 columns. Verify this by printing the shape of the resulting array.\n\n\n\n\nCode\n# Split into equal 10x5 arrays.\nx,y = np.hsplit(rand100,[5])\n\n# Concatenate x, y, and horiz\nrand120 = np.concatenate((x,y,horiz), axis=1)\n\n# Print dimensions\nprint(rand120.shape)\n\n\n(10, 12)"
+    "text": "📚  Practice 9. \n\n\nSplit your random 10x10 array from 3d into two 10x5 arrays.\n\n\nCombine the first 10x5 array from (a), the 10x2 array from 8b, and the other 10x5 array from (a). In other words, recombine the 10x10 array from 3d with two new columns in index positions 5 and 6. Your final array should have 10 rows and 12 columns. Verify this by printing the shape of the resulting array."
   },
   {
     "objectID": "practice_sessions/practice_3-1_numpy.html#practice-10.",
     "href": "practice_sessions/practice_3-1_numpy.html#practice-10.",
     "title": "Practice 3-1: Introduction to NumPy",
     "section": "📚  Practice 10. ",
-    "text": "📚  Practice 10. \n\n\nRaise array b to the power of array c.\n\n\nCreate a new 5x10 array of random values. Subtract the mean of each row from every value.\n\n\n\n\nCode\n# a. \nb ** c\n\n# b. \n# Random 5x10 array\nrand50 = np.random.rand(5, 10)\n\n# Calculate mean of each row\nm = np.array([rand50.mean(axis=1)])\n# Subtract mean from each element\nl = rand50 - m.T\nprint(l)\n\n\n[[-0.41170877  0.15229157  0.34946892  0.2381375  -0.0113315   0.13161321\n  -0.1760515  -0.36044148 -0.12893971  0.21696174]\n [ 0.40968579  0.15228368  0.20724049 -0.33369976 -0.02910147 -0.4137152\n   0.06196756  0.17497702 -0.33630459  0.10666647]\n [-0.37876503  0.19540316  0.41508675 -0.39110682  0.25720744  0.11413381\n  -0.26093547 -0.22328425 -0.10556412  0.37782455]\n [ 0.21099536 -0.14109065  0.19566946  0.11854273 -0.44249867 -0.1864767\n   0.04331053 -0.16904161  0.06026488  0.31032467]\n [ 0.38219275  0.1848438   0.00265078  0.33216692 -0.39019945  0.02188796\n   0.01753881 -0.28219403 -0.24254002 -0.02634752]]"
+    "text": "📚  Practice 10. \n\n\nRaise array b to the power of array c.\n\n\nCreate a new 5x10 array of random values. Subtract the mean of each row from every value."
   },
   {
     "objectID": "practice_sessions/practice_sessions.html",
