@@ -592,7 +592,7 @@
     "href": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html",
     "title": "Session 5-1: Matplotlib 📈",
     "section": "",
-    "text": "⬅️ Previous Session | 🏠 Course Home\nDon’t forget to start your notebook with a cell containing the import statements you need for the session.\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates"
+    "text": "Don’t forget to start your notebook with a cell containing the import statements you need for the session.\nCode\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib.dates as mdates"
   },
   {
     "objectID": "practice_sessions/answerkeys/practice_5-1_matplotlib_key.html#practice-1.",
