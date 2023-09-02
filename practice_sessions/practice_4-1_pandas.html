@@ -124,7 +124,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practice-1." id="toc-practice-1." class="nav-link active" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a></li>
+  <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
+  <li><a href="#practice-1." id="toc-practice-1." class="nav-link" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a></li>
   <li><a href="#import-the-data-for-our-practice-session" id="toc-import-the-data-for-our-practice-session" class="nav-link" data-scroll-target="#import-the-data-for-our-practice-session">Import the data for our practice session</a></li>
   <li><a href="#practice-2.-using-the-dataframe-bsrn" id="toc-practice-2.-using-the-dataframe-bsrn" class="nav-link" data-scroll-target="#practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</a></li>
   <li><a href="#practice-3." id="toc-practice-3." class="nav-link" data-scroll-target="#practice-3.">📚 Practice 3.</a></li>
@@ -163,18 +164,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 <b>
 <p><a href="../practice_sessions/practice_3-1_numpy.html">⬅️ Previous Session</a> | <a href="../index.html">🏠 Course Home</a> | <a href="../practice_sessions/practice_5-1_matplotlib.html">➡️ Next Session</a> |</p>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<section id="part-0.-setup-steps" class="level2">
+<h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
+<ul>
+<li><p>Create a repo on GitHub named <code>eds217-practice-4-1-pandas</code></p></li>
+<li><p>Clone to create a version-controlled project</p></li>
+<li><p>Create some subfolder infrastructure (nbs, data, figs)</p></li>
+<li><p>Create and save a new <del>quarto in RStudio called</del> jupyter notebook (<code>.ipynb</code> file) named <code>practice_4-1_pandas.ipynb</code> in the <code>nbs</code> folder.</p></li>
+<li><p>Open the notebook in VSCode or jupyter notebook/lab</p></li>
+<li><p>Make sure to associate the notebook with the <code>eds217_2023</code> environment.</p></li>
+<li><p>Create a cell that imports your essential data science libraries.</p></li>
+</ul>
+</section>
 <section id="practice-1." class="level2">
 <h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
-<ol class="alpha">
-<li>
-Use a list of lists to construct a DataFrame named <code>df1</code> containing the data in the table below.
+<ol type="1">
+<li>Use a <code>list</code> of <code>list</code>s to construct a DataFrame named <code>df1</code> containing the data in the table below.
 </li>
+</ol>
 <table class="table">
 <thead>
 <tr class="header">
@@ -206,10 +213,10 @@ Use a list of lists to construct a DataFrame named <code>df1</code> containing t
 </tr>
 </tbody>
 </table>
-<br>
-<li>
-Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
+<ol type="1">
+<li>Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
 </li>
+</ol>
 <table class="table">
 <thead>
 <tr class="header">
@@ -247,23 +254,19 @@ Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containi
 </tbody>
 </table>
 <br>
-</ol>
+
 </section>
 <section id="import-the-data-for-our-practice-session" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-data-for-our-practice-session">Import the data for our practice session</h2>
-<div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<p>Use panda’s <code>read_csv()</code> function to import the data from github and create a new DataFrame named <code>bsrn</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/environmental-data-science"</span> \</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"/eds217_2023/main/data/BSRN_GOB_2019-10.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="practice-2.-using-the-dataframe-bsrn" class="level2">
 <h2 class="anchored" data-anchor-id="practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</h2>
 <ol>
 <li type="a">
-Print a list of column names.
+Print a list of your DataFrame’s column names.
 </li>
 <li type="a">
 How many values are there in the entire DataFrame?
@@ -275,27 +278,12 @@ What is the data type of the first column?
 </section>
 <section id="practice-3." class="level2">
 <h2 class="anchored" data-anchor-id="practice-3.">📚 Practice 3.</h2>
-<ol class="alpha">
-<li>
-Create a new DataFrame containing the first record for each day and the following columns: the timestamp of the record, incoming shortwave radiation, direct and diffuse radiation, and incoming longwave radiation. (Hint: the BSRN station collects data every minute).
-</li>
-<li>
-Create a new Series containing the temperature values every hour at the top of the hour.
-</li>
+<ol type="1">
+<li>Create a new DataFrame containing the first record for each day and the following columns: the timestamp of the record, incoming shortwave radiation, direct and diffuse radiation, and incoming longwave radiation. (Hint: the BSRN station collects data every minute).</li>
+<li>Create a new Series containing the temperature values every hour at the top of the hour.</li>
+<li>Convert the <code>DATE</code> column to <code>datetime</code> using the <code>pd.to_datetime()</code> function.</li>
+<li>Set the <code>DATE</code> column as the index of the DataFrame using the <code>set_index()</code> method.</li>
 </ol>
-<div class="run">
-<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
-</div>
-<div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert bsrn.DATE column to datetime objects</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'DATE'</span>] <span class="op">=</span> pd.to_datetime(bsrn.DATE)  <span class="co"># Note: overwriting a column like this is NOT recommended.</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bsrn.DATE as the DataFrame index</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>bsrn.set_index(<span class="st">'DATE'</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 </section>
 <section id="practice-4." class="level2">
 <h2 class="anchored" data-anchor-id="practice-4.">📚 <b> Practice 4.</b></h2><b>
@@ -439,7 +427,10 @@ Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, an
 </section>
 <section id="practice-7." class="level2">
 <h2 class="anchored" data-anchor-id="practice-7.">📚 <b> Practice 7. </b></h2>
-<p>Export your <code>rivers</code> DataFrame to a CSV file in the <code>exports</code> folder.</p>
+<ol type="1">
+<li>Export your <code>rivers</code> DataFrame to a CSV file in your repository’s data folder.</li>
+<li>Export your <code>bsrn</code> DataFrame to a CSV file in your repository’s data folder.</li>
+</ol>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 
