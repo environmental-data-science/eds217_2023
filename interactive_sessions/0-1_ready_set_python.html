@@ -113,7 +113,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#tools-that-manage-both-environments-and-packages" id="toc-tools-that-manage-both-environments-and-packages" class="nav-link" data-scroll-target="#tools-that-manage-both-environments-and-packages">Tools that manage both environments and packages</a></li>
   </ul></li>
-  <li><a href="#cloning-the-course-repository" id="toc-cloning-the-course-repository" class="nav-link" data-scroll-target="#cloning-the-course-repository">0. Cloning the course repository</a></li>
+  <li><a href="#forking-cloning-configuring-the-course-repository" id="toc-forking-cloning-configuring-the-course-repository" class="nav-link" data-scroll-target="#forking-cloning-configuring-the-course-repository">0. Forking, Cloning, &amp; Configuring the course repository</a>
+  <ul class="collapse">
+  <li><a href="#forking-the-course-repository." id="toc-forking-the-course-repository." class="nav-link" data-scroll-target="#forking-the-course-repository.">Forking the course repository.</a></li>
+  <li><a href="#cloning-the-course-repository." id="toc-cloning-the-course-repository." class="nav-link" data-scroll-target="#cloning-the-course-repository.">Cloning the course repository.</a></li>
+  <li><a href="#configuring-the-course-repository." id="toc-configuring-the-course-repository." class="nav-link" data-scroll-target="#configuring-the-course-repository.">Configuring the course repository.</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-the-repository-for-clean-jupyter-notebooks" id="toc-setting-up-the-repository-for-clean-jupyter-notebooks" class="nav-link" data-scroll-target="#setting-up-the-repository-for-clean-jupyter-notebooks">Setting Up the Repository for Clean Jupyter Notebooks</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#installing-and-configuring-conda" id="toc-installing-and-configuring-conda" class="nav-link" data-scroll-target="#installing-and-configuring-conda">1. Installing and configuring <code>conda</code></a>
   <ul class="collapse">
   <li><a href="#instructions-installing-configuring-conda" id="toc-instructions-installing-configuring-conda" class="nav-link" data-scroll-target="#instructions-installing-configuring-conda">Instructions: Installing &amp; configuring conda</a></li>
@@ -196,12 +204,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>poetry</code> is another new tool developed by the <a href="https://python-poetry.org">Python Packaging Authority</a> team that is designed to manage computing environments and python packages. Advantages of <code>poetry</code> include a simplified approach to dependency management and a simplified approach to building and packaging your own code for distribution. Disadvantages include a lack of support for <code>conda</code> environments and a lack of support for <code>pip</code> packages that are not hosted on <a href="https://pypi.org">PyPI</a> (although this may change in the future).</p>
 </section>
 </section>
-<section id="cloning-the-course-repository" class="level1">
-<h1>0. Cloning the course repository</h1>
+<section id="forking-cloning-configuring-the-course-repository" class="level1">
+<h1>0. Forking, Cloning, &amp; Configuring the course repository</h1>
 <p>Before we get started, we need to clone the course repository. This will create a local copy of the course repository on your local machine. We will use this local copy to work through the course materials and you will be able to add your own code to this local copy as you work through the course.</p>
-<p>To clone the course repository, you can either go to the <a href="https://github.com/environmental-data-science/eds217_2023">course repository</a> on GitHub and click the green “Code” button, or you can open a terminal and run the following command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/environmental-data-science/eds217_2023.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="forking-the-course-repository." class="level2">
+<h2 class="anchored" data-anchor-id="forking-the-course-repository.">Forking the course repository.</h2>
+<p>To fork the course repository, you must go to the <a href="https://github.com/environmental-data-science/eds217_2023">course repository</a> on GitHub and click the “Fork” button. This will add the repository to your own GitHub account, and allow you to make changes to the repository without affecting the original repository.</p>
+</section>
+<section id="cloning-the-course-repository." class="level2">
+<h2 class="anchored" data-anchor-id="cloning-the-course-repository.">Cloning the course repository.</h2>
+<p>Once you have forked the repository (added it to your Github account), you need to clone the course repository to create a copy on your local machine.</p>
+<p>You can clone the repo on the github site by going to your local account version of the repository on GitHub:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>https://github.com/[your-github-username]/eds217_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Click on the green “Code” button and copy the URL that appears in the dropdown menu. Then use that url to clone the repository on your local machine:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/environmental-data-science/eds217_2023.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make sure you put the course repository in a location where you can find it again. For example, you might want to put it in a folder called <code>dev</code> or <code>meds</code> or <code>code</code> or <code>projects</code> or something like that. Hopefully you already have organization from your prior work, but if not, now is a good time to start.</p>
+</section>
+<section id="configuring-the-course-repository." class="level2">
+<h2 class="anchored" data-anchor-id="configuring-the-course-repository.">Configuring the course repository.</h2>
+<section id="setting-up-the-repository-for-clean-jupyter-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-repository-for-clean-jupyter-notebooks">Setting Up the Repository for Clean Jupyter Notebooks</h3>
+<p>To ensure the integrity and consistency of your Jupyter notebooks, it’s helpful to strip outputs before committing them. This keeps notebooks lightweight and avoids accidentally committing potentially sensitive information. It also makes it easier to collaborate on notebooks, because output changes won’t be flagged as changes in the Git history.</p>
+<p>To setup the repository for clean Jupyter notebooks, you’ll need to add a filter to your local Git configuration.</p>
+<p><strong>Because filters are scripts that run code on your local machine, we do this installation manually, so you can be sure you aren’t accidentally running malicious code.</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span> filter.strip-notebook-output.clean <span class="st">"jupyter nbconvert --stdin --stdout --to notebook --ClearOutputPreprocessor.enabled=True"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span> filter.strip-notebook-output.smudge cat</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span> filter.strip-notebook-output.required true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These commands set up a filter only for this repository. They tell Git how to process <code>.ipynb</code> files before commit and checkout.</p>
+<p>With the filter set up, you can now add and commit Jupyter notebooks to the repository. The filter will automatically strip outputs from the notebooks during the commit process.</p>
+</section>
+</section>
 </section>
 <section id="installing-and-configuring-conda" class="level1">
 <h1>1. Installing and configuring <code>conda</code></h1>
