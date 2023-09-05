@@ -847,11 +847,11 @@
     "text": "📚  Practice 5. \nThe difference between saturation vapor pressure and ambient air pressure is called vapor pressure deficit, \\textit{VPD}. \\textit{VPD} can be calculated from saturation vapor pressure and relative humidity, h_r, as follows:  \\textit{VPD} \\, = \\, e^*(T_a) \\cdot (1 \\, - \\, h_r) where h_r is expressed as a fraction.\n\nCalculate the vapor pressure deficit for the BSRN data.\nCalculate the mean hourly RH and \\textit{VPD} over the entire month.\nPlot RH and \\textit{VPD} as a function of time of day. (for extra python points, try plotting both variables on one plot using ax.twinx())\nHow does relative humidity vary throughout the day? Why?\nCompare your plot(s) to Figure 3-3 in Campbell and Norman (1998). How do the values of e^*(T_a) and \\textit{VPD} for the BSRN station compare to those at constant vapor pressure in Figure 3-3?\n\n\n\n\ncn"
   },
   {
-    "objectID": "index.html#eds217-stoplight---let-us-know-how-thinkgs-are-going-in-real-time",
-    "href": "index.html#eds217-stoplight---let-us-know-how-thinkgs-are-going-in-real-time",
+    "objectID": "index.html#eds217-stoplight---let-us-know-how-thinks-are-going-in-real-time",
+    "href": "index.html#eds217-stoplight---let-us-know-how-thinks-are-going-in-real-time",
     "title": "EDS 217 - Python for Environmental Data Science",
-    "section": "🚦 EDS217 Stoplight - Let us know how thinkgs are going in real time!",
-    "text": "🚦 EDS217 Stoplight - Let us know how thinkgs are going in real time!\n\nCourse Repository\nEDS217_2023 on GitHub"
+    "section": "🚦 EDS217 Stoplight - Let us know how thinks are going in real time!",
+    "text": "🚦 EDS217 Stoplight - Let us know how thinks are going in real time!\n\nCourse Repository\nEDS217_2023 on GitHub"
   },
   {
     "objectID": "index.html#learning-goals",
