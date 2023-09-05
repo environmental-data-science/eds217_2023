@@ -2,190 +2,194 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/lectures/00_intro_to_python.html</loc>
-    <lastmod>2023-09-05T16:50:24.552Z</lastmod>
+    <lastmod>2023-09-05T22:11:51.692Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/lectures/02_helpGPT.html</loc>
-    <lastmod>2023-09-05T16:50:22.776Z</lastmod>
+    <lastmod>2023-09-05T22:11:49.744Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/lectures/01_the_zen_of_python.html</loc>
-    <lastmod>2023-09-05T16:50:21.696Z</lastmod>
+    <lastmod>2023-09-05T22:11:48.600Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_scipy.html</loc>
-    <lastmod>2023-09-05T16:50:20.180Z</lastmod>
+    <lastmod>2023-09-05T22:11:47.080Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/test_environment.html</loc>
-    <lastmod>2023-09-05T16:50:17.352Z</lastmod>
+    <lastmod>2023-09-05T22:11:43.748Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/Setting_up_local.html</loc>
-    <lastmod>2023-09-05T16:50:16.604Z</lastmod>
+    <lastmod>2023-09-05T22:11:42.944Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/2-2_structured_data.html</loc>
-    <lastmod>2023-09-05T16:50:15.660Z</lastmod>
+    <lastmod>2023-09-05T22:11:41.876Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/1-2_lists.html</loc>
-    <lastmod>2023-09-05T16:50:11.636Z</lastmod>
+    <lastmod>2023-09-05T22:11:37.432Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_hello_world.html</loc>
-    <lastmod>2023-09-05T16:50:10.129Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/vscode_setup.html</loc>
-    <lastmod>2023-09-05T16:50:08.085Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_seaborn.html</loc>
-    <lastmod>2023-09-05T16:50:06.705Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/interactive_sessions.html</loc>
-    <lastmod>2023-09-05T16:50:05.457Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/conda_setup.html</loc>
-    <lastmod>2023-09-05T16:50:03.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/trypy.html</loc>
-    <lastmod>2023-09-05T16:50:01.497Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/99_trypy_data_types/data_types_exercise.html</loc>
-    <lastmod>2023-09-05T16:50:00.621Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_2-1_control_flow_statements.html</loc>
-    <lastmod>2023-09-05T16:49:59.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_1-2_lists.html</loc>
-    <lastmod>2023-09-05T16:49:58.129Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_4-1_pandas.html</loc>
-    <lastmod>2023-09-05T16:49:57.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_99_functions_objects_classes_key.html</loc>
-    <lastmod>2023-09-05T16:49:55.233Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_2-2_structured_data_key.html</loc>
-    <lastmod>2023-09-05T16:49:53.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_3-1_numpy_key.html</loc>
-    <lastmod>2023-09-05T16:49:52.105Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html</loc>
-    <lastmod>2023-09-05T16:49:50.917Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_5-1_matplotlib.html</loc>
-    <lastmod>2023-09-05T16:49:49.805Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/index.html</loc>
-    <lastmod>2023-09-05T16:49:48.401Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_1-1_variables.html</loc>
-    <lastmod>2023-09-05T16:49:49.265Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_2-2_structured_data.html</loc>
-    <lastmod>2023-09-05T16:49:50.281Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_1-1_variables_key.html</loc>
-    <lastmod>2023-09-05T16:49:51.485Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_1-2_lists_key.html</loc>
-    <lastmod>2023-09-05T16:49:52.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_5-1_matplotlib_key.html</loc>
-    <lastmod>2023-09-05T16:49:53.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_4-1_pandas_key.html</loc>
-    <lastmod>2023-09-05T16:49:56.621Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_sessions.html</loc>
-    <lastmod>2023-09-05T16:49:57.697Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_3-1_numpy.html</loc>
-    <lastmod>2023-09-05T16:49:58.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/02_trypy_conditionals_and_loops/conditionals_and_loops.html</loc>
-    <lastmod>2023-09-05T16:49:59.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/01_trypy_stl_blood/stl_blood_exercise.html</loc>
-    <lastmod>2023-09-05T16:50:01.105Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/2-1_control_flow_statements.html</loc>
-    <lastmod>2023-09-05T16:50:02.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/3-1_numpy.html</loc>
-    <lastmod>2023-09-05T16:50:05.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/jupyter_setup.html</loc>
-    <lastmod>2023-09-05T16:50:06.073Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/1-1_variables.html</loc>
-    <lastmod>2023-09-05T16:50:07.509Z</lastmod>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/survey_responses.html</loc>
+    <lastmod>2023-09-05T22:11:35.704Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_functions_objects_classes.html</loc>
-    <lastmod>2023-09-05T16:50:09.601Z</lastmod>
+    <lastmod>2023-09-05T22:11:34.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/1-1_variables.html</loc>
+    <lastmod>2023-09-05T22:11:32.272Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/jupyter_setup.html</loc>
+    <lastmod>2023-09-05T22:11:30.740Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/3-1_numpy.html</loc>
+    <lastmod>2023-09-05T22:11:29.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/2-1_control_flow_statements.html</loc>
+    <lastmod>2023-09-05T22:11:26.772Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/01_trypy_stl_blood/stl_blood_exercise.html</loc>
+    <lastmod>2023-09-05T22:11:25.256Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/02_trypy_conditionals_and_loops/conditionals_and_loops.html</loc>
+    <lastmod>2023-09-05T22:11:23.820Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_3-1_numpy.html</loc>
+    <lastmod>2023-09-05T22:11:22.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_sessions.html</loc>
+    <lastmod>2023-09-05T22:11:21.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_4-1_pandas_key.html</loc>
+    <lastmod>2023-09-05T22:11:20.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_5-1_matplotlib_key.html</loc>
+    <lastmod>2023-09-05T22:11:17.136Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_1-2_lists_key.html</loc>
+    <lastmod>2023-09-05T22:11:15.928Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_1-1_variables_key.html</loc>
+    <lastmod>2023-09-05T22:11:14.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_2-2_structured_data.html</loc>
+    <lastmod>2023-09-05T22:11:13.340Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_1-1_variables.html</loc>
+    <lastmod>2023-09-05T22:11:12.300Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/index.html</loc>
+    <lastmod>2023-09-05T22:11:11.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_5-1_matplotlib.html</loc>
+    <lastmod>2023-09-05T22:11:12.812Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_2-1_control_flow_statements_key.html</loc>
+    <lastmod>2023-09-05T22:11:14.088Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_3-1_numpy_key.html</loc>
+    <lastmod>2023-09-05T22:11:15.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_2-2_structured_data_key.html</loc>
+    <lastmod>2023-09-05T22:11:16.460Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/answerkeys/practice_99_functions_objects_classes_key.html</loc>
+    <lastmod>2023-09-05T22:11:18.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_4-1_pandas.html</loc>
+    <lastmod>2023-09-05T22:11:21.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_1-2_lists.html</loc>
+    <lastmod>2023-09-05T22:11:22.172Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/practice_sessions/practice_2-1_control_flow_statements.html</loc>
+    <lastmod>2023-09-05T22:11:23.376Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/99_trypy_data_types/data_types_exercise.html</loc>
+    <lastmod>2023-09-05T22:11:24.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/trypy/trypy.html</loc>
+    <lastmod>2023-09-05T22:11:25.664Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/conda_setup.html</loc>
+    <lastmod>2023-09-05T22:11:27.612Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/interactive_sessions.html</loc>
+    <lastmod>2023-09-05T22:11:30.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_seaborn.html</loc>
+    <lastmod>2023-09-05T22:11:31.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/vscode_setup.html</loc>
+    <lastmod>2023-09-05T22:11:32.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/99_hello_world.html</loc>
+    <lastmod>2023-09-05T22:11:35.160Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/0-1_ready_set_python.html</loc>
-    <lastmod>2023-09-05T16:50:10.861Z</lastmod>
+    <lastmod>2023-09-05T22:11:36.516Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/4-1_pandas.html</loc>
-    <lastmod>2023-09-05T16:50:14.180Z</lastmod>
+    <lastmod>2023-09-05T22:11:40.264Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/0-2_hello_data_science.html</loc>
-    <lastmod>2023-09-05T16:50:16.068Z</lastmod>
+    <lastmod>2023-09-05T22:11:42.348Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/enumerate_and_zip.html</loc>
-    <lastmod>2023-09-05T16:50:17.000Z</lastmod>
+    <lastmod>2023-09-05T22:11:43.372Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/interactive_sessions/5-1_matplotlib.html</loc>
-    <lastmod>2023-09-05T16:50:18.924Z</lastmod>
+    <lastmod>2023-09-05T22:11:45.572Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/group_project/python_data_science_show_and_tell.html</loc>
-    <lastmod>2023-09-05T16:50:20.660Z</lastmod>
+    <lastmod>2023-09-05T22:11:47.548Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/lectures/lectures.html</loc>
-    <lastmod>2023-09-05T16:50:22.032Z</lastmod>
+    <lastmod>2023-09-05T22:11:48.972Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/environmental-data-science/eds217_2023/lectures/99_dry_vs_wet.html</loc>
-    <lastmod>2023-09-05T16:50:23.392Z</lastmod>
+    <lastmod>2023-09-05T22:11:50.416Z</lastmod>
   </url>
 </urlset>
