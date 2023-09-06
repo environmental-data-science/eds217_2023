@@ -1507,9 +1507,9 @@
   {
     "objectID": "interactive_sessions/interactive_sessions.html",
     "href": "interactive_sessions/interactive_sessions.html",
-    "title": "EDS 217: Python for Environmental Data Science",
+    "title": "Interactive Sessions",
     "section": "",
-    "text": "Return to Course Home Page\n\n\n\n\n\n\nCode\n# Interactive Sessions"
+    "text": "Return to Course Home Page\n\n\n\n\n\n0-1 - Ready, Set, Python!\n\n\nEntry Survey Responses\n\n\n0-2 - Hello, Data Science\n\n\n1-1 - Variables and Operators\n\n\n1-2 - Lists and Indexing\n\n\n2-1 - Control Flow Statements\n\n\n2-2 - Structured Data\n\n\n3-1 - Numpy\n\n\n4-1 - Pandas\n\n\n5-1 - Matplolib"
   },
   {
     "objectID": "interactive_sessions/99_seaborn.html",
