@@ -1,0 +1,17 @@
+name: eds217_2023
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - jupyter<7
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+  - dask
+  - seaborn
+  - plotly
+  - plotnine
+  - bokeh
+  - ipykernel

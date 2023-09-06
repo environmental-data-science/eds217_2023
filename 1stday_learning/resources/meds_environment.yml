@@ -1,0 +1,32 @@
+name: meds_2023
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - jupyterlab
+  - jupyter
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+  - dask
+  - seaborn
+  - plotly
+  - plotnine
+  - bokeh
+  - ipykernel
+  - nb_conda_kernels
+  - vscode-python-extension
+  - scikit-learn
+  - tensorflow
+  - keras
+  - xgboost
+  - geopandas
+  - shapely
+  - fiona
+  - pyproj
+  - rasterio
+  - gdal
+  - earthengine-api
+  - folium
