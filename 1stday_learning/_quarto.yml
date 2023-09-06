@@ -1,0 +1,24 @@
+project:
+  title: "EDS 217: Python for Environmental Data Science"
+  type: website
+  output-dir: docs
+  render:
+    - "/index.ipynb"
+    - "practice_sessions/"
+    - "trypy/"
+    - "interactive_sessions/"
+    - "group_project/"
+    - "!2022_docs/"
+    - "lectures/"
+
+format:
+  html:
+    html-math-method: katex
+    code-fold: true
+    toc: true
+    toc-location: left
+    css: styles/activities.css
+    include-before-body: header.html
+
+execute:
+  freeze: auto
