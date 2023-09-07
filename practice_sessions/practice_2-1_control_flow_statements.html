@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Calculate the monthly global land-ocean surface temperature anomalies (deviation from the mean) in °C for 2015-2018. The mean global land-ocean surface temperature calculated over the 20th century was 15.6°C.
 </li>
 <li>
-Create a new list with the mean monthly global surface temperature anomalies in °C for 2015-2023 (i.e.&nbsp;calculate the mean temperature anomaly for each month and put these values in a list). Use the command <code>np.mean()</code> to calculate mean values.
+Create a new list with the mean monthly global surface temperature anomalies in °C for 2015-2021 (i.e.&nbsp;calculate the mean temperature anomaly for each month and put these values in a list). Use the command <code>np.mean()</code> to calculate mean values.
 </li>
 <li>
 Print each monthly mean value with the name of the month and units.
@@ -231,28 +231,40 @@ Print each monthly mean value with the name of the month and units.
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy for mean calculations</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tempF_2015 <span class="op">=</span> [<span class="fl">61.628</span>, <span class="fl">61.7</span>, <span class="fl">61.808</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.538</span>, <span class="fl">61.394</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">62.042</span>, <span class="fl">61.988</span>, <span class="fl">62.168</span>]</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>tempF_2016 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.546</span>, <span class="fl">62.528</span>, <span class="fl">62.06</span>, <span class="fl">61.79</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">61.916</span>, <span class="fl">61.718</span>, <span class="fl">61.682</span>, <span class="fl">61.736</span>, <span class="fl">61.628</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>tempF_2017 <span class="op">=</span> [<span class="fl">61.916</span>, <span class="fl">62.132</span>, <span class="fl">62.168</span>, <span class="fl">61.772</span>, <span class="fl">61.718</span>, <span class="fl">61.376</span>, <span class="fl">61.556</span>, <span class="fl">61.646</span>, <span class="fl">61.466</span>, <span class="fl">61.7</span>, <span class="fl">61.664</span>, <span class="fl">61.754</span>]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>tempF_2018 <span class="op">=</span> [<span class="fl">61.556</span>, <span class="fl">61.61</span>, <span class="fl">61.664</span>, <span class="fl">61.682</span>, <span class="fl">61.556</span>, <span class="fl">61.466</span>, <span class="fl">61.556</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.916</span>, <span class="fl">61.556</span>, <span class="fl">61.718</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>tempF_2019 <span class="op">=</span> [<span class="fl">61.754</span>, <span class="fl">61.79</span>, <span class="fl">62.186</span>, <span class="fl">61.898</span>, <span class="fl">61.61</span>, <span class="fl">61.7</span>, <span class="fl">61.772</span>, <span class="fl">61.79</span>, <span class="fl">61.754</span>, <span class="fl">61.898</span>, <span class="fl">61.862</span>, <span class="fl">62.042</span>]</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>tempF_2020 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.312</span>, <span class="fl">62.186</span>, <span class="fl">62.114</span>, <span class="fl">61.898</span>, <span class="fl">61.736</span>, <span class="fl">61.7</span>, <span class="fl">61.646</span>, <span class="fl">61.862</span>, <span class="fl">61.664</span>, <span class="fl">62.06</span>, <span class="fl">61.538</span>]</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>tempF_2021 <span class="op">=</span> [<span class="fl">61.538</span>, <span class="fl">61.232</span>, <span class="fl">61.664</span>, <span class="fl">61.43</span>, <span class="fl">61.484</span>, <span class="fl">61.592</span>, <span class="fl">61.736</span>, <span class="fl">61.556</span>, <span class="fl">61.736</span>, <span class="fl">61.88</span>, <span class="fl">61.772</span>, <span class="fl">61.61</span>]</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># List of yearly lists (may or may not be useful)</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>tempF_list <span class="op">=</span> [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># List of years (probably useful)</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># np.mean can be used to take the average of a list:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>tempF_2015 <span class="op">=</span> [<span class="fl">61.628</span>, <span class="fl">61.7</span>, <span class="fl">61.808</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.538</span>, <span class="fl">61.394</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">62.042</span>, <span class="fl">61.988</span>, <span class="fl">62.168</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>tempF_2016 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.546</span>, <span class="fl">62.528</span>, <span class="fl">62.06</span>, <span class="fl">61.79</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">61.916</span>, <span class="fl">61.718</span>, <span class="fl">61.682</span>, <span class="fl">61.736</span>, <span class="fl">61.628</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>tempF_2017 <span class="op">=</span> [<span class="fl">61.916</span>, <span class="fl">62.132</span>, <span class="fl">62.168</span>, <span class="fl">61.772</span>, <span class="fl">61.718</span>, <span class="fl">61.376</span>, <span class="fl">61.556</span>, <span class="fl">61.646</span>, <span class="fl">61.466</span>, <span class="fl">61.7</span>, <span class="fl">61.664</span>, <span class="fl">61.754</span>]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>tempF_2018 <span class="op">=</span> [<span class="fl">61.556</span>, <span class="fl">61.61</span>, <span class="fl">61.664</span>, <span class="fl">61.682</span>, <span class="fl">61.556</span>, <span class="fl">61.466</span>, <span class="fl">61.556</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.916</span>, <span class="fl">61.556</span>, <span class="fl">61.718</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>tempF_2019 <span class="op">=</span> [<span class="fl">61.754</span>, <span class="fl">61.79</span>, <span class="fl">62.186</span>, <span class="fl">61.898</span>, <span class="fl">61.61</span>, <span class="fl">61.7</span>, <span class="fl">61.772</span>, <span class="fl">61.79</span>, <span class="fl">61.754</span>, <span class="fl">61.898</span>, <span class="fl">61.862</span>, <span class="fl">62.042</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>tempF_2020 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.312</span>, <span class="fl">62.186</span>, <span class="fl">62.114</span>, <span class="fl">61.898</span>, <span class="fl">61.736</span>, <span class="fl">61.7</span>, <span class="fl">61.646</span>, <span class="fl">61.862</span>, <span class="fl">61.664</span>, <span class="fl">62.06</span>, <span class="fl">61.538</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>tempF_2021 <span class="op">=</span> [<span class="fl">61.538</span>, <span class="fl">61.232</span>, <span class="fl">61.664</span>, <span class="fl">61.43</span>, <span class="fl">61.484</span>, <span class="fl">61.592</span>, <span class="fl">61.736</span>, <span class="fl">61.556</span>, <span class="fl">61.736</span>, <span class="fl">61.88</span>, <span class="fl">61.772</span>, <span class="fl">61.61</span>]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List of yearly lists (may or may not be useful)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>tempF_list <span class="op">=</span> [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># List of years (probably useful)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<p>Example of np.mean usage:</p>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.mean(tempF_2015)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>61.696999999999996</code></pre>
+</div>
 </div>
 <p>Describe your strategy here:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your code here:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your code here:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -260,9 +272,12 @@ Print each monthly mean value with the name of the month and units.
 <h2 data-anchor-id="practice-5.">📚 Practice 5.</h2>
 <p>Use a list comprehension to print a list of all months that had an anomaly above the average monthly anomaly.</p>
 <p>Some helpful code is provided below:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, <span class="st">'May'</span>, <span class="st">'June'</span>, <span class="st">'July'</span>, <span class="st">'August'</span>, <span class="st">'September'</span>, <span class="st">'October'</span>, <span class="st">'November'</span>, <span class="st">'December'</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>average_anomaly <span class="op">=</span> np.mean(mean_monthly_anomalies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, <span class="st">'May'</span>, <span class="st">'June'</span>, <span class="st">'July'</span>, <span class="st">'August'</span>, <span class="st">'September'</span>, <span class="st">'October'</span>, <span class="st">'November'</span>, <span class="st">'December'</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># np.mean can take the average of a list:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>average_anomaly <span class="op">=</span> np.mean(mean_monthly_anomalies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Recall that list comprehensions can contain <code>if</code> statements. For example:</p>
 <p>[<code>item</code> for <code>item</code> in <code>list</code> if <code>item</code> &gt; <code>value</code>]</p>
 <p>And they can also contain enumerate statements:</p>
@@ -271,7 +286,7 @@ Print each monthly mean value with the name of the month and units.
 <div class="cell" data-execution_count="69">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your code here:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your code here:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
