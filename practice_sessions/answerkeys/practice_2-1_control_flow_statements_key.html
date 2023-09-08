@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Given your sorted <code>org_elements</code> list and the corresponding list of atomic masses given in the cell below, use <code>enumerate()</code> in a <code>for</code> loop to print a formatted statement that expresses the atomic mass of of each element.</p></li>
 </ol>
 <p>Your formatted print statement should include the name of the element, the atomic mass rounded to 2 decimal places, and units.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define org_elements</span></span>
@@ -240,36 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    mass <span class="op">=</span> atomic_mass[i]</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The atomic mass of </span><span class="sc">%s</span><span class="st"> is </span><span class="sc">%.2f</span><span class="st"> g/mol.'</span> <span class="op">%</span> (element,mass))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>carbon
-hydrogen
-nitrogen
-oxygen
-phosphorous
-sulfur
-The atomic mass of carbon is 12.01 g/mol.
-The atomic mass of hydrogen is 1.01 g/mol.
-The atomic mass of nitrogen is 14.01 g/mol.
-The atomic mass of oxygen is 16.00 g/mol.
-The atomic mass of phosphorous is 30.97 g/mol.
-The atomic mass of sulfur is 32.06 g/mol.</code></pre>
-</div>
 </div>
 <p>Another solution using <code>zip()</code> is given in the cell below.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element,mass <span class="kw">in</span> <span class="bu">zip</span>(org_elements,atomic_mass):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The atomic mass of </span><span class="sc">%s</span><span class="st"> is </span><span class="sc">%.2f</span><span class="st"> g/mol.'</span> <span class="op">%</span> (element,mass))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element,mass <span class="kw">in</span> <span class="bu">zip</span>(org_elements,atomic_mass):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The atomic mass of </span><span class="sc">%s</span><span class="st"> is </span><span class="sc">%.2f</span><span class="st"> g/mol.'</span> <span class="op">%</span> (element,mass))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>The atomic mass of carbon is 12.01 g/mol.
-The atomic mass of hydrogen is 1.01 g/mol.
-The atomic mass of nitrogen is 14.01 g/mol.
-The atomic mass of oxygen is 16.00 g/mol.
-The atomic mass of phosphorous is 30.97 g/mol.
-The atomic mass of sulfur is 32.06 g/mol.</code></pre>
-</div>
 </div>
 </section>
 <section id="practice-4." class="level2">
@@ -288,138 +266,132 @@ Print each monthly mean value with the name of the month and units.
 </li>
 </ol>
 
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy for mean calculations</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tempF_2015 <span class="op">=</span> [<span class="fl">61.628</span>, <span class="fl">61.7</span>, <span class="fl">61.808</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.538</span>, <span class="fl">61.394</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">62.042</span>, <span class="fl">61.988</span>, <span class="fl">62.168</span>]</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tempF_2016 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.546</span>, <span class="fl">62.528</span>, <span class="fl">62.06</span>, <span class="fl">61.79</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">61.916</span>, <span class="fl">61.718</span>, <span class="fl">61.682</span>, <span class="fl">61.736</span>, <span class="fl">61.628</span>]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>tempF_2017 <span class="op">=</span> [<span class="fl">61.916</span>, <span class="fl">62.132</span>, <span class="fl">62.168</span>, <span class="fl">61.772</span>, <span class="fl">61.718</span>, <span class="fl">61.376</span>, <span class="fl">61.556</span>, <span class="fl">61.646</span>, <span class="fl">61.466</span>, <span class="fl">61.7</span>, <span class="fl">61.664</span>, <span class="fl">61.754</span>]</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>tempF_2018 <span class="op">=</span> [<span class="fl">61.556</span>, <span class="fl">61.61</span>, <span class="fl">61.664</span>, <span class="fl">61.682</span>, <span class="fl">61.556</span>, <span class="fl">61.466</span>, <span class="fl">61.556</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.916</span>, <span class="fl">61.556</span>, <span class="fl">61.718</span>]</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>tempF_2019 <span class="op">=</span> [<span class="fl">61.754</span>, <span class="fl">61.79</span>, <span class="fl">62.186</span>, <span class="fl">61.898</span>, <span class="fl">61.61</span>, <span class="fl">61.7</span>, <span class="fl">61.772</span>, <span class="fl">61.79</span>, <span class="fl">61.754</span>, <span class="fl">61.898</span>, <span class="fl">61.862</span>, <span class="fl">62.042</span>]</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>tempF_2020 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.312</span>, <span class="fl">62.186</span>, <span class="fl">62.114</span>, <span class="fl">61.898</span>, <span class="fl">61.736</span>, <span class="fl">61.7</span>, <span class="fl">61.646</span>, <span class="fl">61.862</span>, <span class="fl">61.664</span>, <span class="fl">62.06</span>, <span class="fl">61.538</span>]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>tempF_2021 <span class="op">=</span> [<span class="fl">61.538</span>, <span class="fl">61.232</span>, <span class="fl">61.664</span>, <span class="fl">61.43</span>, <span class="fl">61.484</span>, <span class="fl">61.592</span>, <span class="fl">61.736</span>, <span class="fl">61.556</span>, <span class="fl">61.736</span>, <span class="fl">61.88</span>, <span class="fl">61.772</span>, <span class="fl">61.61</span>]</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># List of yearly lists (may or may not be useful)</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>tempF_list <span class="op">=</span> [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># List of years (probably useful)</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy for mean calculations</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>tempF_2015 <span class="op">=</span> [<span class="fl">61.628</span>, <span class="fl">61.7</span>, <span class="fl">61.808</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.538</span>, <span class="fl">61.394</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">62.042</span>, <span class="fl">61.988</span>, <span class="fl">62.168</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>tempF_2016 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.546</span>, <span class="fl">62.528</span>, <span class="fl">62.06</span>, <span class="fl">61.79</span>, <span class="fl">61.52</span>, <span class="fl">61.61</span>, <span class="fl">61.916</span>, <span class="fl">61.718</span>, <span class="fl">61.682</span>, <span class="fl">61.736</span>, <span class="fl">61.628</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>tempF_2017 <span class="op">=</span> [<span class="fl">61.916</span>, <span class="fl">62.132</span>, <span class="fl">62.168</span>, <span class="fl">61.772</span>, <span class="fl">61.718</span>, <span class="fl">61.376</span>, <span class="fl">61.556</span>, <span class="fl">61.646</span>, <span class="fl">61.466</span>, <span class="fl">61.7</span>, <span class="fl">61.664</span>, <span class="fl">61.754</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>tempF_2018 <span class="op">=</span> [<span class="fl">61.556</span>, <span class="fl">61.61</span>, <span class="fl">61.664</span>, <span class="fl">61.682</span>, <span class="fl">61.556</span>, <span class="fl">61.466</span>, <span class="fl">61.556</span>, <span class="fl">61.448</span>, <span class="fl">61.52</span>, <span class="fl">61.916</span>, <span class="fl">61.556</span>, <span class="fl">61.718</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>tempF_2019 <span class="op">=</span> [<span class="fl">61.754</span>, <span class="fl">61.79</span>, <span class="fl">62.186</span>, <span class="fl">61.898</span>, <span class="fl">61.61</span>, <span class="fl">61.7</span>, <span class="fl">61.772</span>, <span class="fl">61.79</span>, <span class="fl">61.754</span>, <span class="fl">61.898</span>, <span class="fl">61.862</span>, <span class="fl">62.042</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>tempF_2020 <span class="op">=</span> [<span class="fl">62.186</span>, <span class="fl">62.312</span>, <span class="fl">62.186</span>, <span class="fl">62.114</span>, <span class="fl">61.898</span>, <span class="fl">61.736</span>, <span class="fl">61.7</span>, <span class="fl">61.646</span>, <span class="fl">61.862</span>, <span class="fl">61.664</span>, <span class="fl">62.06</span>, <span class="fl">61.538</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>tempF_2021 <span class="op">=</span> [<span class="fl">61.538</span>, <span class="fl">61.232</span>, <span class="fl">61.664</span>, <span class="fl">61.43</span>, <span class="fl">61.484</span>, <span class="fl">61.592</span>, <span class="fl">61.736</span>, <span class="fl">61.556</span>, <span class="fl">61.736</span>, <span class="fl">61.88</span>, <span class="fl">61.772</span>, <span class="fl">61.61</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># List of yearly lists (may or may not be useful)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>tempF_list <span class="op">=</span> [tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># List of years (probably useful)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2015</span>, <span class="dv">2016</span>, <span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="25">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4a. Monthly temperature anomalies</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Practice 4a'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list of lists</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tempC_list <span class="op">=</span> []</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>anomC_list <span class="op">=</span> []</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through yearly lists</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tempsF,year <span class="kw">in</span> <span class="bu">zip</span>(tempF_list,years):</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Empty list for a single year</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    tempsC <span class="op">=</span> []</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    anomsC <span class="op">=</span> []</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Iterate through a single year</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tempF <span class="kw">in</span> tempsF:</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert temp from F to C</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        tempC <span class="op">=</span> (tempF <span class="op">-</span> <span class="fl">32.0</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Append to tempsC</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        tempsC.append(<span class="bu">round</span>(tempC,<span class="dv">2</span>))</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate temp anomaly in °C</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        anomC <span class="op">=</span> tempC <span class="op">-</span> <span class="fl">15.6</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Append to anomsC</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        anomsC.append(<span class="bu">round</span>(anomC,<span class="dv">2</span>))</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add list of °C temps to tempC_list (list of lists)</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    tempC_list.append(tempsC)</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add list of anomalies in °C to anomC_list (list of lists)</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    anomC_list.append(anomsC)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> anom_list,year <span class="kw">in</span> <span class="bu">zip</span>(anomC_list,years):</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> anomalies: </span><span class="sc">{</span>anom_list<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. Mean monthly temperature anomaly, 2015-2018</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Practice 4b'</span>)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list for monthly mean temperature anomalies</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>monthly_means <span class="op">=</span> []</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up generic counter loop with 12 iterations</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate list of temperature anomalies for each month by extracting the ith value from each sublist.</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    monthly <span class="op">=</span> [anom[i] <span class="cf">for</span> anom <span class="kw">in</span> anomC_list]</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate mean for month i</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    monthly_mean <span class="op">=</span> np.mean(monthly)</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add mean for month i to list of means</span></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    monthly_means.append(<span class="bu">round</span>(monthly_mean,<span class="dv">4</span>))</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Print list of mean monthly temperature anomalies, 2015-2018.</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"monthly_means: </span><span class="sc">{</span>monthly_means<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get temps in C and anomalies in C</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tempC_list <span class="op">=</span> []</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>anomC_list <span class="op">=</span> []</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mean_temp <span class="op">=</span> <span class="fl">15.6</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year_data <span class="kw">in</span> tempF_list:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    year_C <span class="op">=</span> [(value<span class="op">-</span><span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span> <span class="cf">for</span> value <span class="kw">in</span> year_data]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    year_C_anom <span class="op">=</span> [value <span class="op">-</span> mean_temp <span class="cf">for</span> value <span class="kw">in</span> year_C]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    tempC_list.append(year_C)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    anomC_list.append(year_C_anom)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>monthly_anomalies <span class="op">=</span> []</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    month_vals <span class="op">=</span> []</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        month_vals.append(anomC_list[j][i])</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    monthly_anomalies.append(np.mean(month_vals))</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(monthly_anomalies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Practice 4a
-2015 anomalies: [0.86, 0.9, 0.96, 0.76, 0.8, 0.81, 0.73, 0.8, 0.85, 1.09, 1.06, 1.16]
-2016 anomalies: [1.17, 1.37, 1.36, 1.1, 0.95, 0.8, 0.85, 1.02, 0.91, 0.89, 0.92, 0.86]
-2017 anomalies: [1.02, 1.14, 1.16, 0.94, 0.91, 0.72, 0.82, 0.87, 0.77, 0.9, 0.88, 0.93]
-2018 anomalies: [0.82, 0.85, 0.88, 0.89, 0.82, 0.77, 0.82, 0.76, 0.8, 1.02, 0.82, 0.91]
-2019 anomalies: [0.93, 0.95, 1.17, 1.01, 0.85, 0.9, 0.94, 0.95, 0.93, 1.01, 0.99, 1.09]
-2020 anomalies: [1.17, 1.24, 1.17, 1.13, 1.01, 0.92, 0.9, 0.87, 0.99, 0.88, 1.1, 0.81]
-2021 anomalies: [0.81, 0.64, 0.88, 0.75, 0.78, 0.84, 0.92, 0.82, 0.92, 1.0, 0.94, 0.85]
-Practice 4b
-monthly_means: [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]</code></pre>
+<pre><code>[0.9685714285714274, 1.0128571428571427, 1.082857142857143, 0.9400000000000011, 0.8742857142857157, 0.8228571428571428, 0.8542857142857135, 0.8700000000000002, 0.8814285714285724, 0.9700000000000006, 0.9585714285714284, 0.9442857142857155]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="27">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>monthly_means <span class="op">=</span> []</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> anomC_15,anomC_16,anomC_17,anomC_18,anomC_19,anomC_20,anomC_21 <span class="kw">in</span> <span class="bu">zip</span>(<span class="op">*</span>anomC_list):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: * is an "unpacking" operator that extracts each sublist of anomC_list making them iterables.</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for i,(anomC_15,anomC_16,anomC_17,anomC_18) in enumerate(zip(anomC_list[0],</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[1],</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[2],</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[3])):</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Put month i values in a list</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    monthly <span class="op">=</span> [anomC_15, anomC_16, anomC_17, anomC_18, anomC_19, anomC_20, anomC_21]</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate mean for month i</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    monthly_mean <span class="op">=</span> np.mean(monthly)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add mean for month i to list of means</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    monthly_means.append(<span class="bu">round</span>(monthly_mean,<span class="dv">4</span>))</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print list of mean monthly temperature anomalies, 2015-2021.</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Monthly means (alternative approach): </span><span class="sc">{</span>monthly_means<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>avg_month_F <span class="op">=</span> []</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>avg_month_C <span class="op">=</span> []</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>avg_month_anom <span class="op">=</span> []</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">zip</span>(tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    avg_F <span class="op">=</span> np.mean(i)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    avg_C <span class="op">=</span> (avg_F <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    avg_month_F.append(avg_F)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    avg_month_C.append(avg_C)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    avg_month_anom.append(avg_C<span class="op">-</span><span class="fl">15.6</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(avg_month_anom)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>, <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.bar(months, avg_month_anom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Monthly means (alternative approach): [0.9686, 1.0129, 1.0829, 0.94, 0.8743, 0.8229, 0.8543, 0.87, 0.8814, 0.97, 0.9586, 0.9443]</code></pre>
+<pre><code>[0.968571428571428, 1.0128571428571451, 1.0828571428571419, 0.9399999999999995, 0.8742857142857137, 0.8228571428571403, 0.8542857142857105, 0.8700000000000028, 0.881428571428577, 0.9700000000000006, 0.9585714285714264, 0.944285714285714]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>&lt;BarContainer object of 12 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="practice_2-1_control_flow_statements_key_files/figure-html/cell-8-output-3.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4c. Print mean temperature anomalies by month</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Practice 4c'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, <span class="st">'May'</span>, <span class="st">'June'</span>, </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">'July'</span>, <span class="st">'August'</span>, <span class="st">'September'</span>, <span class="st">'October'</span>, <span class="st">'November'</span>, <span class="st">'December'</span>]</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> month,mean <span class="kw">in</span> <span class="bu">zip</span>(months,monthly_means):</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Mean </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> temperature anomaly, </span><span class="sc">{</span><span class="bu">min</span>(years)<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span><span class="bu">max</span>(years)<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>mean<span class="sc">:.4f}</span><span class="ss">°C'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>monthly_means <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> anomC_15,anomC_16,anomC_17,anomC_18,anomC_19,anomC_20,anomC_21 <span class="kw">in</span> <span class="bu">zip</span>(<span class="op">*</span>anomC_list):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: * is an "unpacking" operator that extracts each sublist of anomC_list making them iterables.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for i,(anomC_15,anomC_16,anomC_17,anomC_18) in enumerate(zip(anomC_list[0],</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[1],</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[2],</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                              anomC_list[3])):</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Put month i values in a list</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    monthly <span class="op">=</span> [anomC_15, anomC_16, anomC_17, anomC_18, anomC_19, anomC_20, anomC_21]</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate mean for month i</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    monthly_mean <span class="op">=</span> np.mean(monthly)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add mean for month i to list of means</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    monthly_means.append(<span class="bu">round</span>(monthly_mean,<span class="dv">4</span>))</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print list of mean monthly temperature anomalies, 2015-2021.</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Monthly means (alternative approach): </span><span class="sc">{</span>monthly_means<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Practice 4c
-Mean January temperature anomaly, 2015-2021: 0.9686°C
-Mean February temperature anomaly, 2015-2021: 1.0129°C
-Mean March temperature anomaly, 2015-2021: 1.0829°C
-Mean April temperature anomaly, 2015-2021: 0.9400°C
-Mean May temperature anomaly, 2015-2021: 0.8743°C
-Mean June temperature anomaly, 2015-2021: 0.8229°C
-Mean July temperature anomaly, 2015-2021: 0.8543°C
-Mean August temperature anomaly, 2015-2021: 0.8700°C
-Mean September temperature anomaly, 2015-2021: 0.8814°C
-Mean October temperature anomaly, 2015-2021: 0.9700°C
-Mean November temperature anomaly, 2015-2021: 0.9586°C
-Mean December temperature anomaly, 2015-2021: 0.9443°C</code></pre>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anna + CoPilot:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> []</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f15, f16, f17, f18, f19, f20, f21 <span class="kw">in</span> <span class="bu">zip</span>(tempF_2015, tempF_2016, tempF_2017, tempF_2018, tempF_2019, tempF_2020, tempF_2021):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    month_mean <span class="op">=</span> np.mean([f15, f16, f17, f18, f19, f20, f21])</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    month_mean_c <span class="op">=</span> (month_mean <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    month_mean_anom <span class="op">=</span> month_mean_c <span class="op">-</span> <span class="fl">15.6</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    vals <span class="op">=</span> vals <span class="op">+</span> [month_mean_anom]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4c. Print mean temperature anomalies by month</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Practice 4c'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, <span class="st">'May'</span>, <span class="st">'June'</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">'July'</span>, <span class="st">'August'</span>, <span class="st">'September'</span>, <span class="st">'October'</span>, <span class="st">'November'</span>, <span class="st">'December'</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> month,mean <span class="kw">in</span> <span class="bu">zip</span>(months,monthly_means):</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Mean </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> temperature anomaly, </span><span class="sc">{</span><span class="bu">min</span>(years)<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span><span class="bu">max</span>(years)<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>mean<span class="sc">:.4f}</span><span class="ss">°C'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="practice-5." class="level2">
@@ -433,7 +405,7 @@ Mean December temperature anomaly, 2015-2021: 0.9443°C</code></pre>
 <p>[<code>item</code> for <code>item</code> in <code>list</code> if <code>item</code> &gt; <code>value</code>]</p>
 <p>And they can also contain enumerate statements:</p>
 <p>[<code>item</code> for <code>index,item</code> in <code>enumerate(list)</code> if <code>other_list[index]</code> &gt; <code>value</code>]</p>
-<div class="cell" data-execution_count="28">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, </span>
@@ -448,19 +420,6 @@ Mean December temperature anomaly, 2015-2021: 0.9443°C</code></pre>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> monthly_means[i] <span class="op">&gt;</span> avg_anomaly</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Months with above average temperature anomalies:
-January
-February
-March
-April
-October
-November
-December</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>[None, None, None, None, None, None, None]</code></pre>
-</div>
 </div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 

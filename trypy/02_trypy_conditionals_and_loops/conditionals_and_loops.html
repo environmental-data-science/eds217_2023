@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create a repo on GitHub named <code>eds217-trypy-02</code></li>
 <li>Clone to create a version-controlled project</li>
-<li>Create some subfolder infrastructure (docs, data)</li>
+<li>Create some subfolder infrastructure (nbs, data, etc..)</li>
 <li>Create a new python notebook.</li>
 </ul>
 </section>
@@ -158,12 +158,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Explore this <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-arc.10341.5">data package</a> from EDI, which contains a “Data file describing the biogeochemistry of samples collected at various sites near Toolik Lake, North Slope of Alaska”. Familiarize yourself with the metadata (particularly, View full metadata &gt; expand ‘Data entities’ to learn more about the variables in the dataset).</p>
 <p><strong>Citation:</strong> Kling, G. 2016. Biogeochemistry data set for soil waters, streams, and lakes near Toolik on the North Slope of Alaska, 2011. ver 5. Environmental Data Initiative. https://doi.org/10.6073/pasta/362c8eeac5cad9a45288cf1b0d617ba7</p>
 <ol type="1">
-<li><p>Download the CSV containing the Toolik biogeochemistry data</p></li>
-<li><p>Take a look at it - how are missing values stored? Keep that in mind.</p></li>
-<li><p>Drop the CSV into your data folder of your project</p></li>
-<li><p>Create a new notebook document in VSCode (or in a <code>jupyter notebook</code> server), save in docs as <code>toolik_chem.ipynb</code></p></li>
-<li><p>Import the <code>pandas</code>, <code>numpy</code>, and <code>matplotlib.pyplot</code> libraries into your first code cell.</p></li>
-<li><p>Read in the data as <code>toolik_biochem</code>. Remember, you’ll want to specify here how <code>NA</code> values are stored (hint: use the <code>na_values</code> argument in your <code>pd.read_csv</code> call.) Additionally, convert all column names to lower case/underscore format (replace spaces with underscores and put everything in lower case).</p></li>
+<li>Download the CSV containing the Toolik biogeochemistry data</li>
+<li>Take a look at it - how are missing values stored? Keep that in mind.</li>
+<li>Drop the CSV into your data folder of your project</li>
+<li>Create a new notebook document in VSCode (or in a <code>jupyter notebook</code> server), save in docs as <code>toolik_chem.ipynb</code></li>
+<li>Import the <code>pandas</code>, <code>numpy</code>, and <code>matplotlib.pyplot</code> libraries into your first code cell.</li>
+<li>Read in the data as <code>toolik_biochem</code>. Remember, you’ll want to specify here how <code>NA</code> values are stored (hint: use the <code>na_values</code> argument in your <code>pd.read_csv</code> call.) Additionally, convert all column names to lower case/underscore format (replace spaces with underscores and put everything in lower case).</li>
+</ol>
+<div class="cell" data-execution_count="27">
+<div class="cell-output cell-output-error">
+<pre><code>FileNotFoundError: [Errno 2] No such file or directory: '../data/2011_Kling_Akchem.csv'</code></pre>
+</div>
+</div>
+<ol start="7" type="1">
 <li><p>Create a subset of the data that contains only observations from the “Toolik Inlet” site, and that only contains the variables (columns) for pH, dissolved organic carbon (DOC), and total dissolved nitrogen (TDN). Store this subset as <code>inlet_biochem</code>. Make sure to LOOK AT the subset you’ve created.</p></li>
 <li><p>Find the mean value of each column in <code>inlet_biochem</code> 2 different ways:</p></li>
 </ol>
@@ -199,25 +206,25 @@ dtype: float64</code></pre>
 <div class="cell" data-execution_count="30">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of NA values for each column</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>na_counts <span class="op">=</span> inlet_biochem.isna().<span class="bu">sum</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of NA values for each column</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>total_rows <span class="op">=</span> <span class="bu">len</span>(inlet_biochem)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>na_percentage <span class="op">=</span> (na_counts <span class="op">/</span> total_rows) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> na_percentage.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage of NA values per column'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Columns'</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage NA values (%)'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename x-axis labels</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>new_labels <span class="op">=</span> [<span class="st">'pH'</span>, <span class="st">"DOC"</span>, <span class="st">"TDN"</span>]</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(new_labels)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of NA values for each column</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>na_counts <span class="op">=</span> inlet_biochem.isna().<span class="bu">sum</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of NA values for each column</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>total_rows <span class="op">=</span> <span class="bu">len</span>(inlet_biochem)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>na_percentage <span class="op">=</span> (na_counts <span class="op">/</span> total_rows) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> na_percentage.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage of NA values per column'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Columns'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage NA values (%)'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename x-axis labels</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>new_labels <span class="op">=</span> [<span class="st">'pH'</span>, <span class="st">"DOC"</span>, <span class="st">"TDN"</span>]</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(new_labels)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="conditionals_and_loops_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
