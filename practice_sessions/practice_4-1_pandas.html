@@ -125,14 +125,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
-  <li><a href="#practice-1." id="toc-practice-1." class="nav-link" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a></li>
-  <li><a href="#import-the-data-for-our-practice-session" id="toc-import-the-data-for-our-practice-session" class="nav-link" data-scroll-target="#import-the-data-for-our-practice-session">Import the data for our practice session</a></li>
+  <li><a href="#practice-0." id="toc-practice-0." class="nav-link" data-scroll-target="#practice-0.">📚 <b> Practice 0. </b></a></li>
+  <li><a href="#practice-1." id="toc-practice-1." class="nav-link" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a>
+  <ul class="collapse">
+  <li><a href="#import-some-radiation-data-for-our-practice-session" id="toc-import-some-radiation-data-for-our-practice-session" class="nav-link" data-scroll-target="#import-some-radiation-data-for-our-practice-session">Import some radiation data for our practice session</a></li>
+  </ul></li>
   <li><a href="#practice-2.-using-the-dataframe-bsrn" id="toc-practice-2.-using-the-dataframe-bsrn" class="nav-link" data-scroll-target="#practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</a></li>
   <li><a href="#practice-3." id="toc-practice-3." class="nav-link" data-scroll-target="#practice-3.">📚 Practice 3.</a></li>
   <li><a href="#practice-4." id="toc-practice-4." class="nav-link" data-scroll-target="#practice-4.">📚 <b> Practice 4.</b></a></li><b>
   <li><a href="#practice-5." id="toc-practice-5." class="nav-link" data-scroll-target="#practice-5.">📚 <b> Practice 5. </b></a></li>
   <li><a href="#practice-6." id="toc-practice-6." class="nav-link" data-scroll-target="#practice-6.">📚 <b> Practice 6. </b></a></li>
   <li><a href="#practice-7." id="toc-practice-7." class="nav-link" data-scroll-target="#practice-7.">📚 <b> Practice 7. </b></a></li>
+  <li><a href="#practice-8." id="toc-practice-8." class="nav-link" data-scroll-target="#practice-8.">📚 <b> Practice 8. </b></a></li>
   </b></ul><b>
 </b></nav>
 </nav>
@@ -167,21 +171,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-0.-setup-steps" class="level2">
 <h2 class="anchored" data-anchor-id="part-0.-setup-steps">Part 0. Setup Steps</h2>
 <ul>
-<li><p>Create a repo on GitHub named <code>eds217-practice-4-1-pandas</code></p></li>
-<li><p>Clone to create a version-controlled project</p></li>
-<li><p>Create some subfolder infrastructure (nbs, data, figs)</p></li>
-<li><p>Create and save a new <del>quarto in RStudio called</del> jupyter notebook (<code>.ipynb</code> file) named <code>practice_4-1_pandas.ipynb</code> in the <code>nbs</code> folder.</p></li>
-<li><p>Open the notebook in VSCode or jupyter notebook/lab</p></li>
-<li><p>Make sure to associate the notebook with the <code>eds217_2023</code> environment.</p></li>
-<li><p>Create a cell that imports your essential data science libraries.</p></li>
+<li>Create a repo on GitHub named <code>eds217-practice-4-1-pandas</code></li>
+<li>Clone to create a version-controlled project</li>
+<li>Create some subfolder infrastructure (nbs, data, figs)</li>
+<li>Create and save a new <del>quarto in RStudio called</del> jupyter notebook (<code>.ipynb</code> file) named <code>practice_4-1_pandas.ipynb</code> in the <code>nbs</code> folder.</li>
+<li>Open the notebook in VSCode or jupyter notebook/lab</li>
+<li>Make sure to associate the notebook with the <code>eds217_2023</code> environment.</li>
+</ul>
+</section>
+<section id="practice-0." class="level2">
+<h2 class="anchored" data-anchor-id="practice-0.">📚 <b> Practice 0. </b></h2>
+<ul>
+<li>Create a cell that imports your essential data science libraries.(<code>numpy</code> as <code>np</code>, <code>matplotlib.pyplot</code> as <code>plt</code> and <code>pandas</code> as <code>pd</code>)</li>
 </ul>
 </section>
 <section id="practice-1." class="level2">
 <h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
-<ol type="1">
-<li>Use a <code>list</code> of <code>list</code>s to construct a DataFrame named <code>df1</code> containing the data in the table below.
+<section id="import-some-radiation-data-for-our-practice-session" class="level3">
+<h3 class="anchored" data-anchor-id="import-some-radiation-data-for-our-practice-session">Import some radiation data for our practice session</h3>
+<p>Use panda’s <code>read_csv()</code> function to import the data from github and create a new DataFrame named <code>bsrn</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/environmental-data-science"</span> \</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"/eds217_2023/main/data/BSRN_GOB_2019-10.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="practice-2.-using-the-dataframe-bsrn" class="level2">
+<h2 class="anchored" data-anchor-id="practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</h2>
+<ol>
+<li type="a">
+Print a list of your DataFrame’s column names.
+</li>
+<li type="a">
+How many values are there in the entire DataFrame?
+</li>
+<li type="a">
+What is the data type of the first column?
 </li>
 </ol>
+</section>
+<section id="practice-3." class="level2">
+<h2 class="anchored" data-anchor-id="practice-3.">📚 Practice 3.</h2>
+<ol>
+<li type="a">
+<p>Create a new DataFrame containing the first record for each day and the following columns: the timestamp of the record, incoming shortwave radiation, direct and diffuse radiation, and incoming longwave radiation. (Hint: the BSRN station collects data every minute).</p>
+</li><li type="a">
+<p>Create a new Series containing the temperature values every hour at the top of the hour.</p>
+</li><li type="a">
+<p>Convert the <code>DATE</code> column to <code>datetime</code> using the <code>pd.to_datetime()</code> function.</p>
+</li><li type="a">
+<p>Set the <code>DATE</code> column as the index of the DataFrame using the <code>set_index()</code> method.</p>
+</li></ol>
+</section>
+<section id="practice-4." class="level2">
+<h2 class="anchored" data-anchor-id="practice-4.">📚 <b> Practice 4.</b></h2><b>
+</b><p><b></b> Calculate the mean incoming shortwave, outgoing shortwave, incoming longwave, and outgoing longwave radiation over the entire month.</p>
+</section>
+<section id="practice-5." class="level2">
+<h2 class="anchored" data-anchor-id="practice-5.">📚 <b> Practice 5. </b></h2>
+<ol>
+<li type="a">
+Add a column <code style="font-weight:normal">‘NET_SW’</code> to <code style="font-weight:normal">bsrn</code> with the net shortwave radiation.
+</li>
+<li type="a">
+Add a column <code style="font-weight:normal">‘NET_LW’</code> to <code style="font-weight:normal">bsrn</code> with the net longwave radiation.
+</li>
+<li type="a">
+<p>Add a column <code style="font-weight:normal">‘NET_RAD’</code> to <code style="font-weight:normal">bsrn</code> with the net total radiation.</p>
+Net radiation is given by the following equation:
+</li>
+<p><span class="math display">R^{}_{N} \, = \,  R^{\, \downarrow}_{SW} \, - \,  R^{\, \uparrow}_{SW} \, + \, R^{\, \downarrow}_{LW} \, - \,  R^{\, \uparrow}_{LW}</span></p>
+<p>where <span class="math inline">R^{\, \downarrow}_{SW}</span> and <span class="math inline">R^{\, \uparrow}_{SW}</span> are incoming and outgoing shortwave radiation, respectively, and <span class="math inline">R^{\, \downarrow}_{LW}</span> and <span class="math inline">R^{\, \uparrow}_{LW}</span> are incoming and outgoing longwave radiation, respectively.</p>
+<li type="a">
+Create a new DataFrame with the day of the month and daily mean values of shortwave incoming, shortwave outgoing, longwave incoming, longwave outgoing radiation, and net total radiation. (Hint: use masking!).
+</li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To get you started, here's some example code to create a new dataframe containing each day, and the average incoming shortwave (solar) radiation, avg_SWD (aka SW_in),  and the average outgoing shortwave (solar) radiation, avg_SWU (aka SW_out):</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>daily_rad <span class="op">=</span> []</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> bsrn.index.day.unique():</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    avg_SWD <span class="op">=</span> bsrn.SWD_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    avg_SWU <span class="op">=</span> bsrn.SWU_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the current day and these two values to our list of daily radiation values:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    daily_rad.append([d, avg_SWD, avg_SWU])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>daily_SW <span class="op">=</span> pd.DataFrame(daily_rad, columns<span class="op">=</span>[<span class="st">'day'</span>, <span class="st">'SW_in'</span>, <span class="st">'SW_out'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</ol>
+</section>
+<section id="practice-6." class="level2">
+<h2 class="anchored" data-anchor-id="practice-6.">📚 <b> Practice 6. </b></h2>
+<ol>
+<li type="a">
+Use a <code>list</code> of <code>list</code>s to construct a DataFrame named <code>df1</code> containing the data in the table below.
+</li>
 <table class="table">
 <thead>
 <tr class="header">
@@ -213,10 +292,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<ol type="1">
-<li>Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
+<ol start="2">
+<li type="a">
+Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
 </li>
-</ol>
 <table class="table">
 <thead>
 <tr class="header">
@@ -253,69 +332,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<br>
-
-</section>
-<section id="import-the-data-for-our-practice-session" class="level2">
-<h2 class="anchored" data-anchor-id="import-the-data-for-our-practice-session">Import the data for our practice session</h2>
-<p>Use panda’s <code>read_csv()</code> function to import the data from github and create a new DataFrame named <code>bsrn</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/environmental-data-science"</span> \</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"/eds217_2023/main/data/BSRN_GOB_2019-10.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="practice-2.-using-the-dataframe-bsrn" class="level2">
-<h2 class="anchored" data-anchor-id="practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</h2>
-<ol>
-<li type="a">
-Print a list of your DataFrame’s column names.
-</li>
-<li type="a">
-How many values are there in the entire DataFrame?
-</li>
-<li type="a">
-What is the data type of the first column?
-</li>
 </ol>
-</section>
-<section id="practice-3." class="level2">
-<h2 class="anchored" data-anchor-id="practice-3.">📚 Practice 3.</h2>
-<ol type="1">
-<li>Create a new DataFrame containing the first record for each day and the following columns: the timestamp of the record, incoming shortwave radiation, direct and diffuse radiation, and incoming longwave radiation. (Hint: the BSRN station collects data every minute).</li>
-<li>Create a new Series containing the temperature values every hour at the top of the hour.</li>
-<li>Convert the <code>DATE</code> column to <code>datetime</code> using the <code>pd.to_datetime()</code> function.</li>
-<li>Set the <code>DATE</code> column as the index of the DataFrame using the <code>set_index()</code> method.</li>
-</ol>
-</section>
-<section id="practice-4." class="level2">
-<h2 class="anchored" data-anchor-id="practice-4.">📚 <b> Practice 4.</b></h2><b>
-</b><p><b></b> Calculate the mean incoming shortwave, outgoing shortwave, incoming longwave, and outgoing longwave radiation over the entire month.</p>
-</section>
-<section id="practice-5." class="level2">
-<h2 class="anchored" data-anchor-id="practice-5.">📚 <b> Practice 5. </b></h2>
-<ol>
+<ol start="3">
 <li type="a">
-Add a column <code style="font-weight:normal">‘NET_SW’</code> to <code style="font-weight:normal">bsrn</code> with the net shortwave radiation.
-</li>
-<li type="a">
-Add a column <code style="font-weight:normal">‘NET_LW’</code> to <code style="font-weight:normal">bsrn</code> with the net longwave radiation.
-</li>
-<li type="a">
-<p>Add a column <code style="font-weight:normal">‘NET_RAD’</code> to <code style="font-weight:normal">bsrn</code> with the net total radiation.</p>
-Net radiation is given by the following equation:
-</li>
-<p><span class="math display">R^{}_{N} \, = \,  R^{\, \downarrow}_{SW} \, - \,  R^{\, \uparrow}_{SW} \, + \, R^{\, \downarrow}_{LW} \, - \,  R^{\, \uparrow}_{LW}</span></p>
-<p>where <span class="math inline">R^{\, \downarrow}_{SW}</span> and <span class="math inline">R^{\, \uparrow}_{SW}</span> are incoming and outgoing shortwave radiation, respectively, and <span class="math inline">R^{\, \downarrow}_{LW}</span> and <span class="math inline">R^{\, \uparrow}_{LW}</span> are incoming and outgoing longwave radiation, respectively.</p>
-<li type="a">
-Create a new DataFrame with the day of the month and daily mean values of shortwave incoming, shortwave outgoing, longwave incoming, longwave outgoing radiation, and net total radiation. (Hint: use masking!).
-</li>
-</ol>
-</section>
-<section id="practice-6." class="level2">
-<h2 class="anchored" data-anchor-id="practice-6.">📚 <b> Practice 6. </b></h2>
-<ol class="alpha">
-<li>
 Concatenate <code>df1</code> and <code>df2</code> into a new DataFrame with all 9 rivers.
 </li>
-<li>
+<li type="a">
 Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, and continent information and add this to your DataFrame from (a) to produce a DataFrame with all of the data in the table below.
 </li>
 </ol>
@@ -424,12 +446,16 @@ Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, an
 </tr>
 </tbody>
 </table>
-</section>
+</ol></section>
 <section id="practice-7." class="level2">
 <h2 class="anchored" data-anchor-id="practice-7.">📚 <b> Practice 7. </b></h2>
-<ol type="1">
-<li>Export your <code>rivers</code> DataFrame to a CSV file in your repository’s data folder.</li>
-<li>Export your <code>bsrn</code> DataFrame to a CSV file in your repository’s data folder.</li>
+<p>Use the <code>plt</code> module to create a visualization of your radiation data and/or the rivers data. There are examples of plotting functions from our prior exercises. Also, don’t be afraid to experiment or try using GitHub CoPilot or ChatGPT to generate some intial code.</p>
+</section>
+<section id="practice-8." class="level2">
+<h2 class="anchored" data-anchor-id="practice-8.">📚 <b> Practice 8. </b></h2>
+<ol type="a">
+<li><p>Export your <code>rivers</code> DataFrame to a CSV file in your repository’s data folder.</p></li>
+<li><p>Export your <code>bsrn</code> DataFrame to a CSV file in your repository’s data folder.</p></li>
 </ol>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 

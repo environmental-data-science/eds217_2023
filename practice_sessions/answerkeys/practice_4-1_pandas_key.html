@@ -128,6 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#part-0.-setup-steps" id="toc-part-0.-setup-steps" class="nav-link active" data-scroll-target="#part-0.-setup-steps">Part 0. Setup Steps</a></li>
+  <li><a href="#practice-0." id="toc-practice-0." class="nav-link" data-scroll-target="#practice-0.">📚 <b> Practice 0. </b></a></li>
   <li><a href="#practice-1." id="toc-practice-1." class="nav-link" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a></li>
   <li><a href="#import-the-data-for-our-practice-session" id="toc-import-the-data-for-our-practice-session" class="nav-link" data-scroll-target="#import-the-data-for-our-practice-session">Import the data for our practice session</a></li>
   <li><a href="#practice-2.-using-the-dataframe-bsrn" id="toc-practice-2.-using-the-dataframe-bsrn" class="nav-link" data-scroll-target="#practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</a></li>
@@ -178,167 +179,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create a cell that imports your essential data science libraries.</p></li>
 </ul>
 </section>
-<section id="practice-1." class="level2">
-<h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
-<ol class="alpha">
-<li>
-Use a list of lists to construct a DataFrame named <code>df1</code> containing the data in the table below.
-</li>
-
-<table style="">
-<tbody><tr style="border-bottom: 1px solid black">
-<th style="text-align:left;">
-River
-</th>
-<th style="text-align:left;">
-Length <span class="math inline">(\text{km})</span>
-</th>
-<th style="text-align:left;">
-Drainage area <span class="math inline">(\text{km}^2)</span>
-</th>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Amazon
-</td>
-<td>
-6400
-</td>
-<td>
-7,050,000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo
-</td>
-<td>
-4371
-</td>
-<td>
-4,014,500
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Yangtze
-</td>
-<td>
-6418
-</td>
-<td>
-1,808,500
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Mississippi
-</td>
-<td>
-3730
-</td>
-<td>
-3,202,230
-</td>
-</tr>
-
-</tbody></table>
-<br>
-<li>
-Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
-</li>
-
-<table style="">
-<tbody><tr style="border-bottom: 1px solid black">
-<th style="text-align:left;">
-River
-</th>
-<th style="text-align:left;">
-Length <span class="math inline">(\text{km})</span>
-</th>
-<th style="text-align:left;">
-Drainage area <span class="math inline">(\text{km}^2)</span>
-</th>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Zambezi
-</td>
-<td>
-2574
-</td>
-<td>
-1,331,000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mekong
-</td>
-<td>
-4023
-</td>
-<td>
-811,000
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Murray
-</td>
-<td>
-2508
-</td>
-<td>
-1,061,469
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Rhône
-</td>
-<td>
-813
-</td>
-<td>
-98,000
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Cubango
-</td>
-<td>
-1056
-</td>
-<td>
-530,000
-</td>
-</tr>
-
-</tbody></table>
-<br>
-</ol>
-<div class="cell" data-execution_count="6">
+<section id="practice-0." class="level2">
+<h2 class="anchored" data-anchor-id="practice-0.">📚 <b> Practice 0. </b></h2>
+<ul>
+<li>Create a cell that imports your essential data science libraries.(<code>numpy</code> as <code>np</code>, <code>matplotlib.pyplot</code> as <code>plt</code> and <code>pandas</code> as <code>pd</code>)</li>
+</ul>
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1a. Construct df1 from list of lists</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame([[<span class="st">'Amazon'</span>, <span class="dv">6400</span>, <span class="dv">7050000</span>], </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Congo'</span>, <span class="dv">4371</span>, <span class="dv">4014500</span>],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Yangtze'</span>, <span class="dv">6418</span>, <span class="dv">1808500</span>],</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Mississippi'</span>, <span class="dv">3730</span>, <span class="dv">3202230</span>]],</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                   columns<span class="op">=</span>[<span class="st">'RIVER'</span>, <span class="st">'LENGTH_km'</span>, <span class="st">'DRAINAGE_AREA_km2'</span>])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1b. Construct df2 from dict</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'RIVER'</span>: [<span class="st">'Zambezi'</span>, <span class="st">'Mekong'</span>, <span class="st">'Murray'</span>, <span class="st">'Rhone'</span>, <span class="st">'Cubango'</span>],</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'LENGTH_km'</span>: [<span class="dv">2574</span>, <span class="dv">4023</span>, <span class="dv">2508</span>, <span class="dv">813</span>, <span class="dv">1056</span>],</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'DRAINAGE_AREA_km2'</span>: [<span class="dv">1331000</span>, <span class="dv">811000</span>, <span class="dv">1061469</span>, <span class="dv">98000</span>, <span class="dv">530000</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
+<section id="practice-1." class="level2">
+<h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
+</section>
 <section id="import-the-data-for-our-practice-session" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-data-for-our-practice-session">Import the data for our practice session</h2>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
@@ -359,7 +219,7 @@ How many values are there in the entire DataFrame?
 What is the data type of the first column?
 </li>
 </ol>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2a. Print a list of column names</span></span>
@@ -388,7 +248,7 @@ Create a new DataFrame containing the first record for each day and the followin
 Create a new Series containing the temperature values every hour at the top of the hour.
 </li>
 </ol>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daily radiation data</span></span>
@@ -398,31 +258,28 @@ Create a new Series containing the temperature values every hour at the top of t
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>temp_hr <span class="op">=</span> bsrn.T_degC[::<span class="dv">60</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="run">
-<pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
-</div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert bsrn.DATE column to datetime objects</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'DATE'</span>] <span class="op">=</span> pd.to_datetime(bsrn.DATE)  <span class="co"># Note: overwriting a column like this is NOT recommended.</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bsrn.DATE as the DataFrame index</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>bsrn.set_index(<span class="st">'DATE'</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert bsrn.DATE column to datetime objects</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'DATE'</span>] <span class="op">=</span> pd.to_datetime(bsrn.DATE)  <span class="co"># Note: overwriting a column like this is NOT recommended.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bsrn.DATE as the DataFrame index</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bsrn.set_index(<span class="st">'DATE'</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="practice-4." class="level2">
 <h2 class="anchored" data-anchor-id="practice-4.">📚 <b> Practice 4.</b></h2><b>
 </b><p><b></b> Calculate the mean incoming shortwave, outgoing shortwave, incoming longwave, and outgoing longwave radiation over the entire month.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Mean SW in, SW out, LW in, LW out</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean SW incoming radiation = '</span>, bsrn.SWD_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean SW outgoing radiation = '</span>, bsrn.SWU_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean LW incoming radiation = '</span>, bsrn.LWD_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean LW outgoing radiation = '</span>, bsrn.LWU_Wm2.mean(), <span class="st">' W m-2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Mean SW in, SW out, LW in, LW out</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean SW incoming radiation = '</span>, bsrn.SWD_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean SW outgoing radiation = '</span>, bsrn.SWU_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean LW incoming radiation = '</span>, bsrn.LWD_Wm2.mean(), <span class="st">' W m-2'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean LW outgoing radiation = '</span>, bsrn.LWU_Wm2.mean(), <span class="st">' W m-2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean SW incoming radiation =  318.0465157965494  W m-2
@@ -451,42 +308,42 @@ Net radiation is given by the following equation:
 Create a new DataFrame with the day of the month and daily mean values of shortwave incoming, shortwave outgoing, longwave incoming, longwave outgoing radiation, and net total radiation. (Hint: use masking!).
 </li>
 </ol>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5a. Net SW radiation</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_SW'</span>] <span class="op">=</span> bsrn.SWD_Wm2 <span class="op">-</span> bsrn.SWU_Wm2</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 5b. Net LW radiation</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_LW'</span>] <span class="op">=</span> bsrn.LWD_Wm2 <span class="op">-</span> bsrn.LWU_Wm2</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5c. Net total radiation</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_RAD'</span>] <span class="op">=</span> bsrn.SWD_Wm2 <span class="op">-</span> bsrn.SWU_Wm2 <span class="op">+</span> bsrn.LWD_Wm2 <span class="op">-</span> bsrn.LWU_Wm2</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 5d. Mean daily SW in, SW out, LW in, LW out, R_net</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty list</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>daily_rad_list <span class="op">=</span> []</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through unique day values</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> bsrn.index.day.unique():</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SW in</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    swd <span class="op">=</span> bsrn.SWD_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SW out</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    swu <span class="op">=</span> bsrn.SWU_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LW in</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    lwd <span class="op">=</span> bsrn.LWD_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LW out</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    lwu <span class="op">=</span> bsrn.LWU_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Net total</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    rnet <span class="op">=</span> swd <span class="op">-</span> swu <span class="op">+</span> lwd <span class="op">-</span> lwu</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add all values to a list of lists</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    daily_rad_list.append([d, swd, swu, lwd, lwu, rnet])</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to DataFrame</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>daily_rad <span class="op">=</span> pd.DataFrame(daily_rad_list, columns<span class="op">=</span>[<span class="st">'DAY'</span>, <span class="st">'SW_in'</span>, <span class="st">'SW_out'</span>, <span class="st">'LW_in'</span>, <span class="st">'LW_out'</span>, <span class="st">'R_NET'</span>])</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>daily_rad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5a. Net SW radiation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_SW'</span>] <span class="op">=</span> bsrn.SWD_Wm2 <span class="op">-</span> bsrn.SWU_Wm2</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 5b. Net LW radiation</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_LW'</span>] <span class="op">=</span> bsrn.LWD_Wm2 <span class="op">-</span> bsrn.LWU_Wm2</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 5c. Net total radiation</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'NET_RAD'</span>] <span class="op">=</span> bsrn.SWD_Wm2 <span class="op">-</span> bsrn.SWU_Wm2 <span class="op">+</span> bsrn.LWD_Wm2 <span class="op">-</span> bsrn.LWU_Wm2</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 5d. Mean daily SW in, SW out, LW in, LW out, R_net</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty list</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>daily_rad_list <span class="op">=</span> []</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through unique day values</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> bsrn.index.day.unique():</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SW in</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    swd <span class="op">=</span> bsrn.SWD_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SW out</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    swu <span class="op">=</span> bsrn.SWU_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LW in</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    lwd <span class="op">=</span> bsrn.LWD_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LW out</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    lwu <span class="op">=</span> bsrn.LWU_Wm2[bsrn.index.day <span class="op">==</span> d].mean()</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Net total</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    rnet <span class="op">=</span> swd <span class="op">-</span> swu <span class="op">+</span> lwd <span class="op">-</span> lwu</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add all values to a list of lists</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    daily_rad_list.append([d, swd, swu, lwd, lwu, rnet])</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to DataFrame</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>daily_rad <span class="op">=</span> pd.DataFrame(daily_rad_list, columns<span class="op">=</span>[<span class="st">'DAY'</span>, <span class="st">'SW_in'</span>, <span class="st">'SW_out'</span>, <span class="st">'LW_in'</span>, <span class="st">'LW_out'</span>, <span class="st">'R_NET'</span>])</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>daily_rad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -788,6 +645,22 @@ Create a new DataFrame with the day of the month and daily mean values of shortw
 </div>
 </div>
 </div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7a. Construct df1 from list of lists</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame([[<span class="st">'Amazon'</span>, <span class="dv">6400</span>, <span class="dv">7050000</span>], </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Congo'</span>, <span class="dv">4371</span>, <span class="dv">4014500</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Yangtze'</span>, <span class="dv">6418</span>, <span class="dv">1808500</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Mississippi'</span>, <span class="dv">3730</span>, <span class="dv">3202230</span>]],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                   columns<span class="op">=</span>[<span class="st">'RIVER'</span>, <span class="st">'LENGTH_km'</span>, <span class="st">'DRAINAGE_AREA_km2'</span>])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 7b. Construct df2 from dict</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'RIVER'</span>: [<span class="st">'Zambezi'</span>, <span class="st">'Mekong'</span>, <span class="st">'Murray'</span>, <span class="st">'Rhone'</span>, <span class="st">'Cubango'</span>],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'LENGTH_km'</span>: [<span class="dv">2574</span>, <span class="dv">4023</span>, <span class="dv">2508</span>, <span class="dv">813</span>, <span class="dv">1056</span>],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'DRAINAGE_AREA_km2'</span>: [<span class="dv">1331000</span>, <span class="dv">811000</span>, <span class="dv">1061469</span>, <span class="dv">98000</span>, <span class="dv">530000</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="practice-6." class="level2">
 <h2 class="anchored" data-anchor-id="practice-6.">📚 <b> Practice 6. </b></h2>
@@ -904,7 +777,7 @@ Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, an
 </tr>
 </tbody>
 </table>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6a. Concatenate df1 and df2</span></span>
@@ -926,7 +799,7 @@ Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, an
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>rivers <span class="op">=</span> pd.concat([rivs,df3], axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>rivers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -1044,7 +917,7 @@ Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, an
 <section id="practice-7." class="level2">
 <h2 class="anchored" data-anchor-id="practice-7.">📚 <b> Practice 7. </b></h2>
 <p>Export your <code>rivers</code> DataFrame to a CSV file in the <code>exports</code> folder.</p>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="10">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Export rivers</span></span>
