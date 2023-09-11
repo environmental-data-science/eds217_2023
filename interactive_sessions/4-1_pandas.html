@@ -131,29 +131,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction-to-pandas" id="toc-introduction-to-pandas" class="nav-link" data-scroll-target="#introduction-to-pandas">Introduction to pandas</a>
   <ul class="collapse">
   <li><a href="#series-and-dataframe-objects" id="toc-series-and-dataframe-objects" class="nav-link" data-scroll-target="#series-and-dataframe-objects"><code>Series</code> and <code>DataFrame</code> objects</a></li>
-  </ul></li>
-  <li><a href="#practice-1." id="toc-practice-1." class="nav-link" data-scroll-target="#practice-1.">📚 <b> Practice 1. </b></a>
-  <ul class="collapse">
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
   <li><a href="#examining-your-dataframe" id="toc-examining-your-dataframe" class="nav-link" data-scroll-target="#examining-your-dataframe">Examining your DataFrame</a></li>
-  </ul></li>
-  <li><a href="#practice-2.-using-the-dataframe-bsrn" id="toc-practice-2.-using-the-dataframe-bsrn" class="nav-link" data-scroll-target="#practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</a>
-  <ul class="collapse">
   <li><a href="#dataframe-indexing-data-selection" id="toc-dataframe-indexing-data-selection" class="nav-link" data-scroll-target="#dataframe-indexing-data-selection">DataFrame indexing + data selection</a></li>
-  </ul></li>
-  <li><a href="#practice-3." id="toc-practice-3." class="nav-link" data-scroll-target="#practice-3.">📚 Practice 3.</a>
-  <ul class="collapse">
   <li><a href="#datetime-objects" id="toc-datetime-objects" class="nav-link" data-scroll-target="#datetime-objects"><code>Datetime</code> objects</a></li>
   <li><a href="#a-few-useful-operations" id="toc-a-few-useful-operations" class="nav-link" data-scroll-target="#a-few-useful-operations">A few useful operations</a></li>
-  </ul></li>
-  <li><a href="#practice-4." id="toc-practice-4." class="nav-link" data-scroll-target="#practice-4.">📚 <b> Practice 4. </b></a></li>
-  <li><a href="#practice-5." id="toc-practice-5." class="nav-link" data-scroll-target="#practice-5.">📚 <b> Practice 5. </b></a></li>
-  <li><a href="#practice-6." id="toc-practice-6." class="nav-link" data-scroll-target="#practice-6.">📚 <b> Practice 6. </b></a>
-  <ul class="collapse">
   <li><a href="#data-export" id="toc-data-export" class="nav-link" data-scroll-target="#data-export">Data export</a></li>
-  </ul></li>
-  <li><a href="#practice-7." id="toc-practice-7." class="nav-link" data-scroll-target="#practice-7.">📚 <b> Practice 7. </b></a>
-  <ul class="collapse">
   <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations">Congratulations!</a></li>
   </ul></li>
   </ul>
@@ -389,152 +372,8 @@ dtype: float64
 <p>Using this method, each <code>key</code> corresponds to a column name, and each <code>value</code> is a column.</p>
 </section>
 </section>
-</section>
-<section id="practice-1." class="level2">
-<h2 class="anchored" data-anchor-id="practice-1.">📚 <b> Practice 1. </b></h2>
-<ol class="alpha">
-<li>
-Use a list of lists to construct a DataFrame named <code>df1</code> containing the data in the table below.
-</li>
-
-<table style="">
-<tbody><tr style="border-bottom: 1px solid black">
-<th style="text-align:left;">
-River
-</th>
-<th style="text-align:left;">
-Length <span class="math inline">(\text{km})</span>
-</th>
-<th style="text-align:left;">
-Drainage area <span class="math inline">(\text{km}^2)</span>
-</th>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Amazon
-</td>
-<td>
-6400
-</td>
-<td>
-7,050,000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo
-</td>
-<td>
-4371
-</td>
-<td>
-4,014,500
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Yangtze
-</td>
-<td>
-6418
-</td>
-<td>
-1,808,500
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Mississippi
-</td>
-<td>
-3730
-</td>
-<td>
-3,202,230
-</td>
-</tr>
-
-</tbody></table>
-<p><br></p>
-<ol start="2">
-<li>
-Use a <code>dict</code> to construct a DataFrame named <code>df2</code> containing the data in the table below.
-</li>
-
-<table style="">
-<tbody><tr style="border-bottom: 1px solid black">
-<th style="text-align:left;">
-River
-</th>
-<th style="text-align:left;">
-Length <span class="math inline">(\text{km})</span>
-</th>
-<th style="text-align:left;">
-Drainage area <span class="math inline">(\text{km}^2)</span>
-</th>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Zambezi
-</td>
-<td>
-2574
-</td>
-<td>
-1,331,000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mekong
-</td>
-<td>
-4023
-</td>
-<td>
-811,000
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Murray
-</td>
-<td>
-2508
-</td>
-<td>
-1,061,469
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Rhône
-</td>
-<td>
-813
-</td>
-<td>
-98,000
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Cubango
-</td>
-<td>
-1056
-</td>
-<td>
-530,000
-</td>
-</tr>
-
-</tbody></table>
-<br>
-</ol>
-</ol></section></main></div>
 <section id="importing-data" class="level3">
-<h3 data-anchor-id="importing-data">Importing data</h3>
+<h3 class="anchored" data-anchor-id="importing-data">Importing data</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>While you will likely create many DataFrames from scratch throughout your code, in most cases, you’ll have some data you’d like to import as a starting point. Pandas has <a href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">several functions</a> to read in data from a variety of formats. For now, we’ll focus on reading in data from plain-text flat files.</p>
@@ -1029,14 +868,14 @@ read_csv(filepath_or_buffer: 'FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[st
 Copy and paste the code above to import the data in the CSV file into a pandas &lt;code&gt;DataFrame&lt;/code&gt; named &lt;code&gt;bsrn&lt;/code&gt;.</code></pre>
 </div>
 <section id="a-bit-of-housekeeping" class="level4">
-<h4 data-anchor-id="a-bit-of-housekeeping">A bit of housekeeping</h4>
+<h4 class="anchored" data-anchor-id="a-bit-of-housekeeping">A bit of housekeeping</h4>
 <p><img src="assets/mariekondo.png" alt="mariekondo" width="400"></p>
 <p>Before we move on into viewing and operating on the DataFrame, it’s worth noting that data import is rarely ever this straightforward. Most raw data require considerable cleaning before they are ready for analysis. Often some of this must happen outside of Python to format the data for import, but ideally the majority of data preprocessing can be conducted in Python – allowing you to perform the same operations on multiple datasets at once and making the process easily repeatable.</p>
 <p><img src="assets/datacleaning.jpg" alt="datacleaning" width="800"></p>
 </section>
 </section>
 <section id="examining-your-dataframe" class="level3">
-<h3 data-anchor-id="examining-your-dataframe">Examining your DataFrame</h3>
+<h3 class="anchored" data-anchor-id="examining-your-dataframe">Examining your DataFrame</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>Now that we’ve loaded in our data, it would be useful to take a look at it. Given the size of our <code>bsrn</code> DataFrame, however, we can’t simply print out the entire table. The <code>df.head()</code> method allows us to quickly view the first five rows.</p>
@@ -1133,22 +972,8 @@ Print the first and last 10 rows of &lt;code&gt;bsrn&lt;/code&gt; using &lt;code
 </tbody>
 </table>
 </section>
-
-<section id="practice-2.-using-the-dataframe-bsrn" class="level2">
-<h2 data-anchor-id="practice-2.-using-the-dataframe-bsrn">📚 Practice 2. Using the DataFrame <code>bsrn</code>:</h2>
-<ol class="alpha">
-<li>
-Print a list of column names.
-</li>
-<li>
-How many values are there in the entire DataFrame?
-</li>
-<li>
-What is the data type of the first column?
-</li>
-</ol>
 <section id="dataframe-indexing-data-selection" class="level3">
-<h3 data-anchor-id="dataframe-indexing-data-selection">DataFrame indexing + data selection</h3>
+<h3 class="anchored" data-anchor-id="dataframe-indexing-data-selection">DataFrame indexing + data selection</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>Because DataFrames can contain <em>labels</em> as well as <em>indices</em>, indexing in pandas DataFrames is a bit more complicated than we’ve seen with strings, lists, and arrays. Generally speaking, pandas allows indexing by either the integer index or the label, but the syntax is a bit different for each.</p>
@@ -1195,7 +1020,7 @@ What is the data type of the first column?
 [1116 rows x 5 columns] 
 
 <section id="row-indexing" class="level4">
-<h4 data-anchor-id="row-indexing">Row indexing</h4>
+<h4 class="anchored" data-anchor-id="row-indexing">Row indexing</h4>
 <p>In addition to <code>df.iloc</code>, rows of a DataFrame can be accessed using <code>df.loc</code>, which “locates” rows based on their labels. Unless you have set a custom index (which we will see later), the row “labels” are the same as the integer index.</p>
 <p>When indexing a single row, <code>df.loc</code> (like <code>df.iloc</code>) transforms the row into a <code>Series</code>, with the column names as the index:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classic indexing</span></span>
@@ -1244,7 +1069,7 @@ Name: 1434, dtype: object
 
 </section>
 <section id="column-indexing" class="level4">
-<h4 data-anchor-id="column-indexing">Column indexing</h4>
+<h4 class="anchored" data-anchor-id="column-indexing">Column indexing</h4>
 <p>In addition to integer indexing with <code>df.iloc</code>, columns can be accessed in two ways: dot notation <code>.</code> or square brackets <code>[]</code>. The former takes advantage of the fact that the columns are effectively “attributes” of the DataFrame and returns a Series:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>bsrn.SWD_Wm2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
@@ -1320,19 +1145,8 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 <p>When accessing a single column, the choice between using dot notation and square brackets is more or less a matter of preference. However, there are occasions when the bracket notation proves particularly useful. For example, you could access each column in a DataFrame by iterating through <code>df.columns</code>, which returns an <code>Index</code> object containing the column names as <code>str</code> objects that can be directly passed to the index operator. Additionally, you may find it useful to use the double bracket syntax to return a <code>DataFrame</code> object, rather than a <code>Series</code>, which can only ever contain a single column of data.</p>
 </section>
 </section>
-</section>
-<section id="practice-3." class="level2">
-<h2 data-anchor-id="practice-3.">📚 Practice 3.</h2>
-<ol class="alpha">
-<li>
-Create a new DataFrame containing the first record for each day and the following columns: the timestamp of the record, incoming shortwave radiation, direct and diffuse radiation, and incoming longwave radiation. (Hint: the BSRN station collects data every minute).
-</li>
-<li>
-Create a new Series containing the temperature values every hour at the top of the hour.
-</li>
-</ol>
 <section id="datetime-objects" class="level3">
-<h3 data-anchor-id="datetime-objects"><code>Datetime</code> objects</h3>
+<h3 class="anchored" data-anchor-id="datetime-objects"><code>Datetime</code> objects</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>Like the BSRN data we are working with in this session, many environmental datasets include timed records. Python has a few different libraries for dealing with timestamps, which are referred to as <strong>datetime</strong> objects. The standard <a href="https://docs.python.org/3/library/datetime.html"><strong><code>datetime</code></strong></a> library is the primary way of manipulating dates and times in Python, but there are additional third-party packages that provide additional support. A few worth exploring are <a href="https://dateutil.readthedocs.io/en/stable/"><strong><code>dateutil</code></strong></a>, an extension of the datetime library useful for parsing timestamps, and <a href="http://pytz.sourceforge.net"><strong><code>pytz</code></strong></a>, which provides a smooth way of tackling time zones.</p>
@@ -1383,7 +1197,7 @@ Create a new Series containing the temperature values every hour at the top of t
 <span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, freq<span class="op">=</span><span class="st">'M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There are many other parameters for the <code>pd.date_range()</code> function, as well as other pandas functions. More useful to us, however, are the functions for dealing with <em>existing</em> timestamps, such as those in our <code>bsrn</code> DataFrame.</p>
 <section id="parsing-dates-in-pandas" class="level4">
-<h4 data-anchor-id="parsing-dates-in-pandas">Parsing dates in pandas</h4>
+<h4 class="anchored" data-anchor-id="parsing-dates-in-pandas">Parsing dates in pandas</h4>
 <p>Let’s start by taking a look at <code>bsrn.DATE</code>, which contains the timestamps for each record of our BSRN data.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bsrn.DATE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
@@ -1505,12 +1319,12 @@ dtype='int64', name='DATE')
 </section>
 </section>
 <section id="a-few-useful-operations" class="level3">
-<h3 data-anchor-id="a-few-useful-operations">A few useful operations</h3>
+<h3 class="anchored" data-anchor-id="a-few-useful-operations">A few useful operations</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>Now that our DataFrame is a bit cleaner – each of the columns contains a single, numeric data type – we are ready to start working with our data. Next, we’ll explore <code>DataFrame</code> reduction operations, how to add and delete data, and concatenation in pandas.</p>
 <section id="dataframe-reduction" class="level4">
-<h4 data-anchor-id="dataframe-reduction"><code>DataFrame</code> reduction</h4>
+<h4 class="anchored" data-anchor-id="dataframe-reduction"><code>DataFrame</code> reduction</h4>
 <p>Much like NumPy, pandas has several useful methods for <em>reducing</em> data to a single statistic. These are intuitively named and include: <code>df.mean()</code>, <code>df.median()</code>, <code>df.sum()</code>, <code>df.max()</code>, <code>df.min()</code>, and <code>df.std()</code>. Unlike array reduction, however, these basic statistical methods in pandas operate <em>column-wise</em>, returning a Series containing the statistic for each column indexed by column name. For example:</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of each column</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>bsrn.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1546,13 +1360,8 @@ dtype: float64
 </p>
 <p>Furthermore, while it is not apparent in this example, pandas default behaviour is to <strong>ignore NaN values</strong> when performing computations. This can be changed by passing <code>skipna=False</code> to the reduction method (e.g.&nbsp;<code>df.median(skipna=False)</code>), though skipping NaNs is often quite useful!</p>
 </section>
-</section>
-</section>
-<section id="practice-4." class="level2">
-<h2 data-anchor-id="practice-4.">📚 <b> Practice 4. </b></h2>
-<p>Calculate the mean incoming shortwave, outgoing shortwave, incoming longwave, and outgoing longwave radiation over the entire month.</p>
 <section id="adding-data" class="level4">
-<h4 data-anchor-id="adding-data">Adding data</h4>
+<h4 class="anchored" data-anchor-id="adding-data">Adding data</h4>
 <p>Much like when we converted <code>bsrn.DATE</code> to <code>datetime</code> objects, a column can be added to a DataFrame using square bracket notation with a new column label as a string. The data for the new column can come in the form of a list, Series, or a single value:</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
@@ -1669,7 +1478,7 @@ dtype: float64
 </blockquote>
 </section>
 <section id="removing-data" class="level4">
-<h4 data-anchor-id="removing-data">Removing data</h4>
+<h4 class="anchored" data-anchor-id="removing-data">Removing data</h4>
 <p>Unlike adding new data columns, <em>removing</em> columns from a DataFrame should be done with caution. In fact, it’s not a bad idea to create a copy of your DataFrame before performing <em>any</em> operations. This will allow you to return to the original data as needed without having to re-import or re-initialize the DataFrame. If you do need to remove a column, you can use the <code>del</code> command:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete 'G' from df</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df[<span class="st">'G'</span>]</span>
@@ -1710,7 +1519,7 @@ dtype: float64
 </blockquote>
 </section>
 <section id="applying-functions" class="level4">
-<h4 data-anchor-id="applying-functions">Applying functions</h4>
+<h4 class="anchored" data-anchor-id="applying-functions">Applying functions</h4>
 <p>In addition to manipulating individual columns, you can apply a function to an entire Series or DataFrame using the pandas function <code>df.apply()</code>. For example, consider our original DataFrame <code>df</code>, which consists of temperature values in °C:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],[<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],[<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
@@ -1796,26 +1605,8 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 </section>
-</section>
-<section id="practice-5." class="level2">
-<h2 data-anchor-id="practice-5.">📚 <b> Practice 5. </b></h2>
-<ol class="alpha">
-<li>
-Add a column <code style="font-weight:normal">‘NET_SW’</code> to <code style="font-weight:normal">bsrn</code> with the net shortwave radiation.
-</li>
-<li>
-Add a column <code style="font-weight:normal">‘NET_LW’</code> to <code style="font-weight:normal">bsrn</code> with the net longwave radiation.
-</li>
-<li>
-Add a column <code style="font-weight:normal">‘NET_RAD’</code> to <code style="font-weight:normal">bsrn</code> with the net total radiation. Net radiation is given by the following equation:
-</li>
-<span class="math display">R^{}_{N} \, = \,  R^{\, \downarrow}_{SW} \, - \,  R^{\, \uparrow}_{SW} \, + \, R^{\, \downarrow}_{LW} \, - \,  R^{\, \uparrow}_{LW}</span> where <span class="math inline">R^{\, \downarrow}_{SW}</span> and <span class="math inline">R^{\, \uparrow}_{SW}</span> are incoming and outgoing shortwave radiation, respectively, and <span class="math inline">R^{\, \downarrow}_{LW}</span> and <span class="math inline">R^{\, \uparrow}_{LW}</span> are incoming and outgoing longwave radiation, respectively.
-<li>
-Create a new DataFrame with the day of the month and daily mean values of shortwave incoming, shortwave outgoing, longwave incoming, longwave outgoing radiation, and net total radiation. (Hint: use masking!).
-</li>
-</ol>
 <section id="combining-dataframes" class="level4">
-<h4 data-anchor-id="combining-dataframes">Combining DataFrames</h4>
+<h4 class="anchored" data-anchor-id="combining-dataframes">Combining DataFrames</h4>
 <p>There are several ways to combine data from multiple Series or DataFrames into a single object in pandas. These functions include <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.append.html#pandas.DataFrame.append"><code>pd.append()</code></a>, <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join"><code>pd.join()</code></a>, and <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html#pandas.DataFrame.merge"><code>pd.merge()</code></a>. We will focus on the general <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html"><code>pd.concat()</code></a> function, which is the most versatile way to concatenate pandas objects. To learn more about these other functions, refer to the pandas documentation or see <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781491912126/3dot-data-manipulation-with-pandas/introduction_to_pandas_html"> Chapter 3</a> of the <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781491912126"> <i>Python Data Science Handbook</i></a>.</p>
 <p>Let’s start by considering the simplest case of two DataFrames with identical columns:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame([[<span class="st">'Los Angeles'</span>, <span class="fl">34.0522</span>, <span class="op">-</span><span class="fl">118.2437</span>],</span>
@@ -1934,264 +1725,16 @@ Create a new DataFrame with the day of the month and daily mean values of shortw
 </blockquote>
 </section>
 </section>
-<section id="practice-6." class="level2">
-<h2 data-anchor-id="practice-6.">📚 <b> Practice 6. </b></h2>
-<ol class="alpha">
-<li>
-Concatenate <code>df1</code> and <code>df2</code> into a new DataFrame with all 9 rivers.
-</li>
-<li>
-Create a new DataFrame <code>rivers</code> with the discharge, mouth, source, and continent information and add this to your DataFrame from (a) to produce a DataFrame with all of the data in the table below.
-</li>
-</ol>
-
-<table style="">
-<tbody><tr style="border-bottom: 1px solid black">
-<th style="text-align:left;">
-River
-</th>
-<th style="text-align:left;">
-Length <span class="math inline">(\text{km})</span>
-</th>
-<th style="text-align:left;">
-Drainage area <span class="math inline">(\text{km}^2)</span>
-</th>
-<th style="text-align:left;">
-Discharge <span class="math inline">(\text{m}^3/\text{s})</span>
-</th>
-<th style="text-align:left;">
-Mouth
-</th>
-<th style="text-align:left;">
-Source
-</th>
-<th style="text-align:left;">
-Continent
-</th>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Amazon
-</td>
-<td>
-6400
-</td>
-<td>
-7,050,000
-</td>
-<td>
-209,000
-</td>
-<td style="text-align:left;">
-Atlantic Ocean
-</td>
-<td style="text-align:left;">
-Rio Mantaro
-</td>
-<td style="text-align:left;">
-South America
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo
-</td>
-<td>
-4371
-</td>
-<td>
-4,014,500
-</td>
-<td>
-41,200
-</td>
-<td style="text-align:left;">
-Atlantic Ocean
-</td>
-<td style="text-align:left;">
-Lualaba River
-</td>
-<td style="text-align:left;">
-Africa
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Yangtze
-</td>
-<td>
-6418
-</td>
-<td>
-1,808,500
-</td>
-<td>
-30,166
-</td>
-<td style="text-align:left;">
-East China Sea
-</td>
-<td style="text-align:left;">
-Jianggendiru Glacier
-</td>
-<td style="text-align:left;">
-Asia
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Mississippi
-</td>
-<td>
-3730
-</td>
-<td>
-3,202,230
-</td>
-<td>
-16,792
-</td>
-<td style="text-align:left;">
-Gulf of Mexico
-</td>
-<td style="text-align:left;">
-Lake Itasca
-</td>
-<td style="text-align:left;">
-North America
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left;">
-Zambezi
-</td>
-<td>
-2574
-</td>
-<td>
-1,331,000
-</td>
-<td>
-3,400
-</td>
-<td style="text-align:left;">
-Indian Ocean
-</td>
-<td style="text-align:left;">
-Miombo Woodlands
-</td>
-<td style="text-align:left;">
-Africa
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mekong
-</td>
-<td>
-4023
-</td>
-<td>
-811,000
-</td>
-<td>
-16,000
-</td>
-<td style="text-align:left;">
-South China Sea
-</td>
-<td style="text-align:left;">
-Lasagongma Spring
-</td>
-<td style="text-align:left;">
-Asia
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Murray
-</td>
-<td>
-2508
-</td>
-<td>
-1,0614,69
-</td>
-<td>
-767
-</td>
-<td style="text-align:left;">
-Southern Ocean
-</td>
-<td style="text-align:left;">
-Australian Alps
-</td>
-<td style="text-align:left;">
-Oceania
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Rhône
-</td>
-<td>
-813
-</td>
-<td>
-98,000
-</td>
-<td>
-1,710
-</td>
-<td style="text-align:left;">
-Mediterranean Sea
-</td>
-<td style="text-align:left;">
-Rhône Glacier
-</td>
-<td style="text-align:left;">
-Europe
-</td>
-</tr>
-<tr style="background-color: #c9e6e8;">
-<td style="text-align:left">
-Cubango
-</td>
-<td>
-1056
-</td>
-<td>
-530,000
-</td>
-<td>
-475
-</td>
-<td style="text-align:left;">
-Okavango Delta
-</td>
-<td style="text-align:left;">
-Bié Plateau
-</td>
-<td style="text-align:left;">
-Africa
-</td>
-</tr>
-
-</tbody></table>
 <section id="data-export" class="level3">
-<h3 data-anchor-id="data-export">Data export</h3>
+<h3 class="anchored" data-anchor-id="data-export">Data export</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>While you will most likely use pandas DataFrames to manipulate data, perform statistical analyses, and visualize results <em>within</em> Python, you may encounter scenarios where it is useful to “save” a DataFrame with which you’ve been working. Exporting data from pandas is analogous to importing it.</p>
 <p>Let’s take the example of the <code>cities</code> DataFrame we created in the last example. Now that we’ve compiled GPS coordinates of various cities, let’s say we wanted to load these data into a GIS software application. We could export this DataFrame using <code>df.to_csv()</code> specifying the file name with the full file path as follows:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>cities.to_csv(<span class="st">'./exports/cities.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="practice-7." class="level2">
-<h2 data-anchor-id="practice-7.">📚 <b> Practice 7. </b></h2>
-<p>Using the example above, export your <code>rivers</code> DataFrame to a CSV file in a local <code>data</code> folder. Make sure you have created a <code>data</code> folder in your local copy of the course repository first!</p>
 <section id="congratulations" class="level3">
-<h3 data-anchor-id="congratulations">Congratulations!</h3>
+<h3 class="anchored" data-anchor-id="congratulations">Congratulations!</h3>
 <p>You made it to the end of your first journey with Pandas. You deserve a warm, fuzzy reward…</p>
 <div class="cell" data-scrolled="true">
 <details>
@@ -2209,23 +1752,12 @@ Africa
 </div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IGNORE THIS CELL</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> css_styling():</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>    styles <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./styles/exercises.css"</span>, <span class="st">"r"</span>).read()</span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HTML(styles)</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>css_styling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
 
 
 </section>
 </section>
 
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -2459,7 +1991,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 
