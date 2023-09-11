@@ -771,11 +771,8 @@ read_csv(filepath_or_buffer: 'FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[st
 </div>
 <p>As you can see, <code>pd.read_csv()</code> has <em>quite a few</em> parameters. Don’t be overwhelmed –&nbsp;most of these are optional arguments that allow you to specify exactly how your data file is structured and which part(s) you want to import. In particular, the <code>sep</code> parameter allows the user to specify the type of delimiter used in the file. The default is a comma, but you can actually pass other common delimiters (such as <code>sep='\t'</code>, which is a tab) to import other delimited files. The only <em>required</em> argument is a string specifying the filepath of your file.</p>
 <p>In this session, we’ll be importing a CSV file containing radiation data for October 2019 from a Baseline Surface Radiation Network (BSRN) station in Southern Africa. <a href="https://bsrn.awi.de">BSRN</a> is a Global Energy and Water Cycle Experiment project aimed at monitoring changes in the Earth’s surface radiation field. The network is comprised of 64 stations across various climate zones across the globe, whose data are used as the global baseline for surface radiation by the Global Climate Observing System.</p>
-<p>The CSV file is located in the <a href="../data">data</a> folder on the course GitHub repository. The files should already by in your private repo. If you don’t see the file, you can copy it over from our course master directory by typing the following command:</p>
-<p style="margin-left:60pt">
-<code>cp -R EDS217/data eds-217/data</code>
-</p>
-<p>While the file may not display properly on the server, the first 10 lines of the file should look like:</p>
+<p>The CSV file is located in the <a href="../data">data</a> folder on the course GitHub repository. The files should already by in your private repo.</p>
+<p>While the file may not display properly in VSCode, the first 10 lines of the file should look like:</p>
 <pre><code>DATE,H_m,SWD_Wm2,STD_SWD,DIR_Wm2,STD_DIR,DIF_Wm2,STD_DIF,LWD_Wm2,STD_LWD,SWU_Wm2,LWU_Wm2,T_degC,RH,P_hPa
 2019-10-01 00:00:00,2,-3,0,0,0,-3,0,300,0.1,0,383,16.2,30.7,966
 2019-10-01 00:01:00,2,-3,0,0,0,-3,0,300,0.3,0,383,16.4,30.7,966
