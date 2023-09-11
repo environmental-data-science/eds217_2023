@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - Interactive Session 0-2: Hello, World!</title>
+<title>EDS 217: Python for Environmental Data Science - Steps</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,16 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#introduction-to-python" id="toc-introduction-to-python" class="nav-link" data-scroll-target="#introduction-to-python">Introduction to Python</a>
-  <ul class="collapse">
-  <li><a href="#print-statements" id="toc-print-statements" class="nav-link" data-scroll-target="#print-statements">Print statements</a></li>
-  <li><a href="#user-input" id="toc-user-input" class="nav-link" data-scroll-target="#user-input">User input</a></li>
-  </ul></li>
-  <li><a href="#try-it." id="toc-try-it." class="nav-link" data-scroll-target="#try-it.">✏️ Try it.</a>
-  <ul class="collapse">
-  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
-  </ul></li>
+  <li><a href="#generate-the-urls-and-filenames-for-this-shim" id="toc-generate-the-urls-and-filenames-for-this-shim" class="nav-link active" data-scroll-target="#generate-the-urls-and-filenames-for-this-shim">0. Generate the urls and filenames for this shim</a></li>
+  <li><a href="#move-the-current-session-to-an-untracked-file-name" id="toc-move-the-current-session-to-an-untracked-file-name" class="nav-link" data-scroll-target="#move-the-current-session-to-an-untracked-file-name">1. Move the current session to an untracked file name</a></li>
+  <li><a href="#download-the-new-file-from-the-eds217_2023-repo" id="toc-download-the-new-file-from-the-eds217_2023-repo" class="nav-link" data-scroll-target="#download-the-new-file-from-the-eds217_2023-repo">2. Download the new file from the <code>eds217_2023</code> repo</a></li>
   </ul>
 </nav>
 </nav>
@@ -133,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Interactive Session 0-2: Hello, World!</h1>
+<h1 class="title">Steps</h1>
 </div>
 
 
@@ -148,163 +141,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="99_hello_world_files/figure-html/5a3902c9-1-Hello_mac-2.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Hello_mac-2.jpg</figcaption>
-</figure>
-</div>
-<p>Python is a general-purpose, open-source programming language with diverse capabilities. While it is often used for high-level applications and complex tasks, Python’s object-oriented structure and clean syntax make it straightforward to learn.</p>
-<p>In addition to Python scripts (<code>.py</code> files), many data scientists use Jupyter Notebooks (<code>.ipynb</code> files) for experimentation and visualization.</p>
-<p>Notebooks allow for rapid code evaluation and ease of use. For this reason, sessions have been designed in Jupyter Notebook format, though you are encouraged to explore Python scripts as well.</p>
-<p>This first session will briefly introduce a few basic Python features.</p>
-<p style="height:1pt">
-</p>
-<div class="boxhead1">
-<pre><code>Session Topics</code></pre>
-</div>
-<div class="boxtext1">
-<ul class="a">
-<li>
-📌 Print statements
-</li>
-<li>
-📌 User input
-</li>
-<li>
-📌 Comments
-</li>
-</ul>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12pt; margin-bottom: 0pt">
-
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
-<p>We will work through this notebook together. To run a cell, click on the cell and press “Shift” + “Enter” or click the “Run” button in the toolbar at the top.</p>
-<p style="color:#408000; font-weight: bold">
-🐍 &nbsp; &nbsp; This symbol designates an important note about Python structure, syntax, or another quirk.
-</p>
-<p style="color:#008C96; font-weight: bold">
-▶️ &nbsp; &nbsp; This symbol designates a cell with code to be run.
-</p>
-<p style="color:#008C96; font-weight: bold">
-✏️ &nbsp; &nbsp; This symbol designates a partially coded cell with an example.
-</p>
-<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
-
-</section>
-<section id="introduction-to-python" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-python">Introduction to Python</h2>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="print-statements" class="level3">
-<h3 class="anchored" data-anchor-id="print-statements">Print statements</h3>
-<p>The most basic function in Python is the <code>print()</code> function, which simply prints out a line.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
-<span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> This is a print statement.
-</p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="st">'This is a print statement.'</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>This is a print statement.</code></pre>
 </div>
-</div>
-<div class="practice">
-<p>📚 Practice 1. In the following cell, use the <code>print()</code> command to print the line “Hello, World!”)</p>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-</section>
-<section id="user-input" class="level3">
-<h3 class="anchored" data-anchor-id="user-input">User input</h3>
-<p>The <code>input()</code> command is an important Python function that can be used in a program to prompt for user input.</p>
-</section>
-</section>
-<section id="try-it." class="level2">
-<h2 class="anchored" data-anchor-id="try-it.">✏️ Try it.</h2>
-<p>Run the following cell to see how the <code>input()</code> function works, inputing your first name when prompted.</p>
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="bu">input</span>( <span class="st">'What is your first name? '</span> )</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> move_file_if_new_name_doesnt_exist(old_path, new_path):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Rename a file, but only if new filename doesn't exist</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">        old_path: Current file name</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">        new_path: New file name</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the old file exists</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(old_path):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: Source file '</span><span class="sc">{</span>old_path<span class="sc">}</span><span class="ss">' doesn't exist."</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the destination file exists</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(new_path):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: Destination file '</span><span class="sc">{</span>new_path<span class="sc">}</span><span class="ss">' already exists."</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move/Rename the file</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    shutil.move(old_path, new_path)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Moved '</span><span class="sc">{</span>old_path<span class="sc">}</span><span class="ss">' to '</span><span class="sc">{</span>new_path<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_shim_file(url, old_filename, new_filename):</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Download a new file, but only if a backup exists</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the new filename already exists</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(new_filename):</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: '</span><span class="sc">{</span>new_filename<span class="sc">}</span><span class="ss">' doesn't exist. Aborting download to avoid overwriting '</span><span class="sc">{</span>old_filename<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Download the file from the given URL</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, stream<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(old_filename, <span class="st">'wb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> chunk <span class="kw">in</span> response.iter_content(chunk_size<span class="op">=</span><span class="dv">1024</span>):</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                <span class="bu">file</span>.write(chunk)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Downloaded new content to '</span><span class="sc">{</span>old_filename<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: Failed to download the file from </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">. Status code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> session_shim(session):</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">    Provides the correct filenames and url for a session shim</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">        session name (str)</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">        Should match the session name in the repository.</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">        For example: </span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">            "4-1_pandas"</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">            or "3-1_numpy", </span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">            etc...</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">        url, old_filename, new_filename</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/"</span> \</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="st">"environmental-data-science/eds217_2023/"</span> \</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"main/interactive_sessions/</span><span class="sc">{</span>session<span class="sc">}</span><span class="ss">.ipynb"</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    old_filename <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>session<span class="sc">}</span><span class="ss">.ipynb"</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    new_filename <span class="op">=</span> <span class="ss">f"no_track_</span><span class="sc">{</span>session<span class="sc">}</span><span class="ss">.ipynb"</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> url, old_filename, new_filename</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
 </div>
-</div>
-<hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
-
-<section id="comments" class="level3">
-<h3 class="anchored" data-anchor-id="comments">Comments</h3>
-<p>In programming, a <strong>comment</strong> is a piece of text that the computer ignores when running the program. Comments are usually used at the top of a program to provide a description of the program, name and information of the author, dependencies, etc., as well as throughout the script to explain lines of code. Commenting is a critical element of proper coding etiquette.</p>
-<p>There are two types of comments: <strong>in-line comments</strong> and <strong>block comments</strong>. In-line comments are used to provide context at the end of a line of code, while block comments come before a “block” or chunk of code.</p>
-<div class="python">
-<pre><code>🐍 &lt;b&gt;Note.&lt;/b&gt;
-In Python, there are two ways of writing comments. For in-line comments and most short comments, the &lt;span style="font-weight:bold"&gt; # &lt;/span&gt; character is used. For large block comments, such as those at the beginning of a file or function, three quotations &lt;span style="font-weight:bold"&gt;  '''  &lt;/span&gt; are used to enclose comments. Both single and double quotations are interpreted the same, as long as they are not used together.</code></pre>
-</div>
-<p>The following example is a function (a type of Python object we will cover later on) that uses both methods of commenting. As you can see, without the comments, it would be difficult to understand what the function does, what parameters it takes, and what the intermediate steps are to reach the end.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> homo_affine_matrix(p, p_prime):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Finds the unique homogeneous affine transformation that </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    transforms a set of 3 points from one coordinate system </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    to that of a second set of points in 3-D space</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p : array</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        original set of points as a row vector: ((p1, p2, p3))</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    p_prime : array</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Transformed points as a row vector: ((p1_prime, p2_prime, p3_prime))</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    array</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">        4 x 3 affine transformation matrix.</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Source: Adapted by B. Morgan from https://math.stackexchange.com/a/222170 (robjohn)</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct intermediate matrix</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    Q       <span class="op">=</span> p[<span class="dv">1</span>:]       <span class="op">-</span> p[<span class="dv">0</span>]</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    Q_prime <span class="op">=</span> p_prime[<span class="dv">1</span>:] <span class="op">-</span> p_prime[<span class="dv">0</span>]</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate rotation matrix</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    R <span class="op">=</span> np.dot(np.linalg.inv(np.row_stack((Q, np.cross(<span class="op">*</span>Q)))),</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>               np.row_stack((Q_prime, np.cross(<span class="op">*</span>Q_prime))))</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate translation vector</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> p_prime[<span class="dv">0</span>] <span class="op">-</span> np.dot(p[<span class="dv">0</span>], R)</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate affine transformation matrix</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.column_stack((np.row_stack((R, t)),</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                            (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> <br></p>
-<div class="run">
-<pre><code>▶️ Run the cell below.</code></pre>
-</div>
+<section id="generate-the-urls-and-filenames-for-this-shim" class="level2">
+<h2 class="anchored" data-anchor-id="generate-the-urls-and-filenames-for-this-shim">0. Generate the urls and filenames for this shim</h2>
+</section>
+<section id="move-the-current-session-to-an-untracked-file-name" class="level2">
+<h2 class="anchored" data-anchor-id="move-the-current-session-to-an-untracked-file-name">1. Move the current session to an untracked file name</h2>
+<p>.gitignore includes <code>no_track*</code>, so any file that starts with this file name will be untracked in the repo.</p>
+</section>
+<section id="download-the-new-file-from-the-eds217_2023-repo" class="level2">
+<h2 class="anchored" data-anchor-id="download-the-new-file-from-the-eds217_2023-repo">2. Download the new file from the <code>eds217_2023</code> repo</h2>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This comment will not be read by the computer.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sessions <span class="op">=</span> [<span class="st">'3-1_numpy'</span>,<span class="st">'4-1_pandas'</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> session <span class="kw">in</span> sessions:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    shim_url, old_filename, new_filename <span class="op">=</span> session_shim(session)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    move_file_if_new_name_doesnt_exist(old_filename, new_filename)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    download_shim_file(shim_url, old_filename, new_filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>4</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>Moved '3-1_numpy.ipynb' to 'no_track_3-1_numpy.ipynb'.
+Downloaded new content to '3-1_numpy.ipynb'.
+Error: Destination file 'no_track_4-1_pandas.ipynb' already exists.
+Downloaded new content to '4-1_pandas.ipynb'.</code></pre>
 </div>
 </div>
-<hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
 
-
-</section>
 </section>
 
 </main> <!-- /main -->
