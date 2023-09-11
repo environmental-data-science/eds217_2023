@@ -136,6 +136,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dataframe-indexing-data-selection" id="toc-dataframe-indexing-data-selection" class="nav-link" data-scroll-target="#dataframe-indexing-data-selection">DataFrame indexing + data selection</a></li>
   <li><a href="#datetime-objects" id="toc-datetime-objects" class="nav-link" data-scroll-target="#datetime-objects"><code>Datetime</code> objects</a></li>
   <li><a href="#a-few-useful-operations" id="toc-a-few-useful-operations" class="nav-link" data-scroll-target="#a-few-useful-operations">A few useful operations</a></li>
+  </ul></li>
+  <li><a href="#add-a-column-from-a-list" id="toc-add-a-column-from-a-list" class="nav-link" data-scroll-target="#add-a-column-from-a-list">Add a column from a list</a></li>
+  <li><a href="#add-a-column-from-a-series" id="toc-add-a-column-from-a-series" class="nav-link" data-scroll-target="#add-a-column-from-a-series">Add a column from a Series</a></li>
+  <li><a href="#propagate-a-single-value-through-all-rows" id="toc-propagate-a-single-value-through-all-rows" class="nav-link" data-scroll-target="#propagate-a-single-value-through-all-rows">Propagate a single value through all rows</a>
+  <ul class="collapse">
   <li><a href="#data-export" id="toc-data-export" class="nav-link" data-scroll-target="#data-export">Data export</a></li>
   <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations">Congratulations!</a></li>
   </ul></li>
@@ -286,7 +291,7 @@ Combining DataFrames
 <div class="run">
 <pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
 </div>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -308,6 +313,14 @@ Combining DataFrames
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>series <span class="op">=</span> pd.Series([<span class="fl">25.8</span>, <span class="fl">16.2</span>, <span class="fl">17.9</span>, <span class="fl">18.8</span>, <span class="fl">23.6</span>, <span class="fl">29.9</span>, <span class="fl">23.6</span>, <span class="fl">22.1</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>series <span class="op">=</span> pd.Series([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="st">'2.4'</span>, <span class="dv">5</span>, <span class="dv">34</span>, <span class="dv">67</span>])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>series[<span class="dv">1</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -327,10 +340,20 @@ dtype: float64
 </blockquote>
 </blockquote>
 <p>There are many ways to create a <code>DataFrame</code>, but the most common are to use a list of lists or a dictionary. First, let’s use a list of lists (or an array):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a df from a list of lists</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],[<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],[<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a df from a list of lists</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],[<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],[<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">29.4</span>, <span class="fl">25.6</span>, <span class="fl">54.6</span>],</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">34.5</span>, <span class="fl">78.2</span>, <span class="fl">86.2</span>, <span class="fl">99.0</span>],</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">12.4</span>, <span class="fl">75.4</span>, <span class="fl">23.6</span>, <span class="fl">88.5</span>]],columns<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <pre><code>df</code></pre>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
@@ -348,13 +371,30 @@ dtype: float64
 </blockquote>
 <p>Much like with NumPy arrays, each inner list element in the outer list corresponds to a <em>row</em>. Using the optional <code>columns</code> keyword argument, we can specify the name of each column. If this parameter is not passed, the columns would be displayed with integer index values (like the rows).</p>
 <p>Next, let’s create a DataFrame from a <code>dict</code> object:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a df from a dictionary</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="fl">25.8</span>, <span class="fl">17.9</span>, <span class="fl">23.6</span>, <span class="fl">23.6</span>],</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'B'</span>: [<span class="fl">28.1</span>, <span class="fl">14.2</span>, <span class="fl">18.4</span>, <span class="fl">36.2</span>],</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'C'</span>: [<span class="fl">16.2</span>, <span class="fl">18.8</span>, <span class="fl">29.9</span>, <span class="fl">22.1</span>],</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'D'</span>: [<span class="fl">11.0</span>, <span class="fl">28.0</span>, <span class="fl">27.8</span>, <span class="fl">14.5</span>]})</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a df from a dictionary</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="fl">25.8</span>, <span class="fl">17.9</span>, <span class="fl">23.6</span>, <span class="fl">23.6</span>],</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'B'</span>: [<span class="fl">28.1</span>, <span class="fl">14.2</span>, <span class="fl">18.4</span>, <span class="fl">36.2</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'C'</span>: [<span class="fl">16.2</span>, <span class="fl">18.8</span>, <span class="fl">29.9</span>, <span class="fl">22.1</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'D'</span>: [<span class="fl">11.0</span>, <span class="fl">28.0</span>, <span class="fl">27.8</span>, <span class="fl">14.5</span>]})</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df = pd.DataFrame([[25.8, 29.4, 25.6, 54.6],</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                   [34.5, 78.2, 86.2, 99.0],</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                   [12.4, 75.4, 23.6, 88.5]],columns=['A', 'B', 'C', 'D'])</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A'</span>:[<span class="fl">25.8</span>, <span class="fl">34.5</span>, <span class="fl">12.4</span>],</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'B'</span>:[<span class="fl">29.4</span>, <span class="fl">78.2</span>, <span class="fl">75.4</span>],</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>:[<span class="fl">25.6</span>, <span class="fl">86.2</span>, <span class="fl">23.6</span>],</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'D'</span>:[<span class="fl">54.6</span>, <span class="fl">99.0</span>, <span class="fl">88.5</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -382,392 +422,11 @@ dtype: float64
 <div class="run">
 <pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
 </div>
-<div class="cell" data-execution_count="2">
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(pd.read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(pd.read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Help on function read_csv in module pandas.io.parsers.readers:
-
-read_csv(filepath_or_buffer: 'FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str]', *, sep: 'str | None | lib.NoDefault' = &lt;no_default&gt;, delimiter: 'str | None | lib.NoDefault' = None, header: "int | Sequence[int] | None | Literal['infer']" = 'infer', names: 'Sequence[Hashable] | None | lib.NoDefault' = &lt;no_default&gt;, index_col: 'IndexLabel | Literal[False] | None' = None, usecols=None, dtype: 'DtypeArg | None' = None, engine: 'CSVEngine | None' = None, converters=None, true_values=None, false_values=None, skipinitialspace: 'bool' = False, skiprows=None, skipfooter: 'int' = 0, nrows: 'int | None' = None, na_values=None, keep_default_na: 'bool' = True, na_filter: 'bool' = True, verbose: 'bool' = False, skip_blank_lines: 'bool' = True, parse_dates: 'bool | Sequence[Hashable] | None' = None, infer_datetime_format: 'bool | lib.NoDefault' = &lt;no_default&gt;, keep_date_col: 'bool' = False, date_parser=&lt;no_default&gt;, date_format: 'str | None' = None, dayfirst: 'bool' = False, cache_dates: 'bool' = True, iterator: 'bool' = False, chunksize: 'int | None' = None, compression: 'CompressionOptions' = 'infer', thousands: 'str | None' = None, decimal: 'str' = '.', lineterminator: 'str | None' = None, quotechar: 'str' = '"', quoting: 'int' = 0, doublequote: 'bool' = True, escapechar: 'str | None' = None, comment: 'str | None' = None, encoding: 'str | None' = None, encoding_errors: 'str | None' = 'strict', dialect: 'str | csv.Dialect | None' = None, on_bad_lines: 'str' = 'error', delim_whitespace: 'bool' = False, low_memory=True, memory_map: 'bool' = False, float_precision: "Literal['high', 'legacy'] | None" = None, storage_options: 'StorageOptions' = None, dtype_backend: 'DtypeBackend | lib.NoDefault' = &lt;no_default&gt;) -&gt; 'DataFrame | TextFileReader'
-    Read a comma-separated values (csv) file into DataFrame.
-    
-    Also supports optionally iterating or breaking of the file
-    into chunks.
-    
-    Additional help can be found in the online docs for
-    `IO Tools &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html&gt;`_.
-    
-    Parameters
-    ----------
-    filepath_or_buffer : str, path object or file-like object
-        Any valid string path is acceptable. The string could be a URL. Valid
-        URL schemes include http, ftp, s3, gs, and file. For file URLs, a host is
-        expected. A local file could be: file://localhost/path/to/table.csv.
-    
-        If you want to pass in a path object, pandas accepts any ``os.PathLike``.
-    
-        By file-like object, we refer to objects with a ``read()`` method, such as
-        a file handle (e.g. via builtin ``open`` function) or ``StringIO``.
-    sep : str, default ','
-        Delimiter to use. If sep is None, the C engine cannot automatically detect
-        the separator, but the Python parsing engine can, meaning the latter will
-        be used and automatically detect the separator by Python's builtin sniffer
-        tool, ``csv.Sniffer``. In addition, separators longer than 1 character and
-        different from ``'\s+'`` will be interpreted as regular expressions and
-        will also force the use of the Python parsing engine. Note that regex
-        delimiters are prone to ignoring quoted data. Regex example: ``'\r\t'``.
-    delimiter : str, default ``None``
-        Alias for sep.
-    header : int, list of int, None, default 'infer'
-        Row number(s) to use as the column names, and the start of the
-        data.  Default behavior is to infer the column names: if no names
-        are passed the behavior is identical to ``header=0`` and column
-        names are inferred from the first line of the file, if column
-        names are passed explicitly then the behavior is identical to
-        ``header=None``. Explicitly pass ``header=0`` to be able to
-        replace existing names. The header can be a list of integers that
-        specify row locations for a multi-index on the columns
-        e.g. [0,1,3]. Intervening rows that are not specified will be
-        skipped (e.g. 2 in this example is skipped). Note that this
-        parameter ignores commented lines and empty lines if
-        ``skip_blank_lines=True``, so ``header=0`` denotes the first line of
-        data rather than the first line of the file.
-    names : array-like, optional
-        List of column names to use. If the file contains a header row,
-        then you should explicitly pass ``header=0`` to override the column names.
-        Duplicates in this list are not allowed.
-    index_col : int, str, sequence of int / str, or False, optional, default ``None``
-      Column(s) to use as the row labels of the ``DataFrame``, either given as
-      string name or column index. If a sequence of int / str is given, a
-      MultiIndex is used.
-    
-      Note: ``index_col=False`` can be used to force pandas to *not* use the first
-      column as the index, e.g. when you have a malformed file with delimiters at
-      the end of each line.
-    usecols : list-like or callable, optional
-        Return a subset of the columns. If list-like, all elements must either
-        be positional (i.e. integer indices into the document columns) or strings
-        that correspond to column names provided either by the user in `names` or
-        inferred from the document header row(s). If ``names`` are given, the document
-        header row(s) are not taken into account. For example, a valid list-like
-        `usecols` parameter would be ``[0, 1, 2]`` or ``['foo', 'bar', 'baz']``.
-        Element order is ignored, so ``usecols=[0, 1]`` is the same as ``[1, 0]``.
-        To instantiate a DataFrame from ``data`` with element order preserved use
-        ``pd.read_csv(data, usecols=['foo', 'bar'])[['foo', 'bar']]`` for columns
-        in ``['foo', 'bar']`` order or
-        ``pd.read_csv(data, usecols=['foo', 'bar'])[['bar', 'foo']]``
-        for ``['bar', 'foo']`` order.
-    
-        If callable, the callable function will be evaluated against the column
-        names, returning names where the callable function evaluates to True. An
-        example of a valid callable argument would be ``lambda x: x.upper() in
-        ['AAA', 'BBB', 'DDD']``. Using this parameter results in much faster
-        parsing time and lower memory usage.
-    dtype : Type name or dict of column -&gt; type, optional
-        Data type for data or columns. E.g. {'a': np.float64, 'b': np.int32,
-        'c': 'Int64'}
-        Use `str` or `object` together with suitable `na_values` settings
-        to preserve and not interpret dtype.
-        If converters are specified, they will be applied INSTEAD
-        of dtype conversion.
-    
-        .. versionadded:: 1.5.0
-    
-            Support for defaultdict was added. Specify a defaultdict as input where
-            the default determines the dtype of the columns which are not explicitly
-            listed.
-    engine : {'c', 'python', 'pyarrow'}, optional
-        Parser engine to use. The C and pyarrow engines are faster, while the python engine
-        is currently more feature-complete. Multithreading is currently only supported by
-        the pyarrow engine.
-    
-        .. versionadded:: 1.4.0
-    
-            The "pyarrow" engine was added as an *experimental* engine, and some features
-            are unsupported, or may not work correctly, with this engine.
-    converters : dict, optional
-        Dict of functions for converting values in certain columns. Keys can either
-        be integers or column labels.
-    true_values : list, optional
-        Values to consider as True in addition to case-insensitive variants of "True".
-    false_values : list, optional
-        Values to consider as False in addition to case-insensitive variants of "False".
-    skipinitialspace : bool, default False
-        Skip spaces after delimiter.
-    skiprows : list-like, int or callable, optional
-        Line numbers to skip (0-indexed) or number of lines to skip (int)
-        at the start of the file.
-    
-        If callable, the callable function will be evaluated against the row
-        indices, returning True if the row should be skipped and False otherwise.
-        An example of a valid callable argument would be ``lambda x: x in [0, 2]``.
-    skipfooter : int, default 0
-        Number of lines at bottom of file to skip (Unsupported with engine='c').
-    nrows : int, optional
-        Number of rows of file to read. Useful for reading pieces of large files.
-    na_values : scalar, str, list-like, or dict, optional
-        Additional strings to recognize as NA/NaN. If dict passed, specific
-        per-column NA values.  By default the following values are interpreted as
-        NaN: '', '#N/A', '#N/A N/A', '#NA', '-1.#IND', '-1.#QNAN', '-NaN', '-nan',
-        '1.#IND', '1.#QNAN', '&lt;NA&gt;', 'N/A', 'NA', 'NULL', 'NaN', 'None',
-        'n/a', 'nan', 'null'.
-    keep_default_na : bool, default True
-        Whether or not to include the default NaN values when parsing the data.
-        Depending on whether `na_values` is passed in, the behavior is as follows:
-    
-        * If `keep_default_na` is True, and `na_values` are specified, `na_values`
-          is appended to the default NaN values used for parsing.
-        * If `keep_default_na` is True, and `na_values` are not specified, only
-          the default NaN values are used for parsing.
-        * If `keep_default_na` is False, and `na_values` are specified, only
-          the NaN values specified `na_values` are used for parsing.
-        * If `keep_default_na` is False, and `na_values` are not specified, no
-          strings will be parsed as NaN.
-    
-        Note that if `na_filter` is passed in as False, the `keep_default_na` and
-        `na_values` parameters will be ignored.
-    na_filter : bool, default True
-        Detect missing value markers (empty strings and the value of na_values). In
-        data without any NAs, passing na_filter=False can improve the performance
-        of reading a large file.
-    verbose : bool, default False
-        Indicate number of NA values placed in non-numeric columns.
-    skip_blank_lines : bool, default True
-        If True, skip over blank lines rather than interpreting as NaN values.
-    parse_dates : bool or list of int or names or list of lists or dict, default False
-        The behavior is as follows:
-    
-        * boolean. If True -&gt; try parsing the index.
-        * list of int or names. e.g. If [1, 2, 3] -&gt; try parsing columns 1, 2, 3
-          each as a separate date column.
-        * list of lists. e.g.  If [[1, 3]] -&gt; combine columns 1 and 3 and parse as
-          a single date column.
-        * dict, e.g. {'foo' : [1, 3]} -&gt; parse columns 1, 3 as date and call
-          result 'foo'
-    
-        If a column or index cannot be represented as an array of datetimes,
-        say because of an unparsable value or a mixture of timezones, the column
-        or index will be returned unaltered as an object data type. For
-        non-standard datetime parsing, use ``pd.to_datetime`` after
-        ``pd.read_csv``.
-    
-        Note: A fast-path exists for iso8601-formatted dates.
-    infer_datetime_format : bool, default False
-        If True and `parse_dates` is enabled, pandas will attempt to infer the
-        format of the datetime strings in the columns, and if it can be inferred,
-        switch to a faster method of parsing them. In some cases this can increase
-        the parsing speed by 5-10x.
-    
-        .. deprecated:: 2.0.0
-            A strict version of this argument is now the default, passing it has no effect.
-    
-    keep_date_col : bool, default False
-        If True and `parse_dates` specifies combining multiple columns then
-        keep the original columns.
-    date_parser : function, optional
-        Function to use for converting a sequence of string columns to an array of
-        datetime instances. The default uses ``dateutil.parser.parser`` to do the
-        conversion. Pandas will try to call `date_parser` in three different ways,
-        advancing to the next if an exception occurs: 1) Pass one or more arrays
-        (as defined by `parse_dates`) as arguments; 2) concatenate (row-wise) the
-        string values from the columns defined by `parse_dates` into a single array
-        and pass that; and 3) call `date_parser` once for each row using one or
-        more strings (corresponding to the columns defined by `parse_dates`) as
-        arguments.
-    
-        .. deprecated:: 2.0.0
-           Use ``date_format`` instead, or read in as ``object`` and then apply
-           :func:`to_datetime` as-needed.
-    date_format : str or dict of column -&gt; format, default ``None``
-       If used in conjunction with ``parse_dates``, will parse dates according to this
-       format. For anything more complex,
-       please read in as ``object`` and then apply :func:`to_datetime` as-needed.
-    
-       .. versionadded:: 2.0.0
-    dayfirst : bool, default False
-        DD/MM format dates, international and European format.
-    cache_dates : bool, default True
-        If True, use a cache of unique, converted dates to apply the datetime
-        conversion. May produce significant speed-up when parsing duplicate
-        date strings, especially ones with timezone offsets.
-    
-    iterator : bool, default False
-        Return TextFileReader object for iteration or getting chunks with
-        ``get_chunk()``.
-    
-        .. versionchanged:: 1.2
-    
-           ``TextFileReader`` is a context manager.
-    chunksize : int, optional
-        Return TextFileReader object for iteration.
-        See the `IO Tools docs
-        &lt;https://pandas.pydata.org/pandas-docs/stable/io.html#io-chunking&gt;`_
-        for more information on ``iterator`` and ``chunksize``.
-    
-        .. versionchanged:: 1.2
-    
-           ``TextFileReader`` is a context manager.
-    compression : str or dict, default 'infer'
-        For on-the-fly decompression of on-disk data. If 'infer' and 'filepath_or_buffer' is
-        path-like, then detect compression from the following extensions: '.gz',
-        '.bz2', '.zip', '.xz', '.zst', '.tar', '.tar.gz', '.tar.xz' or '.tar.bz2'
-        (otherwise no compression).
-        If using 'zip' or 'tar', the ZIP file must contain only one data file to be read in.
-        Set to ``None`` for no decompression.
-        Can also be a dict with key ``'method'`` set
-        to one of {``'zip'``, ``'gzip'``, ``'bz2'``, ``'zstd'``, ``'tar'``} and other
-        key-value pairs are forwarded to
-        ``zipfile.ZipFile``, ``gzip.GzipFile``,
-        ``bz2.BZ2File``, ``zstandard.ZstdDecompressor`` or
-        ``tarfile.TarFile``, respectively.
-        As an example, the following could be passed for Zstandard decompression using a
-        custom compression dictionary:
-        ``compression={'method': 'zstd', 'dict_data': my_compression_dict}``.
-    
-        .. versionadded:: 1.5.0
-            Added support for `.tar` files.
-    
-        .. versionchanged:: 1.4.0 Zstandard support.
-    
-    thousands : str, optional
-        Thousands separator.
-    decimal : str, default '.'
-        Character to recognize as decimal point (e.g. use ',' for European data).
-    lineterminator : str (length 1), optional
-        Character to break file into lines. Only valid with C parser.
-    quotechar : str (length 1), optional
-        The character used to denote the start and end of a quoted item. Quoted
-        items can include the delimiter and it will be ignored.
-    quoting : int or csv.QUOTE_* instance, default 0
-        Control field quoting behavior per ``csv.QUOTE_*`` constants. Use one of
-        QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3).
-    doublequote : bool, default ``True``
-       When quotechar is specified and quoting is not ``QUOTE_NONE``, indicate
-       whether or not to interpret two consecutive quotechar elements INSIDE a
-       field as a single ``quotechar`` element.
-    escapechar : str (length 1), optional
-        One-character string used to escape other characters.
-    comment : str, optional
-        Indicates remainder of line should not be parsed. If found at the beginning
-        of a line, the line will be ignored altogether. This parameter must be a
-        single character. Like empty lines (as long as ``skip_blank_lines=True``),
-        fully commented lines are ignored by the parameter `header` but not by
-        `skiprows`. For example, if ``comment='#'``, parsing
-        ``#empty\na,b,c\n1,2,3`` with ``header=0`` will result in 'a,b,c' being
-        treated as the header.
-    encoding : str, optional, default "utf-8"
-        Encoding to use for UTF when reading/writing (ex. 'utf-8'). `List of Python
-        standard encodings
-        &lt;https://docs.python.org/3/library/codecs.html#standard-encodings&gt;`_ .
-    
-        .. versionchanged:: 1.2
-    
-           When ``encoding`` is ``None``, ``errors="replace"`` is passed to
-           ``open()``. Otherwise, ``errors="strict"`` is passed to ``open()``.
-           This behavior was previously only the case for ``engine="python"``.
-    
-        .. versionchanged:: 1.3.0
-    
-           ``encoding_errors`` is a new argument. ``encoding`` has no longer an
-           influence on how encoding errors are handled.
-    
-    encoding_errors : str, optional, default "strict"
-        How encoding errors are treated. `List of possible values
-        &lt;https://docs.python.org/3/library/codecs.html#error-handlers&gt;`_ .
-    
-        .. versionadded:: 1.3.0
-    
-    dialect : str or csv.Dialect, optional
-        If provided, this parameter will override values (default or not) for the
-        following parameters: `delimiter`, `doublequote`, `escapechar`,
-        `skipinitialspace`, `quotechar`, and `quoting`. If it is necessary to
-        override values, a ParserWarning will be issued. See csv.Dialect
-        documentation for more details.
-    on_bad_lines : {'error', 'warn', 'skip'} or callable, default 'error'
-        Specifies what to do upon encountering a bad line (a line with too many fields).
-        Allowed values are :
-    
-            - 'error', raise an Exception when a bad line is encountered.
-            - 'warn', raise a warning when a bad line is encountered and skip that line.
-            - 'skip', skip bad lines without raising or warning when they are encountered.
-    
-        .. versionadded:: 1.3.0
-    
-        .. versionadded:: 1.4.0
-    
-            - callable, function with signature
-              ``(bad_line: list[str]) -&gt; list[str] | None`` that will process a single
-              bad line. ``bad_line`` is a list of strings split by the ``sep``.
-              If the function returns ``None``, the bad line will be ignored.
-              If the function returns a new list of strings with more elements than
-              expected, a ``ParserWarning`` will be emitted while dropping extra elements.
-              Only supported when ``engine="python"``
-    
-    delim_whitespace : bool, default False
-        Specifies whether or not whitespace (e.g. ``' '`` or ``'    '``) will be
-        used as the sep. Equivalent to setting ``sep='\s+'``. If this option
-        is set to True, nothing should be passed in for the ``delimiter``
-        parameter.
-    low_memory : bool, default True
-        Internally process the file in chunks, resulting in lower memory use
-        while parsing, but possibly mixed type inference.  To ensure no mixed
-        types either set False, or specify the type with the `dtype` parameter.
-        Note that the entire file is read into a single DataFrame regardless,
-        use the `chunksize` or `iterator` parameter to return the data in chunks.
-        (Only valid with C parser).
-    memory_map : bool, default False
-        If a filepath is provided for `filepath_or_buffer`, map the file object
-        directly onto memory and access the data directly from there. Using this
-        option can improve performance because there is no longer any I/O overhead.
-    float_precision : str, optional
-        Specifies which converter the C engine should use for floating-point
-        values. The options are ``None`` or 'high' for the ordinary converter,
-        'legacy' for the original lower precision pandas converter, and
-        'round_trip' for the round-trip converter.
-    
-        .. versionchanged:: 1.2
-    
-    storage_options : dict, optional
-        Extra options that make sense for a particular storage connection, e.g.
-        host, port, username, password, etc. For HTTP(S) URLs the key-value pairs
-        are forwarded to ``urllib.request.Request`` as header options. For other
-        URLs (e.g. starting with "s3://", and "gcs://") the key-value pairs are
-        forwarded to ``fsspec.open``. Please see ``fsspec`` and ``urllib`` for more
-        details, and for more examples on storage options refer `here
-        &lt;https://pandas.pydata.org/docs/user_guide/io.html?
-        highlight=storage_options#reading-writing-remote-files&gt;`_.
-    
-        .. versionadded:: 1.2
-    
-    dtype_backend : {"numpy_nullable", "pyarrow"}, defaults to NumPy backed DataFrames
-        Which dtype_backend to use, e.g. whether a DataFrame should have NumPy
-        arrays, nullable dtypes are used for all dtypes that have a nullable
-        implementation when "numpy_nullable" is set, pyarrow is used for all
-        dtypes if "pyarrow" is set.
-    
-        The dtype_backends are still experimential.
-    
-        .. versionadded:: 2.0
-    
-    Returns
-    -------
-    DataFrame or TextFileReader
-        A comma-separated values (csv) file is returned as two-dimensional
-        data structure with labeled axes.
-    
-    See Also
-    --------
-    DataFrame.to_csv : Write DataFrame to a comma-separated values (csv) file.
-    read_csv : Read a comma-separated values (csv) file into DataFrame.
-    read_fwf : Read a table of fixed-width formatted lines into DataFrame.
-    
-    Examples
-    --------
-    &gt;&gt;&gt; pd.read_csv('data.csv')  # doctest: +SKIP
-</code></pre>
-</div>
 </div>
 <p>As you can see, <code>pd.read_csv()</code> has <em>quite a few</em> parameters. Don’t be overwhelmed –&nbsp;most of these are optional arguments that allow you to specify exactly how your data file is structured and which part(s) you want to import. In particular, the <code>sep</code> parameter allows the user to specify the type of delimiter used in the file. The default is a comma, but you can actually pass other common delimiters (such as <code>sep='\t'</code>, which is a tab) to import other delimited files. The only <em>required</em> argument is a string specifying the filepath of your file.</p>
 <p>In this session, we’ll be importing a CSV file containing radiation data for October 2019 from a Baseline Surface Radiation Network (BSRN) station in Southern Africa. <a href="https://bsrn.awi.de">BSRN</a> is a Global Energy and Water Cycle Experiment project aimed at monitoring changes in the Earth’s surface radiation field. The network is comprised of 64 stations across various climate zones across the globe, whose data are used as the global baseline for surface radiation by the Global Climate Observing System.</p>
@@ -859,10 +518,18 @@ read_csv(filepath_or_buffer: 'FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[st
 </tbody>
 </table>
 <p>We can import the data into pandas using the following syntax:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="example">
 <pre><code>✏️ &lt;b&gt; Try it. &lt;/b&gt; 
 Copy and paste the code above to import the data in the CSV file into a pandas &lt;code&gt;DataFrame&lt;/code&gt; named &lt;code&gt;bsrn&lt;/code&gt;.</code></pre>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>bsrn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <section id="a-bit-of-housekeeping" class="level4">
 <h4 class="anchored" data-anchor-id="a-bit-of-housekeeping">A bit of housekeeping</h4>
@@ -879,14 +546,11 @@ Copy and paste the code above to import the data in the CSV file into a pandas &
 <div class="run">
 <pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
 </div>
-<div class="cell" data-execution_count="3">
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bsrn.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bsrn.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-error">
-<pre><code>NameError: name 'bsrn' is not defined</code></pre>
-</div>
 </div>
 <p>Similarly, <code>df.tail()</code> prints the last five rows.</p>
 <div class="run">
@@ -895,7 +559,7 @@ Copy and paste the code above to import the data in the CSV file into a pandas &
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bsrn.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bsrn.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Both <code>df.head()</code> and <code>df.tail()</code> can also accept an integer argument, e.g.&nbsp;<code>df.head(n)</code>, where the first <code>n</code> rows will be printed.</p>
@@ -910,7 +574,7 @@ Print the first and last 10 rows of &lt;code&gt;bsrn&lt;/code&gt; using &lt;code
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>bsrn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bsrn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The <code>df.info()</code> method provides several different pieces of information about the DataFrame that are sometimes useful to retrieve separately. For example, <code>df.index</code> returns the index as an iterable object for use in plotting and the <code>df.columns</code> method returns the column names as an index object which can be used in a <code>for</code> loop or to reset the column names. These and other descriptive DataFrame methods are summarized in the table below.</p>
@@ -978,15 +642,21 @@ Print the first and last 10 rows of &lt;code&gt;bsrn&lt;/code&gt; using &lt;code
 <div class="run">
 <pre><code>▶️ &lt;b&gt; Run the cell below. &lt;/b&gt;</code></pre>
 </div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[<span class="op">-</span><span class="dv">6</span>:,<span class="op">-</span><span class="dv">3</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>Instead of a value, we get a <code>KeyError</code>. This is because the <code>Index</code> object in pandas is essentially a dictionary, and we have not passed proper <code>keys</code>.</p>
 <p>Instead, pandas uses <code>df.iloc[]</code> for integer-based indexing to select data by position:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[<span class="dv">1434</span>,<span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[<span class="dv">1434</span>,<span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> 19.6
 </p>
 <p><code>df.iloc</code> acts just like the index operator works with arrays. In addition to indexing a single value, <code>df.iloc</code> can be used to select multiple rows and columns via slicing: <code>df.iloc[row_start:row_end:row_step, col_start:col_end:col_step]</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 6 rows, last 3 columns</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[<span class="dv">1434</span>:<span class="dv">1440</span>,<span class="dv">12</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 6 rows, last 3 columns</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[<span class="dv">1434</span>:<span class="dv">1440</span>,<span class="dv">12</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1003,8 +673,8 @@ Print the first and last 10 rows of &lt;code&gt;bsrn&lt;/code&gt; using &lt;code
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First 5 columns, every 40th row</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[::<span class="dv">40</span>,:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First 5 columns, every 40th row</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>bsrn.iloc[::<span class="dv">40</span>,:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1020,8 +690,8 @@ Print the first and last 10 rows of &lt;code&gt;bsrn&lt;/code&gt; using &lt;code
 <h4 class="anchored" data-anchor-id="row-indexing">Row indexing</h4>
 <p>In addition to <code>df.iloc</code>, rows of a DataFrame can be accessed using <code>df.loc</code>, which “locates” rows based on their labels. Unless you have set a custom index (which we will see later), the row “labels” are the same as the integer index.</p>
 <p>When indexing a single row, <code>df.loc</code> (like <code>df.iloc</code>) transforms the row into a <code>Series</code>, with the column names as the index:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classic indexing</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="dv">1434</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Classic indexing</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>bsrn.loc[<span class="dv">1434</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1047,12 +717,19 @@ Name: 1434, dtype: object
 </blockquote>
 </blockquote>
 </blockquote>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>one_row <span class="op">=</span> bsrn.loc[<span class="dv">0</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>one_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div class="python">
 <pre><code>🐍 &lt;b&gt;DataFrames + data types.&lt;/b&gt;  Notice that the &lt;code&gt;dtype&lt;/code&gt; of the Series is an &lt;code&gt;object&lt;/code&gt;. This is because the column contains mixed data types – floats, integers, and an &lt;code&gt;object&lt;/code&gt; in the first row. Unlike NumPy, pandas allows both rows and columns to contain mixed data types. However, while it is perfectly fine (and, in fact, almost always necessary) to have multiple data types within a single &lt;b&gt;&lt;i&gt;row&lt;/i&gt;&lt;/b&gt;, it is best if each &lt;b&gt;&lt;i&gt;column&lt;/i&gt;&lt;/b&gt; is comprised of a &lt;b&gt;&lt;i&gt;single data type&lt;/i&gt;&lt;/b&gt;.</code></pre>
 </div>
 <p>Slicing using <code>df.loc</code> is similar to <code>df.iloc</code>, with the exception that the <code>stop</code> value is <strong><em>inclusive</em></strong>:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using .loc</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>bsrn.loc[<span class="dv">1434</span>:<span class="dv">1440</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using .loc</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>bsrn.loc[<span class="dv">1434</span>:<span class="dv">1440</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1068,7 +745,7 @@ Name: 1434, dtype: object
 <section id="column-indexing" class="level4">
 <h4 class="anchored" data-anchor-id="column-indexing">Column indexing</h4>
 <p>In addition to integer indexing with <code>df.iloc</code>, columns can be accessed in two ways: dot notation <code>.</code> or square brackets <code>[]</code>. The former takes advantage of the fact that the columns are effectively “attributes” of the DataFrame and returns a Series:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>bsrn.SWD_Wm2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>bsrn.SWD_Wm2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1091,7 +768,7 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 </blockquote>
 </blockquote>
 <p>The second way of extracting columns is to pass the column name as a string in square brackets, i.e.&nbsp;<code>df['col']</code>:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'SWD_Wm2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'SWD_Wm2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1114,7 +791,7 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 </blockquote>
 </blockquote>
 <p>Using single brackets, the result is a Series. However, using double brackets, it is possible to return the column as a DataFrame:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bsrn[[<span class="st">'SWD_Wm2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bsrn[[<span class="st">'SWD_Wm2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1127,7 +804,14 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 [44640 rows x 1 columns] 
 
 <p>This allows you to add additional columns, which you cannot do with a <code>Series</code> object. Furthermore, with the double bracket notation, a list is being passed to the index operator (outer brackets). Thus, it is possible to extract multiple columns by adding column names to the list:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>bsrn[[<span class="st">'SWD_Wm2'</span>,<span class="st">'LWD_Wm2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>new_df <span class="op">=</span> bsrn[[<span class="st">'H_m'</span>, <span class="st">'T_degC'</span>]]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>new_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>bsrn[[<span class="st">'SWD_Wm2'</span>,<span class="st">'LWD_Wm2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1140,6 +824,12 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 [44640 rows x 2 columns] 
 
 <p>When accessing a single column, the choice between using dot notation and square brackets is more or less a matter of preference. However, there are occasions when the bracket notation proves particularly useful. For example, you could access each column in a DataFrame by iterating through <code>df.columns</code>, which returns an <code>Index</code> object containing the column names as <code>str</code> objects that can be directly passed to the index operator. Additionally, you may find it useful to use the double bracket syntax to return a <code>DataFrame</code> object, rather than a <code>Series</code>, which can only ever contain a single column of data.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>bsrn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </section>
 <section id="datetime-objects" class="level3">
@@ -1149,54 +839,54 @@ Name: SWD_Wm2, Length: 44640, dtype: float64
 <p>Like the BSRN data we are working with in this session, many environmental datasets include timed records. Python has a few different libraries for dealing with timestamps, which are referred to as <strong>datetime</strong> objects. The standard <a href="https://docs.python.org/3/library/datetime.html"><strong><code>datetime</code></strong></a> library is the primary way of manipulating dates and times in Python, but there are additional third-party packages that provide additional support. A few worth exploring are <a href="https://dateutil.readthedocs.io/en/stable/"><strong><code>dateutil</code></strong></a>, an extension of the datetime library useful for parsing timestamps, and <a href="http://pytz.sourceforge.net"><strong><code>pytz</code></strong></a>, which provides a smooth way of tackling time zones.</p>
 <p>Though we will not review <code>datetime</code> objects in depth here, it is useful to understand the basics of how to deal with <code>datetime</code> objects in Python as you will no doubt encounter them in the future. For now, we will focus on a few pandas functions built on the datetime library to handle <code>datetime</code> objects.</p>
 <p>The <code>pd.date_range()</code> function allows you to build a DatetimeIndex with a fixed frequency. This can be done by specifying a start date and an end date as follows:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'4/1/2017'</span>,<span class="st">'4/30/2017'</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-01'</span>, <span class="st">'2017-01-02'</span>, <span class="st">'2017-01-03'</span>, <span class="st">'2017-01-04'</span>,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-05'</span>, <span class="st">'2017-01-06'</span>, <span class="st">'2017-01-07'</span>, <span class="st">'2017-01-08'</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-09'</span>, <span class="st">'2017-01-10'</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                   ...</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-22'</span>, <span class="st">'2020-12-23'</span>, <span class="st">'2020-12-24'</span>, <span class="st">'2020-12-25'</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-26'</span>, <span class="st">'2020-12-27'</span>, <span class="st">'2020-12-28'</span>, <span class="st">'2020-12-29'</span>,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30'</span>, <span class="st">'2020-12-31'</span>],</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, length<span class="op">=</span><span class="dv">1461</span>, freq<span class="op">=</span><span class="st">'D'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'4/1/2017'</span>,<span class="st">'4/30/2017'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-01'</span>, <span class="st">'2017-01-02'</span>, <span class="st">'2017-01-03'</span>, <span class="st">'2017-01-04'</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-05'</span>, <span class="st">'2017-01-06'</span>, <span class="st">'2017-01-07'</span>, <span class="st">'2017-01-08'</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-09'</span>, <span class="st">'2017-01-10'</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                   ...</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-22'</span>, <span class="st">'2020-12-23'</span>, <span class="st">'2020-12-24'</span>, <span class="st">'2020-12-25'</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-26'</span>, <span class="st">'2020-12-27'</span>, <span class="st">'2020-12-28'</span>, <span class="st">'2020-12-29'</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30'</span>, <span class="st">'2020-12-31'</span>],</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, length<span class="op">=</span><span class="dv">1461</span>, freq<span class="op">=</span><span class="st">'D'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Because it was not specified otherwise, the frequency was set as the default, daily. To return a different frequency, we could use the <code>freq</code> parameter:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify start and end, minute-ly frequency</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'1/1/2017'</span>,<span class="st">'12/31/2020'</span>, freq<span class="op">=</span><span class="st">'min'</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-01 00:00:00'</span>, <span class="st">'2017-01-01 00:01:00'</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:02:00'</span>, <span class="st">'2017-01-01 00:03:00'</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:04:00'</span>, <span class="st">'2017-01-01 00:05:00'</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:06:00'</span>, <span class="st">'2017-01-01 00:07:00'</span>,</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:08:00'</span>, <span class="st">'2017-01-01 00:09:00'</span>,</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                   ...</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:51:00'</span>, <span class="st">'2020-12-30 23:52:00'</span>,</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:53:00'</span>, <span class="st">'2020-12-30 23:54:00'</span>,</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:55:00'</span>, <span class="st">'2020-12-30 23:56:00'</span>,</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:57:00'</span>, <span class="st">'2020-12-30 23:58:00'</span>,</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:59:00'</span>, <span class="st">'2020-12-31 00:00:00'</span>],</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, length<span class="op">=</span><span class="dv">2102401</span>, freq<span class="op">=</span><span class="st">'T'</span>)</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify start and end, monthly frequency</span></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'1/1/2017'</span>,<span class="st">'12/31/2020'</span>, freq<span class="op">=</span><span class="st">'M'</span>)</span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-31'</span>, <span class="st">'2017-02-28'</span>, <span class="st">'2017-03-31'</span>, <span class="st">'2017-04-30'</span>,</span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-05-31'</span>, <span class="st">'2017-06-30'</span>, <span class="st">'2017-07-31'</span>, <span class="st">'2017-08-31'</span>,</span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-09-30'</span>, <span class="st">'2017-10-31'</span>, <span class="st">'2017-11-30'</span>, <span class="st">'2017-12-31'</span>,</span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-01-31'</span>, <span class="st">'2018-02-28'</span>, <span class="st">'2018-03-31'</span>, <span class="st">'2018-04-30'</span>,</span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-05-31'</span>, <span class="st">'2018-06-30'</span>, <span class="st">'2018-07-31'</span>, <span class="st">'2018-08-31'</span>,</span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-09-30'</span>, <span class="st">'2018-10-31'</span>, <span class="st">'2018-11-30'</span>, <span class="st">'2018-12-31'</span>,</span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-01-31'</span>, <span class="st">'2019-02-28'</span>, <span class="st">'2019-03-31'</span>, <span class="st">'2019-04-30'</span>,</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-05-31'</span>, <span class="st">'2019-06-30'</span>, <span class="st">'2019-07-31'</span>, <span class="st">'2019-08-31'</span>,</span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-09-30'</span>, <span class="st">'2019-10-31'</span>, <span class="st">'2019-11-30'</span>, <span class="st">'2019-12-31'</span>,</span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-01-31'</span>, <span class="st">'2020-02-29'</span>, <span class="st">'2020-03-31'</span>, <span class="st">'2020-04-30'</span>,</span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-05-31'</span>, <span class="st">'2020-06-30'</span>, <span class="st">'2020-07-31'</span>, <span class="st">'2020-08-31'</span>,</span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-09-30'</span>, <span class="st">'2020-10-31'</span>, <span class="st">'2020-11-30'</span>, <span class="st">'2020-12-31'</span>],</span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, freq<span class="op">=</span><span class="st">'M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify start and end, minute-ly frequency</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'1/1/2017'</span>,<span class="st">'12/31/2020'</span>, freq<span class="op">=</span><span class="st">'min'</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-01 00:00:00'</span>, <span class="st">'2017-01-01 00:01:00'</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:02:00'</span>, <span class="st">'2017-01-01 00:03:00'</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:04:00'</span>, <span class="st">'2017-01-01 00:05:00'</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:06:00'</span>, <span class="st">'2017-01-01 00:07:00'</span>,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-01-01 00:08:00'</span>, <span class="st">'2017-01-01 00:09:00'</span>,</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>                   ...</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:51:00'</span>, <span class="st">'2020-12-30 23:52:00'</span>,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:53:00'</span>, <span class="st">'2020-12-30 23:54:00'</span>,</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:55:00'</span>, <span class="st">'2020-12-30 23:56:00'</span>,</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:57:00'</span>, <span class="st">'2020-12-30 23:58:00'</span>,</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-12-30 23:59:00'</span>, <span class="st">'2020-12-31 00:00:00'</span>],</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, length<span class="op">=</span><span class="dv">2102401</span>, freq<span class="op">=</span><span class="st">'T'</span>)</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify start and end, monthly frequency</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>pd.date_range(<span class="st">'1/1/2017'</span>,<span class="st">'12/31/2020'</span>, freq<span class="op">=</span><span class="st">'M'</span>)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> DatetimeIndex([<span class="st">'2017-01-31'</span>, <span class="st">'2017-02-28'</span>, <span class="st">'2017-03-31'</span>, <span class="st">'2017-04-30'</span>,</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-05-31'</span>, <span class="st">'2017-06-30'</span>, <span class="st">'2017-07-31'</span>, <span class="st">'2017-08-31'</span>,</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2017-09-30'</span>, <span class="st">'2017-10-31'</span>, <span class="st">'2017-11-30'</span>, <span class="st">'2017-12-31'</span>,</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-01-31'</span>, <span class="st">'2018-02-28'</span>, <span class="st">'2018-03-31'</span>, <span class="st">'2018-04-30'</span>,</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-05-31'</span>, <span class="st">'2018-06-30'</span>, <span class="st">'2018-07-31'</span>, <span class="st">'2018-08-31'</span>,</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2018-09-30'</span>, <span class="st">'2018-10-31'</span>, <span class="st">'2018-11-30'</span>, <span class="st">'2018-12-31'</span>,</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-01-31'</span>, <span class="st">'2019-02-28'</span>, <span class="st">'2019-03-31'</span>, <span class="st">'2019-04-30'</span>,</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-05-31'</span>, <span class="st">'2019-06-30'</span>, <span class="st">'2019-07-31'</span>, <span class="st">'2019-08-31'</span>,</span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2019-09-30'</span>, <span class="st">'2019-10-31'</span>, <span class="st">'2019-11-30'</span>, <span class="st">'2019-12-31'</span>,</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-01-31'</span>, <span class="st">'2020-02-29'</span>, <span class="st">'2020-03-31'</span>, <span class="st">'2020-04-30'</span>,</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-05-31'</span>, <span class="st">'2020-06-30'</span>, <span class="st">'2020-07-31'</span>, <span class="st">'2020-08-31'</span>,</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'2020-09-30'</span>, <span class="st">'2020-10-31'</span>, <span class="st">'2020-11-30'</span>, <span class="st">'2020-12-31'</span>],</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>                  dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, freq<span class="op">=</span><span class="st">'M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There are many other parameters for the <code>pd.date_range()</code> function, as well as other pandas functions. More useful to us, however, are the functions for dealing with <em>existing</em> timestamps, such as those in our <code>bsrn</code> DataFrame.</p>
 <section id="parsing-dates-in-pandas" class="level4">
 <h4 class="anchored" data-anchor-id="parsing-dates-in-pandas">Parsing dates in pandas</h4>
 <p>Let’s start by taking a look at <code>bsrn.DATE</code>, which contains the timestamps for each record of our BSRN data.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bsrn.DATE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bsrn.DATE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1219,7 +909,7 @@ Name: DATE, Length: 44640, dtype: object
 </blockquote>
 </blockquote>
 <p>While the values certainly resemble <code>datetime</code> objects, they are stored in pandas as “objects,” which basically means that pandas doesn’t recognize the data type –&nbsp;it doesn’t know how to handle them. Using the <code>pd.to_datetime()</code> function, we can convert this column to <code>datetime</code> objects:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(bsrn.DATE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(bsrn.DATE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1248,11 +938,12 @@ Name: DATE, Length: 44640, dtype: datetime64[ns]
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert bsrn.DATE column to datetime objects</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'DATE'</span>] <span class="op">=</span> pd.to_datetime(bsrn.DATE)  <span class="co"># Note: overwriting a column like this is NOT recommended.</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bsrn.DATE as the DataFrame index</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>bsrn.set_index(<span class="st">'DATE'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert bsrn.DATE column to datetime objects</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>bsrn[<span class="st">'DATE'</span>] <span class="op">=</span> pd.to_datetime(bsrn.DATE)  <span class="co"># Note: overwriting a column like this is NOT recommended.</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bsrn.DATE as the DataFrame index</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>bsrn.set_index(<span class="st">'DATE'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>bsrn.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>As noted in the comment in the cell above, reseting the values in a column as we did in the first line of code is generally not recommended, but in this case, since we knew exactly what the result would be, it’s acceptable. Also, notice the <code>inplace=True</code> argument passed to <code>df.set_index()</code>. This prevented us from having to copy the DataFrame to a new variable, instead performing the operation <em>in-place</em>.</p>
@@ -1263,7 +954,7 @@ Name: DATE, Length: 44640, dtype: datetime64[ns]
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>bsrn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>bsrn.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>As expected, the index has been changed to a <code>DatetimeIndex</code>, and there is no longer a <code>'DATE'</code> column. Had we wanted to keep the timestamps as a column as well, we could have passed <code>drop=False</code> to <code>df.set_index()</code>, telling pandas not to <em>drop</em> (or <em>delete</em>) the <code>'DATE'</code> column. We can look at the <code>DatetimeIndex</code> just as before using <code>df.index</code>.</p>
@@ -1273,12 +964,12 @@ Name: DATE, Length: 44640, dtype: datetime64[ns]
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>bsrn.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>bsrn.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now that we have a <code>DatetimeIndex</code>, we can access specific attributes of the <code>datetime</code> objects like the year, day, hour, etc. To do this, we add the desired time period using dot notation: <code>df.index.attribute</code>. For a full list of attributes, see the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.html"><code>pd.DatetimeIndex</code> documentation</a>. For example:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the hour of each record</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>bsrn.index.hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the hour of each record</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>bsrn.index.hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1292,9 +983,15 @@ dtype='int64', name='DATE', length=44640)
 </blockquote>
 </blockquote>
 </blockquote>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>bsrn.index.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>The result is a pandas <code>Index</code> object with the same length as the original DataFrame. To return only the unique values, we use the <code>Series.unique()</code> function, which can be used on any <code>Series</code> object (including a column of a DataFrame):</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the unique hour values</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>bsrn.index.hour.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the unique hour values</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>bsrn.index.hour.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1311,8 +1008,20 @@ dtype='int64', name='DATE')
 <pre><code>🐍 &lt;b&gt;Method chaining.&lt;/b&gt;  This process of stringing multiple methods together in a single line of code is called &lt;b&gt;method chaining&lt;/b&gt;, a hallmark of object-oriented programming. Method chaining is a means of concatenating functions in order to quickly complete a series of data transformations. In pandas, we often use method chaining in aggregation processes to perfrom calculations on groups or selections of data. Methods are appended using dot notation to the end of a command. Any code that is expressed using method chaining could also be written using a series of commands (and vice versa). Method chaining is common in JavaScript, and while it is not widely used in Python, it is commonly applied in pandas.</code></pre>
 </div>
 <p>Dealing with <code>datetime</code> objects can be tricky and often requires a bit of trial and error before the timestamps are in the desired format. If you know the format of your dataset and its timestamp records, you can parse the datetimes and set the index when reading in the data. For example, we could have imported our data as follows:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This would have accomplished what we ultimately did in three lines in a single line of code. But remember, working with most raw datasets is rarely this straightforward –&nbsp;even the file we are using in this session was preprocessed to streamline the import process!</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>bsrn[[<span class="st">'LWD_Wm2'</span>, <span class="st">'SWD_Wm2'</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>LWD_Wm2    342.350692
+SWD_Wm2    318.046516
+dtype: float64</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="a-few-useful-operations" class="level3">
@@ -1323,8 +1032,8 @@ dtype='int64', name='DATE')
 <section id="dataframe-reduction" class="level4">
 <h4 class="anchored" data-anchor-id="dataframe-reduction"><code>DataFrame</code> reduction</h4>
 <p>Much like NumPy, pandas has several useful methods for <em>reducing</em> data to a single statistic. These are intuitively named and include: <code>df.mean()</code>, <code>df.median()</code>, <code>df.sum()</code>, <code>df.max()</code>, <code>df.min()</code>, and <code>df.std()</code>. Unlike array reduction, however, these basic statistical methods in pandas operate <em>column-wise</em>, returning a Series containing the statistic for each column indexed by column name. For example:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of each column</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>bsrn.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median of each column</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>bsrn.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1350,32 +1059,120 @@ dtype: float64
 </blockquote>
 </blockquote>
 <p>To retrieve the value for just a single column, you can use indexing to call the column as a Series:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median incoming shortwave radiation</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>bsrn.SWD_Wm2.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median incoming shortwave radiation</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>bsrn.SWD_Wm2.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 12pt">
 <span style="color: #A514F6; font-weight: bold"> &gt;&gt;&gt; </span> 27.0
 </p>
 <p>Furthermore, while it is not apparent in this example, pandas default behaviour is to <strong>ignore NaN values</strong> when performing computations. This can be changed by passing <code>skipna=False</code> to the reduction method (e.g.&nbsp;<code>df.median(skipna=False)</code>), though skipping NaNs is often quite useful!</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>bsrn <span class="op">=</span> pd.read_csv(<span class="st">'../data/BSRN_GOB_2019-10.csv'</span>,index_col<span class="op">=</span><span class="dv">0</span>,parse_dates<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="adding-data" class="level4">
 <h4 class="anchored" data-anchor-id="adding-data">Adding data</h4>
 <p>Much like when we converted <code>bsrn.DATE</code> to <code>datetime</code> objects, a column can be added to a DataFrame using square bracket notation with a new column label as a string. The data for the new column can come in the form of a list, Series, or a single value:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column from a list</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'E'</span>] <span class="op">=</span> [<span class="fl">13.0</span>, <span class="fl">40.1</span>, <span class="fl">39.8</span>, <span class="fl">28.2</span>]</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column from a Series</span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'F'</span>] <span class="op">=</span> pd.Series([<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">30</span>, <span class="dv">24</span>])</span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Propagate a single value through all rows</span></span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'G'</span>] <span class="op">=</span> <span class="st">'blue'</span></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+</section>
+<section id="add-a-column-from-a-list" class="level1">
+<h1>Add a column from a list</h1>
+<pre><code>df['E'] = [13.0, 40.1, 39.8, 28.2]</code></pre>
+</section>
+<section id="add-a-column-from-a-series" class="level1">
+<h1>Add a column from a Series</h1>
+<pre><code>df['F'] = pd.Series([18, 22, 30, 24])</code></pre>
+</section>
+<section id="propagate-a-single-value-through-all-rows" class="level1">
+<h1>Propagate a single value through all rows</h1>
+<pre><code>
+df['G'] = 'blue'
+
+df</code></pre>
+<div class="cell" data-execution_count="114">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'E'</span>] <span class="op">=</span> [<span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">34</span>, <span class="dv">56</span>]</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'G'</span>] <span class="op">=</span> [<span class="st">'blue'</span>, <span class="st">'sky and a c'</span>, <span class="st">'cat'</span>, <span class="st">'blue'</span>]</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'F'</span>] <span class="op">=</span> df[<span class="st">'E'</span>] <span class="op">-</span> df[<span class="st">'E'</span>].mean()</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> has_c(s):</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s.find(<span class="st">'c'</span>) <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'G'</span>].<span class="bu">apply</span>(has_c)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="114">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">A</th>
+<th data-quarto-table-cell-role="th">B</th>
+<th data-quarto-table-cell-role="th">C</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">E</th>
+<th data-quarto-table-cell-role="th">G</th>
+<th data-quarto-table-cell-role="th">F</th>
+<th data-quarto-table-cell-role="th">A_degF</th>
+<th data-quarto-table-cell-role="th">is_hot</th>
+<th data-quarto-table-cell-role="th">H</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>17.9</td>
+<td>14.2</td>
+<td>18.8</td>
+<td>28.0</td>
+<td>45</td>
+<td>sky and a c</td>
+<td>2.75</td>
+<td>64.22</td>
+<td>False</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>23.6</td>
+<td>18.4</td>
+<td>29.9</td>
+<td>27.8</td>
+<td>34</td>
+<td>cat</td>
+<td>-8.25</td>
+<td>74.48</td>
+<td>True</td>
+<td>27.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1391,13 +1188,13 @@ dtype: float64
 </blockquote>
 </blockquote>
 <p>New columns can also be added as the result of an arithmetic operation (e.g.&nbsp;sum, product, etc.) performed on one or more existing columns:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column by converting values in df.A from °C to °F</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_degF'</span>] <span class="op">=</span> (df[<span class="st">'A'</span>] <span class="op">*</span> (<span class="dv">9</span><span class="op">/</span><span class="dv">5</span>)) <span class="op">+</span> <span class="dv">32</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column representing the difference between df.B and df.C</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'BC_diff'</span>] <span class="op">=</span> df.B <span class="op">-</span> df.C</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column by converting values in df.A from °C to °F</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'A_degF'</span>] <span class="op">=</span> (df[<span class="st">'A'</span>] <span class="op">*</span> (<span class="dv">9</span><span class="op">/</span><span class="dv">5</span>)) <span class="op">+</span> <span class="dv">32</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column representing the difference between df.B and df.C</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'BC_diff'</span>] <span class="op">=</span> df.B <span class="op">-</span> df.C</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1412,11 +1209,34 @@ dtype: float64
 </blockquote>
 </blockquote>
 </blockquote>
+<div class="cell" data-execution_count="122">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df[ <span class="co"># Take a dAtaframe.</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'A'</span>] <span class="op">&lt;</span> df[<span class="st">'D'</span>] <span class="co"># find the rows where this is true.</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>][[<span class="st">'C'</span>,<span class="st">'B'</span>]]</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df1)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>df1.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      C     B
+1  18.8  14.2
+2  29.9  18.4</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre><code>C    24.35
+B    16.30
+dtype: float64</code></pre>
+</div>
+</div>
 <p>Finally, you can use a Boolean expression to add a column, which contains <strong>Boolean</strong> objects (<code>True</code> or <code>False</code>) based on the condition. For example:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column with Booleans for values in df.D greater than or equal to 20.0</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'D_20plus'</span>] <span class="op">=</span> df.D <span class="op">&gt;=</span> <span class="fl">20.0</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column with Booleans for values in df.D greater than or equal to 20.0</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'D_20plus'</span>] <span class="op">=</span> df.D <span class="op">&gt;=</span> <span class="fl">20.0</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1431,11 +1251,29 @@ dtype: float64
 </blockquote>
 </blockquote>
 </blockquote>
+<div class="cell" data-execution_count="89">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'H'</span>] <span class="op">=</span> df.D[df.D <span class="op">&gt;=</span> <span class="dv">20</span>] </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(d):</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> d<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'G'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>0    2
+1    2
+2    2
+3    2
+Name: G, dtype: int64</code></pre>
+</div>
+</div>
 <p>These conditional expressions can also be used to create <strong>Boolean masks</strong>, which allow you to “mask” the values in the DataFrame that do not meet a condition, only extracting those that do. For example, let’s use a Boolean mask to apply an mathematical expression on only certain values in column <code>'D'</code>:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract 20 from all values in dfD greater than or equal to 20</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'D_less20'</span>] <span class="op">=</span> df.D[df.D <span class="op">&gt;=</span> <span class="fl">20.0</span>] <span class="op">-</span> <span class="fl">20.0</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract 20 from all values in dfD greater than or equal to 20</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'D_less20'</span>] <span class="op">=</span> df.D[df.D <span class="op">&gt;=</span> <span class="fl">20.0</span>] <span class="op">-</span> <span class="fl">20.0</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1452,13 +1290,13 @@ dtype: float64
 </blockquote>
 <p>All values that do not meet the condition are hidden from the expression, leaving <strong>NaNs</strong> in the resulting column. Boolean masks come in quite handy in data analysis, as they allow you to extract certain rows from a DataFrame based on their values in one or more columns.</p>
 <p>Furthermore, in addition to simply <strong>adding</strong> columns, new columns can be <strong>inserted</strong> in a desired index position using <code>df.insert()</code> with arguments specifying the <em>location</em>, <em>name</em>, and <em>values</em> of the column:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create list of seasons</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'winter'</span>, <span class="st">'spring'</span>, <span class="st">'summer'</span>, <span class="st">'fall'</span>]</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert season as first column</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">0</span>, <span class="st">'SEASON'</span>, seasons)</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create list of seasons</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'winter'</span>, <span class="st">'spring'</span>, <span class="st">'summer'</span>, <span class="st">'fall'</span>]</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert season as first column</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">0</span>, <span class="st">'SEASON'</span>, seasons)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1473,14 +1311,13 @@ dtype: float64
 </blockquote>
 </blockquote>
 </blockquote>
-</section>
 <section id="removing-data" class="level4">
 <h4 class="anchored" data-anchor-id="removing-data">Removing data</h4>
 <p>Unlike adding new data columns, <em>removing</em> columns from a DataFrame should be done with caution. In fact, it’s not a bad idea to create a copy of your DataFrame before performing <em>any</em> operations. This will allow you to return to the original data as needed without having to re-import or re-initialize the DataFrame. If you do need to remove a column, you can use the <code>del</code> command:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete 'G' from df</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df[<span class="st">'G'</span>]</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete 'G' from df</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df[<span class="st">'G'</span>]</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1496,10 +1333,10 @@ dtype: float64
 </blockquote>
 </blockquote>
 <p>Note that this is an <em>in-place</em> operation, meaning that the column is deleted from the original variable. Alternatively, you can use <code>df.pop()</code> to <strong>extract</strong> a column. This method allows a column values to be extracted (and deleted) from a DataFrame and assigned to a new variable:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract column 'F' from df as a new Series</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>df_F <span class="op">=</span> df.pop(<span class="st">'F'</span>)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract column 'F' from df as a new Series</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>df_F <span class="op">=</span> df.pop(<span class="st">'F'</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1518,10 +1355,10 @@ dtype: float64
 <section id="applying-functions" class="level4">
 <h4 class="anchored" data-anchor-id="applying-functions">Applying functions</h4>
 <p>In addition to manipulating individual columns, you can apply a function to an entire Series or DataFrame using the pandas function <code>df.apply()</code>. For example, consider our original DataFrame <code>df</code>, which consists of temperature values in °C:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],[<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],[<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame([[<span class="fl">25.8</span>, <span class="fl">28.1</span>, <span class="fl">16.2</span>, <span class="fl">11.0</span>],[<span class="fl">17.9</span>, <span class="fl">14.2</span>, <span class="fl">18.8</span>, <span class="fl">28.0</span>],</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>                   [<span class="fl">23.6</span>, <span class="fl">18.4</span>, <span class="fl">29.9</span>, <span class="fl">27.8</span>],[<span class="fl">23.6</span>, <span class="fl">36.2</span>, <span class="fl">22.1</span>, <span class="fl">14.5</span>]],</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>                 columns<span class="op">=</span>[<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>])</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1537,25 +1374,25 @@ dtype: float64
 </blockquote>
 </blockquote>
 <p>We previously used arithmetic operators to convert column <code>'A'</code> to °F, but we could also use a function. First, let’s define a function <code>convert_CtoF</code> to convert temperature values from Celsius to Fahrenheit:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_CtoF(degC):</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Converts a temperature to from Celsius to Fahrenheit</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co">        degC : float</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature value in °C</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">       </span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">        degF : float</span></span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature value in °F</span></span>
-<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>    degF <span class="op">=</span> (degC <span class="op">*</span>(<span class="fl">9.</span><span class="op">/</span><span class="dv">5</span>)) <span class="op">+</span> <span class="dv">32</span></span>
-<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> degF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_CtoF(degC):</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Converts a temperature to from Celsius to Fahrenheit</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="co">        degC : float</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature value in °C</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="co">       </span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="co">        degF : float</span></span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Temperature value in °F</span></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>    degF <span class="op">=</span> (degC <span class="op">*</span>(<span class="fl">9.</span><span class="op">/</span><span class="dv">5</span>)) <span class="op">+</span> <span class="dv">32</span></span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> degF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using <code>df.apply()</code> we can use this function to convert values in column <code>'A'</code> as follows:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df.A.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>df.A.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1571,7 +1408,7 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 <p>Where this becomes especially useful is for operating on entire DataFrames. You have to be careful with this if your DataFrame contains multiple data types, but it works well when you need to perform an operation on an entire DataFrame. For example, we could convert all of the values in <code>df</code> by iterating through the columns, or, using <code>df.apply()</code>, we could acheive the same result in a single line of code:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1586,7 +1423,7 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 </blockquote>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">apply</span>(convert_CtoF)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1606,22 +1443,22 @@ Name: A, dtype: float64
 <h4 class="anchored" data-anchor-id="combining-dataframes">Combining DataFrames</h4>
 <p>There are several ways to combine data from multiple Series or DataFrames into a single object in pandas. These functions include <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.append.html#pandas.DataFrame.append"><code>pd.append()</code></a>, <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join"><code>pd.join()</code></a>, and <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html#pandas.DataFrame.merge"><code>pd.merge()</code></a>. We will focus on the general <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html"><code>pd.concat()</code></a> function, which is the most versatile way to concatenate pandas objects. To learn more about these other functions, refer to the pandas documentation or see <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781491912126/3dot-data-manipulation-with-pandas/introduction_to_pandas_html"> Chapter 3</a> of the <a href="https://proquest-safaribooksonline-com.proxy.library.ucsb.edu:9443/book/programming/python/9781491912126"> <i>Python Data Science Handbook</i></a>.</p>
 <p>Let’s start by considering the simplest case of two DataFrames with identical columns:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame([[<span class="st">'Los Angeles'</span>, <span class="fl">34.0522</span>, <span class="op">-</span><span class="fl">118.2437</span>],</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Bamako'</span>, <span class="fl">12.6392</span>, <span class="fl">8.0029</span>],</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Johannesburg'</span>, <span class="op">-</span><span class="fl">26.2041</span>, <span class="fl">28.0473</span>],</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Cairo'</span>, <span class="fl">30.0444</span>, <span class="fl">31.2357</span>]],</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'CITY'</span>, <span class="st">'LAT'</span>, <span class="st">'LONG'</span>])</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame([[<span class="st">'Cape Town'</span>, <span class="op">-</span><span class="fl">33.9249</span>, <span class="fl">18.4241</span>],</span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Kyoto'</span>, <span class="fl">35.0116</span>, <span class="fl">135.7681</span>],</span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'London'</span>, <span class="fl">51.5074</span>, <span class="op">-</span><span class="fl">0.1278</span>],</span>
-<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Cochabamba'</span>, <span class="op">-</span><span class="fl">17.4140</span>, <span class="op">-</span><span class="fl">66.1653</span>]],</span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'CITY'</span>, <span class="st">'LAT'</span>, <span class="st">'LONG'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame([[<span class="st">'Los Angeles'</span>, <span class="fl">34.0522</span>, <span class="op">-</span><span class="fl">118.2437</span>],</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Bamako'</span>, <span class="fl">12.6392</span>, <span class="fl">8.0029</span>],</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Johannesburg'</span>, <span class="op">-</span><span class="fl">26.2041</span>, <span class="fl">28.0473</span>],</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Cairo'</span>, <span class="fl">30.0444</span>, <span class="fl">31.2357</span>]],</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'CITY'</span>, <span class="st">'LAT'</span>, <span class="st">'LONG'</span>])</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame([[<span class="st">'Cape Town'</span>, <span class="op">-</span><span class="fl">33.9249</span>, <span class="fl">18.4241</span>],</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Kyoto'</span>, <span class="fl">35.0116</span>, <span class="fl">135.7681</span>],</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'London'</span>, <span class="fl">51.5074</span>, <span class="op">-</span><span class="fl">0.1278</span>],</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'Cochabamba'</span>, <span class="op">-</span><span class="fl">17.4140</span>, <span class="op">-</span><span class="fl">66.1653</span>]],</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'CITY'</span>, <span class="st">'LAT'</span>, <span class="st">'LONG'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using <code>pd.concat([df1,df2])</code>, we can combine the two DataFrames into one. Notice that we must pass the DataFrames as a <em>list</em>, because <code>pd.concat()</code> requires an <em>iterable object</em> as its input.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate df1 and df2</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>city_coords <span class="op">=</span> pd.concat([df1,df2])</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>city_coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate df1 and df2</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>city_coords <span class="op">=</span> pd.concat([df1,df2])</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>city_coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1641,10 +1478,10 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 <p>By default, pandas concatenates along the <em>row</em> axis, appending the values in <code>df2</code> to <code>df1</code> as new rows. However, notice that the original index values have been retained. Since these index labels do not contain useful information, it would be best to reset the index before proceeding. This can be done in one of two ways. First, we could have passed <code>ignore_index=True</code> to the <code>pd.concat()</code> function, telling pandas to ignore the index labels. Since we have already created a new variable, however, let’s use a more general method: <code>df.reset_index()</code>.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index in-place and delete old index</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>city_coords.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>city_coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index in-place and delete old index</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>city_coords.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>city_coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1665,12 +1502,12 @@ Name: A, dtype: float64
 </blockquote>
 <p>By passing the optional <em><code>inplace</code></em> and <em><code>drop</code></em> parameters, we ensured that pandas would reset the index <em>in-place</em> (the default is to return a new DataFrame) and <em>drop</em> the old index (the default behaviour is to add the former index as a column).</p>
 <p>Now let’s consider the case of concatenating two DataFrames whose columns do not match. In this case, pandas will keep source rows and columns separate in the concatenated DataFrame, filling empty cells with NaN values:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.DataFrame([[<span class="st">'USA'</span>, <span class="dv">87</span>],[<span class="st">'Mali'</span>, <span class="dv">350</span>],[<span class="st">'South Africa'</span>, <span class="dv">1753</span>],[<span class="st">'Egypt'</span>, <span class="dv">23</span>],</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'South Africa'</span>, <span class="dv">25</span>],[<span class="st">'Japan'</span>, <span class="dv">47</span>],[<span class="st">'UK'</span>, <span class="dv">11</span>],[<span class="st">'Bolivia'</span>, <span class="dv">2558</span>]],</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'COUNTRY'</span>, <span class="st">'ELEV'</span>])</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate cities1 and df3</span></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>pd.concat([city_coords,df3])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.DataFrame([[<span class="st">'USA'</span>, <span class="dv">87</span>],[<span class="st">'Mali'</span>, <span class="dv">350</span>],[<span class="st">'South Africa'</span>, <span class="dv">1753</span>],[<span class="st">'Egypt'</span>, <span class="dv">23</span>],</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>                    [<span class="st">'South Africa'</span>, <span class="dv">25</span>],[<span class="st">'Japan'</span>, <span class="dv">47</span>],[<span class="st">'UK'</span>, <span class="dv">11</span>],[<span class="st">'Bolivia'</span>, <span class="dv">2558</span>]],</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>                  columns<span class="op">=</span>[<span class="st">'COUNTRY'</span>, <span class="st">'ELEV'</span>])</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate cities1 and df3</span></span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>pd.concat([city_coords,df3])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1698,10 +1535,10 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 <p>Instead, we must pass <code>axis=1</code> to the function to specify that we want to add the data in <code>df3</code> as columns to the new DataFrame:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate along column axis</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> pd.concat([city_coords,df3], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>cities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate along column axis</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> pd.concat([city_coords,df3], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>cities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p style="font-family: Lucida Console, Courier, monospace; margin-left: 22pt; margin-top: 0pt; margin-bottom: 0pt; color: #A514F6; font-weight: bold">
 </p><blockquote class="blockquote">
 <blockquote class="blockquote">
@@ -1721,14 +1558,13 @@ Name: A, dtype: float64
 </blockquote>
 </blockquote>
 </section>
-</section>
 <section id="data-export" class="level3">
 <h3 class="anchored" data-anchor-id="data-export">Data export</h3>
 <hr style="border-top: 0.2px solid gray; margin-top: 12px; margin-bottom: 1px">
 
 <p>While you will most likely use pandas DataFrames to manipulate data, perform statistical analyses, and visualize results <em>within</em> Python, you may encounter scenarios where it is useful to “save” a DataFrame with which you’ve been working. Exporting data from pandas is analogous to importing it.</p>
 <p>Let’s take the example of the <code>cities</code> DataFrame we created in the last example. Now that we’ve compiled GPS coordinates of various cities, let’s say we wanted to load these data into a GIS software application. We could export this DataFrame using <code>df.to_csv()</code> specifying the file name with the full file path as follows:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>cities.to_csv(<span class="st">'./exports/cities.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>cities.to_csv(<span class="st">'./exports/cities.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="congratulations" class="level3">
 <h3 class="anchored" data-anchor-id="congratulations">Congratulations!</h3>
@@ -1736,16 +1572,11 @@ Name: A, dtype: float64
 <div class="cell" data-scrolled="true">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> YouTubeVideo</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>ids<span class="op">=</span>[<span class="st">'sGF6bOi1NfA'</span>,<span class="st">'Z98ZxYFsIWo'</span>, <span class="st">'l73rmrLTHQc'</span>, <span class="st">'D7xWXk5T3-g'</span>]</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>YouTubeVideo(<span class="bu">id</span><span class="op">=</span>choice(ids),width<span class="op">=</span><span class="dv">600</span>,height<span class="op">=</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> YouTubeVideo</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>ids<span class="op">=</span>[<span class="st">'sGF6bOi1NfA'</span>,<span class="st">'Z98ZxYFsIWo'</span>, <span class="st">'l73rmrLTHQc'</span>, <span class="st">'D7xWXk5T3-g'</span>]</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>YouTubeVideo(<span class="bu">id</span><span class="op">=</span>choice(ids),width<span class="op">=</span><span class="dv">600</span>,height<span class="op">=</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
-
-        <iframe width="600" height="300" src="https://www.youtube.com/embed/l73rmrLTHQc" frameborder="0" allowfullscreen=""></iframe>
-        
-</div>
 </div>
 <hr style="border-top: 1px solid gray; margin-top: 24px; margin-bottom: 1px">
 
