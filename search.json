@@ -270,28 +270,7 @@
     "href": "interactive_sessions/session_shim.html",
     "title": "Steps",
     "section": "",
-    "text": "Code\nimport os\nimport shutil\nimport requests\nCode\n\ndef move_file_if_new_name_doesnt_exist(old_path, new_path):\n    \"\"\" Rename a file, but only if new filename doesn't exist\n\n    Args:\n        old_path: Current file name\n        new_path: New file name\n    \"\"\"\n    # Check if the old file exists\n    if not os.path.exists(old_path):\n        print(f\"Error: Source file '{old_path}' doesn't exist.\")\n        return\n    \n    # Check if the destination file exists\n    if os.path.exists(new_path):\n        print(f\"Error: Destination file '{new_path}' already exists.\")\n        return\n    \n    # Move/Rename the file\n    shutil.move(old_path, new_path)\n    print(f\"Moved '{old_path}' to '{new_path}'.\")\n\ndef download_shim_file(url, old_filename, new_filename):\n    \"\"\" Download a new file, but only if a backup exists\n\n    \"\"\"\n    # Check if the new filename already exists\n    if not os.path.exists(new_filename):\n        print(f\"Error: '{new_filename}' doesn't exist. Aborting download to avoid overwriting '{old_filename}'.\")\n        return\n    \n    # Download the file from the given URL\n    response = requests.get(url, stream=True)\n    if response.status_code == 200:\n        with open(old_filename, 'wb') as file:\n            for chunk in response.iter_content(chunk_size=1024):\n                file.write(chunk)\n        print(f\"Downloaded new content to '{old_filename}'.\")\n    else:\n        print(f\"Error: Failed to download the file from {url}. Status code: {response.status_code}\")\n\ndef session_shim(session):\n    \"\"\"\n    Provides the correct filenames and url for a session shim\n\n    Args:\n        session name (str)\n        \n        Should match the session name in the repository.\n        For example: \n            \"4-1_pandas\"\n            or \"3-1_numpy\", \n            etc...\n\n    Returns:\n        url, old_filename, new_filename\n    \"\"\"\n    url = \"https://raw.githubusercontent.com/\" \\\n    \"environmental-data-science/eds217_2023/\" \\\n    f\"main/interactive_sessions/{session}.ipynb\"\n    old_filename = f\"{session}.ipynb\"\n    new_filename = f\"no_track_{session}.ipynb\"\n    return url, old_filename, new_filename"
-  },
-  {
-    "objectID": "interactive_sessions/session_shim.html#generate-the-urls-and-filenames-for-this-shim",
-    "href": "interactive_sessions/session_shim.html#generate-the-urls-and-filenames-for-this-shim",
-    "title": "Steps",
-    "section": "0. Generate the urls and filenames for this shim",
-    "text": "0. Generate the urls and filenames for this shim"
-  },
-  {
-    "objectID": "interactive_sessions/session_shim.html#move-the-current-session-to-an-untracked-file-name",
-    "href": "interactive_sessions/session_shim.html#move-the-current-session-to-an-untracked-file-name",
-    "title": "Steps",
-    "section": "1. Move the current session to an untracked file name",
-    "text": "1. Move the current session to an untracked file name\n.gitignore includes no_track*, so any file that starts with this file name will be untracked in the repo."
-  },
-  {
-    "objectID": "interactive_sessions/session_shim.html#download-the-new-file-from-the-eds217_2023-repo",
-    "href": "interactive_sessions/session_shim.html#download-the-new-file-from-the-eds217_2023-repo",
-    "title": "Steps",
-    "section": "2. Download the new file from the eds217_2023 repo",
-    "text": "2. Download the new file from the eds217_2023 repo\n\n\nCode\nsessions = ['3-1_numpy','4-1_pandas']\nfor session in sessions:\n    shim_url, old_filename, new_filename = session_shim(session)\n    move_file_if_new_name_doesnt_exist(old_filename, new_filename)\n    download_shim_file(shim_url, old_filename, new_filename)\n\n\nMoved '3-1_numpy.ipynb' to 'no_track_3-1_numpy.ipynb'.\nDownloaded new content to '3-1_numpy.ipynb'.\nError: Destination file 'no_track_4-1_pandas.ipynb' already exists.\nDownloaded new content to '4-1_pandas.ipynb'."
+    "text": "Return to Course Home Page\n\n\n\n\n\n\nCode\nimport os\nimport shutil\nimport requests\nfrom session_shim import (\n    move_file_if_new_name_doesnt_exist,\n    download_shim_file,\n    session_shim)\n\n\n\n0. Generate the urls and filenames for this shim\nWe define a sessions variable that contains a list of the sessions to update.\n\n\n1. Move the current session to an untracked file name\nFor each session, move the current file to a new untracked filename\n.gitignore includes no_track*, so any file that starts with this file name will be untracked in the repo.\n\n\n2. Download the new file(s) from the eds217_2023 repo\nUse the shim_url to update the local file with the version on the repo.\n\n\nCode\nsessions = ['3-1_numpy','4-1_pandas']\nfor session in sessions:\n    shim_url, old_filename, new_filename = session_shim(session)\n    move_file_if_new_name_doesnt_exist(old_filename, new_filename)\n    download_shim_file(shim_url, old_filename, new_filename)\n\n\nMoved '3-1_numpy.ipynb' to 'no_track_3-1_numpy.ipynb'.\nDownloaded new content to '3-1_numpy.ipynb'.\nError: Destination file 'no_track_4-1_pandas.ipynb' already exists.\nDownloaded new content to '4-1_pandas.ipynb'."
   },
   {
     "objectID": "interactive_sessions/interactive_sessions.html",
