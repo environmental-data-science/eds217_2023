@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDS 217: Python for Environmental Data Science - 📣 Data Science Library Show-and-Tell</title>
+<title>EDS 217: Python for Environmental Data Science - Data Science Ice Breaker</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,14 +74,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#python-library-show-and-tell" id="toc-python-library-show-and-tell" class="nav-link active" data-scroll-target="#python-library-show-and-tell">Python Library Show-and-Tell</a>
+  <li><a href="#central-park-squirrel-census" id="toc-central-park-squirrel-census" class="nav-link active" data-scroll-target="#central-park-squirrel-census">Central Park Squirrel Census</a>
   <ul class="collapse">
-  <li><a href="#find-a-library" id="toc-find-a-library" class="nav-link" data-scroll-target="#find-a-library">Find a Library</a></li>
-  <li><a href="#here-are-some-example-tutorials-made-by-past-classes" id="toc-here-are-some-example-tutorials-made-by-past-classes" class="nav-link" data-scroll-target="#here-are-some-example-tutorials-made-by-past-classes">Here are some example tutorials made by past classes:</a></li>
-  <li><a href="#create-a-github-repo-for-your-tutorial." id="toc-create-a-github-repo-for-your-tutorial." class="nav-link" data-scroll-target="#create-a-github-repo-for-your-tutorial.">Create a github repo for your tutorial.</a></li>
-  <li><a href="#notebook-contents" id="toc-notebook-contents" class="nav-link" data-scroll-target="#notebook-contents">Notebook contents:</a></li>
-  <li><a href="#library-show-and-tell" id="toc-library-show-and-tell" class="nav-link" data-scroll-target="#library-show-and-tell">Library Show-and-Tell</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a></li>
+  <li><a href="#setting-up-for-some-squirrely-analyses" id="toc-setting-up-for-some-squirrely-analyses" class="nav-link" data-scroll-target="#setting-up-for-some-squirrely-analyses">Setting up for some squirrely analyses:</a></li>
   </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
 </nav>
@@ -97,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">📣 Data Science Library Show-and-Tell</h1>
+<h1 class="title">Data Science Ice Breaker</h1>
 </div>
 
 
@@ -112,75 +110,40 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="python-library-show-and-tell" class="level2">
-<h2 class="anchored" data-anchor-id="python-library-show-and-tell">Python Library Show-and-Tell</h2>
+<section id="central-park-squirrel-census" class="level2">
+<h2 class="anchored" data-anchor-id="central-park-squirrel-census">Central Park Squirrel Census</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://imgs.6sqft.com/wp-content/uploads/2018/10/03124715/squirrel-Central-Park.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">squirrel!</figcaption>
+</figure>
+</div>
+<p>https://www.thesquirrelcensus.com</p>
+<section id="explore-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="explore-the-data">Explore the data</h3>
+<p>The survey data was originally collected and stored in to files available at this link:</p>
+<p><a href="https://www.thesquirrelcensus.com/data">https://www.thesquirrelcensus.com/data</a></p>
+<p>For this exercise, we will use an integrated <code>.csv</code> file that combines data and is a little more structured than the raw <code>.csv</code>. This file was downloaded from <a href="http://www.kaggle.com">kaggle.com</a> at this link:</p>
+<p><a href="https://www.kaggle.com/datasets/dominoweir/nyc-2018-squirrel-census">2018 survey data on Kaggle</a></p>
+<p>The downloaded file is already added to the class repository in the <code>data/</code> folder as as <code>2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv</code>. You can copy this folder to your new repository on your local machine</p>
+</section>
+<section id="setting-up-for-some-squirrely-analyses" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-for-some-squirrely-analyses">Setting up for some squirrely analyses:</h3>
 <ol type="1">
-<li>Form groups of 4-5 Students</li>
-<li>Find a Library</li>
-<li>Working collaboratively use a github repo to create a notebook about the library</li>
-<li>Present notebook to class (10-15 min)</li>
+<li><p>Create a short name for your group and a new repository for this exercise. Clone the repo to your local machines.</p></li>
+<li><p>Load the combined datafile (either using the url or from your repository’s <code>../data</code> directory) using <code>pd.read_csv()</code>.</p></li>
+<li><p>Use standard <code>df.info()</code>, <code>df.head()</code>, <code>df.describe()</code> to explore the data.</p></li>
+<li><p>Read over the user guide here to understand what the various columns contain.</p></li>
 </ol>
-<section id="find-a-library" class="level3">
-<h3 class="anchored" data-anchor-id="find-a-library">Find a Library</h3>
-<ul>
-<li><a href="https://pypi.org">PyPi</a> <code>pypi.org</code></li>
-<li><a href="https://towardsdatascience.com">Towards Data Science</a> <code>towardsdatascience.com</code></li>
-<li>Podcasts: <a href="https://talkpython.fm/episodes/all">Talk Python to Me</a>, <a href="https://lineardigressions.com">Linear Digressions</a>, <a href="https://pythonbytes.fm">Python Bytes</a></li>
-<li>Domain-specific searches “python oceanography”, “python climate science”, etc…</li>
-</ul>
-<p>Good candidates for a Show-and-Tell are libraries that are relevant and popular.</p>
-<p>Popularity can measured with GitHub stars, or PyPi downloads. Or if folks in the data science community are talking about it.</p>
+<p><a href="https://www.dropbox.com/s/cs293zzz1li79nn/user-guide_data-sets_nyc-open-data-week-multi-park-squirrel-count.pdf?dl=0">Survey Data User Guide</a></p>
+<p>Additional information on the survey and stories are available here:</p>
+<p><a href="https://www.thesquirrelcensus.com/data">https://www.thesquirrelcensus.com/data</a></p>
 </section>
-<section id="here-are-some-example-tutorials-made-by-past-classes" class="level3">
-<h3 class="anchored" data-anchor-id="here-are-some-example-tutorials-made-by-past-classes">Here are some example tutorials made by past classes:</h3>
-<ol type="1">
-<li><a href="https://github.com/environmental-data-science/eds217-dask-tutorial">Dask (2022-2023)</a></li>
-<li><a href="https://github.com/environmental-data-science/eds217-selenium-tutorial">Selenium (2022-2023)</a></li>
-<li><a href="https://github.com/environmental-data-science/eds217-plotly-tutorial">Plotly (2022-2023)</a></li>
-</ol>
 </section>
-<section id="create-a-github-repo-for-your-tutorial." class="level3">
-<h3 class="anchored" data-anchor-id="create-a-github-repo-for-your-tutorial.">Create a github repo for your tutorial.</h3>
-<p>The repo should contain:</p>
-<ol type="1">
-<li>an environment file including all necessary dependencies</li>
-<li>a README.md file with a brief description of the library and a link to the library’s webpage or github repo.</li>
-<li>an example notebook (or notebooks) about the library.</li>
-<li>any other files necessary to run the example notebook(s)</li>
-</ol>
-</section>
-<section id="notebook-contents" class="level3">
-<h3 class="anchored" data-anchor-id="notebook-contents">Notebook contents:</h3>
-<ul>
-<li>Brief Description
-<ul>
-<li>What is it?</li>
-<li>Where is it? Link to project webpage, github</li>
-<li>Who developed?</li>
-<li>Why was it created?</li>
-</ul></li>
-<li>Potential Use in Environmental Data Science</li>
-<li>Quick tutorial/example, using Env. Data Sci example if possible!
-<ul>
-<li>Okay to incorporate examples found elsewhere (provide link and acknowledgement!)</li>
-</ul></li>
-</ul>
-</section>
-<section id="library-show-and-tell" class="level3">
-<h3 class="anchored" data-anchor-id="library-show-and-tell">Library Show-and-Tell</h3>
-<ul>
-<li>Present your notebook to the class!</li>
-<li>10-15 minute presentation.</li>
-<li>Q&amp;A.</li>
-<li>We will have our presentations in the afternoon on the last day of class (Friday, Sept.&nbsp;15)</li>
-<li>All repos will be cloned to the environmentaldatascience github so everyone can learn from each other.</li>
-</ul>
-<section id="by-lunch-on-wednesday-select-your-library-plus-two-alternates-in-case-of-duplicates" class="level4">
-<h4 class="anchored" data-anchor-id="by-lunch-on-wednesday-select-your-library-plus-two-alternates-in-case-of-duplicates">BY LUNCH ON WEDNESDAY: SELECT YOUR LIBRARY, PLUS TWO ALTERNATES (IN CASE OF DUPLICATES)</h4>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
