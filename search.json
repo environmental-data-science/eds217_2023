@@ -1768,7 +1768,14 @@
     "href": "lectures/04-next_steps.html#know-your-tools",
     "title": "How to move from a beginner to a more advanced python user",
     "section": "5. Know your tools",
-    "text": "5. Know your tools\n\nLearn how to use your IDE (VSCode)\nLearn how to use your package manager (conda, mamba)\nLearn how to use your shell (bash, powershell, WSL)\nLearn how to use your version control system (git, Github Desktop)\n\n\n6. Learn how to test your code\n\nTesting code is part of writing code, and testing is a great way to learn!\nFocus on end-to-end (E2E) tests (rather than unit tests)\n\nUnit tests:\nDoes it work the way you expect it to (operation-centric)?\nEnd-to-end test:\nDoes it do what you want it to do (output-centric)?\n\n\nTesting for data science\nTesting with PyTest for data science"
+    "text": "5. Know your tools\n\nLearn how to use your IDE (VSCode)\nLearn how to use your package manager (conda, mamba)\nLearn how to use your shell (bash, powershell, WSL)\nLearn how to use your version control system (git, Github Desktop)"
+  },
+  {
+    "objectID": "lectures/04-next_steps.html#learn-how-to-test-your-code",
+    "href": "lectures/04-next_steps.html#learn-how-to-test-your-code",
+    "title": "How to move from a beginner to a more advanced python user",
+    "section": "6. Learn how to test your code",
+    "text": "6. Learn how to test your code\n\nTesting code is part of writing code, and testing is a great way to learn!\nFocus on end-to-end (E2E) tests (rather than unit tests)\n\nUnit tests:\nDoes it work the way you expect it to (operation-centric)?\nEnd-to-end test:\nDoes it do what you want it to do (output-centric)?\n\n\nTesting for data science\nTesting with PyTest for data science"
   },
   {
     "objectID": "lectures/04-next_steps.html#know-whats-good-enough-for-any-given-project",
@@ -1789,7 +1796,7 @@
     "href": "lectures/04-next_steps.html#write-things-down",
     "title": "How to move from a beginner to a more advanced python user",
     "section": "9. Write things down",
-    "text": "9. Write things down\n\nKeep an ideas notebook\n\nWrite down ideas for projects\nWrite down ideas for code\n\n\n\nWrite comments to yourself and others\n\n\nWrite documentation\n\n\nWrite down questions (use your tools; github issues, etc…)"
+    "text": "9. Write things down\n\nKeep an ideas notebook\n\nWrite down ideas for projects\nWrite down ideas for code\n\n\n\nWrite comments to yourself and others\n\n\nWrite documentation\n\nCode Documentation in Python\n\n\n\nWrite down questions (use your tools; github issues, etc…)"
   },
   {
     "objectID": "lectures/04-next_steps.html#go-meet-people",
